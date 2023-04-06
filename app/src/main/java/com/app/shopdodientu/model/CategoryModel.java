@@ -5,16 +5,16 @@ import java.io.Serializable;
 public class CategoryModel implements Serializable {
     private int id;
     private String name;
-    private String images;
+    private String image;
     private int status;
 
     public CategoryModel() {
     }
 
-    public CategoryModel(int id, String name, String images, int status) {
+    public CategoryModel(int id, String name, String image, int status) {
         this.id = id;
         this.name = name;
-        this.images = images;
+        this.image = image;
         this.status = status;
     }
 
@@ -22,28 +22,28 @@ public class CategoryModel implements Serializable {
         return id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getImages() {
-        return images;
-    }
-
-    public int getStatus() {
-        return status;
-    }
-
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setImages(String images) {
-        this.images = images;
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public int getStatus() {
+        return status;
     }
 
     public void setStatus(int status) {
