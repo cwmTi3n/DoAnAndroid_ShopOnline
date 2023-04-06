@@ -7,7 +7,7 @@ public class UserModel implements Serializable {
     private String username;
     private String email;
     private String fullname;
-    private String images;
+    private String avatar;
     private String phone;
     private int status;
     private String role;
@@ -15,46 +15,14 @@ public class UserModel implements Serializable {
     public UserModel() {
     }
 
-    public UserModel(int id, String username, String email, String fullname, String images, String phone, int status, String role) {
+    public UserModel(int id, String username, String email, String fullname, String avatar, String phone, int status, String role) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.fullname = fullname;
-        this.images = images;
+        this.avatar = avatar;
         this.phone = phone;
         this.status = status;
-        this.role = role;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setFullname(String fullname) {
-        this.fullname = fullname;
-    }
-
-    public void setImages(String images) {
-        this.images = images;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
-    }
-
-    public void setRole(String role) {
         this.role = role;
     }
 
@@ -62,31 +30,63 @@ public class UserModel implements Serializable {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getUsername() {
         return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmail() {
         return email;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getFullname() {
         return fullname;
     }
 
-    public String getImages() {
-        return images;
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public String getPhone() {
         return phone;
     }
 
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     public int getStatus() {
         return status;
     }
 
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
     public String getRole() {
         return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }
