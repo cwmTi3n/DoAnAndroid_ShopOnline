@@ -13,31 +13,18 @@ public class BaseClient {
     private static OkHttpClient.Builder sHttpClient =
             new OkHttpClient.Builder();
 
-    static <S> S createService(Class<S> serviceClass, String baseUrl) {
+    static <S> S createService(Class<S> serviceClass, String baseUrl, String username, String password) {
         Retrofit.Builder builder = new Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create());
         Retrofit retrofit = builder.build();
-        if (!sHttpClient.interceptors().contains(sLogging)) {
+        if(username != null && password != null) {
+            AuthInterceptor authInterceptor = new AuthInterceptor(username, password);
+            sHttpClient.addInterceptor(authInterceptor);
         }
         sHttpClient.addInterceptor(sLogging);
         builder.client(sHttpClient.build());
         retrofit = builder.build();
-        return retrofit.create(serviceClass);
-    }
-
-    static <S> S loginService(Class<S> serviceClass, String baseUrl, String username, String password) {
-        Retrofit.Builder builder = new Retrofit.Builder()
-                .baseUrl(baseUrl)
-                .addConverterFactory(GsonConverterFactory.create());
-        Retrofit retrofit = builder.build();
-        if (!sHttpClient.interceptors().contains(sLogging)) {
-            sHttpClient.addInterceptor(sLogging);
-            AuthInterceptor authInterceptor = new AuthInterceptor(username, password);
-            sHttpClient.addInterceptor(authInterceptor);
-            builder.client(sHttpClient.build());
-            retrofit = builder.build();
-        }
         return retrofit.create(serviceClass);
     }
 }

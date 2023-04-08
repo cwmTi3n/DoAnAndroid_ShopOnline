@@ -39,7 +39,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         holder.tvCategory.setText(categoryModel.getName());
         Glide.with(context)
                 .load(categoryModel.getImage())
-                .into(holder.ivCategory);
+                .into(holder.imvCategory);
     }
 
     @Override
@@ -48,12 +48,12 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private ImageView ivCategory;
+        private ImageView imvCategory;
         private TextView tvCategory;
 
         public ViewHolder(final View itemView) {
             super(itemView);
-            ivCategory = (ImageView) itemView.findViewById(R.id.categoryIView);
+            imvCategory = (ImageView) itemView.findViewById(R.id.categoryIView);
             tvCategory = (TextView) itemView.findViewById(R.id.tvnameCate);
         }
     }

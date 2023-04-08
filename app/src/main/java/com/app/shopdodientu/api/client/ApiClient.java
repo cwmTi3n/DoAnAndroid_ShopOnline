@@ -8,11 +8,14 @@ public class ApiClient extends BaseClient{
 
     public static ApiService getApiService() {
         if (apiService == null) {
-            return createService(ApiService.class, BASE_URL);
+            return createService(ApiService.class, BASE_URL, null, null);
         }
         return apiService;
     }
     public static ApiService getApiLoginService(String username, String password) {
-        return  loginService(ApiService.class, BASE_URL, username, password);
+        if(apiService == null) {
+            return createService(ApiService.class, BASE_URL, username, password);
+        }
+        return apiService;
     }
 }
