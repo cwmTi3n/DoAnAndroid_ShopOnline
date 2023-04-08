@@ -6,195 +6,205 @@
     android:layout_height="match_parent"
     tools:context=".activity.ProductDetailActivity">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingTop="10dp"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="2dp">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="10">
-
-            <ImageView
-                android:id="@+id/imgback"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_weight="1"
-                android:src="@drawable/left_arrow" />
-
-            <EditText
-                android:id="@+id/edtfind"
-                android:layout_width="364dp"
-                android:layout_height="40dp"
-                android:background="@drawable/radius_border_10dp"
-                android:drawableLeft="@drawable/search"
-                android:drawablePadding="10dp"
-                android:ems="10"
-                android:hint="Find Your Product"
-                android:inputType="textPersonName"
-                android:paddingStart="20dp"
-                android:textSize="15dp"
-                android:textStyle="italic" />
-        </LinearLayout>
-
-        <ImageView
-            android:id="@+id/imgproduct"
-            android:layout_width="350dp"
-            android:layout_height="250dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/sample_product" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="#FF8F00"
-            android:weightSum="10">
-
-            <TextView
-                android:id="@+id/tvprice"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_weight="9"
-                android:layout_marginLeft="20dp"
-                android:paddingTop="5dp"
-                android:text="49000đ"
-                android:textColor="#fff"
-                android:textSize="30dp"
-                android:textStyle="bold|italic" />
-
-            <TextView
-                android:id="@+id/tvbestprice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:drawableLeft="@drawable/lightning"
-                android:text="Best Price"
-                android:textColor="#fff"
-                android:textSize="20dp"
-                android:textStyle="bold|italic" />
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/tvnameproduct"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="5dp"
-            android:text="Bluetooth Headphone "
-            android:textSize="20dp"
-            android:textStyle="bold" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="20dp"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:orientation="horizontal"
-            android:weightSum="10"
-            android:background="@drawable/rectangle_border_red">
-
-
-            <ImageView
-                android:id="@+id/imgavatar"
-                android:layout_width="40dp"
-                android:layout_height="60dp"
-                android:layout_weight="3"
-                tools:src="@drawable/bottom_btn2" />
+            android:layout_height="match_parent"
+            android:paddingTop="10dp"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="2dp">
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="5"
-                android:paddingStart="10dp"
-                android:orientation="vertical">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="10">
 
-                <TextView
-                    android:id="@+id/tvshopName"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:paddingTop="7dp"
-                    android:text="Shop Name"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tvamountProduct"
-                    android:layout_width="match_parent"
+                <ImageView
+                    android:id="@+id/imgback"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="46 Product"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/left_arrow" />
+
+                <EditText
+                    android:id="@+id/edtfind"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="8.75"
+                    android:background="@drawable/radius_border_10dp"
+                    android:drawableLeft="@drawable/search"
+                    android:drawablePadding="10dp"
+                    android:ems="10"
+                    android:hint="Find Your Product"
+                    android:inputType="textPersonName"
+                    android:paddingStart="20dp"
                     android:textSize="15dp"
-                    android:textStyle="italic"/>
+                    android:textStyle="italic" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/imgproduct"
+                android:layout_width="350dp"
+                android:layout_height="250dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/sample_product" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="#FF8F00"
+                android:weightSum="10">
+
+                <TextView
+                    android:id="@+id/tvprice"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="8"
+                    android:layout_marginLeft="20dp"
+                    android:paddingTop="5dp"
+                    android:text="49000đ"
+                    android:textColor="#fff"
+                    android:textSize="30dp"
+                    android:textStyle="bold|italic" />
+
+                <TextView
+                    android:id="@+id/tvbestprice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/lightning"
+                    android:text="Best Price"
+                    android:textColor="#fff"
+                    android:textSize="20dp"
+                    android:textStyle="bold|italic" />
+
             </LinearLayout>
 
             <TextView
-                android:id="@+id/tvviewShop"
-                android:layout_width="60dp"
-                android:layout_height="30dp"
-                android:layout_weight="1"
-                android:layout_marginTop="15dp"
-                android:paddingTop="4dp"
-                android:background="@drawable/radius_border_10dp"
-                android:textSize="15dp"
-                android:textStyle="bold"
-                android:textAlignment="center"
-                android:text="VIEW"
-                android:textColor="#171616">
-
-            </TextView>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            >
-
-            <TextView
-                android:id="@+id/textView"
+                android:id="@+id/tvnameproduct"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Description"
-                android:textSize="20dp"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:id="@+id/tvdescription"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 android:layout_marginTop="5dp"
-                android:text="description of product"
-                android:textSize="17dp"/>
+                android:text="Bluetooth Headphone "
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="#2F2D2D"/>
 
-            <Button
-                android:id="@+id/btnadd"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_gravity="center"
-                android:backgroundTint="#F9A825"
-                android:textColor="#373434"
-                android:textSize="18dp"
-                android:text="ADD TO CART"
-                android:textStyle="bold"
-                android:drawableLeft="@drawable/shopping_cart" />
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="20dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:orientation="horizontal"
+                android:weightSum="10"
+                android:background="@drawable/rectangle_border_red">
+
+
+                <ImageView
+                    android:id="@+id/imgavatar"
+                    android:layout_width="40dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="3"
+                    tools:src="@drawable/bottom_btn2" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:paddingStart="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvshopName"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:paddingTop="7dp"
+                        android:text="Shop Name"
+                        android:textSize="20dp"
+                        android:textStyle="bold"
+                        android:textColor="#000"/>
+
+                    <TextView
+                        android:id="@+id/tvamountProduct"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="46 Product"
+                        android:textSize="17dp"
+                        android:textStyle="italic"/>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvviewShop"
+                    android:layout_width="60dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:layout_marginTop="15dp"
+                    android:paddingTop="4dp"
+                    android:background="@drawable/radius_border_10dp"
+                    android:textSize="15dp"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:text="VIEW"
+                    android:textColor="#000">
+
+                </TextView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Description"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:textColor="#000"/>
+
+                <TextView
+                    android:id="@+id/tvdescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="description of product"
+                    android:textColor="#211F1F"
+                    android:textSize="18dp"/>
+
+                <Button
+                    android:id="@+id/btnadd"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_gravity="center"
+                    android:backgroundTint="#F9A825"
+                    android:textColor="#000"
+                    android:textSize="18dp"
+                    android:text="ADD TO CART"
+                    android:textStyle="bold"
+                    android:drawableLeft="@drawable/shopping_cart" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
-    </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -25,9 +25,9 @@
         <activity
             android:name=".activity.ChangePasswordActivity"
             android:exported="false" />
-<!--        <activity-->
-<!--            android:name=".activity.ProfileActivity"-->
-<!--            android:exported="false" />-->
+        <activity
+            android:name=".activity.ProfileActivity"
+            android:exported="false" />
         <activity
             android:name=".activity.seller.AddCategoryActivity"
             android:exported="false" />
@@ -37,9 +37,9 @@
         <activity
             android:name=".activity.seller.UpdateProductActivity"
             android:exported="false" />
-        <activity
-            android:name=".activity.ProductDetailActivity"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".activity.ProductDetailActivity"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".activity.seller.AddProductActivity"
             android:exported="false" />
@@ -50,7 +50,7 @@
             android:name=".activity.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.ProfileActivity"
+            android:name=".activity.ProductDetailActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
