@@ -163,7 +163,7 @@
 
 
         <Button
-            android:id="@+id/btnlogin"
+            android:id="@+id/btnsignup"
             android:layout_width="170dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

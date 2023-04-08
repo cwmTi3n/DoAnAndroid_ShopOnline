@@ -1,5 +1,7 @@
 package com.app.shopdodientu.api.client;
 
+import com.app.shopdodientu.api.AuthInterceptor;
+
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -11,12 +13,14 @@ public class BaseClient {
     private static OkHttpClient.Builder sHttpClient =
             new OkHttpClient.Builder();
 
-    static <S> S createService(Class<S> serviceClass, String baseUrl) {
+    static <S> S createService(Class<S> serviceClass, String baseUrl, String username, String password) {
         Retrofit.Builder builder = new Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create());
         Retrofit retrofit = builder.build();
-        if (!sHttpClient.interceptors().contains(sLogging)) {
+        if(username != null && password != null) {
+            AuthInterceptor authInterceptor = new AuthInterceptor(username, password);
+            sHttpClient.addInterceptor(authInterceptor);
         }
         sHttpClient.addInterceptor(sLogging);
         builder.client(sHttpClient.build());
