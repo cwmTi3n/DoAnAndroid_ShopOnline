@@ -37,20 +37,20 @@
         <activity
             android:name=".activity.seller.UpdateProductActivity"
             android:exported="false" />
-<!--        <activity-->
-<!--            android:name=".activity.ProductDetailActivity"-->
-<!--            android:exported="false" />-->
+        <activity
+            android:name=".activity.ProductDetailActivity"
+            android:exported="false" />
         <activity
             android:name=".activity.seller.AddProductActivity"
             android:exported="false" />
         <activity
             android:name=".activity.SignupActivity"
             android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".activity.LoginActivity"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".activity.LoginActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.ProductDetailActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
