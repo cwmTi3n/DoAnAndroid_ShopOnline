@@ -22,6 +22,7 @@
             android:textAlignment="center"
             android:textSize="25dp"
             android:textColor="#fff"
+            android:fontFamily="sans-serif"
             android:drawableLeft="@drawable/left_chevron"
             android:paddingStart="10dp" />
 
@@ -67,6 +68,7 @@
                 android:id="@+id/spinnerstatus"
                 android:layout_width="70dp"
                 android:layout_height="45dp"
+                android:fontFamily="sans-serif"
                 android:background="@drawable/rectangle_border_black"
                 android:spinnerMode="dialog">
 
@@ -78,10 +80,11 @@
         <Button
             android:id="@+id/btnaddcate"
             android:layout_width="200dp"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_marginTop="20dp"
             android:layout_gravity="center"
             android:text="Add Category"
+            android:fontFamily="sans-serif-black"
             android:drawableLeft="@drawable/plus"
             android:backgroundTint="#F15050"/>
 

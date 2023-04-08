@@ -9,51 +9,48 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#E8DEE2"
         android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/imgtopsignup"
-            android:layout_width="match_parent"
-            android:layout_height="202dp"
-            app:srcCompat="@drawable/top_signup" />
 
         <TextView
             android:id="@+id/tvsignup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
             android:text="SIGN UP"
             android:textSize="35dp"
             android:textStyle="bold"
+            android:textColor="#6C5DD2"
             android:textAlignment="center"/>
 
         <TextView
-            android:id="@+id/tvemail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
             android:text="Email"
             android:textSize="20dp"
+            android:textColor="#6C5DD2"
             android:textStyle="bold" />
 
 
         <EditText
             android:id="@+id/edtemail"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="60dp"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
+            android:textSize="20dp"
+            android:fontFamily="sans-serif"
             android:paddingStart="10dp"
-            android:background="@drawable/radius_border"
+            android:background="@drawable/radius_border_10dp"
             android:ems="10"
-            android:inputType="textEmailAddress"
-            android:textColorHint="#707070"
-            android:hint="Enter your email" />
+            android:inputType="textEmailAddress" />
+
 
         <TextView
-            android:id="@+id/tvusername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -61,46 +58,108 @@
             android:layout_marginRight="50dp"
             android:text="UserName"
             android:textSize="20dp"
+            android:textColor="#6C5DD2"
             android:textStyle="bold" />
 
         <EditText
             android:id="@+id/edtusername"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:textSize="20dp"
+            android:fontFamily="sans-serif"
+            android:paddingStart="10dp"
+            android:background="@drawable/radius_border_10dp"
+            android:ems="10"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:text="Phone"
+            android:textSize="20dp"
+            android:textColor="#6C5DD2"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edtphone"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
             android:paddingStart="10dp"
-            android:background="@drawable/radius_border"
+            android:textSize="20dp"
+            android:fontFamily="sans-serif"
+            android:background="@drawable/radius_border_10dp"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:textColorHint="#707070"
-            android:hint="Enter your username" />
+            android:inputType="number" />
 
         <TextView
-            android:id="@+id/tvpass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
             android:text="Password"
+            android:textColor="#6C5DD2"
             android:textSize="20dp"
             android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/edtpass"
+        <com.google.android.material.textfield.TextInputLayout
+            app:passwordToggleEnabled="true"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tfpass"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@drawable/radius_border_10dp"
+                android:inputType="textPassword"
+                android:textSize="20dp"
+                android:fontFamily="sans-serif">
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
-            android:paddingStart="10dp"
-            android:background="@drawable/radius_border"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:hint="Enter your password"
-            android:textColorHint="#707070" />
+            android:text="Confirm Password"
+            android:textColor="#6C5DD2"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            app:passwordToggleEnabled="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/tfconfirmpass"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="@drawable/radius_border_10dp"
+                android:inputType="textPassword"
+                android:textSize="20dp"
+                android:fontFamily="sans-serif">
+            </com.google.android.material.textfield.TextInputEditText>
+        </com.google.android.material.textfield.TextInputLayout>
 
 
         <Button
@@ -109,9 +168,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
-            android:textSize="18dp"
+            android:textSize="20dp"
             android:text="SIGN UP"
-            android:background="@drawable/radius_border"/>
+            android:background="@drawable/radius_border_10dp"/>
 
 
         <TextView
@@ -123,8 +182,7 @@
             android:textSize="20dp"
             android:textStyle="bold"
             android:textAlignment="center"
-            android:textColor="#3B608C"
-            />
+            android:textColor="#6C5DD2" />
 
 
     </LinearLayout>

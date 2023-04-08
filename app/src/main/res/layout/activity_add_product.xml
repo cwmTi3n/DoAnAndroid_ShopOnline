@@ -22,6 +22,7 @@
             android:textAlignment="center"
             android:textSize="25dp"
             android:textColor="#fff"
+            android:fontFamily="sans-serif"
             android:drawableLeft="@drawable/left_chevron"
             android:paddingStart="10dp"
             />
@@ -40,6 +41,7 @@
             android:layout_height="45dp"
             android:layout_margin="10dp"
             android:paddingStart="10dp"
+            android:fontFamily="sans-serif"
             android:background="@drawable/rectangle_border_black"
             android:hint="Name"
             android:ems="10"
@@ -51,6 +53,7 @@
             android:layout_height="45dp"
             android:layout_margin="10dp"
             android:spinnerMode="dialog"
+            android:fontFamily="sans-serif"
             android:background="@drawable/rectangle_border_black">
 
         </Spinner>
@@ -63,6 +66,7 @@
             android:background="@drawable/rectangle_border_black"
             android:ems="10"
             android:hint="Description"
+            android:fontFamily="sans-serif"
             android:inputType="textMultiLine"
             android:paddingStart="10dp" />
 
@@ -82,6 +86,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/rectangle_border_black"
                 android:hint="Price"
+                android:fontFamily="sans-serif"
                 android:ems="10"
                 android:inputType="number" />
 
@@ -94,6 +99,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/rectangle_border_black"
                 android:hint="Stock"
+                android:fontFamily="sans-serif"
                 android:ems="10"
                 android:inputType="number" />
 
@@ -107,6 +113,7 @@
             android:layout_marginTop="20dp"
             android:layout_gravity="center"
             android:text="Add Product"
+            android:fontFamily="sans-serif-black"
             android:drawableLeft="@drawable/plus"
             android:backgroundTint="#F15050"/>
 
