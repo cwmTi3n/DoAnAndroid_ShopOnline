@@ -51,6 +51,16 @@
 <!--            android:exported="false" />-->
         <activity
             android:name=".activity.LoginActivity"
+<<<<<<< HEAD
+=======
+            android:exported="false" />
+        <activity
+<<<<<<< HEAD
+            android:name=".activity.MainActivity"
+=======
+            android:name=".activity.SignupActivity"
+>>>>>>> 5385549f187180917f950860b0f23f35d203ff1f
+>>>>>>> 4eb8e630a125a59da648026f213ec6596b28f987
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
