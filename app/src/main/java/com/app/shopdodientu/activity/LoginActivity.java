@@ -33,13 +33,15 @@ public class LoginActivity extends AppCompatActivity {
         MapItemView();
         gotoSignup();
         login();
+
     }
+
 
     private void MapItemView() {
         tvSignup = (TextView) findViewById(R.id.tvsignup);
         btnLogin = (Button) findViewById(R.id.btnlogin);
         edtUsername = (EditText) findViewById(R.id.edtusername);
-        edtPassword = (EditText) findViewById(R.id.edtpass);
+        //edtPassword = (EditText) findViewById(R.id.edtpass);
     }
 
     private void gotoSignup() {
