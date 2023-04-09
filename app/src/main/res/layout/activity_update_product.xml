@@ -191,7 +191,7 @@
                     android:id="@+id/textView6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="47dp"
+                    android:layout_marginLeft="45dp"
                     android:layout_marginRight="10dp"
                     android:fontFamily="sans-serif-black"
                     android:text="Status"
@@ -210,14 +210,14 @@
             <Button
                 android:id="@+id/btnupdate"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_marginTop="20dp"
                 android:layout_gravity="center"
                 android:text="Update Product"
                 android:textSize="20dp"
                 android:fontFamily="sans-serif-black"
                 android:drawableLeft="@drawable/updated"
-                android:backgroundTint="#F15050"/>
+                android:backgroundTint="#F15050" />
         </LinearLayout>
     </ScrollView>
 
