@@ -89,7 +89,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <CheckBox
-                android:id="@+id/checkBox"
+                android:id="@+id/cbRemember"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="50dp"
@@ -110,14 +110,6 @@
                 android:textColor="#6C5DD2"
                 android:shadowColor="#C0C0C0"
                 android:shadowRadius="5"/>
-            <TextView
-                android:id="@+id/myTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="My Text"
-                android:textSize="20dp"
-                android:shadowColor="#000"
-                android:shadowRadius="10"/>
 
             <Button
                 android:id="@+id/btnlogin"
