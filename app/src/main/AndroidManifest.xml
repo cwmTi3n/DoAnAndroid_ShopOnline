@@ -43,17 +43,18 @@
         <activity
             android:name=".activity.seller.AddProductActivity"
             android:exported="false" />
-        <activity
-            android:name=".activity.SignupActivity"
-            android:exported="false" />
 <!--        <activity-->
-<!--            android:name=".activity.LoginActivity"-->
+<!--            android:name=".activity.SignupActivity"-->
 <!--            android:exported="false" />-->
         <activity
             android:name=".activity.LoginActivity"
             android:exported="false" />
         <activity
+<<<<<<< HEAD
             android:name=".activity.MainActivity"
+=======
+            android:name=".activity.SignupActivity"
+>>>>>>> 5385549f187180917f950860b0f23f35d203ff1f
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

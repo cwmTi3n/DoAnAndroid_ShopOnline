@@ -3,7 +3,10 @@ package com.app.shopdodientu.activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -51,6 +54,13 @@ public class SignupActivity extends AppCompatActivity {
         tvLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String text = tvLogin.getText().toString();
+                SpannableString content = new SpannableString(text);
+                content.setSpan(new UnderlineSpan(), 0, text.length(), 0);
+                tvLogin.setText(content);
+                tvLogin.setTextColor(ColorStateList.valueOf(getResources().getColor(R.color.purple_700)));
+
+
                 Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
