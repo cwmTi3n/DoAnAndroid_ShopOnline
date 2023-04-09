@@ -49,11 +49,12 @@
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
                 android:drawableLeft="@drawable/user1"
+                android:drawablePadding="10dp"
                 android:paddingStart="10dp"
                 android:background="@drawable/radius_border_10dp"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:textColorHint="#707070" />
+                android:textSize="20dp"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -82,11 +83,8 @@
                     android:layout_height="60dp"
                     android:background="@drawable/radius_border_10dp"
                     android:inputType="textPassword"
-                    android:textSize="20dp"
-                    android:fontFamily="sans-serif">
+                    android:textSize="20dp">
                 </com.google.android.material.textfield.TextInputEditText>
-
-
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -109,7 +107,17 @@
                 android:textSize="16dp"
                 android:textStyle="bold|italic"
                 android:textAlignment="viewEnd"
-                android:textColor="#6C5DD2" />
+                android:textColor="#6C5DD2"
+                android:shadowColor="#C0C0C0"
+                android:shadowRadius="5"/>
+            <TextView
+                android:id="@+id/myTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="My Text"
+                android:textSize="20dp"
+                android:shadowColor="#000"
+                android:shadowRadius="10"/>
 
             <Button
                 android:id="@+id/btnlogin"
