@@ -143,8 +143,7 @@
                     android:id="@+id/rcvproduct"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#fff"
-                    android:paddingStart="22dp" />
+                    android:background="#F8EEEE" />
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
 
