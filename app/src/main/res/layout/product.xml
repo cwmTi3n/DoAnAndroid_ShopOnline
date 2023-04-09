@@ -5,13 +5,76 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_marginTop="3dp"
     android:background="#ffffff">
 
-    <ImageView
-        android:id="@+id/productIView"
-        android:layout_width="100dp"
-        android:layout_height="110dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:background="@drawable/item_background">
+
+        <ImageView
+            android:id="@+id/productIView"
+            android:layout_width="180dp"
+            android:layout_height="200dp"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/tvproductName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ProductName"
+            android:textColor="#000"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/productIView" />
+
+        <TextView
+            android:id="@+id/tvshopName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/rectangle_border_red"
+            android:padding="3dp"
+            android:text="#ShopName"
+            android:textColor="#BA3232"
+            android:textSize="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvproductName">
+
+
+        <TextView
+            android:id="@+id/tvprice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="₫219000"
+            android:textColor="#E47F2B"
+            android:textSize="20dp"
+            android:drawableLeft="@drawable/dollar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvshopName" />
+
+        <TextView
+            android:id="@+id/tvamount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đã bán 50"
+            android:textColor="#000"
+            android:textSize="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/tvprice" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </FrameLayout>
