@@ -2,6 +2,7 @@ package com.app.shopdodientu.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -41,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
     private List<ProductModel> products;
     private int page;
     private int total;
-    private ScrollView scrollView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,7 +87,6 @@ public class MainActivity extends AppCompatActivity {
         imvProfile = (ImageView) findViewById(R.id.imgProfile);
         imvHome = (ImageView) findViewById(R.id.imgHome);
         rcvProduct = (RecyclerView) findViewById(R.id.rcvproduct);
-        scrollView = (ScrollView) findViewById(R.id.scrollView);
     }
 
     private void getAllCategory() {
@@ -124,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
                         total = pageProduct.getTotal();
                         productAdapter = new ProductAdapter(getApplicationContext(), products);
                         rcvProduct.setHasFixedSize(true);
-                        rcvProduct.setLayoutManager(new GridLayoutManager(MainActivity.this, 3));
+                        rcvProduct.setLayoutManager(new GridLayoutManager(MainActivity.this, 2));
                         rcvProduct.setAdapter(productAdapter);
                         productAdapter.notifyDataSetChanged();
 
@@ -136,36 +135,14 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
         //load more
-        RecyclerView.OnScrollListener onScrollListener = new RecyclerView.OnScrollListener() {
+        final NestedScrollView nestedScrollView = findViewById(R.id.ncvMain);
+        nestedScrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
             @Override
-            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-                // Kiểm tra xem RecyclerView có đang cuộn đến cuối cùng không
-                if (!recyclerView.canScrollVertically(1)) {
-                    // Gọi phương thức để tải thêm dữ liệu
+            public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+                if (scrollY == (v.getChildAt(0).getMeasuredHeight() - v.getMeasuredHeight())) {
+                    // At bottom of NestedScrollView, load more data for RecyclerView
                     loadmoreProduct();
                 }
-            }
-        };
-        rcvProduct.addOnScrollListener(onScrollListener);
-        rcvProduct.addOnChildAttachStateChangeListener(new RecyclerView.OnChildAttachStateChangeListener() {
-            @Override
-            public void onChildViewAttachedToWindow(@NonNull View view) {
-                int recyclerViewHeight = rcvProduct.getHeight();
-                int recyclerViewItemCount = rcvProduct.getAdapter().getItemCount();
-                int recyclerViewItemHeight = rcvProduct.getChildAt(0).getHeight();
-
-                int scrollViewHeight = scrollView.getHeight();
-                int scrollViewMaxScroll = recyclerViewItemHeight * recyclerViewItemCount - scrollViewHeight;
-
-                if (scrollView.getScrollY() < scrollViewMaxScroll - recyclerViewItemHeight) {
-                    scrollView.smoothScrollTo(0, scrollViewMaxScroll);
-                }
-            }
-
-            @Override
-            public void onChildViewDetachedFromWindow(@NonNull View view) {
-
             }
         });
     }
