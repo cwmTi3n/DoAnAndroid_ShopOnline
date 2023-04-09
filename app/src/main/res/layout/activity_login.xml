@@ -107,9 +107,7 @@
                 android:textSize="16dp"
                 android:textStyle="bold|italic"
                 android:textAlignment="viewEnd"
-                android:textColor="#6C5DD2"
-                android:shadowColor="#C0C0C0"
-                android:shadowRadius="5"/>
+                android:textColor="#6C5DD2" />
 
             <Button
                 android:id="@+id/btnlogin"

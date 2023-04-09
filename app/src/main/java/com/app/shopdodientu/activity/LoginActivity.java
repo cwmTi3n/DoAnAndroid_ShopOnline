@@ -4,7 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -25,6 +28,7 @@ import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
     private TextView tvSignup;
+    private TextView tvForgetPass;
     private Button btnLogin;
     private EditText edtUsername;
     private TextInputEditText tiedPassword;
@@ -38,12 +42,14 @@ public class LoginActivity extends AppCompatActivity {
         MapItemView();
         gotoSignup();
         login();
+        forgetPass();
 
     }
 
 
     private void MapItemView() {
         tvSignup = (TextView) findViewById(R.id.tvsignup);
+        tvForgetPass = (TextView) findViewById(R.id.tvforgetpass);
         btnLogin = (Button) findViewById(R.id.btnlogin);
         edtUsername = (EditText) findViewById(R.id.edtusername);
         tiedPassword = (TextInputEditText) findViewById(R.id.tfpass);
@@ -58,6 +64,12 @@ public class LoginActivity extends AppCompatActivity {
         tvSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String text = tvSignup.getText().toString();
+                SpannableString content = new SpannableString(text);
+                content.setSpan(new UnderlineSpan(), 0, text.length(), 0);
+                tvSignup.setText(content);
+                tvSignup.setTextColor(ColorStateList.valueOf(getResources().getColor(R.color.purple_700)));
+
                 Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
                 startActivity(intent);
             }
@@ -108,7 +120,22 @@ public class LoginActivity extends AppCompatActivity {
                         });
             }
         });
-
     }
 
+    private void forgetPass(){
+
+        tvForgetPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String text = tvForgetPass.getText().toString();
+                SpannableString content = new SpannableString(text);
+                content.setSpan(new UnderlineSpan(), 0, text.length(), 0);
+                tvForgetPass.setText(content);
+                tvForgetPass.setTextColor(ColorStateList.valueOf(getResources().getColor(R.color.purple_700)));
+
+//                Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
+//                startActivity(intent);
+            }
+        });
+    }
 }
