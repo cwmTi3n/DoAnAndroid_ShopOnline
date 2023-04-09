@@ -46,16 +46,12 @@ public class LoginActivity extends AppCompatActivity {
         tvSignup = (TextView) findViewById(R.id.tvsignup);
         btnLogin = (Button) findViewById(R.id.btnlogin);
         edtUsername = (EditText) findViewById(R.id.edtusername);
-<<<<<<< HEAD
         tiedPassword = (TextInputEditText) findViewById(R.id.tfpass);
         cbRemember = (CheckBox) findViewById(R.id.cbRemember);
         sharedPreferences = getSharedPreferences("dataLogin", MODE_PRIVATE);
         edtUsername.setText(sharedPreferences.getString("username", ""));
         tiedPassword.setText(sharedPreferences.getString("password", ""));
         cbRemember.setChecked(sharedPreferences.getBoolean("check", false));
-=======
-        //edtPassword = (EditText) findViewById(R.id.edtpass);
->>>>>>> 5385549f187180917f950860b0f23f35d203ff1f
     }
 
     private void gotoSignup() {
