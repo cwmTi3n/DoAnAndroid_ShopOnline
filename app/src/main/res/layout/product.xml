@@ -18,6 +18,9 @@
             android:id="@+id/productIView"
             android:layout_width="180dp"
             android:layout_height="200dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
@@ -45,7 +48,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvproductName">
+            app:layout_constraintTop_toBottomOf="@+id/tvproductName"/>
 
 
         <TextView
