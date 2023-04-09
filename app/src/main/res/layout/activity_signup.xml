@@ -6,185 +6,190 @@
     android:layout_height="match_parent"
     tools:context=".activity.SignupActivity">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#E8DEE2"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-
-        <TextView
-            android:id="@+id/tvsignup"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:text="SIGN UP"
-            android:textSize="35dp"
-            android:textStyle="bold"
-            android:textColor="#6C5DD2"
-            android:textAlignment="center"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:text="Email"
-            android:textSize="20dp"
-            android:textColor="#6C5DD2"
-            android:textStyle="bold" />
+            android:layout_height="match_parent"
+            android:background="#E8DEE2"
+            android:orientation="vertical">
 
 
-        <EditText
-            android:id="@+id/edtemail"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:textSize="20dp"
-            android:fontFamily="sans-serif"
-            android:paddingStart="10dp"
-            android:background="@drawable/radius_border_10dp"
-            android:ems="10"
-            android:inputType="textEmailAddress" />
+            <TextView
+                android:id="@+id/tvsignup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="SIGN UP"
+                android:textSize="35dp"
+                android:textStyle="bold"
+                android:textColor="#6C5DD2"
+                android:textAlignment="center"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:text="Email"
+                android:textSize="20dp"
+                android:textColor="#6C5DD2"
+                android:textStyle="bold" />
 
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:text="UserName"
-            android:textSize="20dp"
-            android:textColor="#6C5DD2"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/edtusername"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:textSize="20dp"
-            android:fontFamily="sans-serif"
-            android:paddingStart="10dp"
-            android:background="@drawable/radius_border_10dp"
-            android:ems="10"
-            android:inputType="textPersonName" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:text="Phone"
-            android:textSize="20dp"
-            android:textColor="#6C5DD2"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/edtphone"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:paddingStart="10dp"
-            android:textSize="20dp"
-            android:fontFamily="sans-serif"
-            android:background="@drawable/radius_border_10dp"
-            android:ems="10"
-            android:inputType="number" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:text="Password"
-            android:textColor="#6C5DD2"
-            android:textSize="20dp"
-            android:textStyle="bold" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            app:passwordToggleEnabled="true"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tfpass"
+            <EditText
+                android:id="@+id/edtemail"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:background="@drawable/radius_border_10dp"
-                android:inputType="textPassword"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
                 android:textSize="20dp"
-                android:fontFamily="sans-serif">
-            </com.google.android.material.textfield.TextInputEditText>
-        </com.google.android.material.textfield.TextInputLayout>
+                android:fontFamily="sans-serif"
+                android:paddingStart="10dp"
+                android:background="@drawable/radius_border_10dp"
+                android:ems="10"
+                android:inputType="textEmailAddress" />
 
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:text="Confirm Password"
-            android:textColor="#6C5DD2"
-            android:textSize="20dp"
-            android:textStyle="bold" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:text="UserName"
+                android:textSize="20dp"
+                android:textColor="#6C5DD2"
+                android:textStyle="bold" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            app:passwordToggleEnabled="true"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tfconfirmpass"
+            <EditText
+                android:id="@+id/edtusername"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:background="@drawable/radius_border_10dp"
-                android:inputType="textPassword"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
                 android:textSize="20dp"
-                android:fontFamily="sans-serif">
-            </com.google.android.material.textfield.TextInputEditText>
-        </com.google.android.material.textfield.TextInputLayout>
+                android:fontFamily="sans-serif"
+                android:paddingStart="10dp"
+                android:background="@drawable/radius_border_10dp"
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:text="Phone"
+                android:textSize="20dp"
+                android:textColor="#6C5DD2"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/edtphone"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:paddingStart="10dp"
+                android:textSize="20dp"
+                android:fontFamily="sans-serif"
+                android:background="@drawable/radius_border_10dp"
+                android:ems="10"
+                android:inputType="number" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:text="Password"
+                android:textColor="#6C5DD2"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                app:passwordToggleEnabled="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tfpass"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="@drawable/radius_border_10dp"
+                    android:inputType="textPassword"
+                    android:textSize="20dp"
+                    android:fontFamily="sans-serif">
+                </com.google.android.material.textfield.TextInputEditText>
+            </com.google.android.material.textfield.TextInputLayout>
 
 
-        <Button
-            android:id="@+id/btnsignup"
-            android:layout_width="170dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:textSize="20dp"
-            android:text="SIGN UP"
-            android:background="@drawable/radius_border_10dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:text="Confirm Password"
+                android:textColor="#6C5DD2"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                app:passwordToggleEnabled="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tfconfirmpass"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:background="@drawable/radius_border_10dp"
+                    android:inputType="textPassword"
+                    android:textSize="20dp"
+                    android:fontFamily="sans-serif">
+                </com.google.android.material.textfield.TextInputEditText>
+            </com.google.android.material.textfield.TextInputLayout>
 
 
-        <TextView
-            android:id="@+id/tvlogin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Do you have an account? Login?"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:textAlignment="center"
-            android:textColor="#6C5DD2" />
+            <Button
+                android:id="@+id/btnsignup"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:textSize="20dp"
+                android:text="SIGN UP"
+                android:background="@drawable/radius_border_10dp"/>
 
 
-    </LinearLayout>
+            <TextView
+                android:id="@+id/tvlogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Do you have an account? Login?"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:textColor="#6C5DD2" />
+
+
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
