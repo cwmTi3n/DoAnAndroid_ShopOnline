@@ -8,7 +8,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#E8DEE2">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -51,7 +52,9 @@
                 android:paddingStart="10dp"
                 android:background="@drawable/radius_border_10dp"
                 android:ems="10"
-                android:inputType="textEmailAddress" />
+                android:inputType="textEmailAddress"
+                android:drawableLeft="@drawable/user1"
+                android:drawablePadding="10dp"/>
 
 
             <TextView
@@ -77,7 +80,9 @@
                 android:paddingStart="10dp"
                 android:background="@drawable/radius_border_10dp"
                 android:ems="10"
-                android:inputType="textPersonName" />
+                android:inputType="textPersonName"
+                android:drawableLeft="@drawable/id_card_24"
+                android:drawablePadding="10dp"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -102,7 +107,9 @@
                 android:fontFamily="sans-serif"
                 android:background="@drawable/radius_border_10dp"
                 android:ems="10"
-                android:inputType="number" />
+                android:inputType="number"
+                android:drawableLeft="@drawable/phone_call_24"
+                android:drawablePadding="10dp"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -121,7 +128,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp">
+                android:layout_marginRight="50dp"
+                app:startIconDrawable="@drawable/padlock"
+                app:startIconTint="#000">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tfpass"
@@ -152,7 +161,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp">
+                android:layout_marginRight="50dp"
+                app:startIconDrawable="@drawable/confirm"
+                app:startIconTint="#000">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tfconfirmpass"
@@ -174,7 +185,7 @@
                 android:layout_marginTop="20dp"
                 android:textSize="20dp"
                 android:text="SIGN UP"
-                android:background="@drawable/radius_border_10dp"/>
+                android:background="@drawable/ripple_button_radius"/>
 
 
             <TextView
