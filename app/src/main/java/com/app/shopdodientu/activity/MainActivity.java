@@ -11,6 +11,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.ScrollView;
 
@@ -23,6 +25,7 @@ import com.app.shopdodientu.model.CategoryModel;
 import com.app.shopdodientu.model.PageModel;
 import com.app.shopdodientu.model.ProductModel;
 import com.app.shopdodientu.model.UserModel;
+import com.app.shopdodientu.util.UIHelper;
 
 import java.util.List;
 
@@ -45,27 +48,31 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+        UIHelper.fullscreen(this);
         setContentView(R.layout.activity_main);
         userModel = (UserModel) getIntent().getSerializableExtra("user");
         MapItemView();
         getAllCategory();
         getLastProduct();
-        gotoProfile();
-        gotoHome();
+        UIHelper.gotoProfile(imvProfile, userModel, getApplicationContext());
+        UIHelper.gotoHome(imvHome, this);
+//        gotoProfile();
+//        gotoHome();
     }
     private void gotoProfile() {
         imvProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intent;
                 if(userModel == null) {
-                    Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-                    startActivity(intent);
+                    intent = new Intent(MainActivity.this, LoginActivity.class);
                 }
                 else {
-                    Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+                    intent = new Intent(MainActivity.this, ProfileActivity.class);
                     intent.putExtra("user", userModel);
-                    startActivity(intent);
                 }
+                startActivity(intent);
             }
         });
     }
