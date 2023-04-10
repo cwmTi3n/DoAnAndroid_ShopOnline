@@ -182,16 +182,17 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            app:srcCompat="@drawable/bottom_btn1" />
+                            app:srcCompat="@drawable/bottom_btn1_color" />
 
                         <TextView
                             android:id="@+id/tvHome"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Home"
+                            android:textStyle="bold"
                             android:textAlignment="center"
-                            android:textColor="#676767"
-                            android:textSize="12sp" />
+                            android:textColor="#FFA500"
+                            android:textSize="14sp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -212,8 +213,8 @@
                             android:layout_height="wrap_content"
                             android:text="Profile"
                             android:textAlignment="center"
-                            android:textColor="#676767"
-                            android:textSize="12sp" />
+                            android:textColor="#000"
+                            android:textSize="14sp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -228,7 +229,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            app:srcCompat="@drawable/bottom_btn5" />
+                            app:srcCompat="@drawable/bottom_btn3" />
 
                         <TextView
                             android:id="@+id/tvCart"
@@ -236,8 +237,8 @@
                             android:layout_height="wrap_content"
                             android:text="Cart"
                             android:textAlignment="center"
-                            android:textColor="#676767"
-                            android:textSize="12sp" />
+                            android:textColor="#000"
+                            android:textSize="14sp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -251,7 +252,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            app:srcCompat="@drawable/bottom_btn3" />
+                            app:srcCompat="@drawable/bottom_btn4" />
 
                         <TextView
                             android:id="@+id/tvSupport"
@@ -259,8 +260,8 @@
                             android:layout_height="wrap_content"
                             android:text="Support"
                             android:textAlignment="center"
-                            android:textColor="#676767"
-                            android:textSize="12sp" />
+                            android:textColor="#000"
+                            android:textSize="14sp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -274,16 +275,16 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            app:srcCompat="@drawable/bottom_btn4" />
+                            app:srcCompat="@drawable/bottom_btn5" />
 
                         <TextView
                             android:id="@+id/tvSettings"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Settings"
+                            android:text="LogOut"
                             android:textAlignment="center"
-                            android:textColor="#676767"
-                            android:textSize="12sp" />
+                            android:textColor="#000"
+                            android:textSize="14sp" />
                     </LinearLayout>
                 </LinearLayout>
 

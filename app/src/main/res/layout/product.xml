@@ -61,7 +61,6 @@
             android:text="₫219000"
             android:textColor="#E47F2B"
             android:textSize="20dp"
-            android:drawableLeft="@drawable/dollar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
