@@ -179,9 +179,9 @@ public class SearchActivity extends AppCompatActivity {
                         SetEffectLastTextViewBottom(currentTextViewBottom);
                         SetEffectLastImgBottom(currentImgBottom);
                     }
-                    SetEffectCurrentTextViewBottom(tvLatest);
+                    SetEffectCurrentTextViewBottom(tvLogout);
                     SetEffectCurrentImgBottom(imvLogOut);
-                    currentTextViewBottom = tvLatest;
+                    currentTextViewBottom = tvLogout;
                     currentImgBottom = imvLogOut;
                     currentLinear = linearLogout;
                 }
