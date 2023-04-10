@@ -23,7 +23,7 @@ public class SearchActivity extends AppCompatActivity {
 
     private TextView tvRelated, tvLatest, tvBestSeller;
     private Spinner snPrice;
-    private ImageView imgHome, imgProfile, imgCart, imgSupport, imgLogOut;
+    private ImageView imvHome, imvProfile, imvCart, imvSupport, imvLogOut;
     private TextView tvHome, tvProfile, tvCart, tvSupport, tvLogout;
     private LinearLayout linearHome, linearProfile, linearCart, linearSupport, linearLogout;
     private TextView currentTextView, currentTextViewBottom;
@@ -101,7 +101,7 @@ public class SearchActivity extends AppCompatActivity {
 
         //BOTTOM
         currentTextViewBottom = tvHome;
-        currentImgBottom = imgHome;
+        currentImgBottom = imvHome;
         currentLinear = linearHome;
 
         linearHome.setOnClickListener(new View.OnClickListener() {
@@ -113,9 +113,9 @@ public class SearchActivity extends AppCompatActivity {
                         SetEffectLastImgBottom(currentImgBottom);
                     }
                     SetEffectCurrentTextViewBottom(tvHome);
-                    SetEffectCurrentImgBottom(imgHome);
+                    SetEffectCurrentImgBottom(imvHome);
                     currentTextViewBottom = tvHome;
-                    currentImgBottom = imgHome;
+                    currentImgBottom = imvHome;
                     currentLinear = linearHome;
                 }
             }
@@ -129,9 +129,9 @@ public class SearchActivity extends AppCompatActivity {
                         SetEffectLastImgBottom(currentImgBottom);
                     }
                     SetEffectCurrentTextViewBottom(tvProfile);
-                    SetEffectCurrentImgBottom(imgProfile);
+                    SetEffectCurrentImgBottom(imvProfile);
                     currentTextViewBottom = tvProfile;
-                    currentImgBottom = imgProfile;
+                    currentImgBottom = imvProfile;
                     currentLinear = linearProfile;
                 }
             }
@@ -146,9 +146,9 @@ public class SearchActivity extends AppCompatActivity {
                         SetEffectLastImgBottom(currentImgBottom);
                     }
                     SetEffectCurrentTextViewBottom(tvCart);
-                    SetEffectCurrentImgBottom(imgCart);
+                    SetEffectCurrentImgBottom(imvCart);
                     currentTextViewBottom = tvCart;
-                    currentImgBottom = imgCart;
+                    currentImgBottom = imvCart;
                     currentLinear = linearCart;
                 }
             }
@@ -163,9 +163,9 @@ public class SearchActivity extends AppCompatActivity {
                         SetEffectLastImgBottom(currentImgBottom);
                     }
                     SetEffectCurrentTextViewBottom(tvSupport);
-                    SetEffectCurrentImgBottom(imgSupport);
+                    SetEffectCurrentImgBottom(imvSupport);
                     currentTextViewBottom = tvSupport;
-                    currentImgBottom = imgSupport;
+                    currentImgBottom = imvSupport;
                     currentLinear = linearSupport;
                 }
             }
@@ -180,9 +180,9 @@ public class SearchActivity extends AppCompatActivity {
                         SetEffectLastImgBottom(currentImgBottom);
                     }
                     SetEffectCurrentTextViewBottom(tvLatest);
-                    SetEffectCurrentImgBottom(imgLogOut);
+                    SetEffectCurrentImgBottom(imvLogOut);
                     currentTextViewBottom = tvLatest;
-                    currentImgBottom = imgLogOut;
+                    currentImgBottom = imvLogOut;
                     currentLinear = linearLogout;
                 }
             }
@@ -194,11 +194,11 @@ public class SearchActivity extends AppCompatActivity {
         tvRelated = (TextView) findViewById(R.id.tvrelated);
         tvLatest = (TextView) findViewById(R.id.tvlatest);
         tvBestSeller = (TextView) findViewById(R.id.tvbestseller);
-        imgHome = (ImageView) findViewById(R.id.imgHome);
-        imgProfile = (ImageView) findViewById(R.id.imgProfile);
-        imgCart = (ImageView) findViewById(R.id.imgCart);
-        imgSupport = (ImageView) findViewById(R.id.imgSupport);
-        imgLogOut = (ImageView) findViewById(R.id.imgLogout);
+        imvHome = (ImageView) findViewById(R.id.imgHome);
+        imvProfile = (ImageView) findViewById(R.id.imgProfile);
+        imvCart = (ImageView) findViewById(R.id.imgCart);
+        imvSupport = (ImageView) findViewById(R.id.imgSupport);
+        imvLogOut = (ImageView) findViewById(R.id.imgLogout);
         tvHome = (TextView) findViewById(R.id.tvHome);
         tvProfile = (TextView) findViewById(R.id.tvProfile);
         tvCart = (TextView) findViewById(R.id.tvCart);
@@ -232,60 +232,60 @@ public class SearchActivity extends AppCompatActivity {
     }
     private void SetEffectLastImgBottom(ImageView last){
         Bitmap bitmap;
-        if (imgHome.equals(last)) {
-            imgHome.setImageBitmap(null);
+        if (imvHome.equals(last)) {
+            imvHome.setImageBitmap(null);
             bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bottom_btn1);
-            imgHome.setImageDrawable(new BitmapDrawable(getResources(), bitmap));
+            imvHome.setImageDrawable(new BitmapDrawable(getResources(), bitmap));
         }
-        else if (imgProfile.equals((last))){
-            imgProfile.setImageBitmap(null);
+        else if (imvProfile.equals((last))){
+            imvProfile.setImageBitmap(null);
             bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bottom_btn2);
-            imgProfile.setImageDrawable(new BitmapDrawable(getResources(), bitmap));
+            imvProfile.setImageDrawable(new BitmapDrawable(getResources(), bitmap));
         }
-        else if (imgCart.equals((last))){
-            imgCart.setImageBitmap(null);
+        else if (imvCart.equals((last))){
+            imvCart.setImageBitmap(null);
             bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bottom_btn3);
-            imgCart.setImageDrawable(new BitmapDrawable(getResources(), bitmap));
+            imvCart.setImageDrawable(new BitmapDrawable(getResources(), bitmap));
         }
-        else if (imgSupport.equals((last))){
-            imgSupport.setImageBitmap(null);
+        else if (imvSupport.equals((last))){
+            imvSupport.setImageBitmap(null);
             bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bottom_btn4);
-            imgSupport.setImageDrawable(new BitmapDrawable(getResources(), bitmap));
+            imvSupport.setImageDrawable(new BitmapDrawable(getResources(), bitmap));
         }
         else {
-            imgLogOut.setImageBitmap(null);
+            imvLogOut.setImageBitmap(null);
             bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bottom_btn5);
-            imgLogOut.setImageDrawable(new BitmapDrawable(getResources(), bitmap));
+            imvLogOut.setImageDrawable(new BitmapDrawable(getResources(), bitmap));
         }
 
     }
 
     private void SetEffectCurrentImgBottom(ImageView current){
         Bitmap bitmap;
-        if (imgHome.equals(current)) {
-            imgHome.setImageBitmap(null);
+        if (imvHome.equals(current)) {
+            imvHome.setImageBitmap(null);
             bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bottom_btn1_color);
-            imgHome.setImageDrawable(new BitmapDrawable(getResources(), bitmap));
+            imvHome.setImageDrawable(new BitmapDrawable(getResources(), bitmap));
         }
-        else if (imgProfile.equals((current))){
-            imgProfile.setImageBitmap(null);
+        else if (imvProfile.equals((current))){
+            imvProfile.setImageBitmap(null);
             bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bottom_btn2_color);
-            imgProfile.setImageDrawable(new BitmapDrawable(getResources(), bitmap));
+            imvProfile.setImageDrawable(new BitmapDrawable(getResources(), bitmap));
         }
-        else if (imgCart.equals((current))){
-            imgCart.setImageBitmap(null);
+        else if (imvCart.equals((current))){
+            imvCart.setImageBitmap(null);
             bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bottom_btn3_color);
-            imgCart.setImageDrawable(new BitmapDrawable(getResources(), bitmap));
+            imvCart.setImageDrawable(new BitmapDrawable(getResources(), bitmap));
         }
-        else if (imgSupport.equals((current))){
-            imgSupport.setImageBitmap(null);
+        else if (imvSupport.equals((current))){
+            imvSupport.setImageBitmap(null);
             bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bottom_btn4_color);
-            imgSupport.setImageDrawable(new BitmapDrawable(getResources(), bitmap));
+            imvSupport.setImageDrawable(new BitmapDrawable(getResources(), bitmap));
         }
         else {
-            imgLogOut.setImageBitmap(null);
+            imvLogOut.setImageBitmap(null);
             bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bottom_btn5_color);
-            imgLogOut.setImageDrawable(new BitmapDrawable(getResources(), bitmap));
+            imvLogOut.setImageDrawable(new BitmapDrawable(getResources(), bitmap));
         }
 
     }
