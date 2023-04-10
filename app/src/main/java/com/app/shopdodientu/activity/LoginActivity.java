@@ -10,6 +10,7 @@ import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -20,6 +21,7 @@ import com.app.shopdodientu.R;
 import com.app.shopdodientu.api.client.ApiClient;
 import com.app.shopdodientu.api.service.ApiService;
 import com.app.shopdodientu.model.UserModel;
+import com.app.shopdodientu.util.UIHelper;
 import com.google.android.material.textfield.TextInputEditText;
 
 import retrofit2.Call;
@@ -38,6 +40,8 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+        UIHelper.fullscreen(this);
         setContentView(R.layout.activity_login);
         MapItemView();
         gotoSignup();
