@@ -27,7 +27,7 @@ public class AddProductActivity extends AppCompatActivity {
 
         MapViewItem();
         AddItemToSpinnerCate();
-
+        SpinnerCateClicked();
 
     }
 
@@ -35,12 +35,14 @@ public class AddProductActivity extends AppCompatActivity {
         snCateName = findViewById(R.id.spinnercateName);
 
     }
-    private void AddItemToSpinnerCate(){
+    private void AddItemToSpinnerCate() {
         String[] spinnerItems = {"Select an item", "Item 1", "Item 2", "Item 3", "Item 1", "Item 2", "Item 3", "Item 1", "Item 2", "Item 3", "Item 1", "Item 2", "Item 3", "Item 1", "Item 2", "Item 3", "Item 1", "Item 2", "Item 3"};
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, spinnerItems);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         snCateName.setAdapter(adapter);
+    }
 
+    private void SpinnerCateClicked(){
         snCateName.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
