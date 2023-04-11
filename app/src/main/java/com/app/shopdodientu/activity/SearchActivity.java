@@ -7,7 +7,6 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -21,6 +20,7 @@ import com.app.shopdodientu.R;
 
 public class SearchActivity extends AppCompatActivity {
 
+    private TextView tvFilter;
     private TextView tvRelated, tvLatest, tvBestSeller;
     private Spinner snPrice;
     private ImageView imvHome, imvProfile, imvCart, imvSupport, imvLogOut;
@@ -32,7 +32,6 @@ public class SearchActivity extends AppCompatActivity {
 
     private
     ArrayAdapter<String> adapter;
-    ImageView x;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,11 +39,24 @@ public class SearchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search);
 
         MapItemView();
-        //AddItemSpinnerPrice();
+        AddItemSpinnerPrice();
 
-        currentTextView = tvRelated;
+        snPrice.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // Do something when selected
+                String selectedOption = parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Do something when nothing is selected
+            }
+        });
+
 
         //TOP
+        currentTextView = tvRelated;
         tvRelated.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,19 +97,7 @@ public class SearchActivity extends AppCompatActivity {
         });
 
 
-//        snPrice.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                String selectedOption = parent.getItemAtPosition(position).toString();
-////                currentTextView.setTypeface(null, Typeface.NORMAL);
-////                currentTextView.setTextColor(Color.BLACK);
-//    }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> parent) {
-//                // Do something when nothing is selected
-//            }
-//        });
+
 
         //BOTTOM
         currentTextViewBottom = tvHome;
@@ -190,7 +190,8 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     private void MapItemView(){
-        //snPrice = findViewById(R.id.snprice);
+        snPrice = findViewById(R.id.snprice);
+        tvFilter = (TextView) findViewById(R.id.tvfilter);
         tvRelated = (TextView) findViewById(R.id.tvrelated);
         tvLatest = (TextView) findViewById(R.id.tvlatest);
         tvBestSeller = (TextView) findViewById(R.id.tvbestseller);
@@ -212,6 +213,15 @@ public class SearchActivity extends AppCompatActivity {
 
     }
 
+    private void AddItemSpinnerPrice() {
+
+        String[] listCate = {"High", "Low"};
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listCate);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        snPrice.setAdapter(adapter);
+
+    }
+
     private void SetEffectLastTextViewTop(TextView last){
         last.setTypeface(null, Typeface.NORMAL);
         last.setBackgroundResource(R.drawable.rectangle_border_black);
@@ -219,7 +229,7 @@ public class SearchActivity extends AppCompatActivity {
     }
     private void SetEffectCurrentTextViewTop(TextView current){
         current.setTypeface(null, Typeface.BOLD);
-        current.setBackgroundResource(R.drawable.rectangle_border_orange_3dp);
+        current.setBackgroundResource(R.drawable.rectangle_border_orange_2dp);
         current.setTextColor(Color.parseColor("#FFA500"));
     }
     private void SetEffectLastTextViewBottom(TextView last){
@@ -290,25 +300,4 @@ public class SearchActivity extends AppCompatActivity {
 
     }
 
-    private void AddItemSpinnerPrice() {
-
-        String[] listCate = {"Price", "High", "Low"};
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listCate);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        snPrice.setAdapter(adapter);
-
-
-        snPrice.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selectedOption = parent.getItemAtPosition(position).toString();
-                // Do something with the selected option
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                // Do something when nothing is selected
-            }
-        });
-    }
 }
