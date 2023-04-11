@@ -45,7 +45,6 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Spinner snPrice;
     private ImageView imvHome, imvProfile, imvCart, imvSupport, imvLogOut;
     private TextView tvHome, tvProfile, tvCart, tvSupport, tvLogout;
     private LinearLayout linearHome, linearProfile, linearCart, linearSupport, linearLogout;
@@ -63,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
     private List<ProductModel> products;
     private int page;
     private int total;
-    ArrayAdapter<String> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,90 +83,13 @@ public class MainActivity extends AppCompatActivity {
         currentTextViewBottom = tvHome;
         currentImgBottom = imvHome;
         currentLinear = linearHome;
+        LinearHomeClicked();
+        LinearProfileClicked();
+        LinearCartClicked();
+        LinearSupportClicked();
+        LinearLogoutClicked();
 
-        linearHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(currentLinear != linearHome){
-                    if(currentLinear != null){
-                        SetEffectLastTextViewBottom(currentTextViewBottom);
-                        SetEffectLastImgBottom(currentImgBottom);
-                    }
-                    SetEffectCurrentTextViewBottom(tvHome);
-                    SetEffectCurrentImgBottom(imvHome);
-                    currentTextViewBottom = tvHome;
-                    currentImgBottom = imvHome;
-                    currentLinear = linearHome;
-                }
-            }
-        });
-        linearProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(currentLinear != linearProfile){
-                    if(currentLinear != null){
-                        SetEffectLastTextViewBottom(currentTextViewBottom);
-                        SetEffectLastImgBottom(currentImgBottom);
-                    }
-                    SetEffectCurrentTextViewBottom(tvProfile);
-                    SetEffectCurrentImgBottom(imvProfile);
-                    currentTextViewBottom = tvProfile;
-                    currentImgBottom = imvProfile;
-                    currentLinear = linearProfile;
-                }
-            }
-        });
 
-        linearCart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(currentLinear != linearCart){
-                    if(currentLinear != null){
-                        SetEffectLastTextViewBottom(currentTextViewBottom);
-                        SetEffectLastImgBottom(currentImgBottom);
-                    }
-                    SetEffectCurrentTextViewBottom(tvCart);
-                    SetEffectCurrentImgBottom(imvCart);
-                    currentTextViewBottom = tvCart;
-                    currentImgBottom = imvCart;
-                    currentLinear = linearCart;
-                }
-            }
-        });
-
-        linearSupport.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(currentLinear != linearSupport){
-                    if(currentLinear != null){
-                        SetEffectLastTextViewBottom(currentTextViewBottom);
-                        SetEffectLastImgBottom(currentImgBottom);
-                    }
-                    SetEffectCurrentTextViewBottom(tvSupport);
-                    SetEffectCurrentImgBottom(imvSupport);
-                    currentTextViewBottom = tvSupport;
-                    currentImgBottom = imvSupport;
-                    currentLinear = linearSupport;
-                }
-            }
-        });
-
-        linearLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(currentLinear != linearLogout){
-                    if(currentLinear != null){
-                        SetEffectLastTextViewBottom(currentTextViewBottom);
-                        SetEffectLastImgBottom(currentImgBottom);
-                    }
-                    SetEffectCurrentTextViewBottom(tvLogout);
-                    SetEffectCurrentImgBottom(imvLogOut);
-                    currentTextViewBottom = tvLogout;
-                    currentImgBottom = imvLogOut;
-                    currentLinear = linearLogout;
-                }
-            }
-        });
     }
     private void gotoProfile() {
         imvProfile.setOnClickListener(new View.OnClickListener() {
@@ -202,7 +123,6 @@ public class MainActivity extends AppCompatActivity {
     private void MapItemView() {
         rcvCategory = (RecyclerView) findViewById(R.id.rcvcategory);
         rcvProduct = (RecyclerView) findViewById(R.id.rcvproduct);
-        //snPrice = findViewById(R.id.snprice);
         imvHome = (ImageView) findViewById(R.id.imgHome);
         imvProfile = (ImageView) findViewById(R.id.imgProfile);
         imvCart = (ImageView) findViewById(R.id.imgCart);
@@ -288,27 +208,101 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-//    private void AddItemSpinnerPrice() {
-//
-//        String[] listCate = {"Price", "High", "Low"};
-//        adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listCate);
-//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        snPrice.setAdapter(adapter);
-//
-//
-//        snPrice.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                String selectedOption = parent.getItemAtPosition(position).toString();
-//                // Do something with the selected option
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> parent) {
-//                // Do something when nothing is selected
-//            }
-//        });
-//    }
+    private void LinearHomeClicked (){
+        linearHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(currentLinear != linearHome){
+                    if(currentLinear != null){
+                        SetEffectLastTextViewBottom(currentTextViewBottom);
+                        SetEffectLastImgBottom(currentImgBottom);
+                    }
+                    SetEffectCurrentTextViewBottom(tvHome);
+                    SetEffectCurrentImgBottom(imvHome);
+                    currentTextViewBottom = tvHome;
+                    currentImgBottom = imvHome;
+                    currentLinear = linearHome;
+                }
+            }
+        });
+    }
+
+    private void LinearProfileClicked() {
+        linearProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (currentLinear != linearProfile) {
+                    if (currentLinear != null) {
+                        SetEffectLastTextViewBottom(currentTextViewBottom);
+                        SetEffectLastImgBottom(currentImgBottom);
+                    }
+                    SetEffectCurrentTextViewBottom(tvProfile);
+                    SetEffectCurrentImgBottom(imvProfile);
+                    currentTextViewBottom = tvProfile;
+                    currentImgBottom = imvProfile;
+                    currentLinear = linearProfile;
+                }
+            }
+        });
+    }
+
+    private void LinearCartClicked() {
+
+        linearCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (currentLinear != linearCart) {
+                    if (currentLinear != null) {
+                        SetEffectLastTextViewBottom(currentTextViewBottom);
+                        SetEffectLastImgBottom(currentImgBottom);
+                    }
+                    SetEffectCurrentTextViewBottom(tvCart);
+                    SetEffectCurrentImgBottom(imvCart);
+                    currentTextViewBottom = tvCart;
+                    currentImgBottom = imvCart;
+                    currentLinear = linearCart;
+                }
+            }
+        });
+    }
+
+    private void LinearSupportClicked() {
+        linearSupport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (currentLinear != linearSupport) {
+                    if (currentLinear != null) {
+                        SetEffectLastTextViewBottom(currentTextViewBottom);
+                        SetEffectLastImgBottom(currentImgBottom);
+                    }
+                    SetEffectCurrentTextViewBottom(tvSupport);
+                    SetEffectCurrentImgBottom(imvSupport);
+                    currentTextViewBottom = tvSupport;
+                    currentImgBottom = imvSupport;
+                    currentLinear = linearSupport;
+                }
+            }
+        });
+    }
+
+    private void LinearLogoutClicked() {
+        linearLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (currentLinear != linearLogout) {
+                    if (currentLinear != null) {
+                        SetEffectLastTextViewBottom(currentTextViewBottom);
+                        SetEffectLastImgBottom(currentImgBottom);
+                    }
+                    SetEffectCurrentTextViewBottom(tvLogout);
+                    SetEffectCurrentImgBottom(imvLogOut);
+                    currentTextViewBottom = tvLogout;
+                    currentImgBottom = imvLogOut;
+                    currentLinear = linearLogout;
+                }
+            }
+        });
+    }
 
     private void getAllCategory() {
         ApiService apiService = ApiClient.getApiService();
