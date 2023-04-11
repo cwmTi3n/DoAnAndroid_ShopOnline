@@ -20,7 +20,6 @@ import com.app.shopdodientu.R;
 
 public class SearchActivity extends AppCompatActivity {
 
-    private TextView tvFilter;
     private TextView tvRelated, tvLatest, tvBestSeller;
     private Spinner snPrice;
     private ImageView imvHome, imvProfile, imvCart, imvSupport, imvLogOut;
@@ -40,23 +39,28 @@ public class SearchActivity extends AppCompatActivity {
 
         MapItemView();
         AddItemSpinnerPrice();
-
-        snPrice.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                // Do something when selected
-                String selectedOption = parent.getItemAtPosition(position).toString();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                // Do something when nothing is selected
-            }
-        });
-
+        SpinnerPriceClicked();
 
         //TOP
         currentTextView = tvRelated;
+        TextViewBestSellerClicked();
+        TextViewLatestClicked();
+        TextViewRelatedClick();
+
+        //BOTTOM
+        currentTextViewBottom = tvHome;
+        currentImgBottom = imvHome;
+        currentLinear = linearHome;
+
+        LinearHomeClicked();
+        LinearProfileClicked();
+        LinearCartClicked();
+        LinearSupportClicked();
+        LinearLogoutClicked();
+
+    }
+
+    private void TextViewRelatedClick() {
         tvRelated.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,7 +73,9 @@ public class SearchActivity extends AppCompatActivity {
                 }
             }
         });
+    }
 
+    private void TextViewLatestClicked() {
         tvLatest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,7 +88,9 @@ public class SearchActivity extends AppCompatActivity {
                 }
             }
         });
+    }
 
+    private void TextViewBestSellerClicked() {
         tvBestSeller.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,15 +103,22 @@ public class SearchActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+    private void SpinnerPriceClicked(){
+        snPrice.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                // Do something when selected
+                String selectedOption = parent.getItemAtPosition(position).toString();
+            }
 
-
-
-
-        //BOTTOM
-        currentTextViewBottom = tvHome;
-        currentImgBottom = imvHome;
-        currentLinear = linearHome;
-
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                // Do something when nothing is selected
+            }
+        });
+    }
+    private void LinearHomeClicked (){
         linearHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -120,11 +135,14 @@ public class SearchActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void LinearProfileClicked() {
         linearProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(currentLinear != linearProfile){
-                    if(currentLinear != null){
+                if (currentLinear != linearProfile) {
+                    if (currentLinear != null) {
                         SetEffectLastTextViewBottom(currentTextViewBottom);
                         SetEffectLastImgBottom(currentImgBottom);
                     }
@@ -136,12 +154,15 @@ public class SearchActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void LinearCartClicked() {
 
         linearCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(currentLinear != linearCart){
-                    if(currentLinear != null){
+                if (currentLinear != linearCart) {
+                    if (currentLinear != null) {
                         SetEffectLastTextViewBottom(currentTextViewBottom);
                         SetEffectLastImgBottom(currentImgBottom);
                     }
@@ -153,12 +174,14 @@ public class SearchActivity extends AppCompatActivity {
                 }
             }
         });
+    }
 
+    private void LinearSupportClicked() {
         linearSupport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(currentLinear != linearSupport){
-                    if(currentLinear != null){
+                if (currentLinear != linearSupport) {
+                    if (currentLinear != null) {
                         SetEffectLastTextViewBottom(currentTextViewBottom);
                         SetEffectLastImgBottom(currentImgBottom);
                     }
@@ -170,12 +193,14 @@ public class SearchActivity extends AppCompatActivity {
                 }
             }
         });
+    }
 
+    private void LinearLogoutClicked() {
         linearLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(currentLinear != linearLogout){
-                    if(currentLinear != null){
+                if (currentLinear != linearLogout) {
+                    if (currentLinear != null) {
                         SetEffectLastTextViewBottom(currentTextViewBottom);
                         SetEffectLastImgBottom(currentImgBottom);
                     }
@@ -188,10 +213,8 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
     }
-
     private void MapItemView(){
         snPrice = findViewById(R.id.snprice);
-        tvFilter = (TextView) findViewById(R.id.tvfilter);
         tvRelated = (TextView) findViewById(R.id.tvrelated);
         tvLatest = (TextView) findViewById(R.id.tvlatest);
         tvBestSeller = (TextView) findViewById(R.id.tvbestseller);
