@@ -18,22 +18,30 @@ import java.util.List;
 
 public class AddProductActivity extends AppCompatActivity {
 
-    Spinner spinner;
+    Spinner snCateName;
     ArrayAdapter<String> adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_product);
 
+        MapViewItem();
+        AddItemToSpinnerCate();
 
-        spinner = findViewById(R.id.spinnercateName);
+
+    }
+
+    private void MapViewItem(){
+        snCateName = findViewById(R.id.spinnercateName);
+
+    }
+    private void AddItemToSpinnerCate(){
         String[] spinnerItems = {"Select an item", "Item 1", "Item 2", "Item 3", "Item 1", "Item 2", "Item 3", "Item 1", "Item 2", "Item 3", "Item 1", "Item 2", "Item 3", "Item 1", "Item 2", "Item 3", "Item 1", "Item 2", "Item 3"};
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, spinnerItems);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
+        snCateName.setAdapter(adapter);
 
-
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        snCateName.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selectedOption = parent.getItemAtPosition(position).toString();
@@ -45,7 +53,5 @@ public class AddProductActivity extends AppCompatActivity {
                 // Do something when nothing is selected
             }
         });
-
-
-    };
+    }
 }
