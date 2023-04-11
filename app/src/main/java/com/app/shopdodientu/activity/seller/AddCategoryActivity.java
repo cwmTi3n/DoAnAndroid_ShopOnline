@@ -21,8 +21,8 @@ public class AddCategoryActivity extends AppCompatActivity {
 
         //status of category
         snstatus = findViewById(R.id.spinnerstatus);
-        String[] listCate = {"Hiện", "Ẩn"};
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listCate);
+        String[] listStatus = {"On", "Off"};
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listStatus);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         snstatus.setAdapter(adapter);
 
