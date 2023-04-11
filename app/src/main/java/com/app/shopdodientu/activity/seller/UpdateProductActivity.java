@@ -15,15 +15,15 @@ import com.app.shopdodientu.R;
 public class UpdateProductActivity extends AppCompatActivity {
 
     private Spinner sncateName, snstatus;
-    private Button btnUpdate;
     ArrayAdapter<String> adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_product);
 
+        MapItemView();
+
         //add item to spinner cateName
-        sncateName = findViewById(R.id.spinnercateName);
         String[] listCate = {"Select an item", "Item 1", "Item 2", "Item 3"};
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listCate);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -44,7 +44,6 @@ public class UpdateProductActivity extends AppCompatActivity {
         });
 
         //add item to spinner status
-        snstatus = findViewById(R.id.spinnerstatus);
         String[] listStatus = {"Hiện", "Ẩn"};
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listStatus);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -64,16 +63,10 @@ public class UpdateProductActivity extends AppCompatActivity {
             }
         });
 
-        //add effect to btnUpdate when clicked
-        btnUpdate = (Button) findViewById(R.id.btnupdate);
-        btnUpdate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                btnUpdate.setBackgroundResource(R.drawable.ripple_button_rectangle);
-                btnUpdate.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.pink_tint)));
-            }
-        });
+    }
 
-
+    private void MapItemView(){
+        snstatus = findViewById(R.id.spinnerstatus);
+        sncateName = findViewById(R.id.spinnercateName);
     }
 }
