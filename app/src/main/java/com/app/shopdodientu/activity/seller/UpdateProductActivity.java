@@ -23,9 +23,7 @@ public class UpdateProductActivity extends AppCompatActivity {
 
         MapItemView();
         AddItemsToSpinnerCate();
-        SpinnerCateClicked();
-        AddItemsToSpinnerStatus();
-        SpinnerStatusClicked();
+
 
     }
 
@@ -41,40 +39,5 @@ public class UpdateProductActivity extends AppCompatActivity {
         sncateName.setAdapter(adapter);
     }
 
-    private void AddItemsToSpinnerStatus(){
-        //add item to spinner status
-        String[] listStatus = {"On", "Off"};
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listStatus);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        snstatus.setAdapter(adapter);
-    }
 
-    private void SpinnerStatusClicked(){
-        snstatus.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selectedOption = parent.getItemAtPosition(position).toString();
-                // Do something with the selected option
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                // Do something when nothing is selected
-            }
-        });
-    }
-    private void SpinnerCateClicked(){
-        sncateName.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selectedOption = parent.getItemAtPosition(position).toString();
-                // Do something with the selected option
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                // Do something when nothing is selected
-            }
-        });
-    }
 }
