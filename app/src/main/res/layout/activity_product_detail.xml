@@ -117,21 +117,22 @@
                     android:id="@+id/imgavatar"
                     android:layout_width="40dp"
                     android:layout_height="60dp"
-                    android:layout_weight="3"
+                    android:layout_weight="2"
                     tools:src="@drawable/bottom_btn2" />
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="5"
+                    android:layout_weight="5.5"
                     android:paddingStart="10dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:weightSum="2">
 
                     <TextView
                         android:id="@+id/tvshopName"
                         android:layout_width="match_parent"
-                        android:layout_height="40dp"
-                        android:paddingTop="7dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1.3"
                         android:text="Shop Name"
                         android:textSize="20dp"
                         android:textStyle="bold"
@@ -140,7 +141,8 @@
                     <TextView
                         android:id="@+id/tvamountProduct"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.7"
                         android:text="46 Product"
                         android:textSize="17dp"
                         android:textStyle="italic"/>
@@ -148,14 +150,15 @@
 
                 <TextView
                     android:id="@+id/tvviewShop"
-                    android:layout_width="60dp"
+                    android:layout_width="0dp"
                     android:layout_height="30dp"
-                    android:layout_weight="1"
+                    android:layout_weight="2.2"
                     android:layout_marginTop="15dp"
-                    android:paddingTop="4dp"
+                    android:paddingTop="2dp"
                     android:background="@drawable/radius_border_10dp"
                     android:textSize="15dp"
                     android:textStyle="bold"
+                    android:gravity="center"
                     android:textAlignment="center"
                     android:text="VIEW"
                     android:textColor="#000">
@@ -183,28 +186,134 @@
                 <TextView
                     android:id="@+id/tvdescription"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="155dp"
                     android:layout_marginTop="5dp"
                     android:text="description of product"
                     android:textColor="#211F1F"
                     android:textSize="18dp"/>
 
-                <Button
-                    android:id="@+id/btnadd"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_gravity="center"
-                    android:backgroundTint="#F9A825"
-                    android:textColor="#000"
-                    android:textSize="18dp"
-                    android:text="ADD TO CART"
-                    android:textStyle="bold"
-                    android:drawableLeft="@drawable/shopping_cart" />
-
             </LinearLayout>
 
-        </LinearLayout>
 
+                <androidx.coordinatorlayout.widget.CoordinatorLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="#f6f6f6">
+
+                    <com.google.android.material.bottomappbar.BottomAppBar
+                        android:id="@+id/app_bar"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="bottom"
+                        android:layout_marginStart="-16dp"
+                        android:backgroundTint="#f6f6f6"
+                        app:fabCradleMargin="8dp"
+                        app:fabCradleRoundedCornerRadius="50dp"
+                        app:fabCradleVerticalOffset="6dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="65dp"
+                            android:orientation="horizontal"
+                            android:weightSum="8">
+
+                            <LinearLayout
+                                android:id="@+id/linearchat"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="2"
+                                android:background="#26aa99"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:id="@+id/imgChat"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="32dp"
+                                    android:layout_marginTop="3dp"
+                                    app:srcCompat="@drawable/chat" />
+
+                                <TextView
+                                    android:id="@+id/tvChat"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Chat"
+                                    android:textAlignment="center"
+                                    android:textColor="#ffffff"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.2"
+                                android:layout_gravity="center"
+                                android:background="#26aa99"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/TextView"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:text="I"
+                                    android:gravity="center"
+                                    android:textAlignment="center"
+                                    android:textColor="#000"
+                                    android:textSize="45sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/linearAddToCart"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="2.4"
+                                android:orientation="vertical"
+                                android:visibility="visible"
+                                android:background="#26aa99"
+                                android:weightSum="2">
+
+                                <ImageView
+                                    android:id="@+id/imgCart"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1.7"
+                                    android:layout_marginTop="3dp"
+                                    app:srcCompat="@drawable/whitecart" />
+
+                                <TextView
+                                    android:id="@+id/tvAddToCart"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Add To Cart"
+                                    android:textAlignment="center"
+                                    android:textColor="#ffffff"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold"/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/linearBuyNow"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="3.4"
+                                android:background="#ff7337"
+                                android:orientation="vertical">
+
+
+                                <TextView
+                                    android:id="@+id/btnBuyNow"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:text="Buy Now"
+                                    android:gravity="center"
+                                    android:textAlignment="center"
+                                    android:textColor="#ffffff"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold"/>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </com.google.android.material.bottomappbar.BottomAppBar>
+                </androidx.coordinatorlayout.widget.CoordinatorLayout>
+        </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
