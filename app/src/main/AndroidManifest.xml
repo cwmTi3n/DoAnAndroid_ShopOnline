@@ -22,15 +22,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ShopDoDienTu"
         tools:targetApi="31">
-<!--        <activity-->
-<!--            android:name=".activity.SearchActivity"-->
-<!--            android:exported="false" />-->
+        <activity
+            android:name=".activity.SearchActivity"
+            android:exported="false" />
         <activity
             android:name=".activity.ChangePasswordActivity"
             android:exported="false" />
-        <activity
-            android:name=".activity.ProfileActivity"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".activity.ProfileActivity"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".activity.seller.AddCategoryActivity"
             android:exported="false" />
@@ -53,7 +53,7 @@
              android:name=".activity.LoginActivity"
              android:exported="false" />
         <activity
-            android:name=".activity.SearchActivity"
+            android:name=".activity.ProfileActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -9,6 +9,7 @@ import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -17,12 +18,14 @@ import com.app.shopdodientu.R;
 
 public class ProfileActivity extends AppCompatActivity {
 
+    //declear bottom variables
     private ImageView imvHome, imvProfile, imvCart, imvSupport, imvLogOut;
     private TextView tvHome, tvProfile, tvCart, tvSupport, tvLogout;
     private LinearLayout linearHome, linearProfile, linearCart, linearSupport, linearLogout;
     private TextView currentTextViewBottom;
     private ImageView currentImgBottom;
     private LinearLayout currentLinear;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
