@@ -197,7 +197,7 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:id="@+id/profile"
+                        android:id="@+id/account"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.2"
@@ -210,10 +210,10 @@
                             app:srcCompat="@drawable/bottom_btn2" />
 
                         <TextView
-                            android:id="@+id/tvProfile"
+                            android:id="@+id/tvAccount"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Profile"
+                            android:text="Account"
                             android:textAlignment="center"
                             android:textColor="#000"
                             android:textSize="14sp" />

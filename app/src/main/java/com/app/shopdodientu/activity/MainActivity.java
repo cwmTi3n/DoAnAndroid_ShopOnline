@@ -45,9 +45,9 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ImageView imvHome, imvProfile, imvCart, imvSupport, imvLogOut;
-    private TextView tvHome, tvProfile, tvCart, tvSupport, tvLogout;
-    private LinearLayout linearHome, linearProfile, linearCart, linearSupport, linearLogout;
+    private ImageView imvHome, imvAccount, imvCart, imvSupport, imvLogOut;
+    private TextView tvHome, tvAccount, tvCart, tvSupport, tvLogout;
+    private LinearLayout linearHome, linearAccount, linearCart, linearSupport, linearLogout;
     private TextView currentTextViewBottom;
     private ImageView currentImgBottom;
     private LinearLayout currentLinear;
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         MapItemView();
         getAllCategory();
         getLastProduct();
-        UIHelper.gotoProfile(imvProfile, userModel, getApplicationContext());
+        UIHelper.gotoAccount(imvAccount, userModel, getApplicationContext());
         UIHelper.gotoHome(imvHome, this);
 //        gotoProfile();
 //        gotoHome();
@@ -84,15 +84,15 @@ public class MainActivity extends AppCompatActivity {
         currentImgBottom = imvHome;
         currentLinear = linearHome;
         LinearHomeClicked();
-        LinearProfileClicked();
+        LinearAccountClicked();
         LinearCartClicked();
         LinearSupportClicked();
         LinearLogoutClicked();
 
 
     }
-    private void gotoProfile() {
-        imvProfile.setOnClickListener(new View.OnClickListener() {
+    private void gotoAccount() {
+        imvAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent;
@@ -124,17 +124,17 @@ public class MainActivity extends AppCompatActivity {
         rcvCategory = (RecyclerView) findViewById(R.id.rcvcategory);
         rcvProduct = (RecyclerView) findViewById(R.id.rcvproduct);
         imvHome = (ImageView) findViewById(R.id.imgHome);
-        imvProfile = (ImageView) findViewById(R.id.imgProfile);
+        imvAccount = (ImageView) findViewById(R.id.imgProfile);
         imvCart = (ImageView) findViewById(R.id.imgCart);
         imvSupport = (ImageView) findViewById(R.id.imgSupport);
         imvLogOut = (ImageView) findViewById(R.id.imgLogout);
         tvHome = (TextView) findViewById(R.id.tvHome);
-        tvProfile = (TextView) findViewById(R.id.tvProfile);
+        tvAccount = (TextView) findViewById(R.id.tvAccount);
         tvCart = (TextView) findViewById(R.id.tvCart);
         tvSupport = (TextView) findViewById(R.id.tvSupport);
         tvLogout = (TextView) findViewById(R.id.tvLogout);
         linearHome = (LinearLayout) findViewById(R.id.home);
-        linearProfile = (LinearLayout) findViewById(R.id.profile);
+        linearAccount = (LinearLayout) findViewById(R.id.account);
         linearCart = (LinearLayout) findViewById(R.id.cart);
         linearSupport = (LinearLayout) findViewById(R.id.support);
         linearLogout = (LinearLayout) findViewById(R.id.logout);
@@ -155,10 +155,10 @@ public class MainActivity extends AppCompatActivity {
             bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bottom_btn1);
             imvHome.setImageDrawable(new BitmapDrawable(getResources(), bitmap));
         }
-        else if (imvProfile.equals((last))){
-            imvProfile.setImageBitmap(null);
+        else if (imvAccount.equals((last))){
+            imvAccount.setImageBitmap(null);
             bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bottom_btn2);
-            imvProfile.setImageDrawable(new BitmapDrawable(getResources(), bitmap));
+            imvAccount.setImageDrawable(new BitmapDrawable(getResources(), bitmap));
         }
         else if (imvCart.equals((last))){
             imvCart.setImageBitmap(null);
@@ -185,10 +185,10 @@ public class MainActivity extends AppCompatActivity {
             bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bottom_btn1_color);
             imvHome.setImageDrawable(new BitmapDrawable(getResources(), bitmap));
         }
-        else if (imvProfile.equals((current))){
-            imvProfile.setImageBitmap(null);
+        else if (imvAccount.equals((current))){
+            imvAccount.setImageBitmap(null);
             bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bottom_btn2_color);
-            imvProfile.setImageDrawable(new BitmapDrawable(getResources(), bitmap));
+            imvAccount.setImageDrawable(new BitmapDrawable(getResources(), bitmap));
         }
         else if (imvCart.equals((current))){
             imvCart.setImageBitmap(null);
@@ -227,20 +227,20 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void LinearProfileClicked() {
-        linearProfile.setOnClickListener(new View.OnClickListener() {
+    private void LinearAccountClicked() {
+        linearAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (currentLinear != linearProfile) {
+                if (currentLinear != linearAccount) {
                     if (currentLinear != null) {
                         SetEffectLastTextViewBottom(currentTextViewBottom);
                         SetEffectLastImgBottom(currentImgBottom);
                     }
-                    SetEffectCurrentTextViewBottom(tvProfile);
-                    SetEffectCurrentImgBottom(imvProfile);
-                    currentTextViewBottom = tvProfile;
-                    currentImgBottom = imvProfile;
-                    currentLinear = linearProfile;
+                    SetEffectCurrentTextViewBottom(tvAccount);
+                    SetEffectCurrentImgBottom(imvAccount);
+                    currentTextViewBottom = tvAccount;
+                    currentImgBottom = imvAccount;
+                    currentLinear = linearAccount;
                 }
             }
         });

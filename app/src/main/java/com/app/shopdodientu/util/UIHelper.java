@@ -17,7 +17,7 @@ public class UIHelper {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
-    public static void gotoProfile(ImageView imvProfile, UserModel userModel, Context context) {
+    public static void gotoAccount(ImageView imvProfile, UserModel userModel, Context context) {
         imvProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
