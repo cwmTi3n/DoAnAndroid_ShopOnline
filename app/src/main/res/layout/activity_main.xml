@@ -26,7 +26,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="110dp"
-                    android:background="#F15050"
+                    android:background="#FFA500"
                     android:orientation="vertical">
 
 
@@ -62,7 +62,7 @@
                             android:layout_height="40dp"
                             android:layout_marginRight="0dp"
                             android:layout_weight="1"
-                            app:srcCompat="@drawable/cart" />
+                            app:srcCompat="@drawable/bottom_btn3" />
 
 
                     </LinearLayout>
@@ -114,7 +114,7 @@
                         android:id="@+id/imgslider"
                         android:layout_width="match_parent"
                         android:layout_height="130dp"
-                        android:background="#D33F11" />
+                        android:background="#FFA500" />
 
                 </LinearLayout>
 
