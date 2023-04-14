@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.app.shopdodientu.R;
 import com.app.shopdodientu.activity.MyAccountActivity;
+import com.app.shopdodientu.util.UIHelper;
 
 import org.w3c.dom.Text;
 
@@ -26,21 +27,8 @@ public class WelcomeSellerActivity extends AppCompatActivity {
         tvBack = (TextView) findViewById(R.id.tvBack);
         btnRegister = (Button) findViewById(R.id.btnRegister);
 
-        tvBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                intent = new Intent(WelcomeSellerActivity.this, MyAccountActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        btnRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                intent = new Intent(WelcomeSellerActivity.this, RegisterSellerActivity.class);
-                startActivity(intent);
-            }
-        });
+        UIHelper.backtoMyAccount(tvBack, this);
+        UIHelper.gotoRegisterStore(btnRegister, this);
 
 
 

@@ -2,6 +2,8 @@ package com.app.shopdodientu.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.app.UiAutomation;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -17,6 +19,7 @@ import android.widget.TextView;
 import com.app.shopdodientu.R;
 import com.app.shopdodientu.activity.seller.RegisterSellerActivity;
 import com.app.shopdodientu.activity.seller.WelcomeSellerActivity;
+import com.app.shopdodientu.util.UIHelper;
 
 public class MyAccountActivity extends AppCompatActivity {
     //TOP
@@ -48,15 +51,12 @@ public class MyAccountActivity extends AppCompatActivity {
         LinearStoreTopClicked();
         LinearCartTopClicked();
 
+        //BETWEEN
+        UIHelper.gotoWelcomeStore(tvRegisterSeller, this);
+        UIHelper.gotoProfile(tvProfile, this);
+
         //BOTTOM
-        currentTextViewBottom = tvHome;
-        currentImgBottom = imvHome;
-        currentLinearBottom = linearHome;
-        LinearHomeClicked();
-        LinearAccountClicked();
-        LinearCartClicked();
-        LinearSupportClicked();
-        LinearLogoutClicked();
+
     }
 
     private void MapItemView(){
@@ -68,7 +68,7 @@ public class MyAccountActivity extends AppCompatActivity {
         linearCartTop = (LinearLayout) findViewById(R.id.linearCartTop);
 
         tvProfile = (TextView) findViewById(R.id.tvProfile);
-        tvRegisterSeller = (TextView) findViewById(R.id.tvRegisterSeller);
+        tvRegisterSeller = (TextView) findViewById(R.id.tvRegisterStore);
 
         imvHome = (ImageView) findViewById(R.id.imgHome);
         imvAccount = (ImageView) findViewById(R.id.imgAccount);
@@ -95,65 +95,6 @@ public class MyAccountActivity extends AppCompatActivity {
     private void SetEffectCurrentTextView(TextView current){
         current.setTypeface(null, Typeface.BOLD);
         current.setTextColor(Color.parseColor("#FFA500"));
-    }
-    private void SetEffectLastImgBottom(ImageView last){
-        Bitmap bitmap;
-        if (imvHome.equals(last)) {
-            imvHome.setImageBitmap(null);
-            bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bottom_btn1);
-            imvHome.setImageDrawable(new BitmapDrawable(getResources(), bitmap));
-        }
-        else if (imvAccount.equals((last))){
-            imvAccount.setImageBitmap(null);
-            bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bottom_btn2);
-            imvAccount.setImageDrawable(new BitmapDrawable(getResources(), bitmap));
-        }
-        else if (imvCart.equals((last))){
-            imvCart.setImageBitmap(null);
-            bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bottom_btn3);
-            imvCart.setImageDrawable(new BitmapDrawable(getResources(), bitmap));
-        }
-        else if (imvSupport.equals((last))){
-            imvSupport.setImageBitmap(null);
-            bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bottom_btn4);
-            imvSupport.setImageDrawable(new BitmapDrawable(getResources(), bitmap));
-        }
-        else {
-            imvLogOut.setImageBitmap(null);
-            bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bottom_btn5);
-            imvLogOut.setImageDrawable(new BitmapDrawable(getResources(), bitmap));
-        }
-
-    }
-
-    private void SetEffectCurrentImgBottom(ImageView current){
-        Bitmap bitmap;
-        if (imvHome.equals(current)) {
-            imvHome.setImageBitmap(null);
-            bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bottom_btn1_color);
-            imvHome.setImageDrawable(new BitmapDrawable(getResources(), bitmap));
-        }
-        else if (imvAccount.equals((current))){
-            imvAccount.setImageBitmap(null);
-            bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bottom_btn2_color);
-            imvAccount.setImageDrawable(new BitmapDrawable(getResources(), bitmap));
-        }
-        else if (imvCart.equals((current))){
-            imvCart.setImageBitmap(null);
-            bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bottom_btn3_color);
-            imvCart.setImageDrawable(new BitmapDrawable(getResources(), bitmap));
-        }
-        else if (imvSupport.equals((current))){
-            imvSupport.setImageBitmap(null);
-            bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bottom_btn4_color);
-            imvSupport.setImageDrawable(new BitmapDrawable(getResources(), bitmap));
-        }
-        else {
-            imvLogOut.setImageBitmap(null);
-            bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bottom_btn5_color);
-            imvLogOut.setImageDrawable(new BitmapDrawable(getResources(), bitmap));
-        }
-
     }
 
     //TOP
@@ -224,56 +165,20 @@ public class MyAccountActivity extends AppCompatActivity {
         linearHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(currentLinearBottom != linearHome){
-                    if(currentLinearBottom != null){
-                        SetEffectLastTextView(currentTextViewBottom);
-                        SetEffectLastImgBottom(currentImgBottom);
-                    }
-                    SetEffectCurrentTextView(tvHome);
-                    SetEffectCurrentImgBottom(imvHome);
-                    currentTextViewBottom = tvHome;
-                    currentImgBottom = imvHome;
-                    currentLinearBottom = linearHome;
-                }
+                Intent intent = new Intent(MyAccountActivity.this, MainActivity.class);
+                startActivity(intent);
             }
         });
     }
 
-    private void LinearAccountClicked() {
-        linearAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (currentLinearBottom != linearAccount) {
-                    if (currentLinearBottom != null) {
-                        SetEffectLastTextView(currentTextViewBottom);
-                        SetEffectLastImgBottom(currentImgBottom);
-                    }
-                    SetEffectCurrentTextView(tvAccount);
-                    SetEffectCurrentImgBottom(imvAccount);
-                    currentTextViewBottom = tvAccount;
-                    currentImgBottom = imvAccount;
-                    currentLinearBottom = linearAccount;
-                }
-            }
-        });
-    }
 
     private void LinearCartClicked() {
 
         linearCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (currentLinearBottom != linearCart) {
-                    if (currentLinearBottom != null) {
-                        SetEffectLastTextView(currentTextViewBottom);
-                        SetEffectLastImgBottom(currentImgBottom);
-                    }
-                    SetEffectCurrentTextView(tvCart);
-                    SetEffectCurrentImgBottom(imvCart);
-                    currentTextViewBottom = tvCart;
-                    currentImgBottom = imvCart;
-                    currentLinearBottom = linearCart;
-                }
+//                Intent intent = new Intent(MyAccountActivity.this, CartActivity.class);
+//                startActivity(intent);
             }
         });
     }
@@ -282,17 +187,8 @@ public class MyAccountActivity extends AppCompatActivity {
         linearSupport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (currentLinearBottom != linearSupport) {
-                    if (currentLinearBottom != null) {
-                        SetEffectLastTextView(currentTextViewBottom);
-                        SetEffectLastImgBottom(currentImgBottom);
-                    }
-                    SetEffectCurrentTextView(tvSupport);
-                    SetEffectCurrentImgBottom(imvSupport);
-                    currentTextViewBottom = tvSupport;
-                    currentImgBottom = imvSupport;
-                    currentLinearBottom = linearSupport;
-                }
+//                Intent intent = new Intent(MyAccountActivity.this, SupportActivity.class);
+//                startActivity(intent);
             }
         });
     }
@@ -301,17 +197,7 @@ public class MyAccountActivity extends AppCompatActivity {
         linearLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (currentLinearBottom != linearLogout) {
-                    if (currentLinearBottom != null) {
-                        SetEffectLastTextView(currentTextViewBottom);
-                        SetEffectLastImgBottom(currentImgBottom);
-                    }
-                    SetEffectCurrentTextView(tvLogout);
-                    SetEffectCurrentImgBottom(imvLogOut);
-                    currentTextViewBottom = tvLogout;
-                    currentImgBottom = imvLogOut;
-                    currentLinearBottom = linearLogout;
-                }
+
             }
         });
     }

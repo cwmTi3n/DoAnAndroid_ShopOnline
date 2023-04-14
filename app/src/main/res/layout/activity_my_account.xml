@@ -155,7 +155,7 @@
             android:background="#F1E6E6" />
 
         <TextView
-            android:id="@+id/tvRegisterSeller"
+            android:id="@+id/tvRegisterStore"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginLeft="10dp"

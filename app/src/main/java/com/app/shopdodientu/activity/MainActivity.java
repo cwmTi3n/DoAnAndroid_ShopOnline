@@ -45,6 +45,7 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
+    //BOTTOM
     private ImageView imvHome, imvAccount, imvCart, imvSupport, imvLogOut;
     private TextView tvHome, tvAccount, tvCart, tvSupport, tvLogout;
     private LinearLayout linearHome, linearAccount, linearCart, linearSupport, linearLogout;
@@ -77,17 +78,6 @@ public class MainActivity extends AppCompatActivity {
         UIHelper.gotoHome(imvHome, this);
 //        gotoProfile();
 //        gotoHome();
-
-
-        //BOTTOM
-        currentTextViewBottom = tvHome;
-        currentImgBottom = imvHome;
-        currentLinear = linearHome;
-        LinearHomeClicked();
-        LinearAccountClicked();
-        LinearCartClicked();
-        LinearSupportClicked();
-        LinearLogoutClicked();
 
 
     }
@@ -140,169 +130,6 @@ public class MainActivity extends AppCompatActivity {
         linearLogout = (LinearLayout) findViewById(R.id.logout);
     }
 
-    private void SetEffectLastTextViewBottom(TextView last){
-        last.setTypeface(null, Typeface.NORMAL);
-        last.setTextColor(Color.BLACK);
-    }
-    private void SetEffectCurrentTextViewBottom(TextView current){
-        current.setTypeface(null, Typeface.BOLD);
-        current.setTextColor(Color.parseColor("#FFA500"));
-    }
-    private void SetEffectLastImgBottom(ImageView last){
-        Bitmap bitmap;
-        if (imvHome.equals(last)) {
-            imvHome.setImageBitmap(null);
-            bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bottom_btn1);
-            imvHome.setImageDrawable(new BitmapDrawable(getResources(), bitmap));
-        }
-        else if (imvAccount.equals((last))){
-            imvAccount.setImageBitmap(null);
-            bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bottom_btn2);
-            imvAccount.setImageDrawable(new BitmapDrawable(getResources(), bitmap));
-        }
-        else if (imvCart.equals((last))){
-            imvCart.setImageBitmap(null);
-            bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bottom_btn3);
-            imvCart.setImageDrawable(new BitmapDrawable(getResources(), bitmap));
-        }
-        else if (imvSupport.equals((last))){
-            imvSupport.setImageBitmap(null);
-            bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bottom_btn4);
-            imvSupport.setImageDrawable(new BitmapDrawable(getResources(), bitmap));
-        }
-        else {
-            imvLogOut.setImageBitmap(null);
-            bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bottom_btn5);
-            imvLogOut.setImageDrawable(new BitmapDrawable(getResources(), bitmap));
-        }
-
-    }
-
-    private void SetEffectCurrentImgBottom(ImageView current){
-        Bitmap bitmap;
-        if (imvHome.equals(current)) {
-            imvHome.setImageBitmap(null);
-            bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bottom_btn1_color);
-            imvHome.setImageDrawable(new BitmapDrawable(getResources(), bitmap));
-        }
-        else if (imvAccount.equals((current))){
-            imvAccount.setImageBitmap(null);
-            bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bottom_btn2_color);
-            imvAccount.setImageDrawable(new BitmapDrawable(getResources(), bitmap));
-        }
-        else if (imvCart.equals((current))){
-            imvCart.setImageBitmap(null);
-            bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bottom_btn3_color);
-            imvCart.setImageDrawable(new BitmapDrawable(getResources(), bitmap));
-        }
-        else if (imvSupport.equals((current))){
-            imvSupport.setImageBitmap(null);
-            bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bottom_btn4_color);
-            imvSupport.setImageDrawable(new BitmapDrawable(getResources(), bitmap));
-        }
-        else {
-            imvLogOut.setImageBitmap(null);
-            bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.bottom_btn5_color);
-            imvLogOut.setImageDrawable(new BitmapDrawable(getResources(), bitmap));
-        }
-
-    }
-
-    private void LinearHomeClicked (){
-        linearHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(currentLinear != linearHome){
-                    if(currentLinear != null){
-                        SetEffectLastTextViewBottom(currentTextViewBottom);
-                        SetEffectLastImgBottom(currentImgBottom);
-                    }
-                    SetEffectCurrentTextViewBottom(tvHome);
-                    SetEffectCurrentImgBottom(imvHome);
-                    currentTextViewBottom = tvHome;
-                    currentImgBottom = imvHome;
-                    currentLinear = linearHome;
-                }
-            }
-        });
-    }
-
-    private void LinearAccountClicked() {
-        linearAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (currentLinear != linearAccount) {
-                    if (currentLinear != null) {
-                        SetEffectLastTextViewBottom(currentTextViewBottom);
-                        SetEffectLastImgBottom(currentImgBottom);
-                    }
-                    SetEffectCurrentTextViewBottom(tvAccount);
-                    SetEffectCurrentImgBottom(imvAccount);
-                    currentTextViewBottom = tvAccount;
-                    currentImgBottom = imvAccount;
-                    currentLinear = linearAccount;
-                }
-            }
-        });
-    }
-
-    private void LinearCartClicked() {
-
-        linearCart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (currentLinear != linearCart) {
-                    if (currentLinear != null) {
-                        SetEffectLastTextViewBottom(currentTextViewBottom);
-                        SetEffectLastImgBottom(currentImgBottom);
-                    }
-                    SetEffectCurrentTextViewBottom(tvCart);
-                    SetEffectCurrentImgBottom(imvCart);
-                    currentTextViewBottom = tvCart;
-                    currentImgBottom = imvCart;
-                    currentLinear = linearCart;
-                }
-            }
-        });
-    }
-
-    private void LinearSupportClicked() {
-        linearSupport.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (currentLinear != linearSupport) {
-                    if (currentLinear != null) {
-                        SetEffectLastTextViewBottom(currentTextViewBottom);
-                        SetEffectLastImgBottom(currentImgBottom);
-                    }
-                    SetEffectCurrentTextViewBottom(tvSupport);
-                    SetEffectCurrentImgBottom(imvSupport);
-                    currentTextViewBottom = tvSupport;
-                    currentImgBottom = imvSupport;
-                    currentLinear = linearSupport;
-                }
-            }
-        });
-    }
-
-    private void LinearLogoutClicked() {
-        linearLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (currentLinear != linearLogout) {
-                    if (currentLinear != null) {
-                        SetEffectLastTextViewBottom(currentTextViewBottom);
-                        SetEffectLastImgBottom(currentImgBottom);
-                    }
-                    SetEffectCurrentTextViewBottom(tvLogout);
-                    SetEffectCurrentImgBottom(imvLogOut);
-                    currentTextViewBottom = tvLogout;
-                    currentImgBottom = imvLogOut;
-                    currentLinear = linearLogout;
-                }
-            }
-        });
-    }
 
     private void getAllCategory() {
         ApiService apiService = ApiClient.getApiService();

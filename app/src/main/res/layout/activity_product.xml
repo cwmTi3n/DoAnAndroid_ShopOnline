@@ -12,23 +12,41 @@
         android:weightSum="20"
         android:orientation="vertical">
 
-
-        <EditText
-            android:id="@+id/edtfind"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1.5"
-            android:layout_margin="10dp"
-            android:paddingStart="10dp"
-            android:background="@drawable/radius_border_10dp_orange"
-            android:drawableLeft="@drawable/loupe"
-            android:drawablePadding="5dp"
-            android:ems="10"
-            android:hint="Find Your Product"
-            android:textColorHint="#1A1818"
-            android:inputType="textPersonName"
-            android:textSize="18dp"
-            android:textStyle="italic" />
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal"
+            android:weightSum="8">
+
+            <ImageView
+                android:id="@+id/imgback"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:paddingLeft="-20dp"
+                android:layout_marginTop="4dp"
+                app:srcCompat="@drawable/arrow_left" />
+
+            <EditText
+                android:id="@+id/edtfind"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="6.8"
+                android:paddingStart="10dp"
+                android:background="@drawable/radius_border_10dp_orange"
+                android:drawableLeft="@drawable/loupe"
+                android:drawablePadding="5dp"
+                android:ems="10"
+                android:hint="Find Your Product"
+                android:textColorHint="#1A1818"
+                android:inputType="textPersonName"
+                android:textSize="18dp"
+                android:textStyle="italic" />
+
+        </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -95,9 +113,8 @@
                 android:text="CHAT"
                 android:textColor="#000"
                 android:drawableLeft="@drawable/smallchat"
-                android:paddingStart="10dp">
+                android:paddingStart="10dp"/>
 
-            </TextView>
         </LinearLayout>
 
         <LinearLayout
@@ -123,7 +140,6 @@
                     android:layout_height="0dp"
                     android:layout_weight="1.8"
                     android:text="Shop"
-                    android:textColor="#FFA500"
                     android:textStyle="bold"
                     android:textSize="20dp"
                     android:gravity="center"/>
@@ -133,7 +149,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="0.1"
-                    android:background="#FFA500" />
+                    android:background="#F1E6E6" />
             </LinearLayout>
 
             <LinearLayout
@@ -150,6 +166,7 @@
                     android:layout_height="0dp"
                     android:layout_weight="1.8"
                     android:text="Product"
+                    android:textColor="#FFA500"
                     android:textStyle="bold"
                     android:textSize="20dp"
                     android:gravity="center"/>
@@ -159,7 +176,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="0.1"
-                    android:background="#F1E6E6" />
+                    android:background="#FFA500" />
             </LinearLayout>
 
             <LinearLayout
@@ -189,44 +206,92 @@
             </LinearLayout>
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/tvRecommend"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="Recommends for you"
-            android:textStyle="bold"
-            android:textSize="20dp"
-            android:textColor="#000"
-            android:drawablePadding="5dp"
-            android:layout_marginTop="5dp"
-            android:drawableRight="@drawable/back_left"
-            android:layout_marginLeft="10dp"/>
+            android:orientation="horizontal"
+            android:layout_weight="0.8"
+            android:weightSum="12"
+            android:layout_marginTop="5dp">
 
-        <GridView
-            android:id="@+id/gvRecommend"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="4" />
+            <TextView
+                android:id="@+id/tvPopular"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2.9"
+                android:text="Popular"
+                android:textColor="#FFA500"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:gravity="center"/>
 
-        <TextView
-            android:id="@+id/tvLastProduct"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="Last Product"
-            android:textStyle="bold"
-            android:textSize="20dp"
-            android:textColor="#000"
-            android:drawablePadding="5dp"
-            android:drawableRight="@drawable/back_left"
-            android:layout_marginLeft="10dp"/>
+            <TextView
+                android:id="@+id/linePopular"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1"
+                android:gravity="center"
+                android:background="#FFA500" />
+
+            <TextView
+                android:id="@+id/tvHot"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2.9"
+                android:text="Hot"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/lineHot"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1"
+                android:gravity="center"
+                android:background="#F1E6E6" />
+
+            <TextView
+                android:id="@+id/tvLatest"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2.9"
+                android:text="Latest"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/lineLatest"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1"
+                android:gravity="center"
+                android:background="#F1E6E6" />
+
+
+            <TextView
+                android:id="@+id/tvPrice"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2.9"
+                android:text="Price"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:gravity="center"
+                android:drawablePadding="-20dp"
+                android:drawableRight="@drawable/unfold"/>
+
+
+        </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcv"
+            android:id="@+id/rcvProduct"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="7"/>
+            android:paddingTop="10dp"
+            android:layout_weight="13.7"/>
+
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
