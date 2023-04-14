@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
                     intent = new Intent(MainActivity.this, LoginActivity.class);
                 }
                 else {
-                    intent = new Intent(MainActivity.this, ProfileActivity.class);
+                    intent = new Intent(MainActivity.this, MyAccountActivity.class);
                     intent.putExtra("user", userModel);
                 }
                 startActivity(intent);
@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
         rcvCategory = (RecyclerView) findViewById(R.id.rcvcategory);
         rcvProduct = (RecyclerView) findViewById(R.id.rcvproduct);
         imvHome = (ImageView) findViewById(R.id.imgHome);
-        imvAccount = (ImageView) findViewById(R.id.imgProfile);
+        imvAccount = (ImageView) findViewById(R.id.imgAccount);
         imvCart = (ImageView) findViewById(R.id.imgCart);
         imvSupport = (ImageView) findViewById(R.id.imgSupport);
         imvLogOut = (ImageView) findViewById(R.id.imgLogout);

@@ -320,23 +320,23 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/profile"
+                    android:id="@+id/account"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.2"
                     android:orientation="vertical">
 
                     <ImageView
-                        android:id="@+id/imgProfile"
+                        android:id="@+id/imgAccount"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:srcCompat="@drawable/bottom_btn2_color" />
 
                     <TextView
-                        android:id="@+id/tvProfile"
+                        android:id="@+id/tvAccount"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Profile"
+                        android:text="Account"
                         android:textAlignment="center"
                         android:textColor="#FFA500"
                         android:textSize="14sp" />

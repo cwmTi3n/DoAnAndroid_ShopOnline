@@ -48,16 +48,14 @@ public class HomeShopActivity extends AppCompatActivity {
         linearCatalog = (LinearLayout) findViewById(R.id.linearCatalog);
     }
 
-    @SuppressLint("ResourceType")
     private void SetEffectLastTextView(TextView last, TextView line){
         last.setTextColor(Color.parseColor("#938585"));
-        line.setBackgroundResource(Color.parseColor("#F1E6E6"));
+        line.setBackgroundResource(R.color.line_color);
     }
 
-    @SuppressLint("ResourceType")
     private void SetEffectCurrentTextView(TextView current, TextView line) {
         current.setTextColor(Color.parseColor("#FFA500"));
-        line.setBackgroundResource(Color.parseColor("#FFA500"));
+        line.setBackgroundResource(R.color.orange);
     }
     private void LinearShopClicked(){
         linearShop.setOnClickListener(new View.OnClickListener() {
