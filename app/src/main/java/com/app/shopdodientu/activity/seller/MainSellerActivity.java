@@ -1,14 +1,16 @@
-package com.app.shopdodientu;
+package com.app.shopdodientu.activity.seller;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class MyAccountActivity extends AppCompatActivity {
+import com.app.shopdodientu.R;
+
+public class MainSellerActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_account);
+        setContentView(R.layout.activity_main_seller);
     }
 }
