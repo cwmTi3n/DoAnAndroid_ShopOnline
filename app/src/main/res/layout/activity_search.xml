@@ -33,7 +33,7 @@
                 android:id="@+id/edtfind"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
-                android:layout_weight="6"
+                android:layout_weight="6.8"
                 android:paddingStart="10dp"
                 android:background="@drawable/radius_border_10dp_orange"
                 android:drawableLeft="@drawable/loupe"
@@ -44,35 +44,6 @@
                 android:inputType="textPersonName"
                 android:textSize="18dp"
                 android:textStyle="italic" />
-
-            <RelativeLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginLeft="5dp"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:id="@+id/imgfind"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="3dp"
-                    app:srcCompat="@drawable/filter" />
-
-                <Spinner
-                    android:id="@+id/snprice"
-                    android:layout_width="40dp"
-                    android:layout_height="wrap_content" />
-                <TextView
-                    android:id="@+id/tvfilter"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="2dp"
-                    android:text="Filter"
-                    android:textColor="#000" />
-
-            </RelativeLayout>
         </LinearLayout>
 
         <TextView
@@ -97,43 +68,113 @@
                 android:id="@+id/tvrelated"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="4"
+                android:layout_weight="2.95"
                 android:textAlignment="center"
                 android:textSize="20dp"
                 android:text="Related"
                 android:textStyle="bold"
-                android:background="@drawable/rectangle_border_orange_2dp"
                 android:textColor="#FFA500"/>
+
+            <TextView
+                android:id="@+id/lineRelated"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.05"
+                android:gravity="center"
+                android:background="#FFA500" />
 
             <TextView
                 android:id="@+id/tvlatest"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="4"
+                android:layout_weight="2.95"
                 android:textAlignment="center"
-                android:background="@drawable/rectangle_border_black"
                 android:textSize="20dp"
                 android:text="Latest"
-                android:textColor="#000"/>
+                android:textColor="#8B7C7C"/>
+
+            <TextView
+                android:id="@+id/lineLatest"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.05"
+                android:gravity="center"
+                android:background="#F1E6E6" />
 
             <TextView
                 android:id="@+id/tvbestseller"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="4"
-                android:background="@drawable/rectangle_border_black"
+                android:layout_weight="2.95"
                 android:textAlignment="center"
                 android:textSize="20dp"
-                android:text="BestSeller"
-                android:textColor="#000"/>
+                android:text="Best"
+                android:textColor="#8B7C7C"/>
 
+            <TextView
+                android:id="@+id/lineBestseller"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.05"
+                android:gravity="center"
+                android:background="#F1E6E6" />
+
+            <TextView
+                android:id="@+id/tvPrice"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2.95"
+                android:text="Price"
+                android:textSize="20dp"
+                android:textColor="#8B7C7C"
+                android:gravity="center"
+                android:drawablePadding="-20dp"
+                android:drawableRight="@drawable/unfold"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.1"
+            android:orientation="horizontal"
+            android:weightSum="12">
+
+            <TextView
+                android:id="@+id/lineHoriRelated"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:background="#FFA500"/>
+
+            <TextView
+                android:id="@+id/lineHoriLatest"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:background="#F1E6E6"/>
+
+            <TextView
+                android:id="@+id/lineHoriBest"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:background="#F1E6E6"/>
+
+            <TextView
+                android:id="@+id/lineHoriPrice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:background="#F1E6E6"/>
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/productIView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="29.3" />
+            android:layout_weight="29.2" />
 
 
     </LinearLayout>

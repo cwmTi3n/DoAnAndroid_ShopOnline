@@ -8,6 +8,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -16,22 +17,19 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.app.shopdodientu.R;
 
+import org.w3c.dom.Text;
+
 public class SearchActivity extends AppCompatActivity {
 
-    private TextView tvRelated, tvLatest, tvBestSeller;
-    private Spinner snPrice;
-    private ImageView imvHome, imvProfile, imvCart, imvSupport, imvLogOut;
-    private TextView tvHome, tvProfile, tvCart, tvSupport, tvLogout;
-    private LinearLayout linearHome, linearProfile, linearCart, linearSupport, linearLogout;
-    private TextView currentTextView, currentTextViewBottom;
-    private ImageView currentImgBottom;
-    private LinearLayout currentLinear;
+    private TextView tvRelated, tvLatest, tvBestSeller, tvPrice;
+    private TextView lineRelated, lineLatest, lineBest, lineHoriRelated, lineHoriLatest, lineHoriBest, lineHoriPrice;
+    private LinearLayout linearHome, linearAccount, linearCart, linearSupport, linearLogout;
+    private TextView currentTextView, currentLine, currentLineHori;
 
-    private
-    ArrayAdapter<String> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,14 +37,15 @@ public class SearchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search);
 
         MapItemView();
-        AddItemSpinnerPrice();
-        SpinnerPriceClicked();
 
         //TOP
         currentTextView = tvRelated;
+        currentLine = lineRelated;
+        currentLineHori = lineHoriRelated;
         TextViewBestSellerClicked();
         TextViewLatestClicked();
         TextViewRelatedClick();
+        TextViewPriceClicked();
 
 
         //BOTTOM
@@ -65,9 +64,16 @@ public class SearchActivity extends AppCompatActivity {
                 if (currentTextView != tvRelated) {
                     if (currentTextView != null) {
                         SetEffectLastTextViewTop(currentTextView);
+                        SetEffectLineLastTextViewTop(currentLine, currentLineHori);
+                    }
+                    if(currentTextView == tvPrice){
+                        SetDrawablePriceMove();
                     }
                     SetEffectCurrentTextViewTop(tvRelated);
+                    SetEffectLineCurrentTextViewTop(lineRelated, lineHoriRelated);
                     currentTextView = tvRelated;
+                    currentLine = lineRelated;
+                    currentLineHori = lineHoriRelated;
                 }
             }
         });
@@ -80,9 +86,16 @@ public class SearchActivity extends AppCompatActivity {
                 if (currentTextView != tvLatest) {
                     if (currentTextView != null) {
                         SetEffectLastTextViewTop(currentTextView);
+                        SetEffectLineLastTextViewTop(currentLine, currentLineHori);
+                    }
+                    if(currentTextView == tvPrice){
+                        SetDrawablePriceMove();
                     }
                     SetEffectCurrentTextViewTop(tvLatest);
+                    SetEffectLineCurrentTextViewTop(lineLatest, lineHoriLatest);
                     currentTextView = tvLatest;
+                    currentLine = lineLatest;
+                    currentLineHori = lineHoriLatest;
                 }
             }
         });
@@ -95,27 +108,38 @@ public class SearchActivity extends AppCompatActivity {
                 if (currentTextView != tvBestSeller) {
                     if (currentTextView != null) {
                         SetEffectLastTextViewTop(currentTextView);
+                        SetEffectLineLastTextViewTop(currentLine, currentLineHori);
+                    }
+                    if(currentTextView == tvPrice){
+                        SetDrawablePriceMove();
                     }
                     SetEffectCurrentTextViewTop(tvBestSeller);
+                    SetEffectLineCurrentTextViewTop(lineBest, lineHoriBest);
                     currentTextView = tvBestSeller;
+                    currentLine = lineBest;
+                    currentLineHori = lineHoriBest;
                 }
             }
         });
     }
-    private void SpinnerPriceClicked(){
-        snPrice.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                // Do something when selected
-                String selectedOption = parent.getItemAtPosition(position).toString();
-            }
 
+    private void TextViewPriceClicked(){
+        tvPrice.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                // Do something when nothing is selected
+            public void onClick(View view) {
+                if (currentTextView != null) {
+                    SetEffectLastTextViewTop(currentTextView);
+                    SetEffectLineLastTextViewTop(currentLine, currentLineHori);
+                }
+                SetDrawablePriceClicked();
+                SetEffectCurrentTextViewTop(tvPrice);
+                lineHoriPrice.setBackgroundColor(Color.parseColor("#FFA500"));
+                currentTextView = tvPrice;
+                currentLineHori = lineHoriPrice;
             }
         });
     }
+
     private void LinearHomeClicked (){
         linearHome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,7 +151,7 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     private void LinearAccountClicked() {
-        linearProfile.setOnClickListener(new View.OnClickListener() {
+        linearAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(SearchActivity.this, MyAccountActivity.class);
@@ -166,46 +190,65 @@ public class SearchActivity extends AppCompatActivity {
         });
     }
     private void MapItemView(){
-        snPrice = findViewById(R.id.snprice);
         tvRelated = (TextView) findViewById(R.id.tvrelated);
         tvLatest = (TextView) findViewById(R.id.tvlatest);
         tvBestSeller = (TextView) findViewById(R.id.tvbestseller);
-        imvHome = (ImageView) findViewById(R.id.imgHome);
-        imvProfile = (ImageView) findViewById(R.id.imgAccount);
-        imvCart = (ImageView) findViewById(R.id.imgCart);
-        imvSupport = (ImageView) findViewById(R.id.imgSupport);
-        imvLogOut = (ImageView) findViewById(R.id.imgLogout);
-        tvHome = (TextView) findViewById(R.id.tvHome);
-        tvProfile = (TextView) findViewById(R.id.tvAccount);
-        tvCart = (TextView) findViewById(R.id.tvCart);
-        tvSupport = (TextView) findViewById(R.id.tvSupport);
-        tvLogout = (TextView) findViewById(R.id.tvLogout);
+        tvPrice = (TextView) findViewById(R.id.tvPrice);
+        lineRelated = (TextView) findViewById(R.id.lineRelated);
+        lineLatest = (TextView) findViewById(R.id.lineLatest);
+        lineBest = (TextView) findViewById(R.id.lineBestseller);
+
+        lineHoriRelated = (TextView) findViewById(R.id.lineHoriRelated);
+        lineHoriLatest = (TextView) findViewById(R.id.lineHoriLatest);
+        lineHoriBest = (TextView) findViewById(R.id.lineHoriBest);
+        lineHoriPrice = (TextView) findViewById(R.id.lineHoriPrice);
+
         linearHome = (LinearLayout) findViewById(R.id.home);
-        linearProfile = (LinearLayout) findViewById(R.id.account);
+        linearAccount = (LinearLayout) findViewById(R.id.account);
         linearCart = (LinearLayout) findViewById(R.id.cart);
         linearSupport = (LinearLayout) findViewById(R.id.support);
         linearLogout = (LinearLayout) findViewById(R.id.logout);
 
     }
 
-    private void AddItemSpinnerPrice() {
 
-        String[] listCate = {"High", "Low"};
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, listCate);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        snPrice.setAdapter(adapter);
-
-    }
 
     private void SetEffectLastTextViewTop(TextView last){
         last.setTypeface(null, Typeface.NORMAL);
-        last.setBackgroundResource(R.drawable.rectangle_border_black);
-        last.setTextColor(Color.BLACK);
+        last.setTextColor(Color.parseColor("#8B7C7C"));
     }
     private void SetEffectCurrentTextViewTop(TextView current){
         current.setTypeface(null, Typeface.BOLD);
-        current.setBackgroundResource(R.drawable.rectangle_border_orange_2dp);
         current.setTextColor(Color.parseColor("#FFA500"));
     }
+    private void SetEffectLineCurrentTextViewTop(TextView line, TextView lineHori){
+        line.setBackgroundColor(Color.parseColor("#FFA500"));
+        lineHori.setBackgroundColor(Color.parseColor("#FFA500"));
+    }
+    private void SetEffectLineLastTextViewTop(TextView line, TextView lineHori) {
+        line.setBackgroundColor(Color.parseColor("#F1E6E6"));
+        lineHori.setBackgroundColor(Color.parseColor("#F1E6E6"));
+    }
+    private void SetDrawablePriceClicked(){
+        Drawable[] drawables = tvPrice.getCompoundDrawables();
+        Drawable rightDrawable = drawables[2];
+        Drawable myDrawable = getResources().getDrawable(R.drawable.unfold);
+        Drawable drawableUpArrow = getResources().getDrawable(R.drawable.up_arrow);
+        Drawable drawableDownArrow = getResources().getDrawable(R.drawable.down_arrow);
 
+
+        if (rightDrawable != null && myDrawable != null && rightDrawable.getConstantState().equals(myDrawable.getConstantState())) {
+            tvPrice.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, drawableUpArrow, null);
+
+        } else if (rightDrawable != null && drawableUpArrow != null && rightDrawable.getConstantState().equals(drawableUpArrow.getConstantState())){
+            tvPrice.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, drawableDownArrow, null);
+
+        } else if (rightDrawable != null && drawableDownArrow != null && rightDrawable.getConstantState().equals(drawableDownArrow.getConstantState())){
+            tvPrice.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, drawableUpArrow, null);
+        }
+    }
+    private void SetDrawablePriceMove(){
+        Drawable drawableRight = getResources().getDrawable(R.drawable.unfold);
+        tvPrice.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, drawableRight , null);
+    }
 }
