@@ -23,14 +23,17 @@
         android:theme="@style/Theme.ShopDoDienTu"
         tools:targetApi="31">
         <activity
+            android:name=".activity.CatalogActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.MyOrderActivity"
             android:exported="false" />
+        <activity
+            android:name=".activity.CartActivity"
+            android:exported="false" />
          <activity
-         android:name=".activity.CartActivity"
-         android:exported="false" />
-<!--        <activity-->
-<!--            android:name=".activity.ProductActivity"-->
-<!--            android:exported="false" />-->
+             android:name=".activity.ProductActivity"
+             android:exported="false" />
         <activity
             android:name=".activity.HomeShopActivity"
             android:exported="false" />
@@ -74,10 +77,10 @@
             android:name=".activity.SignupActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.LoginActivity"
+            android:name=".activity.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.ProductActivity"
+            android:name=".activity.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

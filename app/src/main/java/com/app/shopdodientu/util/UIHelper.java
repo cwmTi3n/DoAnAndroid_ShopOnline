@@ -10,10 +10,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.app.shopdodientu.activity.CatalogActivity;
 import com.app.shopdodientu.activity.ChangePasswordActivity;
 import com.app.shopdodientu.activity.HomeShopActivity;
 import com.app.shopdodientu.activity.LoginActivity;
 import com.app.shopdodientu.activity.MyAccountActivity;
+import com.app.shopdodientu.activity.ProductActivity;
 import com.app.shopdodientu.activity.ProfileActivity;
 import com.app.shopdodientu.activity.seller.AddProductActivity;
 import com.app.shopdodientu.activity.seller.MainSellerActivity;
@@ -141,6 +143,27 @@ public class UIHelper {
             public void onClick(View view) {
                 Intent intent;
                 intent = new Intent(context, HomeShopActivity.class);
+                context.startActivity(intent);
+            }
+        });
+    }
+    public static void gotoProductShop(LinearLayout linear, Context context){
+        linear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent;
+                intent = new Intent(context, ProductActivity.class);
+                context.startActivity(intent);
+            }
+        });
+    }
+
+    public static void gotoCatalogShop(LinearLayout linear, Context context){
+        linear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent;
+                intent = new Intent(context, CatalogActivity.class);
                 context.startActivity(intent);
             }
         });

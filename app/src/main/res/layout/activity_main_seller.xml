@@ -30,9 +30,8 @@
                 android:textSize="25dp"
                 android:textColor="#373b54"
                 android:gravity="center"
-                android:textAlignment="viewStart"
-                android:drawableLeft="@drawable/arrow_left"
-                android:drawablePadding="10dp"/>
+                android:paddingStart="10dp"
+                android:textAlignment="viewStart" />
 
             <ImageView
                 android:id="@+id/imgSetting"
@@ -62,15 +61,15 @@
             android:layout_height="0dp"
             android:layout_marginTop="5dp"
             android:orientation="horizontal"
-            android:layout_weight="2"
+            android:layout_weight="3"
             android:weightSum="8">
 
             <ImageView
                 android:id="@+id/imgStore"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:layout_marginLeft="40dp"
+                android:layout_weight="2.5"
+                android:layout_marginLeft="10dp"
                 app:srcCompat="@drawable/user_circle" />
 
             <TextView
@@ -82,14 +81,14 @@
                 android:text="Shop Name"
                 android:textStyle="bold"
                 android:textColor="#000"
-                android:textSize="18dp"
+                android:textSize="20dp"
                 android:gravity="center"/>
 
             <TextView
                 android:id="@+id/tvViewShop"
                 android:layout_width="0dp"
                 android:layout_height="30dp"
-                android:layout_weight="2.5"
+                android:layout_weight="2.2"
                 android:text="View Shop"
                 android:gravity="center"
                 android:textSize="17dp"

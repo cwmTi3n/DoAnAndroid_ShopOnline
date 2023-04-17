@@ -2,37 +2,32 @@ package com.app.shopdodientu.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
-import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.app.shopdodientu.R;
 import com.app.shopdodientu.util.UIHelper;
 
-public class HomeShopActivity extends AppCompatActivity {
+import org.w3c.dom.Text;
 
-    private LinearLayout linearShop, linearProduct, linearCatalog;
+public class CatalogActivity extends AppCompatActivity {
+    private TextView tvShop;
+
+    private LinearLayout linearProduct;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home_shop);
+        setContentView(R.layout.activity_catalog);
 
         MapItemView();
-
+        UIHelper.gotoHomeShop(tvShop, this);
         UIHelper.gotoProductShop(linearProduct, this);
-        UIHelper.gotoCatalogShop(linearCatalog, this);
     }
-
-    private void MapItemView(){
-        linearShop = (LinearLayout) findViewById(R.id.linearShop);
+    private void MapItemView() {
+        tvShop = (TextView) findViewById(R.id.tvShop);
         linearProduct = (LinearLayout) findViewById(R.id.linearProduct);
-        linearCatalog = (LinearLayout) findViewById(R.id.linearCatalog);
     }
-
-
 }
