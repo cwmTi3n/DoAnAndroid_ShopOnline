@@ -23,21 +23,13 @@ import com.app.shopdodientu.util.UIHelper;
 
 public class MyAccountActivity extends AppCompatActivity {
     //TOP
-    private TextView tvHomeTop, tvStoreTop, tvCartTop;
-    private LinearLayout linearHomeTop, linearStoreTop, linearCartTop;
-    private LinearLayout currentLinearTop;
-    private TextView currentTextViewTop;
+    private LinearLayout linearHomeTop, linearStoreTop;
 
     //BETWEEN
-    private TextView tvProfile, tvRegisterSeller;
+    private TextView tvProfile, tvRegisterSeller, tvMyOrder;
 
     //BOTTTOM
-    private ImageView imvHome, imvAccount, imvCart, imvSupport, imvLogOut;
-    private TextView tvHome, tvAccount, tvCart, tvSupport, tvLogout;
     private LinearLayout linearHome, linearAccount, linearCart, linearSupport, linearLogout;
-    private TextView currentTextViewBottom;
-    private ImageView currentImgBottom;
-    private LinearLayout currentLinearBottom;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,41 +37,27 @@ public class MyAccountActivity extends AppCompatActivity {
 
         MapItemView();
         //TOP
-        currentTextViewTop = tvHomeTop;
-        currentLinearTop = linearHomeTop;
-        LinearHomeTopClicked();
-        LinearStoreTopClicked();
-        LinearCartTopClicked();
+
 
         //BETWEEN
         UIHelper.gotoWelcomeStore(tvRegisterSeller, this);
         UIHelper.gotoProfile(tvProfile, this);
-
+        UIHelper.gotoMainSellerByLinear(linearStoreTop, this);
+        UIHelper.gotoMyOrder(tvMyOrder, this);
         //BOTTOM
+        UIHelper.gotoCart(linearCart, this);
 
     }
 
     private void MapItemView(){
-        tvHomeTop = (TextView) findViewById(R.id.tvHomeTop);
-        tvStoreTop = (TextView) findViewById(R.id.tvStore);
-        tvCartTop = (TextView) findViewById(R.id.tvCartTop);
+
         linearHomeTop = (LinearLayout) findViewById(R.id.linearHomeTop);
         linearStoreTop = (LinearLayout) findViewById(R.id.linearStoreTop);
-        linearCartTop = (LinearLayout) findViewById(R.id.linearCartTop);
 
         tvProfile = (TextView) findViewById(R.id.tvProfile);
         tvRegisterSeller = (TextView) findViewById(R.id.tvRegisterStore);
+        tvMyOrder = (TextView) findViewById(R.id.tvMyOrder);
 
-        imvHome = (ImageView) findViewById(R.id.imgHome);
-        imvAccount = (ImageView) findViewById(R.id.imgAccount);
-        imvCart = (ImageView) findViewById(R.id.imgCart);
-        imvSupport = (ImageView) findViewById(R.id.imgSupport);
-        imvLogOut = (ImageView) findViewById(R.id.imgLogout);
-        tvHome = (TextView) findViewById(R.id.tvHome);
-        tvAccount = (TextView) findViewById(R.id.tvAccount);
-        tvCart = (TextView) findViewById(R.id.tvCart);
-        tvSupport = (TextView) findViewById(R.id.tvSupport);
-        tvLogout = (TextView) findViewById(R.id.tvLogout);
         linearHome = (LinearLayout) findViewById(R.id.home);
         linearAccount = (LinearLayout) findViewById(R.id.account);
         linearCart = (LinearLayout) findViewById(R.id.cart);
@@ -87,118 +65,5 @@ public class MyAccountActivity extends AppCompatActivity {
         linearLogout = (LinearLayout) findViewById(R.id.logout);
     }
 
-    //EFFECT
-    private void SetEffectLastTextView(TextView last){
-        last.setTypeface(null, Typeface.NORMAL);
-        last.setTextColor(Color.BLACK);
-    }
-    private void SetEffectCurrentTextView(TextView current){
-        current.setTypeface(null, Typeface.BOLD);
-        current.setTextColor(Color.parseColor("#FFA500"));
-    }
 
-    //TOP
-    private void LinearHomeTopClicked(){
-        linearHomeTop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(currentLinearTop != linearHomeTop){
-                    SetEffectLastTextView(currentTextViewTop);
-                }
-                SetEffectCurrentTextView(tvHomeTop);
-                currentTextViewTop = tvHomeTop;
-                currentLinearTop = linearHomeTop;
-            }
-        });
-    }
-
-    private void LinearStoreTopClicked(){
-        linearStoreTop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(currentLinearTop != linearStoreTop){
-                    SetEffectLastTextView(currentTextViewTop);
-                }
-                SetEffectCurrentTextView(tvStoreTop);
-                currentTextViewTop = tvStoreTop;
-                currentLinearTop = linearStoreTop;
-            }
-        });
-    }
-    private void LinearCartTopClicked(){
-        linearCartTop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(currentLinearTop != linearCartTop){
-                    SetEffectLastTextView(currentTextViewTop);
-                }
-                SetEffectCurrentTextView(tvCartTop);
-                currentTextViewTop = tvCartTop;
-                currentLinearTop = linearCartTop;
-            }
-        });
-    }
-
-    //BETWEEN
-    private void TextViewProfileClick(){
-        tvProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MyAccountActivity.this, ProfileActivity.class);
-                startActivity(intent);
-            }
-        });
-    }
-
-    private void TextViewRegisterStoreClicked(){
-        tvRegisterSeller.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MyAccountActivity.this, WelcomeSellerActivity.class);
-                startActivity(intent);
-            }
-        });
-    }
-
-    //BOTTOM
-    private void LinearHomeClicked (){
-        linearHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MyAccountActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
-    }
-
-
-    private void LinearCartClicked() {
-
-        linearCart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Intent intent = new Intent(MyAccountActivity.this, CartActivity.class);
-//                startActivity(intent);
-            }
-        });
-    }
-
-    private void LinearSupportClicked() {
-        linearSupport.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Intent intent = new Intent(MyAccountActivity.this, SupportActivity.class);
-//                startActivity(intent);
-            }
-        });
-    }
-
-    private void LinearLogoutClicked() {
-        linearLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-    }
 }

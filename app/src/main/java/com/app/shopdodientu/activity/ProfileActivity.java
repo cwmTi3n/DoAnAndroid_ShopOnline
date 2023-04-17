@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.provider.Contacts;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -21,6 +22,8 @@ import com.app.shopdodientu.util.UIHelper;
 public class ProfileActivity extends AppCompatActivity {
 
     private Button btnChangepass;
+    //BOTTOM
+    private LinearLayout linearCart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,10 +35,13 @@ public class ProfileActivity extends AppCompatActivity {
         UIHelper.gotoChangePassword(btnChangepass, this);
 
         //BOTTOM
+        UIHelper.gotoCart(linearCart, this);
     }
 
     private void MapItemView() {
+
         btnChangepass = (Button) findViewById(R.id.btnchangepass);
+        linearCart = (LinearLayout) findViewById(R.id.cart);
     }
 
 }

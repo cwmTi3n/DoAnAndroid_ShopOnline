@@ -46,12 +46,8 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
 
     //BOTTOM
-    private ImageView imvHome, imvAccount, imvCart, imvSupport, imvLogOut;
-    private TextView tvHome, tvAccount, tvCart, tvSupport, tvLogout;
+    private ImageView imvHome, imvAccount;
     private LinearLayout linearHome, linearAccount, linearCart, linearSupport, linearLogout;
-    private TextView currentTextViewBottom;
-    private ImageView currentImgBottom;
-    private LinearLayout currentLinear;
 
 
     private RecyclerView rcvCategory;
@@ -74,8 +70,9 @@ public class MainActivity extends AppCompatActivity {
         MapItemView();
         getAllCategory();
         getLastProduct();
-        UIHelper.gotoAccount(imvAccount, userModel, getApplicationContext());
-        UIHelper.gotoHome(imvHome, this);
+        UIHelper.gotoAccount(linearAccount, userModel, getApplicationContext());
+        UIHelper.gotoHome(linearHome, this);
+        UIHelper.gotoCart(linearCart, this);
 //        gotoProfile();
 //        gotoHome();
 
@@ -115,14 +112,7 @@ public class MainActivity extends AppCompatActivity {
         rcvProduct = (RecyclerView) findViewById(R.id.rcvproduct);
         imvHome = (ImageView) findViewById(R.id.imgHome);
         imvAccount = (ImageView) findViewById(R.id.imgAccount);
-        imvCart = (ImageView) findViewById(R.id.imgCart);
-        imvSupport = (ImageView) findViewById(R.id.imgSupport);
-        imvLogOut = (ImageView) findViewById(R.id.imgLogout);
-        tvHome = (TextView) findViewById(R.id.tvHome);
-        tvAccount = (TextView) findViewById(R.id.tvAccount);
-        tvCart = (TextView) findViewById(R.id.tvCart);
-        tvSupport = (TextView) findViewById(R.id.tvSupport);
-        tvLogout = (TextView) findViewById(R.id.tvLogout);
+
         linearHome = (LinearLayout) findViewById(R.id.home);
         linearAccount = (LinearLayout) findViewById(R.id.account);
         linearCart = (LinearLayout) findViewById(R.id.cart);

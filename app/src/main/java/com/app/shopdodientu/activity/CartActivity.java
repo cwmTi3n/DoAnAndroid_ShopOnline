@@ -8,13 +8,18 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import com.app.shopdodientu.R;
+import com.app.shopdodientu.util.UIHelper;
 
 public class CartActivity extends AppCompatActivity {
     private ImageView imvDeleteAll;
+
+    //BOTTOM
+    private LinearLayout linearCart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,10 +28,14 @@ public class CartActivity extends AppCompatActivity {
 
         MapItemView();
         DeleteAllClicked();
+
+        UIHelper.gotoCart(linearCart, this);
     }
 
     private void MapItemView(){
+
         imvDeleteAll = (ImageView) findViewById(R.id.imvDeleteAll);
+        linearCart = (LinearLayout) findViewById(R.id.cart);
     }
 
     private void DeleteAllClicked() {

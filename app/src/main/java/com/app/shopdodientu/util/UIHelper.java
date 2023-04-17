@@ -10,11 +10,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.app.shopdodientu.activity.CartActivity;
 import com.app.shopdodientu.activity.CatalogActivity;
 import com.app.shopdodientu.activity.ChangePasswordActivity;
 import com.app.shopdodientu.activity.HomeShopActivity;
 import com.app.shopdodientu.activity.LoginActivity;
 import com.app.shopdodientu.activity.MyAccountActivity;
+import com.app.shopdodientu.activity.MyOrderActivity;
 import com.app.shopdodientu.activity.ProductActivity;
 import com.app.shopdodientu.activity.ProfileActivity;
 import com.app.shopdodientu.activity.seller.AddProductActivity;
@@ -29,8 +31,8 @@ public class UIHelper {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
-    public static void gotoAccount(ImageView imvProfile, UserModel userModel, Context context) {
-        imvProfile.setOnClickListener(new View.OnClickListener() {
+    public static void gotoAccount(LinearLayout linear, UserModel userModel, Context context) {
+        linear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent;
@@ -47,15 +49,25 @@ public class UIHelper {
         });
     }
 
-    public static void gotoHome(ImageView imvHome, Activity activity) {
-        imvHome.setOnClickListener(new View.OnClickListener() {
+    public static void gotoHome(LinearLayout linear, Activity activity) {
+        linear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 activity.finish();
                 activity.startActivity(activity.getIntent());
             }
         });
+    }
 
+    public static void gotoCart(LinearLayout linear, Context context) {
+        linear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent;
+                intent = new Intent(context, CartActivity.class);
+                context.startActivity(intent);
+            }
+        });
     }
 
     public static void gotoWelcomeStore(TextView tv, Context context) {
@@ -81,52 +93,7 @@ public class UIHelper {
         });
     }
 
-    public static void gotoProfile(TextView tvProfile, Context context) {
-        tvProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent;
-                intent = new Intent(context, ProfileActivity.class);
-                context.startActivity(intent);
-            }
-        });
-    }
-
-    public static void backtoProfile(ImageView imv, Context context) {
-        imv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent;
-                intent = new Intent(context, ProfileActivity.class);
-                context.startActivity(intent);
-            }
-        });
-    }
-
-    public static void backtoMyAccount(TextView tv, Context context) {
-        tv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent;
-                intent = new Intent(context, MyAccountActivity.class);
-                context.startActivity(intent);
-            }
-        });
-
-    }
-
-    public static void gotoChangePassword(Button btn, Context context) {
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent;
-                intent = new Intent(context, ChangePasswordActivity.class);
-                context.startActivity(intent);
-            }
-        });
-    }
-
-    public static void gotoMainSeller(Button btn, Context context) {
+    public static void gotoMainSellerByButton(Button btn, Context context) {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -136,6 +103,30 @@ public class UIHelper {
             }
         });
     }
+
+    public static void gotoMainSellerByLinear(LinearLayout linear, Context context) {
+        linear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent;
+                intent = new Intent(context, MainSellerActivity.class);
+                context.startActivity(intent);
+            }
+        });
+    }
+
+    public static void gotoMyOrder(TextView tv, Context context) {
+        tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent;
+                intent = new Intent(context, MyOrderActivity.class);
+                context.startActivity(intent);
+            }
+        });
+    }
+
+
 
     public static void gotoHomeShop(TextView tv, Context context) {
         tv.setOnClickListener(new View.OnClickListener() {
@@ -190,5 +181,52 @@ public class UIHelper {
             }
         });
     }
+
+    public static void gotoProfile(TextView tvProfile, Context context) {
+        tvProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent;
+                intent = new Intent(context, ProfileActivity.class);
+                context.startActivity(intent);
+            }
+        });
+    }
+
+    public static void backtoProfile(ImageView imv, Context context) {
+        imv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent;
+                intent = new Intent(context, ProfileActivity.class);
+                context.startActivity(intent);
+            }
+        });
+    }
+
+    public static void backtoMyAccount(TextView tv, Context context) {
+        tv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent;
+                intent = new Intent(context, MyAccountActivity.class);
+                context.startActivity(intent);
+            }
+        });
+
+    }
+
+    public static void gotoChangePassword(Button btn, Context context) {
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent;
+                intent = new Intent(context, ChangePasswordActivity.class);
+                context.startActivity(intent);
+            }
+        });
+    }
+
+
 
 }

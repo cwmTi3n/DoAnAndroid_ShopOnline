@@ -19,7 +19,7 @@ public class RegisterSellerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register_seller);
 
         MapItemView();
-        UIHelper.gotoMainSeller(btnSave, this);
+        UIHelper.gotoMainSellerByButton(btnSave, this);
     }
 
     private void MapItemView(){
