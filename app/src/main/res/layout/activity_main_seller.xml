@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/chatting_orange" />
+                app:srcCompat="@drawable/support" />
         </LinearLayout>
 
         <TextView
@@ -310,20 +310,20 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/imgSupport"
+                    android:id="@+id/imgHistoryOrder"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="2.5"
                     android:gravity="center"
-                    app:srcCompat="@drawable/question_mark" />
+                    app:srcCompat="@drawable/ship" />
 
                 <TextView
-                    android:id="@+id/tvSupport"
+                    android:id="@+id/tvHistoryOrder"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1.5"
                     android:gravity="center"
-                    android:text="Support"
+                    android:text="History Order"
                     android:textSize="18dp"
                     android:textStyle="bold"/>
             </LinearLayout>

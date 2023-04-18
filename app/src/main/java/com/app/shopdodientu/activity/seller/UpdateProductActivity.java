@@ -14,7 +14,7 @@ import com.app.shopdodientu.R;
 
 public class UpdateProductActivity extends AppCompatActivity {
 
-    private Spinner sncateName, snstatus;
+    private Spinner sncateName;
     ArrayAdapter<String> adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +28,6 @@ public class UpdateProductActivity extends AppCompatActivity {
     }
 
     private void MapItemView(){
-        snstatus = findViewById(R.id.spinnerstatus);
         sncateName = findViewById(R.id.spinnercateName);
     }
 

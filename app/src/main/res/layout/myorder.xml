@@ -35,7 +35,7 @@
                 android:layout_gravity="center"
                 android:text="Order Code"
                 android:textSize="20dp"
-                android:textColor="#000"
+                android:textColor="#192AA4"
                 android:textStyle="bold"/>
 
             <TextView
