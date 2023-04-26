@@ -22,12 +22,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ShopDoDienTu"
         tools:targetApi="31">
+<!--        <activity-->
+<!--            android:name=".activity.seller.MyProductActivity"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".activity.seller.CheckingOrderActivity"
             android:exported="false" />
-<!--        <activity-->
-<!--            android:name=".activity.seller.HistoryOrderActivity"-->
-<!--            android:exported="false" />-->
+        <activity
+            android:name=".activity.seller.HistoryOrderActivity"
+            android:exported="false" />
         <activity
             android:name=".activity.CatalogActivity"
             android:exported="false" />
@@ -86,7 +89,7 @@
             android:name=".activity.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.seller.HistoryOrderActivity"
+            android:name=".activity.seller.MyProductActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

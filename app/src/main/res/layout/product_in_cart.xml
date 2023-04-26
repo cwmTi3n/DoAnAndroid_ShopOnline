@@ -1,116 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="3dp"
-    android:background="#ffffff">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="380dp"
-        android:layout_height="160dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/item_background">
 
-        <TextView
-            android:id="@+id/textView18"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:weightSum="5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0.2dp"
-            android:background="#F1E6E6"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:layout_height="0dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="4.8"
+            android:orientation="horizontal"
+            android:weightSum="10">
 
-        <ImageView
-            android:id="@+id/imgProduct"
-            android:layout_width="120dp"
-            android:layout_height="130dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/sample_product" />
-
-        <TextView
-            android:id="@+id/tvProductName"
-            android:layout_width="150dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="12dp"
-            android:text="Product Name"
-            android:textColor="#000"
-            android:textSize="19dp"
-            app:layout_constraintStart_toEndOf="@+id/imgProduct"
-            app:layout_constraintTop_toTopOf="parent" />
+            <CheckBox
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
 
 
-        <ImageView
-            android:id="@+id/imgDelete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.724"
-            app:layout_constraintStart_toEndOf="@+id/tvProductName"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/delete" />
+            <ImageView
+                android:id="@+id/imgProduct"
+                android:layout_width="0dp"
+                android:layout_height="125dp"
+                android:layout_weight="3"
+                app:srcCompat="@drawable/sample_product" />
 
-        <ImageView
-            android:id="@+id/imvMinus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginBottom="64dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imgProduct"
-            app:srcCompat="@drawable/minus" />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="125dp"
+                android:layout_marginStart="10dp"
+                android:layout_weight="5.8"
+                android:orientation="vertical"
+                android:weightSum="6">
 
-        <TextView
-            android:id="@+id/tvAmount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="16dp"
-            android:text="1"
-            android:textColor="#000"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/imvMinus"
-            app:layout_constraintTop_toBottomOf="@+id/tvProductName" />
+                <TextView
+                    android:id="@+id/tvProductName"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="2.5"
+                    android:text="Product Name"
+                    android:textColor="#C2000000"
+                    android:textSize="19dp" />
 
-        <ImageView
-            android:id="@+id/imvPlus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginBottom="64dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/tvAmount"
-            app:srcCompat="@drawable/plus" />
+                <TextView
+                    android:id="@+id/tvPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="2"
+                    android:text="₫219000"
+                    android:textColor="#ee4d2d"
+                    android:textSize="22dp" />
 
-        <TextView
-            android:id="@+id/tvTotalUnitProuct"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="152dp"
-            android:text="₫219000"
-            android:textColor="#E47F2B"
-            android:textSize="22dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imvMinus" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1.5"
+                    android:orientation="horizontal"
+                    android:weightSum="6">
 
+                    <TextView
+                        android:id="@+id/tvMinus"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_weight="0.8"
+                        android:background="@drawable/rectangle_line"
+                        android:text="-"
+                        android:textAlignment="center"
+                        android:textSize="20dp" />
+
+                    <TextView
+                        android:id="@+id/tvAmount"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_weight="1.5"
+                        android:background="@drawable/rectangle_line"
+                        android:text="1"
+                        android:textAlignment="center"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvPlus"
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_weight="0.8"
+                        android:background="@drawable/rectangle_line"
+                        android:text="+"
+                        android:textAlignment="center"
+                        android:textSize="20dp" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="0.2dp"
-            android:background="#F1E6E6"
-            app:layout_constraintBottom_toBottomOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-</FrameLayout>
+            android:layout_height="0dp"
+            android:layout_weight="0.2"
+            android:background="#F1E6E6" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

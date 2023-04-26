@@ -19,6 +19,7 @@ import com.app.shopdodientu.activity.MyAccountActivity;
 import com.app.shopdodientu.activity.MyOrderActivity;
 import com.app.shopdodientu.activity.ProductActivity;
 import com.app.shopdodientu.activity.ProfileActivity;
+import com.app.shopdodientu.activity.SearchActivity;
 import com.app.shopdodientu.activity.seller.AddProductActivity;
 import com.app.shopdodientu.activity.seller.MainSellerActivity;
 import com.app.shopdodientu.activity.seller.RegisterSellerActivity;
@@ -182,6 +183,16 @@ public class UIHelper {
         });
     }
 
+    public static void gotoSearchByImageView(ImageView imv, Context context) {
+        imv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent;
+                intent = new Intent(context, SearchActivity.class);
+                context.startActivity(intent);
+            }
+        });
+    }
     public static void gotoProfile(TextView tvProfile, Context context) {
         tvProfile.setOnClickListener(new View.OnClickListener() {
             @Override

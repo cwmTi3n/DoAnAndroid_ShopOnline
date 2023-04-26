@@ -27,7 +27,6 @@ public class SearchActivity extends AppCompatActivity {
 
     private TextView tvRelated, tvLatest, tvBestSeller, tvPrice;
     private TextView lineRelated, lineLatest, lineBest, lineHoriRelated, lineHoriLatest, lineHoriBest, lineHoriPrice;
-    private LinearLayout linearHome, linearAccount, linearCart, linearSupport, linearLogout;
     private TextView currentTextView, currentLine, currentLineHori;
 
 
@@ -47,13 +46,6 @@ public class SearchActivity extends AppCompatActivity {
         TextViewRelatedClick();
         TextViewPriceClicked();
 
-
-        //BOTTOM
-        LinearHomeClicked();
-        LinearAccountClicked();
-        LinearCartClicked();
-        LinearSupportClicked();
-        LinearLogoutClicked();
 
     }
 
@@ -133,62 +125,14 @@ public class SearchActivity extends AppCompatActivity {
                 }
                 SetDrawablePriceClicked();
                 SetEffectCurrentTextViewTop(tvPrice);
-                lineHoriPrice.setBackgroundColor(Color.parseColor("#FFA500"));
+                lineHoriPrice.setBackgroundColor(Color.parseColor("#fb5533"));
                 currentTextView = tvPrice;
                 currentLineHori = lineHoriPrice;
             }
         });
     }
 
-    private void LinearHomeClicked (){
-        linearHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(SearchActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
-    }
 
-    private void LinearAccountClicked() {
-        linearAccount.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(SearchActivity.this, MyAccountActivity.class);
-                startActivity(intent);
-            }
-        });
-    }
-
-    private void LinearCartClicked() {
-
-        linearCart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Intent intent = new Intent(SearchActivity.this, CartActivity.class);
-//                startActivity(intent);
-            }
-        });
-    }
-
-    private void LinearSupportClicked() {
-        linearSupport.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Intent intent = new Intent(SearchActivity.this, SupportActivity.class);
-//                startActivity(intent);
-            }
-        });
-    }
-
-    private void LinearLogoutClicked() {
-        linearLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-    }
     private void MapItemView(){
         tvRelated = (TextView) findViewById(R.id.tvrelated);
         tvLatest = (TextView) findViewById(R.id.tvlatest);
@@ -203,12 +147,6 @@ public class SearchActivity extends AppCompatActivity {
         lineHoriBest = (TextView) findViewById(R.id.lineHoriBest);
         lineHoriPrice = (TextView) findViewById(R.id.lineHoriPrice);
 
-        linearHome = (LinearLayout) findViewById(R.id.home);
-        linearAccount = (LinearLayout) findViewById(R.id.account);
-        linearCart = (LinearLayout) findViewById(R.id.cart);
-        linearSupport = (LinearLayout) findViewById(R.id.support);
-        linearLogout = (LinearLayout) findViewById(R.id.logout);
-
     }
 
 
@@ -219,11 +157,11 @@ public class SearchActivity extends AppCompatActivity {
     }
     private void SetEffectCurrentTextViewTop(TextView current){
         current.setTypeface(null, Typeface.BOLD);
-        current.setTextColor(Color.parseColor("#FFA500"));
+        current.setTextColor(Color.parseColor("#fb5533"));
     }
     private void SetEffectLineCurrentTextViewTop(TextView line, TextView lineHori){
-        line.setBackgroundColor(Color.parseColor("#FFA500"));
-        lineHori.setBackgroundColor(Color.parseColor("#FFA500"));
+        line.setBackgroundColor(Color.parseColor("#fb5533"));
+        lineHori.setBackgroundColor(Color.parseColor("#fb5533"));
     }
     private void SetEffectLineLastTextViewTop(TextView line, TextView lineHori) {
         line.setBackgroundColor(Color.parseColor("#F1E6E6"));

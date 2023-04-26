@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1.2"
-            android:background="#F15050"
+            android:background="#fb5533"
             android:text="ADD PRODUCT"
             android:gravity="center"
             android:textSize="25dp"
@@ -115,13 +115,13 @@
             android:id="@+id/btnadd"
             android:layout_width="250dp"
             android:layout_height="0dp"
-            android:layout_weight="1.3"
+            android:layout_weight="1.2"
             android:layout_gravity="center"
             android:text="Add Product"
             android:textSize="18dp"
             android:fontFamily="sans-serif-black"
             android:drawableLeft="@drawable/plus"
-            android:backgroundTint="#F15050"/>
+            android:backgroundTint="#fb5533"/>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
