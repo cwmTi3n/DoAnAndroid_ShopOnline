@@ -38,15 +38,6 @@
                 android:textSize="20dp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/tvFeedback"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="0.4"
-                android:text="Feedback"
-                android:textColor="#ee4d2d"
-                android:textSize="20dp" />
         </LinearLayout>
 
         <TextView
@@ -172,7 +163,7 @@
             android:drawableRight="@drawable/back_left"
             android:gravity="center"
             android:paddingStart="20dp"
-            android:text="Order delivered successfully"
+            android:text="Order is delivering"
             android:textAlignment="viewStart"
             android:textColor="#26aa99"
             android:textSize="18dp" />
@@ -183,15 +174,18 @@
             android:layout_weight="0.05"
             android:background="#F1E6E6" />
 
+
         <Button
-            android:id="@+id/btnRepurchase"
+            android:id="@+id/btnChat"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_gravity="end"
             android:layout_marginRight="10dp"
-            android:layout_weight="2.2"
+            android:layout_weight="2.3"
             android:backgroundTint="#d73211"
-            android:text="repurchase" />
+            android:text="CONTACT SHOP"
+            android:textStyle="bold"/>
+
 
         <TextView
             android:layout_width="match_parent"

@@ -117,7 +117,7 @@
             android:layout_height="0dp"
             android:layout_weight="1.5"
             android:layout_marginTop="10dp"
-            android:text="Order"
+            android:text="Order                                  Checking Order"
             android:textStyle="bold"
             android:textSize="18dp"
             android:gravity="center"
@@ -137,7 +137,7 @@
             android:orientation="horizontal">
 
             <LinearLayout
-                android:id="@+id/linearCancelOrder"
+                android:id="@+id/linearDeliveredOrder"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:background="#F5F2F2"
@@ -146,7 +146,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tvCancelOrder"
+                    android:id="@+id/tvDeliverd"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="2.5"
@@ -160,14 +160,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1.5"
-                    android:text="Cancel Order"
+                    android:text="Deliver Order"
                     android:gravity="center"
                     android:textSize="18dp"
                     android:textColor="#000"/>
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/linearRefundOrder"
+                android:id="@+id/linearCancelledOrder"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
@@ -177,7 +177,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tvRefundOrder"
+                    android:id="@+id/tvCancelledOrder"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="2.5"
@@ -191,7 +191,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1.5"
-                    android:text="Refund Order"
+                    android:text="Cancel Order"
                     android:gravity="center"
                     android:textSize="18dp"
                     android:textColor="#000"/>

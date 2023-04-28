@@ -3,10 +3,12 @@ package com.app.shopdodientu.activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.app.shopdodientu.R;
 
 public class MyOrderActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

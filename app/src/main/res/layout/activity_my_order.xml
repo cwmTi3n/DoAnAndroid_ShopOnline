@@ -26,15 +26,39 @@
             android:drawableLeft="@drawable/arrow_left"
             android:drawablePadding="10dp"/>
 
-
-
-
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.01"
+            android:background="#F1E6E6" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.8"
             android:orientation="horizontal"
-            android:weightSum="9">
+            android:weightSum="12">
+
+            <TextView
+                android:id="@+id/tvWaitting"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:text="Waitting"
+                android:textColor="#8C8A85"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/tvDelivering"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:text="Delivering"
+                android:textColor="#ee4d2d"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:gravity="center"/>
 
             <TextView
                 android:id="@+id/tvDelivered"
@@ -42,9 +66,9 @@
                 android:layout_height="match_parent"
                 android:layout_weight="3"
                 android:text="Delivered"
-                android:textColor="#ee4d2d"
+                android:textColor="#8C8A85"
                 android:textStyle="bold"
-                android:textSize="20dp"
+                android:textSize="18dp"
                 android:gravity="center"/>
 
             <TextView
@@ -55,19 +79,9 @@
                 android:gravity="center"
                 android:text="Cancelled"
                 android:textColor="#8C8A85"
-                android:textSize="20dp"
+                android:textSize="18dp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/tvRefunded"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="3"
-                android:text="Refunded"
-                android:textColor="#8C8A85"
-                android:textStyle="bold"
-                android:textSize="20dp"
-                android:gravity="center"/>
 
         </LinearLayout>
 
@@ -76,7 +90,14 @@
             android:layout_height="0dp"
             android:layout_weight="0.1"
             android:orientation="horizontal"
-            android:weightSum="9">
+            android:weightSum="12">
+
+            <TextView
+                android:id="@+id/lineWaitting"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:background="#F1E6E6" />
 
             <TextView
                 android:id="@+id/lineDelivered"

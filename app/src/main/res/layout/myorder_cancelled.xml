@@ -39,12 +39,12 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/tvFeedback"
+                android:id="@+id/TextView12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_weight="0.4"
-                android:text="Feedback"
+                android:text="Cancelled"
                 android:textColor="#ee4d2d"
                 android:textSize="20dp" />
         </LinearLayout>
@@ -172,9 +172,9 @@
             android:drawableRight="@drawable/back_left"
             android:gravity="center"
             android:paddingStart="20dp"
-            android:text="Order delivered successfully"
+            android:textColor="#d73211"
+            android:text="Order Cancelled"
             android:textAlignment="viewStart"
-            android:textColor="#26aa99"
             android:textSize="18dp" />
 
         <TextView
