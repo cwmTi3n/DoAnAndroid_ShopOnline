@@ -203,6 +203,7 @@
             </LinearLayout>
         </LinearLayout>
 
+        <!--        catalog-->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcvCategory"
             android:layout_marginTop="5dp"

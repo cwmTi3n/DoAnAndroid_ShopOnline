@@ -25,13 +25,12 @@
                 android:layout_height="match_parent"
                 android:layout_weight="6"
                 android:paddingLeft="10dp"
-                android:gravity="center"
-                android:textAlignment="viewStart"
+                android:gravity="center|start"
                 android:textColor="#ee4d2d"
                 android:text="My Products"
                 android:textStyle="bold"
                 android:textSize="22dp"
-                android:drawableLeft="@drawable/arrow_left"
+                android:drawableLeft="@drawable/back_left_orange"
                 android:drawableTint="#ee4d2d"
                 android:drawablePadding="10dp"/>
 
@@ -139,6 +138,7 @@
             </LinearLayout>
         </LinearLayout>
 
+        <!--        product_horizontal -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcv"
             android:layout_width="match_parent"

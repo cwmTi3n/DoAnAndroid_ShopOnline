@@ -23,7 +23,7 @@
             android:textStyle="bold"
             android:layout_gravity="center"
             android:textSize="25dp"
-            android:drawableLeft="@drawable/arrow_left"
+            android:drawableLeft="@drawable/back_left_orange"
             android:drawablePadding="10dp"/>
 
         <TextView

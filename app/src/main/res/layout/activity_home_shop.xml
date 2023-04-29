@@ -218,6 +218,7 @@
             android:drawableRight="@drawable/back_left"
             android:layout_marginLeft="10dp"/>
 
+        <!--        catalog -->
         <GridView
             android:id="@+id/gvRecommend"
             android:layout_width="match_parent"
@@ -237,6 +238,7 @@
             android:drawableRight="@drawable/back_left"
             android:layout_marginLeft="10dp"/>
 
+        <!--        product_horizontal -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcv"
             android:layout_width="match_parent"

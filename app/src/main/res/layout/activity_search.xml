@@ -27,7 +27,7 @@
                 android:layout_weight="1"
                 android:paddingLeft="-10dp"
                 android:layout_marginTop="4dp"
-                app:srcCompat="@drawable/arrow_left" />
+                app:srcCompat="@drawable/back_left_orange" />
 
             <EditText
                 android:id="@+id/edtfind"
@@ -176,6 +176,7 @@
                 android:background="#F1E6E6"/>
         </LinearLayout>
 
+        <!--        product-->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/productIView"
             android:layout_width="match_parent"

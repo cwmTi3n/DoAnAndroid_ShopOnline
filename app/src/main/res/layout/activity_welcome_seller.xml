@@ -24,7 +24,7 @@
             android:textSize="25dp"
             android:textColor="#373b54"
             android:gravity="center"
-            android:drawableLeft="@drawable/arrow_left"
+            android:drawableLeft="@drawable/back_left_orange"
             android:drawablePadding="10dp"/>
 
         <ImageView

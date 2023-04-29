@@ -62,6 +62,7 @@
             android:textAlignment="viewStart"
             android:background="#F7FBF5F5"/>
 
+        <!--        product_in_cart-->
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="0dp"

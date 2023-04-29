@@ -118,6 +118,7 @@
 
                 </LinearLayout>
 
+                <!--        category -->
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rcvcategory"
                     android:layout_width="match_parent"
@@ -139,6 +140,7 @@
                     android:textSize="20dp"
                     android:textStyle="bold" />
 
+                <!--        product -->
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rcvproduct"
                     android:layout_width="match_parent"
