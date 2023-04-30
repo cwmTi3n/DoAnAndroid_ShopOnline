@@ -7,126 +7,44 @@
     tools:context=".activity.MyOrderActivity">
 
 
-    <LinearLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:weightSum="18">
+        tools:context=".activity.MyOrderActivity">
 
-
-        <TextView
-            android:id="@+id/tvMyOrder"
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBar"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="My Order"
-            android:textStyle="bold"
-            android:layout_gravity="center"
-            android:textSize="25dp"
-            android:drawableLeft="@drawable/back_left_orange"
-            android:drawablePadding="10dp"/>
+            android:layout_height="wrap_content"
+            android:theme="@style/Theme.AppCompat.DayNight">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.01"
-            android:background="#F1E6E6" />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.8"
-            android:orientation="horizontal"
-            android:weightSum="12">
-
-            <TextView
-                android:id="@+id/tvWaitting"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="3"
-                android:text="Waitting"
-                android:textColor="#8C8A85"
-                android:textStyle="bold"
-                android:textSize="18dp"
-                android:gravity="center"/>
-
-            <TextView
-                android:id="@+id/tvDelivering"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="3"
-                android:text="Delivering"
-                android:textColor="#ee4d2d"
-                android:textStyle="bold"
-                android:textSize="18dp"
-                android:gravity="center"/>
-
-            <TextView
-                android:id="@+id/tvDelivered"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="3"
-                android:text="Delivered"
-                android:textColor="#8C8A85"
-                android:textStyle="bold"
-                android:textSize="18dp"
-                android:gravity="center"/>
-
-            <TextView
-                android:id="@+id/tvCancelled"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="3"
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolBar"
+                android:layout_width="match_parent"
+                android:layout_height="65dp"
                 android:gravity="center"
-                android:text="Cancelled"
-                android:textColor="#8C8A85"
-                android:textSize="18dp"
-                android:textStyle="bold" />
+                android:minHeight="?actionBarSize"
+                android:padding="16dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Menu"
+                app:title="My Order" />
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabLayout"
+                android:contentDescription="Enter How Much Cookies You Want"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#54CBBF" />
 
 
-        </LinearLayout>
+        </com.google.android.material.appbar.AppBarLayout>
 
-        <LinearLayout
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPager2"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.1"
-            android:orientation="horizontal"
-            android:weightSum="12">
+            android:layout_height="match_parent"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"/>
 
-            <TextView
-                android:id="@+id/lineWaitting"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="3"
-                android:background="#F1E6E6" />
 
-            <TextView
-                android:id="@+id/lineDelivered"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="3"
-                android:background="#ee4d2d" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-            <TextView
-                android:id="@+id/lineCancelled"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="3"
-                android:background="#F1E6E6" />
-
-            <TextView
-                android:id="@+id/lineRefunded"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="3"
-                android:background="#F1E6E6" />
-
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.2"
-            android:background="#F1E6E6" />
-
-    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

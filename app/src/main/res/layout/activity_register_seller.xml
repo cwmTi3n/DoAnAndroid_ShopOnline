@@ -103,7 +103,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/textView14"
+            android:id="@+id/textView100"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.25"
@@ -121,7 +121,7 @@
             android:inputType="textPersonName" />
 
         <TextView
-            android:id="@+id/textView14"
+            android:id="@+id/textView125"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.25"
