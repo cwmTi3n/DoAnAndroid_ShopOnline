@@ -19,13 +19,13 @@
             android:weightSum="8">
 
             <ImageView
-                android:id="@+id/imageView4"
+                android:id="@+id/imgAvatarShop"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/code" />
+                app:srcCompat="@drawable/shop" />
 
             <TextView
                 android:id="@+id/tvShopName"
@@ -38,15 +38,6 @@
                 android:textSize="20dp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/TextView12"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="0.4"
-                android:text="Cancelled"
-                android:textColor="#ee4d2d"
-                android:textSize="20dp" />
         </LinearLayout>
 
         <TextView
@@ -168,13 +159,12 @@
             android:id="@+id/tvDetailOrder"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2.2"
+            android:layout_weight="2"
             android:drawableRight="@drawable/back_left"
-            android:gravity="center"
+            android:gravity="center|start"
             android:paddingStart="20dp"
             android:textColor="#d73211"
             android:text="Order Cancelled"
-            android:textAlignment="viewStart"
             android:textSize="18dp" />
 
         <TextView
@@ -189,7 +179,7 @@
             android:layout_height="0dp"
             android:layout_gravity="end"
             android:layout_marginRight="10dp"
-            android:layout_weight="2.2"
+            android:layout_weight="2.4"
             android:backgroundTint="#d73211"
             android:text="repurchase" />
 

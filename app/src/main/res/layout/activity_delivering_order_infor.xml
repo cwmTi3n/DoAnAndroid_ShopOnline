@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.CancelOrderInforActivity">
+    tools:context=".activity.DeliveringOrderInforActivity">
 
 
     <LinearLayout
@@ -46,7 +46,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1.8"
-            android:background="#E9DD7296"
+            android:background="#4CBE7B"
             android:orientation="horizontal"
             android:weightSum="8">
 
@@ -63,7 +63,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="2"
-                    android:text="Order cancelled"
+                    android:text="Order is delivering"
                     android:textStyle="bold"
                     android:textSize="18dp"
                     android:textColor="#ffffff"
@@ -76,7 +76,7 @@
                     android:layout_weight="2.5"
                     android:paddingTop="5dp"
                     android:paddingStart="15dp"
-                    android:text="Order cancelled ! You still can buy again later"
+                    android:text="We will deliver to you as soon as possible!"
                     android:textColor="#ffffff" />
             </LinearLayout>
 
@@ -87,13 +87,14 @@
                 android:layout_weight="2"
                 android:paddingTop="8dp"
                 android:paddingBottom="20dp"
-                app:srcCompat="@drawable/cancel_order" />
+                app:srcCompat="@drawable/delivering" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="2"
+            android:layout_marginTop="10dp"
             android:layout_margin="5dp"
             android:paddingTop="5dp"
             android:background="@drawable/radius_10dp_border_1dp"
@@ -244,14 +245,46 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:text="Reason"
+                android:text="Status"
                 android:textSize="18dp"/>
             <TextView
-                android:id="@+id/tvReason"
+                android:id="@+id/Textview30"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:text="Change my idea"
+                android:text="Waitting to confirm"
+                android:textAlignment="viewEnd"
+                android:textSize="18dp"/>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.02"
+            android:background="#F1E6E6" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:weightSum="6">
+
+            <TextView
+                android:id="@+id/textView25"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:text="Shipping"
+                android:textSize="18dp"/>
+            <TextView
+                android:id="@+id/tvShipping"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:text="Fast Delivery"
                 android:textAlignment="viewEnd"
                 android:textSize="18dp"/>
         </LinearLayout>
@@ -294,39 +327,6 @@
             android:layout_weight="0.02"
             android:background="#F1E6E6" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:orientation="horizontal"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_weight="1"
-            android:weightSum="6">
-
-            <TextView
-                android:id="@+id/textView25"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="3"
-                android:text="Cancel Time"
-                android:textSize="18dp"/>
-            <TextView
-                android:id="@+id/tvPickupTime"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="3"
-                android:text="2022/02/04 12:07"
-                android:textAlignment="viewEnd"
-                android:textSize="18dp"/>
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.02"
-            android:background="#F1E6E6" />
-
-
     </LinearLayout>
 
 
@@ -352,7 +352,9 @@
                 android:layout_marginRight="14dp"
                 android:layout_height="50dp"
                 android:backgroundTint="#ee4d2d"
-                android:text="repurchase"/>
+                android:textStyle="bold"
+                android:text="ITEM RECEIVED"/>
+
         </com.google.android.material.bottomappbar.BottomAppBar>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

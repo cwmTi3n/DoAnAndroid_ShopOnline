@@ -19,13 +19,13 @@
             android:weightSum="8">
 
             <ImageView
-                android:id="@+id/imageView4"
+                android:id="@+id/imgAvatarShop"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/code" />
+                app:srcCompat="@drawable/shop" />
 
             <TextView
                 android:id="@+id/tvShopName"
@@ -159,12 +159,11 @@
             android:id="@+id/tvDetailOrder"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2.2"
+            android:layout_weight="2"
             android:drawableRight="@drawable/back_left"
-            android:gravity="center"
+            android:gravity="center|start"
             android:paddingStart="20dp"
             android:text="Order is delivering"
-            android:textAlignment="viewStart"
             android:textColor="#26aa99"
             android:textSize="18dp" />
 
@@ -175,16 +174,33 @@
             android:background="#F1E6E6" />
 
 
-        <Button
-            android:id="@+id/btnChat"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_gravity="end"
-            android:layout_marginRight="10dp"
-            android:layout_weight="2.3"
-            android:backgroundTint="#d73211"
-            android:text="CONTACT SHOP"
-            android:textStyle="bold"/>
+            android:layout_weight="2.5"
+            android:weightSum="6">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="4"
+                android:paddingStart="20dp"
+                android:text="Click when you received"
+                android:textSize="18dp" />
+
+            <Button
+                android:id="@+id/btnConfirm"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:layout_marginRight="10dp"
+                android:layout_weight="2"
+                android:backgroundTint="#d73211"
+                android:text="RECEIVED"
+                android:textStyle="bold"/>
+
+        </LinearLayout>
 
 
         <TextView

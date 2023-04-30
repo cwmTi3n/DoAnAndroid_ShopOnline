@@ -19,13 +19,13 @@
             android:weightSum="8">
 
             <ImageView
-                android:id="@+id/imageView4"
+                android:id="@+id/imgAvatarShop"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/code" />
+                app:srcCompat="@drawable/shop" />
 
             <TextView
                 android:id="@+id/tvShopName"
@@ -141,7 +141,7 @@
                 android:id="@+id/tvTotal"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_gravity="center_vertical"
                 android:layout_weight="2"
                 android:text="₫219000"
                 android:textColor="#ee4d2d"
@@ -159,12 +159,11 @@
             android:id="@+id/tvDetailOrder"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2.2"
+            android:layout_weight="2"
             android:drawableRight="@drawable/back_left"
-            android:gravity="center"
+            android:gravity="center|start"
             android:paddingStart="20dp"
             android:text="Order is waiting for confirmation"
-            android:textAlignment="viewStart"
             android:textColor="#26aa99"
             android:textSize="18dp" />
 
@@ -178,7 +177,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:gravity="right"
-            android:layout_weight="2.2"
+            android:layout_weight="2.4"
             android:weightSum="8">
 
             <Button
@@ -192,6 +191,7 @@
                 android:text="Cancel" />
 
             <TextView
+                android:id="@+id/tvChat"
                 android:layout_width="0dp"
                 android:layout_height="30dp"
                 android:layout_gravity="end|center"
@@ -201,8 +201,7 @@
                 android:drawableLeft="@drawable/smallchat"
                 android:paddingStart="10dp"
                 android:drawablePadding="10dp"
-                android:gravity="center"
-                android:textAlignment="viewStart"
+                android:gravity="center|start"
                 android:text="CHAT"
                 android:textColor="#252020" />
         </LinearLayout>

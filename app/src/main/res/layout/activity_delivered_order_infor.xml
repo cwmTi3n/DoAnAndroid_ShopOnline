@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.SuccessfulOrderInforActivity">
+    tools:context=".activity.DeliveredOrderInforActivity">
 
 
     <LinearLayout
@@ -350,7 +350,7 @@
                 android:layout_width="match_parent"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="14dp"
-                android:layout_height="match_parent"
+                android:layout_height="50dp"
                 android:backgroundTint="#ee4d2d"
                 android:text="repurchase"/>
         </com.google.android.material.bottomappbar.BottomAppBar>
