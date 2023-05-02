@@ -26,9 +26,9 @@
         <activity
             android:name=".activity.AddAddressActivity"
             android:exported="false" />
-<!--        <activity-->
-<!--            android:name=".activity.ChooseAddressActivity"-->
-<!--            android:exported="false" />-->
+        <activity
+            android:name=".activity.LoginActivity"
+            android:exported="false" />
         <activity
             android:name=".activity.CheckOutActivity"
             android:exported="false" />
@@ -108,10 +108,10 @@
             android:name=".activity.SignupActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".activity.ChooseAddressActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.ChooseAddressActivity"
+            android:name=".activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

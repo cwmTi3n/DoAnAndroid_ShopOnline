@@ -67,21 +67,23 @@
 
                     </LinearLayout>
 
-                    <EditText
-                        android:id="@+id/edtfind"
+                    <SearchView
+                        android:id="@+id/svproduct"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
                         android:background="#fff"
-                        android:drawableLeft="@drawable/search"
+                        android:drawableStart="@drawable/search"
                         android:drawablePadding="10dp"
                         android:ems="10"
-                        android:hint="Find Your Product"
+                        android:queryHint="Find Your Product"
                         android:inputType="textPersonName"
                         android:paddingStart="20dp"
                         android:textSize="15dp"
-                        android:textStyle="italic" />
+                        android:focusableInTouchMode="true"
+                        android:textStyle="italic"
+                        android:imeOptions="actionSearch"/>
 
                 </LinearLayout>
 

@@ -5,11 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.SearchActivity">
-
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/ncvSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="35"
+        tools:ignore="MissingConstraints">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:weightSum="35"
         android:orientation="vertical">
 
         <LinearLayout
@@ -47,13 +51,14 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/tvsearchfor"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1.2"
             android:layout_marginLeft="55dp"
             android:layout_marginRight="55dp"
-            android:textStyle="italic"
-            android:text="Search For...."/>
+            android:layout_weight="1.2"
+            android:text="Search For...."
+            android:textStyle="italic" />
 
         <TextView
             android:layout_width="match_parent"
@@ -176,13 +181,15 @@
                 android:background="#F1E6E6"/>
         </LinearLayout>
 
-        <!--        product-->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/productIView"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="29" />
 
+            <!--        product-->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcvproduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
     </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

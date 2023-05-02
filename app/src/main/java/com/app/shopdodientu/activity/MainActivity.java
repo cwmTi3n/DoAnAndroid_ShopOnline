@@ -17,16 +17,21 @@ import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import android.widget.SearchView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.app.shopdodientu.R;
 import com.app.shopdodientu.adapter.CategoryAdapter;
@@ -61,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
     private ProductAdapter productAdapter;
     private List<ProductModel> products;
     private ApiService apiService;
+
+    private SearchView svProduct;
     private int page;
     private int total;
 
@@ -78,7 +85,19 @@ public class MainActivity extends AppCompatActivity {
         UIHelper.gotoAccount(linearAccount, userModel, getApplicationContext());
         UIHelper.gotoCart(linearCart, this);
         gotoHome(this);
+        search();
 
+        //load more
+        final NestedScrollView nestedScrollView = findViewById(R.id.ncvMain);
+        nestedScrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
+            @Override
+            public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+                if (scrollY == (v.getChildAt(0).getMeasuredHeight() - v.getMeasuredHeight())) {
+                    // At bottom of NestedScrollView, load more data for RecyclerView
+                    loadmoreProduct();
+                }
+            }
+        });
 
     }
     private void gotoHome(Activity activity) {
@@ -127,7 +146,26 @@ public class MainActivity extends AppCompatActivity {
         linearCart = (LinearLayout) findViewById(R.id.cart);
         linearSupport = (LinearLayout) findViewById(R.id.support);
         linearLogout = (LinearLayout) findViewById(R.id.logout);
+        svProduct = (SearchView) findViewById(R.id.svproduct);
         apiService = ApiClient.getApiService();
+    }
+
+    private void search() {
+        svProduct.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+                intent.putExtra("keyword", s);
+                startActivity(intent);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                return false;
+            }
+        });
+
     }
 
 
@@ -174,17 +212,6 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                 });
-        //load more
-        final NestedScrollView nestedScrollView = findViewById(R.id.ncvMain);
-        nestedScrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
-            @Override
-            public void onScrollChange(NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-                if (scrollY == (v.getChildAt(0).getMeasuredHeight() - v.getMeasuredHeight())) {
-                    // At bottom of NestedScrollView, load more data for RecyclerView
-                    loadmoreProduct();
-                }
-            }
-        });
     }
     private void loadmoreProduct() {
         page = page + 1;

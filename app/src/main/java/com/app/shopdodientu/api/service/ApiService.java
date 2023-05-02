@@ -31,7 +31,11 @@ public interface ApiService {
 
     @GET("find-product?orderby=desccreateDate")
     Call<PageModel<ProductModel>> lastProduct(@Query("page") int page);
-
+    @GET("find-product")
+    Call<PageModel<ProductModel>> findProduct(@Query("categoryId") int id,
+                                              @Query("keyword") String keyword,
+                                              @Query("orderby") String orderby,
+                                              @Query("page") int page);
     @PUT("account/update-name")
     @FormUrlEncoded
     Call<UserModel> updateName(@Field("id") int id, @Field("fullname") String fullname);

@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -35,6 +36,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ProductModel productModel = productModels.get(position);
+        holder.tvProductname.setText(productModel.getName());
+        holder.tvProductprice.setText(String.valueOf(productModel.getPrice()));
+        holder.tvShop.setText(productModel.getShopname());
         Glide.with(context)
                 .load(productModel.getImage())
                 .into(holder.imvProduct);
@@ -47,10 +51,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private ImageView imvProduct;
+        private TextView tvProductname, tvProductprice, tvShop;
 
         public ViewHolder(final View itemView) {
             super(itemView);
             imvProduct = (ImageView) itemView.findViewById(R.id.productIView);
+            tvProductname = (TextView) itemView.findViewById(R.id.tvproductName);
+            tvProductprice = (TextView) itemView.findViewById(R.id.tvprice);
+            tvShop = (TextView) itemView.findViewById(R.id.tvshopName);
         }
     }
 }
