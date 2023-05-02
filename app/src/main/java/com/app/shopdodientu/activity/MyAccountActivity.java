@@ -50,6 +50,7 @@ public class MyAccountActivity extends AppCompatActivity {
         gotoMyOrder();
         //BOTTOM
         UIHelper.gotoCart(linearCart, this);
+        UIHelper.gotoHome(linearHome, this);
 
     }
 

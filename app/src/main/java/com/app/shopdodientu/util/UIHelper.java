@@ -15,6 +15,7 @@ import com.app.shopdodientu.activity.CatalogActivity;
 import com.app.shopdodientu.activity.ChangePasswordActivity;
 import com.app.shopdodientu.activity.HomeShopActivity;
 import com.app.shopdodientu.activity.LoginActivity;
+import com.app.shopdodientu.activity.MainActivity;
 import com.app.shopdodientu.activity.MyAccountActivity;
 import com.app.shopdodientu.activity.MyOrderActivity;
 import com.app.shopdodientu.activity.ProductActivity;
@@ -42,7 +43,6 @@ public class UIHelper {
                 }
                 else {
                     intent = new Intent(context, MyAccountActivity.class);
-                    intent.putExtra("user", userModel);
                 }
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
@@ -50,12 +50,13 @@ public class UIHelper {
         });
     }
 
-    public static void gotoHome(LinearLayout linear, Activity activity) {
+    public static void gotoHome(LinearLayout linear, Context context) {
         linear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                activity.finish();
-                activity.startActivity(activity.getIntent());
+                Intent intent;
+                intent = new Intent(context, MainActivity.class);
+                context.startActivity(intent);
             }
         });
     }
@@ -227,16 +228,16 @@ public class UIHelper {
 
     }
 
-    public static void gotoChangePassword(Button btn, Context context) {
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent;
-                intent = new Intent(context, ChangePasswordActivity.class);
-                context.startActivity(intent);
-            }
-        });
-    }
+//    public static void gotoChangePassword(Button btn, Context context) {
+//        btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent;
+//                intent = new Intent(context, ChangePasswordActivity.class);
+//                context.startActivity(intent);
+//            }
+//        });
+//    }
 
 
 

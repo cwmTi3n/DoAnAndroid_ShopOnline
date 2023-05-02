@@ -21,6 +21,7 @@ import com.app.shopdodientu.R;
 import com.app.shopdodientu.api.client.ApiClient;
 import com.app.shopdodientu.api.service.ApiService;
 import com.app.shopdodientu.model.UserModel;
+import com.app.shopdodientu.util.Constant;
 import com.app.shopdodientu.util.UIHelper;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -85,45 +86,53 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String username = edtUsername.getText().toString();
                 String password = tiedPassword.getText().toString();
-                if(cbRemember.isChecked()) {
+                if (cbRemember.isChecked()) {
 
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putString("username", username);
                     editor.putString("password", password);
                     editor.putBoolean("check", true);
                     editor.commit();
-                }
-                else {
+                } else {
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.remove("username");
                     editor.remove("password");
                     editor.remove("check");
                     editor.commit();
                 }
-                ApiService apiService = ApiClient.getApiLoginService(username, password);
-                apiService.login(username, password)
-                        .enqueue(new Callback<UserModel>() {
-                            @Override
-                            public void onResponse(Call<UserModel> call, Response<UserModel> response) {
-                                UserModel userModel = response.body();
-                                if(userModel == null) {
-                                    Toast.makeText(LoginActivity.this, "Tên đăng nhập hoặc mật khẩu không đúng", Toast.LENGTH_LONG).show();
-                                }
-                                else {
-                                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                    intent.putExtra("user", userModel);
-                                    startActivity(intent);
-                                }
-
-                            }
-
-                            @Override
-                            public void onFailure(Call<UserModel> call, Throwable t) {
-                                Log.d("test", "no");
-                            }
-                        });
+                callApiLogin(username, password);
             }
         });
+    }
+    private void callApiLogin(String username, String password) {
+        ApiClient.username = username;
+        ApiClient.password = password;
+        ApiService apiService = ApiClient.getApiService();
+        apiService.login(username, password)
+                .enqueue(new Callback<UserModel>() {
+                    @Override
+                    public void onResponse(Call<UserModel> call, Response<UserModel> response) {
+                        UserModel userModel = response.body();
+                        if(userModel == null) {
+                            ApiClient.username = null;
+                            ApiClient.password = null;
+                            Toast.makeText(LoginActivity.this, "Tên đăng nhập hoặc mật khẩu không đúng", Toast.LENGTH_LONG).show();
+                        }
+                        else {
+                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+//                                    intent.putExtra("user", userModel);
+                            Constant.userLogin = userModel;
+                            startActivity(intent);
+                        }
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<UserModel> call, Throwable t) {
+                        ApiClient.username = null;
+                        ApiClient.password = null;
+                    }
+                });
     }
 
     private void forgetPass(){

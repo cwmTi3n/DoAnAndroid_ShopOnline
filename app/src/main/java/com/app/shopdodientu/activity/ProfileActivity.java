@@ -16,11 +16,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.app.shopdodientu.R;
 import com.app.shopdodientu.api.client.ApiClient;
 import com.app.shopdodientu.api.service.ApiService;
 import com.app.shopdodientu.model.UserModel;
+import com.app.shopdodientu.util.Constant;
 import com.app.shopdodientu.util.UIHelper;
 import com.bumptech.glide.Glide;
 import com.google.android.material.textfield.TextInputEditText;
@@ -36,7 +38,8 @@ public class ProfileActivity extends AppCompatActivity {
     private TextInputEditText tifFullname, tifUsername, tifEmail, tifPhone;
     private Button btnChangepass, btnUpdate;
     //BOTTOM
-    private LinearLayout linearCart;
+    private LinearLayout linearHome, linearAccount, linearCart, linearSupport, linearLogout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,12 +48,25 @@ public class ProfileActivity extends AppCompatActivity {
 
         MapItemView();
 
-        UIHelper.gotoChangePassword(btnChangepass, this);
+//        UIHelper.gotoChangePassword(btnChangepass, this);
 
         //BOTTOM
         UIHelper.gotoCart(linearCart, this);
         renderView();
         updateFullname();
+        gotoChangePassword();
+        UIHelper.gotoHome(linearHome, getApplicationContext());
+    }
+
+    private void gotoChangePassword() {
+            btnChangepass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent;
+                intent = new Intent(ProfileActivity.this, ChangePasswordActivity.class);
+                ProfileActivity.this.startActivity(intent);
+            }
+        });
     }
 
     private void MapItemView() {
@@ -62,12 +78,20 @@ public class ProfileActivity extends AppCompatActivity {
         imgAvatar = (ImageView) findViewById(R.id.imgavatar);
         btnUpdate = (Button) findViewById(R.id.btnupdate);
         tifFullname = (TextInputEditText) findViewById(R.id.tffullname);
+        tifUsername = (TextInputEditText) findViewById(R.id.tfusername);
+        tifEmail = (TextInputEditText) findViewById(R.id.tfemail);
+        tifPhone = (TextInputEditText) findViewById(R.id.tfphone);
+        linearHome = (LinearLayout) findViewById(R.id.home);
     }
 
     private void renderView() {
-        UserModel user = (UserModel) getIntent().getSerializableExtra("user");
+        UserModel user = Constant.userLogin;
         tvFullname.setText(user.getFullname());
         tvEmail.setText(user.getEmail());
+        tifFullname.setText(user.getFullname());
+        tifUsername.setText(user.getUsername());
+        tifEmail.setText(user.getEmail());
+        tifPhone.setText(user.getPhone());
         Glide.with(getApplicationContext())
                 .load(user.getAvatar())
                 .into(imgAvatar);
@@ -78,18 +102,20 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String fullname = String.valueOf(tifFullname.getText());
-                UserModel userModel = (UserModel) getIntent().getSerializableExtra("user");
+                UserModel userModel = Constant.userLogin;
                 ApiService apiService = ApiClient.getApiService();
                 apiService.updateName(userModel.getId(), fullname)
                         .enqueue(new Callback<UserModel>() {
                             @Override
                             public void onResponse(Call<UserModel> call, Response<UserModel> response) {
-                                Log.d("Test", "Ok");
+                                Toast.makeText(ProfileActivity.this, "Đổi tên thành công", Toast.LENGTH_SHORT).show();
+                                Constant.userLogin.setFullname(fullname);
                             }
 
                             @Override
                             public void onFailure(Call<UserModel> call, Throwable t) {
-                                Log.d("Test", "Fail");
+                                Toast.makeText(ProfileActivity.this, "Có lỗi xảy ra", Toast.LENGTH_SHORT).show();
+
                             }
                         });
             }

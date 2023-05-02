@@ -7,7 +7,9 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -35,6 +37,7 @@ import com.app.shopdodientu.model.CategoryModel;
 import com.app.shopdodientu.model.PageModel;
 import com.app.shopdodientu.model.ProductModel;
 import com.app.shopdodientu.model.UserModel;
+import com.app.shopdodientu.util.Constant;
 import com.app.shopdodientu.util.UIHelper;
 
 import java.util.List;
@@ -57,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView rcvProduct;
     private ProductAdapter productAdapter;
     private List<ProductModel> products;
+    private ApiService apiService;
     private int page;
     private int total;
 
@@ -66,44 +70,49 @@ public class MainActivity extends AppCompatActivity {
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         UIHelper.fullscreen(this);
         setContentView(R.layout.activity_main);
-        userModel = (UserModel) getIntent().getSerializableExtra("user");
         MapItemView();
+        login();
+        userModel = Constant.userLogin;
         getAllCategory();
         getLastProduct();
         UIHelper.gotoAccount(linearAccount, userModel, getApplicationContext());
-        UIHelper.gotoHome(linearHome, this);
         UIHelper.gotoCart(linearCart, this);
-//        gotoProfile();
-//        gotoHome();
+        gotoHome(this);
 
 
     }
-    private void gotoAccount() {
-        imvAccount.setOnClickListener(new View.OnClickListener() {
+    private void gotoHome(Activity activity) {
+        linearHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent;
-                if(userModel == null) {
-                    intent = new Intent(MainActivity.this, LoginActivity.class);
-                }
-                else {
-                    intent = new Intent(MainActivity.this, MyAccountActivity.class);
-                    intent.putExtra("user", userModel);
-                }
-                startActivity(intent);
+                activity.finish();
+                activity.startActivity(activity.getIntent());
             }
         });
     }
 
-    private void gotoHome() {
-        imvHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-                startActivity(getIntent());
-            }
-        });
+    private void login() {
+        SharedPreferences sharedPreferences = getSharedPreferences("dataLogin", MODE_PRIVATE);
 
+        if(sharedPreferences.getBoolean("check", false)) {
+            String username = sharedPreferences.getString("username", "");
+            String password = sharedPreferences.getString("password", "");
+            apiService.login(username, password)
+                    .enqueue(new Callback<UserModel>() {
+                        @Override
+                        public void onResponse(Call<UserModel> call, Response<UserModel> response) {
+                            UserModel userLogin = response.body();
+                            if(userLogin != null) {
+                                Constant.userLogin = userLogin;
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<UserModel> call, Throwable t) {
+
+                        }
+                    });
+        }
     }
 
 
@@ -118,11 +127,11 @@ public class MainActivity extends AppCompatActivity {
         linearCart = (LinearLayout) findViewById(R.id.cart);
         linearSupport = (LinearLayout) findViewById(R.id.support);
         linearLogout = (LinearLayout) findViewById(R.id.logout);
+        apiService = ApiClient.getApiService();
     }
 
 
     private void getAllCategory() {
-        ApiService apiService = ApiClient.getApiService();
         apiService.getAllCategory()
                 .enqueue(new Callback<List<CategoryModel>>() {
                     @Override
@@ -143,7 +152,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getLastProduct() {
-        ApiService apiService = ApiClient.getApiService();
         apiService.lastProduct(0)
                 .enqueue(new Callback<PageModel<ProductModel>>() {
                     @Override
@@ -179,7 +187,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     private void loadmoreProduct() {
-        ApiService apiService = ApiClient.getApiService();
         page = page + 1;
         if(page >= total) {
             return;

@@ -3,21 +3,16 @@ package com.app.shopdodientu.api.client;
 import com.app.shopdodientu.api.service.ApiService;
 
 public class ApiClient extends BaseClient{
-//    private static final String BASE_URL = "https://192.168.1.4/";
-    private static final String BASE_URL = "https://apishoponline.cfapps.ap21.hana.ondemand.com/";
+    private static final String BASE_URL = "http://192.168.1.4/";
+//    private static final String BASE_URL = "https://apishoponline.cfapps.ap21.hana.ondemand.com/";
     private static ApiService apiService;
-    private static ApiService loginService;
+    public static String username;
+    public static String password;
 
     public static ApiService getApiService() {
         if (apiService == null) {
-            return createService(ApiService.class, BASE_URL, null, null);
-        }
-        return apiService;
-    }
-    public static ApiService getApiLoginService(String username, String password) {
-        if(loginService == null) {
             return createService(ApiService.class, BASE_URL, username, password);
         }
-        return loginService;
+        return apiService;
     }
 }

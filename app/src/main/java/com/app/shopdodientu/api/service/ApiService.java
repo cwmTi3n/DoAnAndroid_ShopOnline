@@ -35,4 +35,8 @@ public interface ApiService {
     @PUT("account/update-name")
     @FormUrlEncoded
     Call<UserModel> updateName(@Field("id") int id, @Field("fullname") String fullname);
+
+    @PUT("account/update-pw")
+    @FormUrlEncoded
+    Call<UserModel> updatePw(@Field("id") int id, @Field("oldpw") String oldpw, @Field("newpw") String newpw);
 }
