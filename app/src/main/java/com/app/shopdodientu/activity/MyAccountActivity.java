@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
 import android.app.UiAutomation;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -19,6 +20,7 @@ import android.widget.TextView;
 import com.app.shopdodientu.R;
 import com.app.shopdodientu.activity.seller.RegisterSellerActivity;
 import com.app.shopdodientu.activity.seller.WelcomeSellerActivity;
+import com.app.shopdodientu.model.UserModel;
 import com.app.shopdodientu.util.UIHelper;
 
 public class MyAccountActivity extends AppCompatActivity {
@@ -41,12 +43,36 @@ public class MyAccountActivity extends AppCompatActivity {
 
         //BETWEEN
         UIHelper.gotoWelcomeStore(tvRegisterSeller, this);
-        UIHelper.gotoProfile(tvProfile, this);
+//        UIHelper.gotoProfile(tvProfile, this);
+        gotoProfile();
         UIHelper.gotoMainSellerByLinear(linearStoreTop, this);
-        UIHelper.gotoMyOrder(tvMyOrder, this);
+//        UIHelper.gotoMyOrder(tvMyOrder, this);
+        gotoMyOrder();
         //BOTTOM
         UIHelper.gotoCart(linearCart, this);
 
+    }
+
+    private void gotoProfile() {
+        tvProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MyAccountActivity.this, ProfileActivity.class);
+                intent.putExtra("user", (UserModel)getIntent().getSerializableExtra("user"));
+                MyAccountActivity.this.startActivity(intent);
+            }
+        });
+    }
+
+    private void gotoMyOrder() {
+        tvMyOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent;
+                intent = new Intent(MyAccountActivity.this, MyOrderActivity.class);
+                MyAccountActivity.this.startActivity(intent);
+            }
+        });
     }
 
     private void MapItemView(){
