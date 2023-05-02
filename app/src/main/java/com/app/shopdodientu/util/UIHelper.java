@@ -56,6 +56,7 @@ public class UIHelper {
             public void onClick(View view) {
                 Intent intent;
                 intent = new Intent(context, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
             }
         });
