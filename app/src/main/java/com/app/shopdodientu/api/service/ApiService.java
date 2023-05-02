@@ -12,6 +12,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Query;
 
 public interface ApiService {
@@ -30,4 +31,8 @@ public interface ApiService {
 
     @GET("find-product?orderby=desccreateDate")
     Call<PageModel<ProductModel>> lastProduct(@Query("page") int page);
+
+    @PUT("account/update-name")
+    @FormUrlEncoded
+    Call<UserModel> updateName(@Field("id") int id, @Field("fullname") String fullname);
 }

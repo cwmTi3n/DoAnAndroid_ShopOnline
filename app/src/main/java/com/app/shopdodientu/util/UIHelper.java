@@ -116,16 +116,16 @@ public class UIHelper {
         });
     }
 
-    public static void gotoMyOrder(TextView tv, Context context) {
-        tv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent;
-                intent = new Intent(context, MyOrderActivity.class);
-                context.startActivity(intent);
-            }
-        });
-    }
+//    public static void gotoMyOrder(TextView tv, Context context) {
+//        tv.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent;
+//                intent = new Intent(context, MyOrderActivity.class);
+//                context.startActivity(intent);
+//            }
+//        });
+//    }
 
 
 
@@ -193,16 +193,16 @@ public class UIHelper {
             }
         });
     }
-    public static void gotoProfile(TextView tvProfile, Context context) {
-        tvProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent;
-                intent = new Intent(context, ProfileActivity.class);
-                context.startActivity(intent);
-            }
-        });
-    }
+//    public static void gotoProfile(TextView tvProfile, Context context) {
+//        tvProfile.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent;
+//                intent = new Intent(context, ProfileActivity.class);
+//                context.startActivity(intent);
+//            }
+//        });
+//    }
 
     public static void backtoProfile(ImageView imv, Context context) {
         imv.setOnClickListener(new View.OnClickListener() {
