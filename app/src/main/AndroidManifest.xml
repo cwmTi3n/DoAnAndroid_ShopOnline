@@ -15,14 +15,23 @@
 
     <application
         android:allowBackup="true"
-        android:usesCleartextTraffic="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.ShopDoDienTu"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".activity.AddAddressActivity"
+            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".activity.ChooseAddressActivity"-->
+<!--            android:exported="false" />-->
+        <activity
+            android:name=".activity.CheckOutActivity"
+            android:exported="false" />
         <activity
             android:name=".activity.DeliveringOrderInforActivity"
             android:exported="false" />
@@ -47,9 +56,9 @@
         <activity
             android:name=".activity.CatalogActivity"
             android:exported="false" />
-<!--        <activity-->
-<!--            android:name=".activity.MyOrderActivity"-->
-<!--            android:exported="false" />-->
+        <activity
+            android:name=".activity.MyOrderActivity"
+            android:exported="false" />
         <activity
             android:name=".activity.CartActivity"
             android:exported="false" />
@@ -102,7 +111,7 @@
             android:name=".activity.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.MyOrderActivity"
+            android:name=".activity.ChooseAddressActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

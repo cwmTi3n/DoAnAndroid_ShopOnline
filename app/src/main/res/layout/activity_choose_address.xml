@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.ChooseAddressActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="16">
+
+        <TextView
+            android:id="@+id/tvBack"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center|start"
+            android:paddingStart="10dp"
+            android:text="Choose an address"
+            android:textStyle="bold"
+            android:textSize="22dp"
+            android:drawableTint="#635A5A"
+            android:drawableLeft="@drawable/back_left_orange"
+            android:drawablePadding="10dp"/>
+
+        <TextView
+            android:id="@+id/tvAddAddress"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2.5"
+            android:layout_margin="10dp"
+            android:text=" + Add a new address"
+            android:textSize="18dp"
+            android:textColor="#ee4d2d"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:background="@drawable/radius_border_10dp_orange"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcvAddress"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="12.5"/>
+
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
