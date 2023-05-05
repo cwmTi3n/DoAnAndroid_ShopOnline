@@ -1,50 +1,39 @@
 package com.app.shopdodientu.activity;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.graphics.Typeface;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
-import android.view.inputmethod.EditorInfo;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.SearchView;
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.app.shopdodientu.R;
 import com.app.shopdodientu.adapter.CategoryAdapter;
+import com.app.shopdodientu.adapter.ImagesViewPageAdapter;
 import com.app.shopdodientu.adapter.ProductAdapter;
 import com.app.shopdodientu.api.client.ApiClient;
 import com.app.shopdodientu.api.service.ApiService;
 import com.app.shopdodientu.model.CategoryModel;
+import com.app.shopdodientu.model.ImageModel;
 import com.app.shopdodientu.model.PageModel;
 import com.app.shopdodientu.model.ProductModel;
 import com.app.shopdodientu.model.UserModel;
 import com.app.shopdodientu.util.Constant;
 import com.app.shopdodientu.util.UIHelper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -52,6 +41,25 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
+
+    //SliderImage
+    private ViewPager viewPager;
+    private List<ImageModel> imagesList;
+
+    private Handler handler = new Handler();
+    private Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            if (viewPager.getCurrentItem()==imagesList.size()-1)
+            {
+                viewPager.setCurrentItem(0);
+            }
+            else {
+                viewPager.setCurrentItem(viewPager.getCurrentItem()+1);
+            }
+        }
+    };
+
 
     //BOTTOM
     private ImageView imvHome, imvAccount;
@@ -79,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         MapItemView();
         login();
+        SliderImage();
         userModel = Constant.userLogin;
         getAllCategory();
         getLastProduct();
@@ -136,6 +145,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void MapItemView() {
+        viewPager =findViewById(R.id.viewpage);
         rcvCategory = (RecyclerView) findViewById(R.id.rcvcategory);
         rcvProduct = (RecyclerView) findViewById(R.id.rcvproduct);
         imvHome = (ImageView) findViewById(R.id.imgHome);
@@ -149,6 +159,57 @@ public class MainActivity extends AppCompatActivity {
         svProduct = (SearchView) findViewById(R.id.svproduct);
         apiService = ApiClient.getApiService();
     }
+
+    private void SliderImage(){
+        imagesList = getListImage();
+        ImagesViewPageAdapter adapter = new ImagesViewPageAdapter(imagesList);
+        viewPager.setAdapter(adapter);
+        handler.postDelayed(runnable,3000);
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                handler.removeCallbacks(runnable);
+                handler.postDelayed(runnable,3000);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+    }
+
+    private List<ImageModel> getListImage()
+    {
+        List<ImageModel>list = new ArrayList<>();
+        list.add(new ImageModel(R.drawable.slider2));
+        list.add(new ImageModel(R.drawable.slider1));
+        list.add(new ImageModel(R.drawable.slider3));
+        list.add(new ImageModel(R.drawable.slider4));
+        list.add(new ImageModel(R.drawable.slider5));
+        list.add(new ImageModel(R.drawable.slider6));
+
+        return list;
+    }
+    @Override
+    protected void onPause()
+    {
+        super.onPause();
+        handler.removeCallbacks(runnable);
+    }
+    @Override
+    protected  void onResume()
+    {
+        super.onResume();
+        handler.postDelayed(runnable,3000);
+    }
+
 
     private void search() {
         svProduct.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
