@@ -195,8 +195,8 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<PageModel<ProductModel>> call, Response<PageModel<ProductModel>> response) {
                         PageModel<ProductModel> pageProduct = response.body();
-                        assert pageProduct != null;
-                        products = pageProduct.getContent();
+                        if(pageProduct != null)
+                            products = pageProduct.getContent();
                         page = pageProduct.getIndex();
                         total = pageProduct.getTotal();
                         productAdapter = new ProductAdapter(getApplicationContext(), products);
