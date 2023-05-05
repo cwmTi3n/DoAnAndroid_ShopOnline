@@ -1,8 +1,11 @@
 package com.app.shopdodientu.util;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -25,7 +28,13 @@ import com.app.shopdodientu.activity.seller.AddProductActivity;
 import com.app.shopdodientu.activity.seller.MainSellerActivity;
 import com.app.shopdodientu.activity.seller.RegisterSellerActivity;
 import com.app.shopdodientu.activity.seller.WelcomeSellerActivity;
+import com.app.shopdodientu.api.client.ApiClient;
+import com.app.shopdodientu.api.service.ApiService;
 import com.app.shopdodientu.model.UserModel;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class UIHelper {
     public static void fullscreen(Activity activity) {
@@ -33,12 +42,12 @@ public class UIHelper {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
-    public static void gotoAccount(LinearLayout linear, UserModel userModel, Context context) {
+    public static void gotoAccount(LinearLayout linear, Context context) {
         linear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent;
-                if(userModel == null) {
+                if(Constant.userLogin == null) {
                     intent = new Intent(context, LoginActivity.class);
                 }
                 else {
@@ -68,6 +77,35 @@ public class UIHelper {
             public void onClick(View view) {
                 Intent intent;
                 intent = new Intent(context, CartActivity.class);
+                context.startActivity(intent);
+            }
+        });
+    }
+
+    public static void logout(LinearLayout linear, Context context) {
+        linear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ApiService apiService = ApiClient.logout();
+                apiService.logout()
+                        .enqueue(new Callback<String>() {
+                            @Override
+                            public void onResponse(Call<String> call, Response<String> response) {
+
+                            }
+                            @Override
+                            public void onFailure(Call<String> call, Throwable t) {
+                            }
+                        });
+                SharedPreferences sharedPreferences = context.getSharedPreferences("dataLogin", MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.remove("username");
+                editor.remove("password");
+                editor.commit();
+                Constant.userLogin = null;
+                Intent intent;
+                intent = new Intent(context, LoginActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
             }
         });

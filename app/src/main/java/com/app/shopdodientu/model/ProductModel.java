@@ -14,12 +14,15 @@ public class ProductModel implements Serializable {
     private int status;
     private int categoryId;
     private int userId;
-    private String shopname;
+
+    private String shopName;
+
+    private String avatarShop;
 
     public ProductModel() {
     }
 
-    public ProductModel(int id, String name, int code, String description, float price, int amount, int stock, String image, int status, int categoryId, int userId, String shopname) {
+    public ProductModel(int id, String name, int code, String description, float price, int amount, int stock, String image, int status, int categoryId, int userId, String shopName, String avatarShop) {
         this.id = id;
         this.name = name;
         this.code = code;
@@ -31,7 +34,16 @@ public class ProductModel implements Serializable {
         this.status = status;
         this.categoryId = categoryId;
         this.userId = userId;
-        this.shopname = shopname;
+        this.shopName = shopName;
+        this.avatarShop = avatarShop;
+    }
+
+    public String getAvatarShop() {
+        return avatarShop;
+    }
+
+    public void setAvatarShop(String avatarShop) {
+        this.avatarShop = avatarShop;
     }
 
     public int getId() {
@@ -123,10 +135,10 @@ public class ProductModel implements Serializable {
     }
 
     public String getShopname() {
-        return shopname;
+        return shopName;
     }
 
     public void setShopname(String shopname) {
-        this.shopname = shopname;
+        this.shopName = shopname;
     }
 }

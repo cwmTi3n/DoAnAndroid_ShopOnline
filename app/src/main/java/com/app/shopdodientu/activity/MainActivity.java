@@ -69,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView rcvCategory;
     private List<CategoryModel> categories;
     private CategoryAdapter categoryAdapter;
-    private UserModel userModel;
     private RecyclerView rcvProduct;
     private ProductAdapter productAdapter;
     private List<ProductModel> products;
@@ -86,13 +85,15 @@ public class MainActivity extends AppCompatActivity {
         UIHelper.fullscreen(this);
         setContentView(R.layout.activity_main);
         MapItemView();
-        login();
         SliderImage();
-        userModel = Constant.userLogin;
         getAllCategory();
+        if(Constant.userLogin == null) {
+            login();
+        }
         getLastProduct();
-        UIHelper.gotoAccount(linearAccount, userModel, getApplicationContext());
+        UIHelper.gotoAccount(linearAccount, getApplicationContext());
         UIHelper.gotoCart(linearCart, this);
+        UIHelper.logout(linearLogout, this);
         gotoHome(this);
         search();
 
@@ -121,11 +122,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void login() {
         SharedPreferences sharedPreferences = getSharedPreferences("dataLogin", MODE_PRIVATE);
-
         if(sharedPreferences.getBoolean("check", false)) {
             String username = sharedPreferences.getString("username", "");
             String password = sharedPreferences.getString("password", "");
-            apiService.login(username, password)
+            ApiService login = ApiClient.login(username, password);
+            login.login(username, password)
                     .enqueue(new Callback<UserModel>() {
                         @Override
                         public void onResponse(Call<UserModel> call, Response<UserModel> response) {
@@ -140,6 +141,9 @@ public class MainActivity extends AppCompatActivity {
 
                         }
                     });
+        }
+        else {
+            Log.d("nologin", "nologin");
         }
     }
 

@@ -43,4 +43,7 @@ public interface ApiService {
     @PUT("account/update-pw")
     @FormUrlEncoded
     Call<UserModel> updatePw(@Field("id") int id, @Field("oldpw") String oldpw, @Field("newpw") String newpw);
+
+    @GET("/logout")
+    Call<String> logout();
 }

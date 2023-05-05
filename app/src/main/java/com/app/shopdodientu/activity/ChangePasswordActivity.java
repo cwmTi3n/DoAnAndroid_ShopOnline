@@ -64,7 +64,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
                                 public void onResponse(Call<UserModel> call, Response<UserModel> response) {
                                     UserModel userModel = response.body();
                                     if(userModel != null) {
-                                        ApiClient.password = newpw;
+                                        ApiClient.login(userModel.getUsername(), newpw);
                                         Toast.makeText(ChangePasswordActivity.this, "Đổi mật khẩu thành công", Toast.LENGTH_SHORT).show();
                                         Intent intent = new Intent(ChangePasswordActivity.this, ProfileActivity.class);
                                         startActivity(intent);
