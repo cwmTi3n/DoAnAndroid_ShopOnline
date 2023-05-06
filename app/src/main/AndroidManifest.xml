@@ -23,9 +23,12 @@
         android:theme="@style/Theme.ShopDoDienTu"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-<!--        <activity-->
-<!--            android:name=".activity.FeedbackActivity"-->
-<!--            android:exported="false" />-->
+        <activity
+            android:name=".activity.SeeAllFeedbackActivity"
+            android:exported="false" />
+         <activity
+         android:name=".activity.FeedbackActivity"
+         android:exported="false" />
         <activity
             android:name=".activity.AddAddressActivity"
             android:exported="false" />
@@ -101,9 +104,9 @@
         <activity
             android:name=".activity.seller.UpdateProductActivity"
             android:exported="false" />
-        <activity
-            android:name=".activity.ProductDetailActivity"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".activity.ProductDetailActivity"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".activity.seller.AddProductActivity"
             android:exported="false" />
@@ -114,7 +117,7 @@
             android:name=".activity.ChooseAddressActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.FeedbackActivity"
+            android:name=".activity.ProductDetailActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
