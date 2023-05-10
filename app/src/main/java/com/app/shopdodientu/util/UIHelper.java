@@ -86,7 +86,8 @@ public class UIHelper {
         linear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ApiService apiService = ApiClient.logout();
+                ApiClient.restApiService();
+                ApiService apiService = ApiClient.getApiService();
                 apiService.logout()
                         .enqueue(new Callback<String>() {
                             @Override
