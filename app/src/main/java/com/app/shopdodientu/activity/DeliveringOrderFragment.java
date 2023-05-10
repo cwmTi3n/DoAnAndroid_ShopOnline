@@ -26,6 +26,7 @@ public class DeliveringOrderFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
         binding = FragmentDeliveringorderBinding.inflate(inflater, container, false);
+        //vi tri load du lieu: recyclerview
         return binding.getRoot();
     }
 }

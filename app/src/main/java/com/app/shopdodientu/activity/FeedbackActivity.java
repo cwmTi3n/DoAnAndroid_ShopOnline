@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.CompoundButton;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -14,8 +16,11 @@ import org.w3c.dom.Text;
 
 public class FeedbackActivity extends AppCompatActivity {
     private RatingBar ratingBar;
-    private TextView tvLevelRating, tvNameAccountFeedback;
+    private TextView tvLevelRating, tvNameAccountFeedback, tvBack, tvSend, tvProductName;
     private Switch switchName;
+    private ImageView imgProduct, imgFeedback1, imgFeedback2;
+    private EditText edtFeedback;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +37,13 @@ public class FeedbackActivity extends AppCompatActivity {
         tvLevelRating = (TextView) findViewById(R.id.tvLevel);
         tvNameAccountFeedback = (TextView) findViewById(R.id.tvSetName);
         switchName = (Switch) findViewById(R.id.switchName);
+        tvBack = findViewById(R.id.tvBack);
+        tvSend = findViewById(R.id.tvSend);
+        tvProductName = findViewById(R.id.tvProductName);
+        imgProduct = findViewById(R.id.imgProduct);
+        imgFeedback1 = findViewById(R.id.imgFeedback1);
+        imgFeedback2 = findViewById(R.id.imgFeedback2);
+        edtFeedback = findViewById(R.id.edtFeedback);
     }
 
     private void RatingBarChange(){
