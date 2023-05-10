@@ -134,11 +134,14 @@ public class MainActivity extends AppCompatActivity {
                             if(userLogin != null) {
                                 Constant.userLogin = userLogin;
                             }
+                            else {
+                                ApiClient.restApiService();
+                            }
                         }
 
                         @Override
                         public void onFailure(Call<UserModel> call, Throwable t) {
-
+                            ApiClient.restApiService();
                         }
                     });
         }

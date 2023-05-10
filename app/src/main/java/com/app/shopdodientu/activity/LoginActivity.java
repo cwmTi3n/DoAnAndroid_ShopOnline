@@ -113,6 +113,7 @@ public class LoginActivity extends AppCompatActivity {
                         UserModel userModel = response.body();
                         if(userModel == null) {
                             Toast.makeText(LoginActivity.this, "Tên đăng nhập hoặc mật khẩu không đúng", Toast.LENGTH_LONG).show();
+                            ApiClient.restApiService();
                         }
                         else {
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
@@ -126,6 +127,7 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(Call<UserModel> call, Throwable t) {
                         Toast.makeText(LoginActivity.this, "Tên đăng nhập hoặc mật khẩu không đúng", Toast.LENGTH_LONG).show();
+                        ApiClient.restApiService();
                     }
                 });
     }

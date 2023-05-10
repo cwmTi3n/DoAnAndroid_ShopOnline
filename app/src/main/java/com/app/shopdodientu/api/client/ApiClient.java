@@ -21,8 +21,7 @@ public class ApiClient extends BaseClient{
         return apiService;
     }
 
-    public static ApiService logout() {
+    public static void restApiService() {
         apiService = createService(ApiService.class, BASE_URL, null, null);
-        return apiService;
     }
 }
