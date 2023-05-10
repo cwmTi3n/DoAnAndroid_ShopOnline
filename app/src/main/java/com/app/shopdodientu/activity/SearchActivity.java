@@ -42,7 +42,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class SearchActivity extends AppCompatActivity {
-    private ApiService apiService;
     private TextView tvRelated, tvLatest, tvBestSeller, tvPrice, tvSearchFor;
     private TextView lineRelated, lineLatest, lineBest, lineHoriRelated, lineHoriLatest, lineHoriBest, lineHoriPrice;
     private TextView currentTextView, currentLine, currentLineHori;
@@ -206,7 +205,6 @@ public class SearchActivity extends AppCompatActivity {
         lineHoriBest = (TextView) findViewById(R.id.lineHoriBest);
         lineHoriPrice = (TextView) findViewById(R.id.lineHoriPrice);
         tvSearchFor = (TextView) findViewById(R.id.tvsearchfor);
-        apiService = ApiClient.getApiService();
         keyword = getIntent().getStringExtra("keyword");
         categoryModel = (CategoryModel) getIntent().getSerializableExtra("category");
         rcvProduct = (RecyclerView) findViewById(R.id.rcvproduct);
@@ -241,13 +239,29 @@ public class SearchActivity extends AppCompatActivity {
 
         if (rightDrawable != null && myDrawable != null && rightDrawable.getConstantState().equals(myDrawable.getConstantState())) {
             tvPrice.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, drawableUpArrow, null);
+            orderby = "price";
+            getProducts();
 
         } else if (rightDrawable != null && drawableUpArrow != null && rightDrawable.getConstantState().equals(drawableUpArrow.getConstantState())){
             tvPrice.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, drawableDownArrow, null);
+            orderby = "descprice";
+            getProducts();
 
         } else if (rightDrawable != null && drawableDownArrow != null && rightDrawable.getConstantState().equals(drawableDownArrow.getConstantState())){
             tvPrice.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, drawableUpArrow, null);
+            orderby = "price";
+            getProducts();
         }
+    }
+
+
+
+    private void tangdan(){
+
+    }
+
+    private void giamdn() {
+
     }
     private void SetDrawablePriceMove(){
         Drawable drawableRight = getResources().getDrawable(R.drawable.unfold);
@@ -259,6 +273,7 @@ public class SearchActivity extends AppCompatActivity {
         if(page >= total) {
             return;
         }
+        ApiService apiService = ApiClient.getApiService();
         apiService.findProduct(categoryId, keyword, orderby, page)
                 .enqueue(new Callback<PageModel<ProductModel>>() {
                     @Override
@@ -278,18 +293,20 @@ public class SearchActivity extends AppCompatActivity {
 
     private void getProducts() {
         page = 0;
+        ApiService apiService = ApiClient.getApiService();
         apiService.findProduct(categoryId, keyword, orderby, page)
                 .enqueue(new Callback<PageModel<ProductModel>>() {
                     @Override
                     public void onResponse(Call<PageModel<ProductModel>> call, Response<PageModel<ProductModel>> response) {
-                        assert response.body() != null;
-                        total = response.body().getTotal();
-                        products = response.body().getContent();
-                        productAdapter = new ProductAdapter(getApplicationContext(), products);
-                        rcvProduct.setHasFixedSize(true);
-                        rcvProduct.setLayoutManager(new GridLayoutManager(SearchActivity.this, 2));
-                        rcvProduct.setAdapter(productAdapter);
-                        productAdapter.notifyDataSetChanged();
+                        if(response.body() != null) {
+                            total = response.body().getTotal();
+                            products = response.body().getContent();
+                            productAdapter = new ProductAdapter(getApplicationContext(), products);
+                            rcvProduct.setHasFixedSize(true);
+                            rcvProduct.setLayoutManager(new GridLayoutManager(SearchActivity.this, 2));
+                            rcvProduct.setAdapter(productAdapter);
+                            productAdapter.notifyDataSetChanged();
+                        }
                     }
 
                     @Override

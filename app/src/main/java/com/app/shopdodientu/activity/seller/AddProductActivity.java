@@ -1,40 +1,172 @@
 package com.app.shopdodientu.activity.seller;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
+import android.app.Activity;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.NumberPicker;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.app.shopdodientu.R;
+import com.app.shopdodientu.api.client.ApiClient;
+import com.app.shopdodientu.api.service.ApiService;
+import com.app.shopdodientu.model.CategoryModel;
+import com.app.shopdodientu.model.ProductModel;
+import com.app.shopdodientu.util.Constant;
+import com.app.shopdodientu.util.RealPathUtil;
 
-import java.util.ArrayList;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
+
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class AddProductActivity extends AppCompatActivity {
     private TextView tvBack;
     private ImageView imgProduct;
     private EditText edtName, edtDescription, edtPrice, edtStock;
+    private Button btnAddproduct;
+    private int categoryInt;
 
     private Spinner snCateName;
-    ArrayAdapter<String> adapter;
+    ArrayAdapter<CategoryModel> adapter;
+    private Uri mUri;
+
+    private void CheckPermission() {
+        if(Build.VERSION.SDK_INT<Build.VERSION_CODES.M) {
+            openGallery();
+            return;
+        }
+        if(checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+            openGallery();
+        }
+        else {
+            requestPermissions(Constant.permissions(), Constant.MY_REQUEST_CODE);
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(requestCode == Constant.MY_REQUEST_CODE) {
+            if(grantResults.length>0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                openGallery();
+            }
+        }
+    }
+
+    private void openGallery(){
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        mActivityResultLauncher.launch(Intent.createChooser(intent, "Select"));
+    }
+
+    private ActivityResultLauncher<Intent> mActivityResultLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    Log.e("TAG", "onActivityResult");
+                    if (result.getResultCode() == Activity.RESULT_OK) {
+                        //request code
+                        Intent data = result.getData();
+                        if (data == null) {
+                            return;
+                        }
+                        Uri uri = data.getData();
+                        mUri = uri;
+                        try {
+                            Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                            imgProduct.setImageBitmap(bitmap);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }
+            }
+    );
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_product);
-
         MapViewItem();
+        addProduct();
         AddItemToSpinnerCate();
         SpinnerCateClicked();
 
+    }
+
+    private void addProduct() {
+        imgProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CheckPermission();
+            }
+        });
+        btnAddproduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(mUri != null) {
+                    String nameString = edtName.getText().toString();
+                    String descriptionString = edtDescription.getText().toString();
+                    String priceString = edtPrice.getText().toString();
+                    String stockString = edtStock.getText().toString();
+                    RequestBody name = RequestBody.create(MediaType.parse("multipart/form-data"), String.valueOf(nameString));
+                    RequestBody description = RequestBody.create(MediaType.parse("multipart/form-data"), String.valueOf(descriptionString));
+                    RequestBody price = RequestBody.create(MediaType.parse("multipart/form-data"), String.valueOf(priceString));
+                    RequestBody stock = RequestBody.create(MediaType.parse("multipart/form-data"), String.valueOf(stockString));
+                    RequestBody categoryId = RequestBody.create(MediaType.parse("multipart/form-data"), String.valueOf(categoryInt));
+                    String IMAGE_PATH = RealPathUtil.getRealPath(getApplicationContext(), mUri);
+                    File file = new File(IMAGE_PATH);
+                    RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+                    MultipartBody.Part imageFile = MultipartBody.Part.createFormData("imageFile", file.getName(), requestFile);
+                    ApiService apiService = ApiClient.getApiService();
+                    apiService.addProduct(name, description, price, stock, imageFile, categoryId)
+                            .enqueue(new Callback<ProductModel>() {
+                                @Override
+                                public void onResponse(Call<ProductModel> call, Response<ProductModel> response) {
+                                    Toast.makeText(getApplicationContext(), "Thêm sản phẩm thành công", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(AddProductActivity.this, MainSellerActivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                }
+
+                                @Override
+                                public void onFailure(Call<ProductModel> call, Throwable t) {
+                                    Toast.makeText(getApplicationContext(), "Thêm sản không thành công", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                }
+            }
+        });
     }
 
     private void MapViewItem(){
@@ -45,20 +177,33 @@ public class AddProductActivity extends AppCompatActivity {
         edtDescription = (EditText) findViewById(R.id.edtDescription);
         edtPrice = (EditText) findViewById(R.id.edtPrice);
         edtStock = (EditText) findViewById(R.id.edtStock);
-
+        btnAddproduct = (Button) findViewById(R.id.btnadd);
     }
     private void AddItemToSpinnerCate() {
-        String[] spinnerItems = {"Select an item", "Item 1", "Item 2", "Item 3", "Item 1", "Item 2", "Item 3", "Item 1", "Item 2", "Item 3", "Item 1", "Item 2", "Item 3", "Item 1", "Item 2", "Item 3", "Item 1", "Item 2", "Item 3"};
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, spinnerItems);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        snCateName.setAdapter(adapter);
+        ApiService apiService = ApiClient.getApiService();
+        apiService.getAllCategory()
+                .enqueue(new Callback<List<CategoryModel>>() {
+                    @Override
+                    public void onResponse(Call<List<CategoryModel>> call, Response<List<CategoryModel>> response) {
+                        List<CategoryModel> categoryModels = response.body();
+                        adapter = new ArrayAdapter<CategoryModel>(AddProductActivity.this, android.R.layout.simple_spinner_item, categoryModels);
+                        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        snCateName.setAdapter(adapter);
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<CategoryModel>> call, Throwable t) {
+                    }
+                });
+
     }
 
     private void SpinnerCateClicked(){
         snCateName.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selectedOption = parent.getItemAtPosition(position).toString();
+                CategoryModel selectedOption = (CategoryModel) parent.getItemAtPosition(position);
+                categoryInt = selectedOption.getId();
                 // Do something with the selected option
             }
 

@@ -7,12 +7,17 @@ import com.app.shopdodientu.model.UserModel;
 
 import java.util.List;
 
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Part;
 import retrofit2.http.Query;
 
 public interface ApiService {
@@ -44,6 +49,14 @@ public interface ApiService {
     @FormUrlEncoded
     Call<UserModel> updatePw(@Field("id") int id, @Field("oldpw") String oldpw, @Field("newpw") String newpw);
 
-    @GET("/logout")
+    @GET("logout")
     Call<String> logout();
+    @Multipart
+    @POST("seller/product")
+    Call<ProductModel> addProduct(@Part("name") RequestBody name,
+                                  @Part("description") RequestBody description,
+                                  @Part("price") RequestBody price,
+                                  @Part("stock") RequestBody stock,
+                                  @Part MultipartBody.Part imageFile,
+                                  @Part("categoryId") RequestBody categoryId);
 }
