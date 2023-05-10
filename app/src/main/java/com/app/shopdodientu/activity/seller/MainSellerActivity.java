@@ -15,7 +15,7 @@ import java.util.Map;
 public class MainSellerActivity extends AppCompatActivity {
 
     private TextView tvViewShop, tvAddProduct, tvSetUpStore, tvShopName, tvCheckingOrder, tvDeliverd, tvCancelled, tvFeedback;
-    private ImageView imgSetting, imgSupport;
+    private ImageView imgSetting, imgSupport, imgAvatarStore;
     private LinearLayout linearMyProduct, linearFinance, linearHistoryOrder;
 
     @Override
@@ -30,6 +30,10 @@ public class MainSellerActivity extends AppCompatActivity {
     }
 
     private void MapItemView(){
+        imgSupport = findViewById(R.id.imgSupport);
+        imgSetting = findViewById(R.id.imgSetting);
+        imgAvatarStore = findViewById(R.id.imgAvatarStore);
+
         tvViewShop = (TextView) findViewById(R.id.tvViewShop);
         tvAddProduct = (TextView) findViewById(R.id.tvAddProduct);
         tvSetUpStore = (TextView) findViewById(R.id.tvSetUpStore);
@@ -38,5 +42,9 @@ public class MainSellerActivity extends AppCompatActivity {
         tvDeliverd = (TextView) findViewById(R.id.tvDeliverd);
         tvCancelled = (TextView) findViewById(R.id.tvCancelled);
         tvFeedback = (TextView) findViewById(R.id.tvFeedback);
+
+        linearMyProduct = findViewById(R.id.linearMyProduct);
+        linearFinance = findViewById(R.id.linearFinance);
+        linearHistoryOrder = findViewById(R.id.linearHistoryOrder);
     }
 }

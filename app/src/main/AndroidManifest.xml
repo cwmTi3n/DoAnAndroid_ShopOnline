@@ -101,9 +101,9 @@
         <activity
             android:name=".activity.seller.UpdateProductActivity"
             android:exported="false" />
-<!--        <activity-->
-<!--            android:name=".activity.ProductDetailActivity"-->
-<!--            android:exported="false" />-->
+        <activity
+            android:name=".activity.ProductDetailActivity"
+            android:exported="false" />
         <activity
             android:name=".activity.seller.AddProductActivity"
             android:exported="false" />
@@ -114,7 +114,7 @@
             android:name=".activity.ChooseAddressActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.ProductDetailActivity"
+            android:name=".activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

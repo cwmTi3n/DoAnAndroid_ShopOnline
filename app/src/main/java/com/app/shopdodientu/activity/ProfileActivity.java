@@ -38,8 +38,7 @@ public class ProfileActivity extends AppCompatActivity {
     private ImageView imgAvatar;
     private TextInputEditText tifFullname, tifUsername, tifEmail, tifPhone;
     private Button btnChangepass, btnUpdate;
-    //BOTTOM
-    private LinearLayout linearHome, linearAccount, linearCart, linearSupport, linearLogout;
+
 
 
     @Override
@@ -52,12 +51,10 @@ public class ProfileActivity extends AppCompatActivity {
 
 //        UIHelper.gotoChangePassword(btnChangepass, this);
 
-        //BOTTOM
-        UIHelper.gotoCart(linearCart, this);
         renderView();
         updateFullname();
         gotoChangePassword();
-        UIHelper.gotoHome(linearHome, getApplicationContext());
+//        UIHelper.gotoHome(linearHome, getApplicationContext());
     }
 
     private void gotoChangePassword() {
@@ -74,7 +71,6 @@ public class ProfileActivity extends AppCompatActivity {
     private void MapItemView() {
 
         btnChangepass = (Button) findViewById(R.id.btnchangepass);
-        linearCart = (LinearLayout) findViewById(R.id.cart);
         tvFullname = (TextView) findViewById(R.id.tvfullname);
         tvEmail = (TextView) findViewById(R.id.tvemail);
         imgAvatar = (ImageView) findViewById(R.id.imgavatar);
@@ -83,7 +79,6 @@ public class ProfileActivity extends AppCompatActivity {
         tifUsername = (TextInputEditText) findViewById(R.id.tfusername);
         tifEmail = (TextInputEditText) findViewById(R.id.tfemail);
         tifPhone = (TextInputEditText) findViewById(R.id.tfphone);
-        linearHome = (LinearLayout) findViewById(R.id.home);
     }
 
     private void renderView() {

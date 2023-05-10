@@ -59,7 +59,6 @@
                 android:weightSum="6">
 
                 <TextView
-                    android:id="@+id/textView10"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="2"
@@ -70,7 +69,6 @@
                     android:paddingStart="15dp" />
 
                 <TextView
-                    android:id="@+id/textView11"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="2.5"
@@ -81,7 +79,6 @@
             </LinearLayout>
 
             <ImageView
-                android:id="@+id/imageView7"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
@@ -103,7 +100,6 @@
 
 
             <ImageView
-                android:id="@+id/imageView9"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1.5"
@@ -156,7 +152,7 @@
 
         <!--        myorder_delivering-->
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcvProductIView"
+            android:id="@+id/rcvProduct"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="4" />
@@ -168,7 +164,6 @@
             android:layout_weight="1"
             android:weightSum="4">
             <TextView
-                android:id="@+id/textView9"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="2"
@@ -181,7 +176,6 @@
                 android:textColor="#000"/>
 
             <TextView
-                android:id="@+id/textView22"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="2"
@@ -207,7 +201,6 @@
             android:weightSum="6">
 
             <TextView
-                android:id="@+id/textView23"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -241,14 +234,12 @@
             android:weightSum="6">
 
             <TextView
-                android:id="@+id/textView26"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
                 android:text="Status"
                 android:textSize="18dp"/>
             <TextView
-                android:id="@+id/Textview30"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -273,14 +264,12 @@
             android:weightSum="6">
 
             <TextView
-                android:id="@+id/textView25"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
                 android:text="Shipping"
                 android:textSize="18dp"/>
             <TextView
-                android:id="@+id/tvShipping"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -305,7 +294,6 @@
             android:weightSum="6">
 
             <TextView
-                android:id="@+id/textView24"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
