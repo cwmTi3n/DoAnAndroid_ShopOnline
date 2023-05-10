@@ -1,6 +1,7 @@
 package com.app.shopdodientu.activity.seller;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -16,8 +17,9 @@ import com.app.shopdodientu.util.UIHelper;
 import org.w3c.dom.Text;
 
 public class MyProductActivity extends AppCompatActivity {
+    private RecyclerView rcvProduct;
     private ImageView imvSearch;
-    private TextView tvLatest, tvBest, tvCatalog;
+    private TextView tvBack, tvLatest, tvBest, tvCatalog;
     private TextView lineLatest, lineBest, lineCatalog;
     private LinearLayout linearLatest, linearBest, linearCatalog;
     private TextView currentTextView, currentLine;
@@ -42,6 +44,7 @@ public class MyProductActivity extends AppCompatActivity {
     }
 
     private void MapItemView(){
+        tvBack = (TextView) findViewById(R.id.tvBack);
         imvSearch = (ImageView) findViewById(R.id.imgSearch);
         tvLatest = (TextView) findViewById(R.id.tvLatest);
         tvBest = (TextView) findViewById(R.id.tvBestSeller);
@@ -52,6 +55,7 @@ public class MyProductActivity extends AppCompatActivity {
         linearLatest = (LinearLayout) findViewById(R.id.linearLatest);
         linearBest = (LinearLayout) findViewById(R.id.linearBestSeller);
         linearCatalog = (LinearLayout) findViewById(R.id.linearCatalog);
+        rcvProduct = (RecyclerView) findViewById(R.id.rcvProduct);
     }
 
     private void SetEffectLastChoice(TextView tv, TextView line) {

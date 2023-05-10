@@ -26,7 +26,6 @@
                 android:layout_weight="6"
                 android:paddingLeft="10dp"
                 android:gravity="center|start"
-                android:textColor="#ee4d2d"
                 android:text="My Products"
                 android:textStyle="bold"
                 android:textSize="22dp"
@@ -140,7 +139,7 @@
 
         <!--        product_horizontal -->
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcv"
+            android:id="@+id/rcvProduct"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginTop="5dp"

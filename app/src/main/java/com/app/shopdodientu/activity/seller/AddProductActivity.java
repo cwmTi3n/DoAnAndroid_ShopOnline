@@ -7,8 +7,11 @@ import android.view.View;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.app.shopdodientu.R;
@@ -17,8 +20,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AddProductActivity extends AppCompatActivity {
+    private TextView tvBack;
+    private ImageView imgProduct;
+    private EditText edtName, edtDescription, edtPrice, edtStock;
 
-    Spinner snCateName;
+    private Spinner snCateName;
     ArrayAdapter<String> adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +38,13 @@ public class AddProductActivity extends AppCompatActivity {
     }
 
     private void MapViewItem(){
-        snCateName = findViewById(R.id.spinnercateName);
+        tvBack = (TextView) findViewById(R.id.tvBack);
+        snCateName = findViewById(R.id.snCateName);
+        imgProduct = (ImageView) findViewById(R.id.imgProduct);
+        edtName = (EditText) findViewById(R.id.edtName);
+        edtDescription = (EditText) findViewById(R.id.edtDescription);
+        edtPrice = (EditText) findViewById(R.id.edtPrice);
+        edtStock = (EditText) findViewById(R.id.edtStock);
 
     }
     private void AddItemToSpinnerCate() {

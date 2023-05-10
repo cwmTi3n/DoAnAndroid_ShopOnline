@@ -155,7 +155,7 @@
 
         <!--        myorder_delivering-->
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcvProductIView"
+            android:id="@+id/rcvProduct"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="4" />
@@ -230,32 +230,6 @@
             android:layout_weight="0.02"
             android:background="#F1E6E6" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:orientation="horizontal"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_weight="1"
-            android:weightSum="6">
-
-            <TextView
-                android:id="@+id/textView26"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="3"
-                android:text="Reason"
-                android:textSize="18dp"/>
-            <TextView
-                android:id="@+id/tvReason"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="3"
-                android:text="Change my idea"
-                android:textAlignment="viewEnd"
-                android:textSize="18dp"/>
-        </LinearLayout>
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -311,7 +285,7 @@
                 android:text="Cancel Time"
                 android:textSize="18dp"/>
             <TextView
-                android:id="@+id/tvPickupTime"
+                android:id="@+id/tvCancelTime"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
@@ -347,6 +321,7 @@
             app:fabCradleVerticalOffset="6dp">
 
             <Button
+                android:id="@+id/btnRepurchase"
                 android:layout_width="match_parent"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="14dp"

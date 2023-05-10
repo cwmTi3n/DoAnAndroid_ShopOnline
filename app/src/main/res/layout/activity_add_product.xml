@@ -14,7 +14,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tvHeaderAdd"
+            android:id="@+id/tvBack"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1.2"
@@ -28,7 +28,7 @@
             android:paddingStart="10dp" />
 
         <ImageView
-            android:id="@+id/imgproduct"
+            android:id="@+id/imgProduct"
             android:layout_width="250dp"
             android:layout_height="0dp"
             android:layout_gravity="center"
@@ -36,7 +36,7 @@
             app:srcCompat="@drawable/imgproduct" />
 
         <EditText
-            android:id="@+id/edtname"
+            android:id="@+id/edtName"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -51,7 +51,7 @@
             android:inputType="textPersonName" />
 
         <Spinner
-            android:id="@+id/spinnercateName"
+            android:id="@+id/snCateName"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -63,7 +63,7 @@
         </Spinner>
 
         <EditText
-            android:id="@+id/edtdescription"
+            android:id="@+id/edtDescription"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="2"
@@ -83,7 +83,7 @@
             android:weightSum="2">
 
             <EditText
-                android:id="@+id/edtprice"
+                android:id="@+id/edtPrice"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -96,7 +96,7 @@
                 android:inputType="number" />
 
             <EditText
-                android:id="@+id/edtstock"
+                android:id="@+id/edtStock"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"

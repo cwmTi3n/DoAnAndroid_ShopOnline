@@ -8,27 +8,30 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="710dp"
-        android:weightSum="18"
+        android:layout_height="match_parent"
+        android:weightSum="12"
         android:orientation="vertical">
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1.2"
+            android:layout_weight="0.8"
             android:orientation="horizontal"
             android:weightSum="8">
 
             <TextView
-                android:id="@+id/tvMyCart"
+                android:id="@+id/tvBack"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_gravity="center"
+                android:gravity="center|start"
                 android:layout_weight="7.2"
+                android:drawableLeft="@drawable/back_left_orange"
+                android:paddingStart="10dp"
+                android:drawablePadding="10dp"
                 android:text="My Cart"
                 android:textColor="#FFA500"
-                android:textSize="32dp"
+                android:textSize="25dp"
                 android:textStyle="bold" />
 
             <ImageView
@@ -51,84 +54,23 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="0.8"
             android:text="Everything is free shipping"
             android:textColor="#B7675D5D"
             android:textSize="20dp"
             android:drawableLeft="@drawable/freeship"
             android:paddingStart="10dp"
             android:drawablePadding="10dp"
-            android:gravity="center"
-            android:textAlignment="viewStart"
+            android:gravity="center|start"
             android:background="#F7FBF5F5"/>
 
         <!--        product_in_cart-->
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcvProduct"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="14.3">
+            android:layout_weight="9.2" />
 
-        </androidx.recyclerview.widget.RecyclerView>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="5dp"
-            android:layout_weight="0.05"
-            android:background="#F1E6E6" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1.4"
-            android:orientation="horizontal"
-            android:weightSum="5">
-
-            <CheckBox
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="All"
-                android:textSize="24dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
-                android:text="Total: "
-                android:textStyle="bold"
-                android:textColor="#B7675D5D"
-                android:textSize="23dp"/>
-
-            <TextView
-                android:id="@+id/tvPriceTotal"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2"
-                android:paddingStart="5dp"
-                android:text="₫0"
-                android:textColor="#CC303A"
-                android:textSize="23dp" />
-
-            <TextView
-                android:id="@+id/tvCheckOut"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2"
-                android:text="CHECK OUT"
-                android:textColor="#ffffff"
-                android:textSize="20dp"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:background="#FF8F00"/>
-
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.05"
-            android:background="#F1E6E6" />
     </LinearLayout>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -150,131 +92,61 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="60dp"
                 android:orientation="horizontal"
-                android:weightSum="1">
+                android:weightSum="5">
 
-                <LinearLayout
-                    android:id="@+id/home"
+                <CheckBox
+                    android:id="@+id/checkBox"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.2"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/imgHome"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        app:srcCompat="@drawable/bottom_btn1" />
-
-                    <TextView
-                        android:id="@+id/tvHome"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Home"
-                        android:textAlignment="center"
-                        android:textColor="#000"
-                        android:textSize="14sp" />
-                </LinearLayout>
+                    android:layout_weight="1"
+                    android:text="All"
+                    android:textSize="24dp"/>
 
                 <LinearLayout
-                    android:id="@+id/account"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.2"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/imgAccount"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:srcCompat="@drawable/bottom_btn2" />
-
-                    <TextView
-                        android:id="@+id/tvAccount"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Account"
-                        android:textAlignment="center"
-                        android:textColor="#000"
-                        android:textSize="14sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/cart"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.2"
+                    android:layout_weight="2"
                     android:orientation="vertical"
-                    android:visibility="visible">
-
-                    <ImageView
-                        android:id="@+id/imgCart"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        app:srcCompat="@drawable/bottom_btn3_color" />
+                    android:weightSum="4">
 
                     <TextView
-                        android:id="@+id/tvCart"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Cart"
-                        android:textAlignment="center"
-                        android:textColor="#FFA500"
-                        android:textSize="14sp"
-                        android:textStyle="bold"/>
+                        android:layout_height="0dp"
+                        android:layout_weight="2"
+                        android:text="Total: "
+                        android:gravity="center"
+                        android:textStyle="bold"
+                        android:textColor="#B7675D5D"
+                        android:textSize="23dp"/>
+
+                    <TextView
+                        android:id="@+id/tvPriceTotal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="2"
+                        android:layout_marginRight="10dp"
+                        android:text="₫0"
+                        android:layout_gravity="right"
+                        android:textColor="#CC303A"
+                        android:textSize="23dp" />
                 </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/support"
+                <TextView
+                    android:id="@+id/tvCheckOut"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="0.2"
-                    android:orientation="vertical">
+                    android:layout_weight="2"
+                    android:text="CHECK OUT"
+                    android:textColor="#ffffff"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:background="#FF8F00"/>
 
-                    <ImageView
-                        android:id="@+id/imgSupport"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        app:srcCompat="@drawable/bottom_btn4" />
-
-                    <TextView
-                        android:id="@+id/tvSupport"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Support"
-                        android:textAlignment="center"
-                        android:textColor="#000"
-                        android:textSize="14sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/logout"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.2"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/imgLogout"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        app:srcCompat="@drawable/bottom_btn5" />
-
-                    <TextView
-                        android:id="@+id/tvLogout"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="LogOut"
-                        android:textAlignment="center"
-                        android:textColor="#000"
-                        android:textSize="14sp" />
-                </LinearLayout>
             </LinearLayout>
+
 
         </com.google.android.material.bottomappbar.BottomAppBar>
 

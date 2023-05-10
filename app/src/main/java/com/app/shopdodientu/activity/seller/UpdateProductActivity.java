@@ -8,12 +8,20 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.app.shopdodientu.R;
 
 public class UpdateProductActivity extends AppCompatActivity {
-
+    private TextView tvBack;
+    private ImageView imgProduct;
+    private EditText edtname, edtprice, edtstock, edtdescription;
+    private RadioButton radioButtonOn, radioButtonOff;
+    private Button btnSave;
     private Spinner sncateName;
     ArrayAdapter<String> adapter;
     @Override
@@ -28,7 +36,16 @@ public class UpdateProductActivity extends AppCompatActivity {
     }
 
     private void MapItemView(){
-        sncateName = findViewById(R.id.spinnercateName);
+        sncateName = findViewById(R.id.sncateName);
+        tvBack = findViewById(R.id.tvBack);
+        imgProduct = findViewById(R.id.imgProduct);
+        edtname = findViewById(R.id.edtname);
+        edtprice = findViewById(R.id.edtprice);
+        edtstock = findViewById(R.id.edtstock);
+        edtdescription = findViewById(R.id.edtdescription);
+        radioButtonOn = findViewById(R.id.radioButtonOn);
+        radioButtonOff = findViewById(R.id.radioButtonOff);
+        btnSave = findViewById(R.id.btnSave);
     }
 
     private void AddItemsToSpinnerCate(){

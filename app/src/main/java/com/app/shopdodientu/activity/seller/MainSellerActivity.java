@@ -3,6 +3,8 @@ package com.app.shopdodientu.activity.seller;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.app.shopdodientu.R;
@@ -12,7 +14,9 @@ import java.util.Map;
 
 public class MainSellerActivity extends AppCompatActivity {
 
-    private TextView tvViewShop, tvAddProduct, tvSetUpStore;
+    private TextView tvViewShop, tvAddProduct, tvSetUpStore, tvShopName, tvCheckingOrder, tvDeliverd, tvCancelled, tvFeedback;
+    private ImageView imgSetting, imgSupport;
+    private LinearLayout linearMyProduct, linearFinance, linearHistoryOrder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,5 +33,10 @@ public class MainSellerActivity extends AppCompatActivity {
         tvViewShop = (TextView) findViewById(R.id.tvViewShop);
         tvAddProduct = (TextView) findViewById(R.id.tvAddProduct);
         tvSetUpStore = (TextView) findViewById(R.id.tvSetUpStore);
+        tvShopName = (TextView) findViewById(R.id.tvShopName);
+        tvCheckingOrder = (TextView) findViewById(R.id.tvCheckingOrder);
+        tvDeliverd = (TextView) findViewById(R.id.tvDeliverd);
+        tvCancelled = (TextView) findViewById(R.id.tvCancelled);
+        tvFeedback = (TextView) findViewById(R.id.tvFeedback);
     }
 }

@@ -1,25 +1,31 @@
 package com.app.shopdodientu.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.app.shopdodientu.R;
 import com.app.shopdodientu.util.UIHelper;
 
+import org.w3c.dom.Text;
+
 public class CartActivity extends AppCompatActivity {
     private ImageView imvDeleteAll;
+    private TextView tvBack, tvPriceTotal, tvCheckOut;
+    private RecyclerView rcvProduct;
+    private CheckBox checkBox;
 
-    //BOTTOM
-    private LinearLayout linearCart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,13 +35,16 @@ public class CartActivity extends AppCompatActivity {
         MapItemView();
         DeleteAllClicked();
 
-        UIHelper.gotoCart(linearCart, this);
     }
 
     private void MapItemView(){
 
         imvDeleteAll = (ImageView) findViewById(R.id.imvDeleteAll);
-        linearCart = (LinearLayout) findViewById(R.id.cart);
+        tvBack = (TextView) findViewById(R.id.tvBack);
+        tvPriceTotal = (TextView) findViewById(R.id.tvPriceTotal);
+        tvCheckOut = (TextView) findViewById(R.id.tvCheckOut);
+        rcvProduct = (RecyclerView) findViewById(R.id.rcvProduct);
+        checkBox = (CheckBox) findViewById(R.id.checkBox);
     }
 
     private void DeleteAllClicked() {
