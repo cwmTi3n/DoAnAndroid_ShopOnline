@@ -212,41 +212,23 @@
             android:layout_marginTop="5dp">
 
             <TextView
-                android:id="@+id/tvPopular"
+                android:id="@+id/tvRelated"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2.9"
-                android:text="Popular"
+                android:text="Related"
                 android:textColor="#FFA500"
                 android:textStyle="bold"
                 android:textSize="20dp"
                 android:gravity="center"/>
 
             <TextView
-                android:id="@+id/linePopular"
+                android:id="@+id/lineRelated"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.1"
                 android:gravity="center"
                 android:background="#FFA500" />
-
-            <TextView
-                android:id="@+id/tvHot"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2.9"
-                android:text="Hot"
-                android:textColor="#8B7C7C"
-                android:textSize="20dp"
-                android:gravity="center"/>
-
-            <TextView
-                android:id="@+id/lineHot"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.1"
-                android:gravity="center"
-                android:background="#F1E6E6" />
 
             <TextView
                 android:id="@+id/tvLatest"
@@ -260,6 +242,24 @@
 
             <TextView
                 android:id="@+id/lineLatest"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.1"
+                android:gravity="center"
+                android:background="#F1E6E6" />
+
+            <TextView
+                android:id="@+id/tvBest"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2.9"
+                android:text="Best"
+                android:textColor="#8B7C7C"
+                android:textSize="20dp"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/lineBest"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.1"

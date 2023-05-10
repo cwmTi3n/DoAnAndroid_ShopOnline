@@ -24,9 +24,6 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".activity.SeeAllFeedbackActivity"
-            android:exported="false" />
-         <activity
          android:name=".activity.FeedbackActivity"
          android:exported="false" />
         <activity
@@ -68,9 +65,9 @@
         <activity
             android:name=".activity.CartActivity"
             android:exported="false" />
-<!--        <activity-->
-<!--            android:name=".activity.ProductActivity"-->
-<!--            android:exported="false" />-->
+        <activity
+            android:name=".activity.ProductActivity"
+            android:exported="false" />
         <activity
             android:name=".activity.HomeShopActivity"
             android:exported="false" />
@@ -104,9 +101,9 @@
         <activity
             android:name=".activity.seller.UpdateProductActivity"
             android:exported="false" />
-        <activity
-            android:name=".activity.ProductDetailActivity"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".activity.ProductDetailActivity"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".activity.seller.AddProductActivity"
             android:exported="false" />
@@ -117,7 +114,15 @@
             android:name=".activity.ChooseAddressActivity"
             android:exported="false" />
         <activity
+<<<<<<< HEAD
+            android:name=".activity.ProductDetailActivity"
+=======
+<<<<<<< HEAD
+            android:name=".activity.MainActivity"
+=======
             android:name=".activity.ProductActivity"
+>>>>>>> 6ccd9d6c7f13a203dcf1eeb46c3be4ee9184f7f8
+>>>>>>> 29e818574f025846a65a5c4536e9f1c58dfc5a26
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

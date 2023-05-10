@@ -131,6 +131,7 @@
                         android:scaleY="0.6"
                         android:stepSize="1" />
                     <TextView
+                        android:id="@+id/tvAmountSelled"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="Đã bán 100"
@@ -242,7 +243,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:gravity="center|start"
-                    android:text="Feedback                                      See all"
+                    android:text="Feedback                      Scroll to see all"
                     android:textSize="20dp"
                     android:textStyle="bold"
                     android:drawableRight="@drawable/back_left"/>
@@ -252,6 +253,7 @@
                     android:layout_height="1dp"
                     android:background="#F1E6E6" />
 
+<!--                feedback-->
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rcvFeedback"
                     android:layout_width="match_parent"
@@ -298,7 +300,7 @@
                             android:id="@+id/imgChat"
                             android:layout_width="match_parent"
                             android:layout_height="32dp"
-                            android:layout_marginTop="3dp"
+                            android:layout_marginTop="5dp"
                             app:srcCompat="@drawable/chat" />
 
                         <TextView
@@ -370,7 +372,7 @@
 
 
                         <TextView
-                            android:id="@+id/btnBuyNow"
+                            android:id="@+id/tvBuyNow"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:gravity="center"

@@ -22,7 +22,7 @@ public class ProductActivity extends AppCompatActivity {
     private TextView tvshopName, tvamountProduct, tvChat, tvSearch;
     private TextView tvShop;
     private LinearLayout linearShop, linearProduct, linearCatalog;
-    private TextView linePopulated, lineHot, lineLatest, tvPopulated, tvHot, tvLatest, tvPrice;
+    private TextView lineRelated, lineLatest, lineBest, tvRelated, tvLatest, tvBest, tvPrice;
     private TextView currentTextView, currentLine;
 
     @Override
@@ -32,10 +32,10 @@ public class ProductActivity extends AppCompatActivity {
 
         MapItemView();
 
-        currentTextView = tvPopulated;
-        currentLine = linePopulated;
-        TextViewPopulatedClicked();
-        TextViewHotClicked();
+        currentTextView = tvRelated;
+        currentLine = lineRelated;
+        TextViewRelatedClicked();
+        TextViewBestClicked();
         TextViewLatestClicked();
         TextViewPriceClicked();
 
@@ -53,50 +53,31 @@ public class ProductActivity extends AppCompatActivity {
         linearProduct = findViewById(R.id.linearProduct);
         linearCatalog = (LinearLayout) findViewById(R.id.linearCatalog);
         tvShop = (TextView) findViewById(R.id.tvShop);
-        tvPopulated = (TextView) findViewById(R.id.tvPopular);
-        tvHot = (TextView) findViewById(R.id.tvHot);
+        tvRelated = (TextView) findViewById(R.id.tvRelated);
         tvLatest = (TextView) findViewById(R.id.tvLatest);
+        tvBest = (TextView) findViewById(R.id.tvBest);
         tvPrice = (TextView) findViewById(R.id.tvPrice);
-        linePopulated = (TextView) findViewById(R.id.linePopular);
-        lineHot = (TextView) findViewById(R.id.lineHot);
+        lineRelated = (TextView) findViewById(R.id.lineRelated);
         lineLatest = (TextView) findViewById(R.id.lineLatest);
+        lineBest = (TextView) findViewById(R.id.lineBest);
 
     }
 
-    private void TextViewPopulatedClicked(){
-        tvPopulated.setOnClickListener(new View.OnClickListener() {
+    private void TextViewRelatedClicked(){
+        tvRelated.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(currentTextView != tvPopulated){
+                if(currentTextView != tvRelated){
                     SetEffectLastTextViewTop(currentTextView);
                     SetEffectLineLastTextViewTop(currentLine);
                 }
                 if(currentTextView == tvPrice){
                     SetDrawablePriceMove();
                 }
-                SetEffectCurrentTextViewTop(tvPopulated);
-                SetEffectLineCurrentTextViewTop(linePopulated);
-                currentTextView = tvPopulated;
-                currentLine = linePopulated;
-            }
-        });
-    }
-
-    private void TextViewHotClicked(){
-        tvHot.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(currentTextView != tvHot){
-                    SetEffectLastTextViewTop(currentTextView);
-                    SetEffectLineLastTextViewTop(currentLine);
-                }
-                if(currentTextView == tvPrice){
-                    SetDrawablePriceMove();
-                }
-                SetEffectCurrentTextViewTop(tvHot);
-                SetEffectLineCurrentTextViewTop(lineHot);
-                currentTextView = tvHot;
-                currentLine = lineHot;
+                SetEffectCurrentTextViewTop(tvRelated);
+                SetEffectLineCurrentTextViewTop(lineRelated);
+                currentTextView = tvRelated;
+                currentLine = lineRelated;
             }
         });
     }
@@ -116,6 +97,25 @@ public class ProductActivity extends AppCompatActivity {
                 SetEffectLineCurrentTextViewTop(lineLatest);
                 currentTextView = tvLatest;
                 currentLine = lineLatest;
+            }
+        });
+    }
+
+    private void TextViewBestClicked(){
+        tvBest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(currentTextView != tvBest){
+                    SetEffectLastTextViewTop(currentTextView);
+                    SetEffectLineLastTextViewTop(currentLine);
+                }
+                if(currentTextView == tvPrice){
+                    SetDrawablePriceMove();
+                }
+                SetEffectCurrentTextViewTop(tvBest);
+                SetEffectLineCurrentTextViewTop(lineBest);
+                currentTextView = tvBest;
+                currentLine = lineBest;
             }
         });
     }

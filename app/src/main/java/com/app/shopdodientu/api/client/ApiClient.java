@@ -7,7 +7,7 @@ import com.app.shopdodientu.api.service.ApiService;
 public class ApiClient extends BaseClient{
 //    private static final String BASE_URL = "http://192.168.1.7/";
     private static final String BASE_URL = "https://apishoponline.cfapps.ap21.hana.ondemand.com/";
-    private static ApiService apiService;
+    public static ApiService apiService;
 
     public static ApiService getApiService() {
         if (apiService == null) {

@@ -1,5 +1,7 @@
 package com.app.shopdodientu.model;
 
+import androidx.annotation.NonNull;
+
 import java.io.Serializable;
 
 public class CategoryModel implements Serializable {
@@ -48,5 +50,11 @@ public class CategoryModel implements Serializable {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return name;
     }
 }

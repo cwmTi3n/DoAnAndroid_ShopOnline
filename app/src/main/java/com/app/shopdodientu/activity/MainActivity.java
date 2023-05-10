@@ -86,7 +86,6 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView rcvProduct;
     private ProductAdapter productAdapter;
     private List<ProductModel> products;
-    private ApiService apiService;
 
     private SearchView svProduct;
     private int page;
@@ -149,15 +148,18 @@ public class MainActivity extends AppCompatActivity {
                             UserModel userLogin = response.body();
                             if(userLogin != null) {
                                 Constant.userLogin = userLogin;
+                                Log.d("logintrue", "logintrue");
                             }
                             else {
                                 ApiClient.restApiService();
+                                Log.d("loginfalse", "loginfalse");
                             }
                         }
 
                         @Override
                         public void onFailure(Call<UserModel> call, Throwable t) {
                             ApiClient.restApiService();
+                            Log.d("loginfalse", "loginfalse");
                         }
                     });
         }
@@ -185,7 +187,6 @@ public class MainActivity extends AppCompatActivity {
         linearSupport = (LinearLayout) findViewById(R.id.support);
         linearLogout = (LinearLayout) findViewById(R.id.logout);
         svProduct = (SearchView) findViewById(R.id.svproduct);
-        apiService = ApiClient.getApiService();
     }
 
     private void ActionToolBar(){
@@ -279,6 +280,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void getAllCategory() {
+        ApiService apiService = ApiClient.getApiService();
         apiService.getAllCategory()
                 .enqueue(new Callback<List<CategoryModel>>() {
                     @Override
@@ -299,21 +301,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getLastProduct() {
+        ApiService apiService = ApiClient.getApiService();
         apiService.lastProduct(0)
                 .enqueue(new Callback<PageModel<ProductModel>>() {
                     @Override
                     public void onResponse(Call<PageModel<ProductModel>> call, Response<PageModel<ProductModel>> response) {
                         PageModel<ProductModel> pageProduct = response.body();
-                        if(pageProduct != null)
+                        if(pageProduct != null) {
                             products = pageProduct.getContent();
-                        page = pageProduct.getIndex();
-                        total = pageProduct.getTotal();
-                        productAdapter = new ProductAdapter(getApplicationContext(), products);
-                        rcvProduct.setHasFixedSize(true);
-                        rcvProduct.setLayoutManager(new GridLayoutManager(MainActivity.this, 2));
-                        rcvProduct.setAdapter(productAdapter);
-                        productAdapter.notifyDataSetChanged();
-
+                            page = pageProduct.getIndex();
+                            total = pageProduct.getTotal();
+                            productAdapter = new ProductAdapter(getApplicationContext(), products);
+                            rcvProduct.setHasFixedSize(true);
+                            rcvProduct.setLayoutManager(new GridLayoutManager(MainActivity.this, 2));
+                            rcvProduct.setAdapter(productAdapter);
+                            productAdapter.notifyDataSetChanged();
+                        }
                     }
 
                     @Override
@@ -327,6 +330,7 @@ public class MainActivity extends AppCompatActivity {
         if(page >= total) {
             return;
         }
+        ApiService apiService = ApiClient.getApiService();
         apiService.lastProduct(page)
                 .enqueue(new Callback<PageModel<ProductModel>>() {
                     @Override
