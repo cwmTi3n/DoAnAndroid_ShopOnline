@@ -27,9 +27,11 @@ import com.app.shopdodientu.util.UIHelper;
 public class MyAccountActivity extends AppCompatActivity {
     //TOP
     private LinearLayout linearHomeTop, linearStoreTop;
+    private TextView tvHomeTop, tvStore;
 
     //BETWEEN
-    private TextView tvProfile, tvRegisterSeller, tvMyOrder;
+    private ImageView imgavatar;
+    private TextView tvfullname, tvemail, tvHelp, tvChat, tvProfile, tvRegisterSeller, tvMyOrder;
 
     //BOTTTOM
     private LinearLayout linearHome, linearAccount, linearCart, linearSupport, linearLogout;
@@ -57,6 +59,26 @@ public class MyAccountActivity extends AppCompatActivity {
 
     }
 
+    private void MapItemView(){
+        imgavatar = findViewById(R.id.imgavatar);
+        tvfullname = findViewById(R.id.tvfullname);
+        tvemail = findViewById(R.id.tvemail);
+
+        linearHomeTop = (LinearLayout) findViewById(R.id.linearHomeTop);
+        linearStoreTop = (LinearLayout) findViewById(R.id.linearStoreTop);
+
+        tvProfile = (TextView) findViewById(R.id.tvProfile);
+        tvRegisterSeller = (TextView) findViewById(R.id.tvRegisterStore);
+        tvMyOrder = (TextView) findViewById(R.id.tvMyOrder);
+        tvHelp = findViewById(R.id.tvHelp);
+        tvChat = findViewById(R.id.tvChat);
+
+        linearHome = (LinearLayout) findViewById(R.id.home);
+        linearAccount = (LinearLayout) findViewById(R.id.account);
+        linearCart = (LinearLayout) findViewById(R.id.cart);
+        linearSupport = (LinearLayout) findViewById(R.id.support);
+        linearLogout = (LinearLayout) findViewById(R.id.logout);
+    }
     private void gotoProfile() {
         tvProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,21 +101,7 @@ public class MyAccountActivity extends AppCompatActivity {
         });
     }
 
-    private void MapItemView(){
 
-        linearHomeTop = (LinearLayout) findViewById(R.id.linearHomeTop);
-        linearStoreTop = (LinearLayout) findViewById(R.id.linearStoreTop);
-
-        tvProfile = (TextView) findViewById(R.id.tvProfile);
-        tvRegisterSeller = (TextView) findViewById(R.id.tvRegisterStore);
-        tvMyOrder = (TextView) findViewById(R.id.tvMyOrder);
-
-        linearHome = (LinearLayout) findViewById(R.id.home);
-        linearAccount = (LinearLayout) findViewById(R.id.account);
-        linearCart = (LinearLayout) findViewById(R.id.cart);
-        linearSupport = (LinearLayout) findViewById(R.id.support);
-        linearLogout = (LinearLayout) findViewById(R.id.logout);
-    }
 
 
 }

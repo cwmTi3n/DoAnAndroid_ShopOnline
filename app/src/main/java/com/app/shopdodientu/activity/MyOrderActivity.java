@@ -63,20 +63,6 @@ public class MyOrderActivity extends AppCompatActivity {
         });
     }
 
-//    private void changeFabIcon(final int index){
-//        binding.fabAction.hide();
-//        new Handler().postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                switch (index){
-//                    case 0: binding.fabAction.setImageDrawable(getDrawable(R.drawable.ic_launcher_background));break;
-//                    case 1: binding.fabAction.setImageDrawable(getDrawable(R.drawable.ic_launcher_foreground));break;
-//                    case 2: binding.fabAction.setImageDrawable(getDrawable(R.drawable.ic_launcher_foreground));break;
-//                }
-//                binding.fabAction.show();
-//            }
-//        }, 2000);
-//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
@@ -86,16 +72,6 @@ public class MyOrderActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item){
-//        int id = item.getItemId();
-//        switch (id){
-//            case R.id.menuSearch: Toast.makeText(this, "Bạn đang chọn search",Toast.LENGTH_SHORT).show();break;
-//            case R.id.menuNewGroup: Toast.makeText(this, "Bạn đang chọn more",Toast.LENGTH_SHORT).show();break;
-//            case R.id.menuBroadcast: Toast.makeText(this, "Bạn đang chọn more",Toast.LENGTH_SHORT).show();break;
-//            case R.id.menuWeb: Toast.makeText(this, "Bạn đang chọn more",Toast.LENGTH_SHORT).show();break;
-//            case R.id.menuMessage: Toast.makeText(this, "Bạn đang chọn more",Toast.LENGTH_SHORT).show();break;
-//            case R.id.menuSetting: Toast.makeText(this, "Bạn đang chọn Setting",Toast.LENGTH_SHORT).show();break;
-//
-//        }
         return super.onOptionsItemSelected(item);
     }
 }

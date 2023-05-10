@@ -14,6 +14,7 @@
 
 
         <LinearLayout
+            android:id="@+id/linearBannerShop"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="4"
@@ -240,7 +241,7 @@
 
         <!--        product_horizontal -->
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcv"
+            android:id="@+id/rcvLastProduct"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="8.9"/>

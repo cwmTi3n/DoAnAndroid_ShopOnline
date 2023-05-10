@@ -7,6 +7,7 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -16,8 +17,11 @@ import com.app.shopdodientu.util.UIHelper;
 import org.w3c.dom.Text;
 
 public class ProductActivity extends AppCompatActivity {
+
+    private LinearLayout linearBannerShop;
+    private TextView tvshopName, tvamountProduct, tvChat, tvSearch;
     private TextView tvShop;
-    private LinearLayout linearCatalog;
+    private LinearLayout linearShop, linearProduct, linearCatalog;
     private TextView linePopulated, lineHot, lineLatest, tvPopulated, tvHot, tvLatest, tvPrice;
     private TextView currentTextView, currentLine;
 
@@ -40,15 +44,19 @@ public class ProductActivity extends AppCompatActivity {
     }
 
     private void MapItemView(){
+        linearBannerShop = findViewById(R.id.linearBannerShop);
+        tvshopName = findViewById(R.id.tvshopName);
+        tvamountProduct = findViewById(R.id.tvamountProduct);
+        tvChat = findViewById(R.id.tvChat);
+        tvSearch = findViewById(R.id.tvSearch);
+        linearShop = findViewById(R.id.linearShop);
+        linearProduct = findViewById(R.id.linearProduct);
+        linearCatalog = (LinearLayout) findViewById(R.id.linearCatalog);
         tvShop = (TextView) findViewById(R.id.tvShop);
-
         tvPopulated = (TextView) findViewById(R.id.tvPopular);
         tvHot = (TextView) findViewById(R.id.tvHot);
         tvLatest = (TextView) findViewById(R.id.tvLatest);
         tvPrice = (TextView) findViewById(R.id.tvPrice);
-
-        linearCatalog = (LinearLayout) findViewById(R.id.linearCatalog);
-
         linePopulated = (TextView) findViewById(R.id.linePopular);
         lineHot = (TextView) findViewById(R.id.lineHot);
         lineLatest = (TextView) findViewById(R.id.lineLatest);

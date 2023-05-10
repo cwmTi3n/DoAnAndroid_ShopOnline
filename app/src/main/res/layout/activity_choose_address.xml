@@ -39,6 +39,7 @@
             android:gravity="center"
             android:background="@drawable/radius_border_10dp_orange"/>
 
+<!--            address-->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcvAddress"
             android:layout_width="match_parent"
