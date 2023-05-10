@@ -1,7 +1,9 @@
 package com.app.shopdodientu.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
 import androidx.core.widget.NestedScrollView;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,21 +19,26 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.Toolbar;
 
 import com.app.shopdodientu.R;
 import com.app.shopdodientu.adapter.CategoryAdapter;
 import com.app.shopdodientu.adapter.ImagesViewPageAdapter;
+import com.app.shopdodientu.adapter.MenuCategoryAdapter;
 import com.app.shopdodientu.adapter.ProductAdapter;
 import com.app.shopdodientu.api.client.ApiClient;
 import com.app.shopdodientu.api.service.ApiService;
 import com.app.shopdodientu.model.CategoryModel;
 import com.app.shopdodientu.model.ImageModel;
+import com.app.shopdodientu.model.ItemMenuModel;
 import com.app.shopdodientu.model.PageModel;
 import com.app.shopdodientu.model.ProductModel;
 import com.app.shopdodientu.model.UserModel;
 import com.app.shopdodientu.util.Constant;
 import com.app.shopdodientu.util.UIHelper;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,6 +67,13 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    //Menu
+    private Toolbar toolbar;
+    private NavigationView navigationView;
+    private DrawerLayout drawerLayout;
+    private ListView listView;
+    ArrayList<ItemMenuModel> arrayList;
+    MenuCategoryAdapter adapter;
 
     //BOTTOM
     private ImageView imvHome, imvAccount;
@@ -86,6 +100,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         MapItemView();
         SliderImage();
+        ActionToolBar();
+        MapListViewMenu();
         getAllCategory();
         if(Constant.userLogin == null) {
             login();
@@ -152,6 +168,11 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void MapItemView() {
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        navigationView = (NavigationView) findViewById(R.id.navigationView);
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
+        listView = (ListView) findViewById(R.id.lvMenu);
+
         viewPager =findViewById(R.id.viewpage);
         rcvCategory = (RecyclerView) findViewById(R.id.rcvcategory);
         rcvProduct = (RecyclerView) findViewById(R.id.rcvproduct);
@@ -165,6 +186,26 @@ public class MainActivity extends AppCompatActivity {
         linearLogout = (LinearLayout) findViewById(R.id.logout);
         svProduct = (SearchView) findViewById(R.id.svproduct);
         apiService = ApiClient.getApiService();
+    }
+
+    private void ActionToolBar(){
+        toolbar.setNavigationIcon(R.drawable.sidebar);
+        toolbar.setPadding(16, 0, 0, 0);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                drawerLayout.openDrawer(GravityCompat.START);
+            }
+        });
+    }
+
+    private void MapListViewMenu(){
+        arrayList = new ArrayList<>();
+        arrayList.add(new ItemMenuModel("Java",R.drawable.sample_product));
+        arrayList.add(new ItemMenuModel("Java",R.drawable.sample_product));
+
+        adapter = new MenuCategoryAdapter(MainActivity.this, R.layout.item_menu, arrayList);
+        listView.setAdapter(adapter);
     }
 
     private void SliderImage(){
