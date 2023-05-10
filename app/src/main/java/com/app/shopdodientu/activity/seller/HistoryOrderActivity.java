@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.app.shopdodientu.R;
 
 public class HistoryOrderActivity extends AppCompatActivity {
+//    KHOAN HẢ LÀM **********************************************************************
     private Spinner snStatusOrder;
     private TextView tvLatest, lineLatest, tvOldest, lineOldest;
     private LinearLayout linearOldest, linearLatest;

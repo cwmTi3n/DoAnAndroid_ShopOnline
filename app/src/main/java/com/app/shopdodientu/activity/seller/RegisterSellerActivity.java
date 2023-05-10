@@ -11,6 +11,8 @@ import com.app.shopdodientu.util.UIHelper;
 
 public class RegisterSellerActivity extends AppCompatActivity {
 
+    //    KHOAN HẢ LÀM **********************************************************************
+
     private Button btnSave;
 
     @Override
