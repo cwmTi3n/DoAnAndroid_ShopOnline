@@ -2,15 +2,7 @@ package com.app.shopdodientu.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
-import android.app.UiAutomation;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.graphics.Typeface;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,8 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.app.shopdodientu.R;
-import com.app.shopdodientu.activity.seller.RegisterSellerActivity;
-import com.app.shopdodientu.activity.seller.WelcomeSellerActivity;
+import com.app.shopdodientu.activity.OrderTabLayout.MyOrderActivity;
 import com.app.shopdodientu.model.UserModel;
 import com.app.shopdodientu.util.Constant;
 import com.app.shopdodientu.util.UIHelper;

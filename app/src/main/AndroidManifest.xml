@@ -24,7 +24,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".activity.LocationActivity"
+            android:name=".activity.AddressTabLayout.LocationActivity"
             android:exported="false" />
         <activity
             android:name=".activity.FeedbackActivity"
@@ -57,26 +57,20 @@
             android:name=".activity.seller.HistoryOrderActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.CatalogActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.MyOrderActivity"
+            android:name=".activity.OrderTabLayout.MyOrderActivity"
             android:exported="false" />
         <activity
             android:name=".activity.CartActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.ProductActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.HomeShopActivity"
+            android:name=".activity.ShopTabLayout.HomeShopActivity"
             android:exported="false" />
         <activity
             android:name=".activity.seller.MainSellerActivity"
             android:exported="false" />
-        <activity
-            android:name=".activity.MyAccountActivity"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".activity.MyAccountActivity"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".activity.seller.RegisterSellerActivity"
             android:exported="false" />
@@ -104,11 +98,11 @@
         <activity
             android:name=".activity.SignupActivity"
             android:exported="false" />
-<!--        <activity-->
-<!--            android:name=".activity.ChooseAddressActivity"-->
-<!--            android:exported="false" />-->
         <activity
             android:name=".activity.ChooseAddressActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.MyAccountActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,4 +1,4 @@
-package com.app.shopdodientu.activity;
+package com.app.shopdodientu.activity.OrderTabLayout;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;

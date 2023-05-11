@@ -1,38 +1,36 @@
-package com.app.shopdodientu.activity;
+package com.app.shopdodientu.activity.OrderTabLayout;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 
-import com.app.shopdodientu.R;
-import com.app.shopdodientu.databinding.ActivityLocationBinding;
+import com.app.shopdodientu.activity.OrderTabLayout.ViewPager2Adapter;
 import com.app.shopdodientu.databinding.ActivityMyOrderBinding;
-import com.app.shopdodientu.databinding.ActivityRegisterSellerBinding;
 import com.google.android.material.tabs.TabLayout;
 
-public class LocationActivity extends AppCompatActivity {
+public class MyOrderActivity extends AppCompatActivity {
 
-    ActivityLocationBinding binding;
-    MyPagerAdapter myPagerAdapter;
+
+    ActivityMyOrderBinding binding;
+    ViewPager2Adapter viewPager2Adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityLocationBinding.inflate(getLayoutInflater());
+        binding = ActivityMyOrderBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+//        setSupportActionBar(binding.toolBar);
 
-        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Province/City"));
-        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("District"));
-        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Ward"));
+        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Waitting"));
+        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Delivering"));
+        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Delivered"));
+        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Cancelled"));
 
         FragmentManager fragmentManager = getSupportFragmentManager();
-        myPagerAdapter = new MyPagerAdapter(fragmentManager, getLifecycle());
-        binding.viewPager2.setAdapter(myPagerAdapter);
+        viewPager2Adapter = new ViewPager2Adapter(fragmentManager, getLifecycle());
+        binding.viewPager2.setAdapter(viewPager2Adapter);
 
         binding.tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override

@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.app.shopdodientu.R;
-import com.app.shopdodientu.activity.LocationActivity;
+import com.app.shopdodientu.activity.AddressTabLayout.LocationActivity;
 import com.app.shopdodientu.util.UIHelper;
 
 public class RegisterSellerActivity extends AppCompatActivity {

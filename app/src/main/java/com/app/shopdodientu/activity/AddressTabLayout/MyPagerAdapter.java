@@ -1,10 +1,14 @@
-package com.app.shopdodientu.activity;
+package com.app.shopdodientu.activity.AddressTabLayout;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
+
+import com.app.shopdodientu.activity.AddressTabLayout.DistrictFragment;
+import com.app.shopdodientu.activity.AddressTabLayout.ProvinceFragment;
+import com.app.shopdodientu.activity.AddressTabLayout.WardFragment;
 
 
 public class MyPagerAdapter extends FragmentStateAdapter {

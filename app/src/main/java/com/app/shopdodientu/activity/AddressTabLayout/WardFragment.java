@@ -1,4 +1,4 @@
-package com.app.shopdodientu.activity;
+package com.app.shopdodientu.activity.AddressTabLayout;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

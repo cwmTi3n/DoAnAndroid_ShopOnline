@@ -1,4 +1,4 @@
-package com.app.shopdodientu.activity;
+package com.app.shopdodientu.activity.AddressTabLayout;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,12 +9,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.app.shopdodientu.databinding.FragmentDeliveringorderBinding;
+import com.app.shopdodientu.R;
+import com.app.shopdodientu.databinding.FragmentDistrictBinding;
+import com.app.shopdodientu.databinding.FragmentProvinceBinding;
 
+public class DistrictFragment extends Fragment {
 
-public class DeliveringOrderFragment extends Fragment {
-    FragmentDeliveringorderBinding binding;
-    public DeliveringOrderFragment(){}
+    FragmentDistrictBinding binding;
+    public DistrictFragment(){}
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -25,7 +27,8 @@ public class DeliveringOrderFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
-        binding = FragmentDeliveringorderBinding.inflate(inflater, container, false);
+        binding = FragmentDistrictBinding.inflate(inflater, container, false);
+
         //vi tri load du lieu: recyclerview
         return binding.getRoot();
     }

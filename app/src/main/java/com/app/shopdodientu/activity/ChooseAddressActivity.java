@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.app.shopdodientu.R;
+import com.app.shopdodientu.activity.AddressTabLayout.LocationActivity;
 
 public class ChooseAddressActivity extends AppCompatActivity {
     private TextView tvBack, tvAddAddress;

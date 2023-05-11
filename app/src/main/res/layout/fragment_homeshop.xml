@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:weightSum="18"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tvRecommend"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="Recommends for you"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:textColor="#000"
+        android:drawablePadding="5dp"
+        android:layout_marginTop="5dp"
+        android:drawableRight="@drawable/back_left"
+        android:layout_marginLeft="10dp"/>
+
+    <!--        catalog -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcvRecommend"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4" />
+
+    <TextView
+        android:id="@+id/tvLastProduct"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:text="Last Product"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:textColor="#000"
+        android:drawablePadding="5dp"
+        android:drawableRight="@drawable/back_left"
+        android:layout_marginLeft="10dp"/>
+
+    <!--        product_horizontal -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcvLastProduct"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="12"/>
+
+</LinearLayout>
