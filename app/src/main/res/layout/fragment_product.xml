@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_weight="12"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="0dp"
+       android:layout_weight="0.7"
+       android:orientation="horizontal">
+
+      <TextView
+          android:id="@+id/tvRelated"
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="2.9"
+          android:text="Related"
+          android:textColor="#FFA500"
+          android:textStyle="bold"
+          android:textSize="20dp"
+          android:gravity="center"/>
+
+      <TextView
+          android:id="@+id/lineRelated"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="0.1"
+          android:gravity="center"
+          android:background="#FFA500" />
+
+      <TextView
+          android:id="@+id/tvLatest"
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="2.9"
+          android:text="Latest"
+          android:textColor="#8B7C7C"
+          android:textSize="20dp"
+          android:gravity="center"/>
+
+      <TextView
+          android:id="@+id/lineLatest"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="0.1"
+          android:gravity="center"
+          android:background="#F1E6E6" />
+
+      <TextView
+          android:id="@+id/tvBest"
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="2.9"
+          android:text="Best"
+          android:textColor="#8B7C7C"
+          android:textSize="20dp"
+          android:gravity="center"/>
+
+      <TextView
+          android:id="@+id/lineBest"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_weight="0.1"
+          android:gravity="center"
+          android:background="#F1E6E6" />
+
+
+      <TextView
+          android:id="@+id/tvPrice"
+          android:layout_width="0dp"
+          android:layout_height="match_parent"
+          android:layout_weight="2.9"
+          android:text="Price"
+          android:textColor="#8B7C7C"
+          android:textSize="20dp"
+          android:gravity="center"
+          android:drawablePadding="-20dp"
+          android:drawableRight="@drawable/unfold"/>
+   </LinearLayout>
+
+   <!--        product -->
+   <androidx.recyclerview.widget.RecyclerView
+       android:id="@+id/rcvProduct"
+       android:layout_width="match_parent"
+       android:layout_height="0dp"
+       android:paddingTop="10dp"
+       android:layout_weight="11"/>
+</LinearLayout>

@@ -50,6 +50,7 @@
                     android:textStyle="italic" />
 
                 <TextView
+<<<<<<< HEAD
                     android:id="@+id/tvEdit"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -58,6 +59,15 @@
                     android:text="Edit"
                     android:textSize="20dp"
                     android:textStyle="bold" />
+=======
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:text="Edit"/>
+>>>>>>> 61dbe875eae32c42ddc321fb1371771e22827381
 
 
 

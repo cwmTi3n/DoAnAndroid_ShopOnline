@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.HomeShopActivity">
+    tools:context=".activity.ShopTabLayout.HomeShopActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -116,135 +116,33 @@
 
         </LinearLayout>
 
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:contentDescription="Enter How Much Cookies You Want"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.2"
+            android:background="#ffffff" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:orientation="horizontal"
-            android:layout_weight="1"
-            android:weightSum="9"
-            android:layout_marginTop="5dp">
+            android:layout_weight="14.8">
 
-
-            <LinearLayout
-                android:id="@+id/linearShop"
-                android:layout_width="0dp"
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="3"
-                android:orientation="vertical"
-                android:weightSum="2">
+                android:fillViewport="true">
 
-                <TextView
-                    android:id="@+id/tvShop"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1.8"
-                    android:text="Shop"
-                    android:textColor="#FFA500"
-                    android:textStyle="bold"
-                    android:textSize="20dp"
-                    android:gravity="center"/>
-
-                <TextView
-                    android:id="@+id/lineShop"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="0.1"
-                    android:background="#FFA500" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/linearProduct"
-                android:layout_width="0dp"
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPager2"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="3"
-                android:orientation="vertical"
-                android:weightSum="2">
+                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"/>
 
-                <TextView
-                    android:id="@+id/tvProduct"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1.8"
-                    android:text="Product"
-                    android:textStyle="bold"
-                    android:textSize="20dp"
-                    android:gravity="center"/>
+            </androidx.core.widget.NestedScrollView>
 
-                <TextView
-                    android:id="@+id/lineProduct"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="0.1"
-                    android:background="#F1E6E6" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/linearCatalog"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="3"
-                android:orientation="vertical"
-                android:weightSum="2">
-
-                <TextView
-                    android:id="@+id/tvCatalog"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1.8"
-                    android:text="Catalog"
-                    android:textStyle="bold"
-                    android:textSize="20dp"
-                    android:gravity="center"/>
-
-                <TextView
-                    android:id="@+id/lineCatalog"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="0.1"
-                    android:background="#F1E6E6" />
-            </LinearLayout>
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/tvRecommend"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="Recommends for you"
-            android:textStyle="bold"
-            android:textSize="20dp"
-            android:textColor="#000"
-            android:drawablePadding="5dp"
-            android:layout_marginTop="5dp"
-            android:drawableRight="@drawable/back_left"
-            android:layout_marginLeft="10dp"/>
-
-        <!--        catalog -->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcvRecommend"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="4" />
-
-        <TextView
-            android:id="@+id/tvLastProduct"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="Last Product"
-            android:textStyle="bold"
-            android:textSize="20dp"
-            android:textColor="#000"
-            android:drawablePadding="5dp"
-            android:drawableRight="@drawable/back_left"
-            android:layout_marginLeft="10dp"/>
-
-        <!--        product_horizontal -->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcvLastProduct"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="8.9"/>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

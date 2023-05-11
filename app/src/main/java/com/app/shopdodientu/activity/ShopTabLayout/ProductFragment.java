@@ -1,66 +1,60 @@
-package com.app.shopdodientu.activity;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.app.shopdodientu.activity.ShopTabLayout;
 
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
 import com.app.shopdodientu.R;
-import com.app.shopdodientu.util.UIHelper;
+import com.app.shopdodientu.databinding.FragmentDistrictBinding;
+import com.app.shopdodientu.databinding.FragmentProductBinding;
 
-import org.w3c.dom.Text;
+public class ProductFragment extends Fragment {
 
-public class ProductActivity extends AppCompatActivity {
-
-    private LinearLayout linearBannerShop;
-    private TextView tvshopName, tvamountProduct, tvChat, tvSearch;
-    private TextView tvShop;
-    private LinearLayout linearShop, linearProduct, linearCatalog;
-    private TextView lineRelated, lineLatest, lineBest, tvRelated, tvLatest, tvBest, tvPrice;
-    private TextView currentTextView, currentLine;
+    FragmentProductBinding binding;
+    TextView tvRelated, lineRelated, tvLatest, lineLatest, tvBest, lineBest, tvPrice;
+    TextView currentTextView, currentLine;
+    public ProductFragment(){}
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_product);
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater,
+                             @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
+        binding = FragmentProductBinding.inflate(inflater, container, false);
 
         MapItemView();
-
         currentTextView = tvRelated;
         currentLine = lineRelated;
         TextViewRelatedClicked();
-        TextViewBestClicked();
         TextViewLatestClicked();
+        TextViewBestClicked();
         TextViewPriceClicked();
 
-        UIHelper.gotoHomeShop(tvShop, this, 0);
-        UIHelper.gotoCatalogShop(linearCatalog, this);
+        //vi tri load du lieu: recyclerview
+        return binding.getRoot();
     }
 
     private void MapItemView(){
-        linearBannerShop = findViewById(R.id.linearBannerShop);
-        tvshopName = findViewById(R.id.tvshopName);
-        tvamountProduct = findViewById(R.id.tvamountProduct);
-        tvChat = findViewById(R.id.tvChat);
-        tvSearch = findViewById(R.id.tvSearch);
-        linearShop = findViewById(R.id.linearShop);
-        linearProduct = findViewById(R.id.linearProduct);
-        linearCatalog = (LinearLayout) findViewById(R.id.linearCatalog);
-        tvShop = (TextView) findViewById(R.id.tvShop);
-        tvRelated = (TextView) findViewById(R.id.tvRelated);
-        tvLatest = (TextView) findViewById(R.id.tvLatest);
-        tvBest = (TextView) findViewById(R.id.tvBest);
-        tvPrice = (TextView) findViewById(R.id.tvPrice);
-        lineRelated = (TextView) findViewById(R.id.lineRelated);
-        lineLatest = (TextView) findViewById(R.id.lineLatest);
-        lineBest = (TextView) findViewById(R.id.lineBest);
-
+        tvRelated = binding.getRoot().findViewById(R.id.tvRelated);
+        lineRelated = binding.getRoot().findViewById(R.id.lineRelated);
+        tvLatest = binding.getRoot().findViewById(R.id.tvLatest);
+        lineLatest  = binding.getRoot().findViewById(R.id.lineLatest);
+        tvBest = binding.getRoot().findViewById(R.id.tvBest);
+        lineBest = binding.getRoot().findViewById(R.id.lineBest);
+        tvPrice = binding.getRoot().findViewById(R.id.tvPrice);
     }
 
     private void TextViewRelatedClicked(){
@@ -149,6 +143,7 @@ public class ProductActivity extends AppCompatActivity {
     private void SetEffectLineLastTextViewTop(TextView line) {
         line.setBackgroundColor(Color.parseColor("#F1E6E6"));
     }
+
     private void SetDrawablePriceClicked(){
         Drawable[] drawables = tvPrice.getCompoundDrawables();
         Drawable rightDrawable = drawables[2];
@@ -171,5 +166,4 @@ public class ProductActivity extends AppCompatActivity {
         Drawable drawableRight = getResources().getDrawable(R.drawable.unfold);
         tvPrice.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, drawableRight , null);
     }
-
 }

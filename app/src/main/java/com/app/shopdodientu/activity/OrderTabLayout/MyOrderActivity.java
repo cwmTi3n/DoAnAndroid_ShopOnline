@@ -1,17 +1,12 @@
-package com.app.shopdodientu.activity;
+package com.app.shopdodientu.activity.OrderTabLayout;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
-import android.os.Handler;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.Toast;
 
-import com.app.shopdodientu.R;
+import com.app.shopdodientu.activity.OrderTabLayout.ViewPager2Adapter;
 import com.app.shopdodientu.databinding.ActivityMyOrderBinding;
 import com.google.android.material.tabs.TabLayout;
 
@@ -63,15 +58,4 @@ public class MyOrderActivity extends AppCompatActivity {
         });
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu){
-//        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item){
-        return super.onOptionsItemSelected(item);
-    }
 }

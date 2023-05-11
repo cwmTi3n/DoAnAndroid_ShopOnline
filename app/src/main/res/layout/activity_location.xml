@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.OrderTabLayout.MyOrderActivity">
+    tools:context=".activity.AddressTabLayout.LocationActivity">
 
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -25,7 +25,8 @@
                 android:minHeight="?actionBarSize"
                 android:padding="16dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Menu"
-                app:title="My Order" />
+                app:title="Choose Address"
+                app:titleMarginStart="135dp" />
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabLayout"
