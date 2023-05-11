@@ -76,9 +76,10 @@
             android:exported="false" />
         <activity
             android:name=".activity.MyAccountActivity"
-            android:exported="false" /> <!-- <activity -->
-        <!-- android:name=".activity.seller.RegisterSellerActivity" -->
-        <!-- android:exported="false" /> -->
+            android:exported="false" />
+        <activity
+            android:name=".activity.seller.RegisterSellerActivity"
+            android:exported="false" />
         <activity
             android:name=".activity.seller.WelcomeSellerActivity"
             android:exported="false" />
@@ -103,11 +104,11 @@
         <activity
             android:name=".activity.SignupActivity"
             android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".activity.ChooseAddressActivity"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".activity.ChooseAddressActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.seller.RegisterSellerActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
