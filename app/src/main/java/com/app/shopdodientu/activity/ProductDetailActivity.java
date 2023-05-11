@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -16,10 +17,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.app.shopdodientu.R;
+import com.app.shopdodientu.activity.seller.UpdateProductActivity;
 import com.app.shopdodientu.api.client.ApiClient;
 import com.app.shopdodientu.api.service.ApiService;
 import com.app.shopdodientu.model.CartItemModel;
 import com.app.shopdodientu.model.ProductModel;
+import com.app.shopdodientu.util.Constant;
 import com.bumptech.glide.Glide;
 
 import retrofit2.Call;
@@ -30,7 +33,7 @@ public class ProductDetailActivity extends AppCompatActivity {
     private SearchView searchView;
     private RatingBar ratingBar;
     private ImageView imgProduct, imgAvatar;
-    private TextView tvAmountSelled, tvPrice, tvNameproduct, tvDescription, tvShopName, tvamountProduct, tvviewShop, tvBuyNow;
+    private TextView tvEdit, tvAmountSelled, tvPrice, tvNameproduct, tvDescription, tvShopName, tvamountProduct, tvviewShop, tvBuyNow;
     private RecyclerView rcvFeedback;
     private LinearLayout linearChat, linearAddToCart;
     private ProductModel productModel;
@@ -60,10 +63,25 @@ public class ProductDetailActivity extends AppCompatActivity {
         linearChat = findViewById(R.id.linearchat);
         linearAddToCart = findViewById(R.id.linearAddToCart);
         tvBuyNow = findViewById(R.id.tvBuyNow);
+        tvEdit = findViewById(R.id.tvEdit);
     }
 
     private void renderView() {
         productModel = (ProductModel) getIntent().getSerializableExtra("product");
+        if(productModel.getUserId() == Constant.userLogin.getId() && Constant.userLogin.getRole().equals("SELLER")) {
+            tvEdit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(ProductDetailActivity.this, UpdateProductActivity.class);
+                    intent.putExtra("product", productModel);
+                    startActivity(intent);
+                    finish();
+                }
+            });
+        }
+        else {
+            tvEdit.setVisibility(View.GONE);
+        }
         tvPrice.setText(String.valueOf(productModel.getPrice()));
         tvNameproduct.setText(productModel.getName());
         tvDescription.setText(productModel.getDescription());

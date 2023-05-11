@@ -153,6 +153,7 @@
                 android:textSize="20dp" />
 
             <RadioGroup
+                android:id="@+id/rdoStatus"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="6"
@@ -164,7 +165,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:text="On"
+                    android:text="1"
                     android:textColor="#373b54" />
 
                 <RadioButton
@@ -172,7 +173,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="2"
-                    android:text="Off"
+                    android:text="0"
                     android:textColor="#373b54" />
             </RadioGroup>
 

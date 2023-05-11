@@ -75,4 +75,26 @@ public interface ApiService {
     Call<PageModel<ProductModel>> findProductsBySeller(@Query("sellerId") int sellerId,
                                                   @Query("page") int page,
                                                   @Query("orderby") String orderby);
+    @PUT("seller/product")
+    @Multipart
+    Call<ProductModel> updateProduct(@Part("id") RequestBody id,
+                                     @Part("userId") RequestBody userId,
+                                     @Part("name") RequestBody name,
+                                     @Part("description") RequestBody description,
+                                     @Part("price") RequestBody price,
+                                     @Part("stock") RequestBody stock,
+                                     @Part MultipartBody.Part imageFile,
+                                     @Part("categoryId") RequestBody categoryId,
+                                     @Part("status") RequestBody status);
+
+    @PUT("seller/product")
+    @Multipart
+    Call<ProductModel> updateProduct(@Part("id") RequestBody id,
+                                     @Part("userId") RequestBody userId,
+                                     @Part("name") RequestBody name,
+                                     @Part("description") RequestBody description,
+                                     @Part("price") RequestBody price,
+                                     @Part("stock") RequestBody stock,
+                                     @Part("categoryId") RequestBody categoryId,
+                                     @Part("status") RequestBody status);
 }
