@@ -8,6 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.app.shopdodientu.R;
+import com.app.shopdodientu.util.Constant;
 import com.app.shopdodientu.util.UIHelper;
 
 import java.util.Map;
@@ -24,7 +25,7 @@ public class MainSellerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main_seller);
 
         MapItemView();
-        UIHelper.gotoHomeShop(tvViewShop, this);
+        UIHelper.gotoHomeShop(tvViewShop, this, Constant.userLogin.getId());
         UIHelper.gotoAddProduct(tvAddProduct, this);
         UIHelper.gotoSetUpStore(tvSetUpStore, this);
     }

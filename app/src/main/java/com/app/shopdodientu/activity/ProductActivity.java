@@ -39,7 +39,7 @@ public class ProductActivity extends AppCompatActivity {
         TextViewLatestClicked();
         TextViewPriceClicked();
 
-        UIHelper.gotoHomeShop(tvShop, this);
+        UIHelper.gotoHomeShop(tvShop, this, 0);
         UIHelper.gotoCatalogShop(linearCatalog, this);
     }
 

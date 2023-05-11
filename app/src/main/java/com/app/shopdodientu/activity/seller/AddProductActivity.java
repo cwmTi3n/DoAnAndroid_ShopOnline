@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -36,7 +37,10 @@ import com.app.shopdodientu.util.Constant;
 import com.app.shopdodientu.util.RealPathUtil;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.List;
 
 import okhttp3.MediaType;
@@ -134,6 +138,7 @@ public class AddProductActivity extends AppCompatActivity {
         btnAddproduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.d("mUri", mUri.toString());
                 if(mUri != null) {
                     String nameString = edtName.getText().toString();
                     String descriptionString = edtDescription.getText().toString();
@@ -144,29 +149,63 @@ public class AddProductActivity extends AppCompatActivity {
                     RequestBody price = RequestBody.create(MediaType.parse("multipart/form-data"), String.valueOf(priceString));
                     RequestBody stock = RequestBody.create(MediaType.parse("multipart/form-data"), String.valueOf(stockString));
                     RequestBody categoryId = RequestBody.create(MediaType.parse("multipart/form-data"), String.valueOf(categoryInt));
-                    String IMAGE_PATH = RealPathUtil.getRealPath(getApplicationContext(), mUri);
-                    File file = new File(IMAGE_PATH);
-                    RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
-                    MultipartBody.Part imageFile = MultipartBody.Part.createFormData("imageFile", file.getName(), requestFile);
-                    ApiService apiService = ApiClient.getApiService();
-                    apiService.addProduct(name, description, price, stock, imageFile, categoryId)
-                            .enqueue(new Callback<ProductModel>() {
-                                @Override
-                                public void onResponse(Call<ProductModel> call, Response<ProductModel> response) {
-                                    Toast.makeText(getApplicationContext(), "Thêm sản phẩm thành công", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(AddProductActivity.this, MainSellerActivity.class);
-                                    startActivity(intent);
-                                    finish();
-                                }
+                    InputStream inputStream = null;
+                    try {
+                        ContentResolver contentResolver = getContentResolver();
+                        inputStream = contentResolver.openInputStream(mUri);
+                        File file = createFileFromInputStream(inputStream);
 
-                                @Override
-                                public void onFailure(Call<ProductModel> call, Throwable t) {
-                                    Toast.makeText(getApplicationContext(), "Thêm sản không thành công", Toast.LENGTH_SHORT).show();
-                                }
-                            });
+                        // Tạo RequestBody từ File
+                        RequestBody requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file);
+
+                        // Tạo MultipartBody.Part từ RequestBody
+                        MultipartBody.Part imageFile = MultipartBody.Part.createFormData("imageFile", file.getName(), requestFile);
+                        ApiService apiService = ApiClient.getApiService();
+                        apiService.addProduct(name, description, price, stock, imageFile, categoryId)
+                                .enqueue(new Callback<ProductModel>() {
+                                    @Override
+                                    public void onResponse(Call<ProductModel> call, Response<ProductModel> response) {
+                                        Toast.makeText(getApplicationContext(), "Thêm sản phẩm thành công", Toast.LENGTH_SHORT).show();
+                                        Intent intent = new Intent(AddProductActivity.this, MainSellerActivity.class);
+                                        startActivity(intent);
+                                        finish();
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<ProductModel> call, Throwable t) {
+                                        Log.d("Loi", t.getMessage());
+                                        Toast.makeText(getApplicationContext(), "Thêm sản không thành công" + t.getMessage(), Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                        // Sử dụng imageFile trong yêu cầu gửi đi
+                        // ...
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } finally {
+                        if (inputStream != null) {
+                            try {
+                                inputStream.close();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
                 }
             }
         });
+    }
+
+    // Phương thức để tạo File từ InputStream
+    private File createFileFromInputStream(InputStream inputStream) throws IOException {
+        File file = new File(getCacheDir(), "temp_file");
+        OutputStream outputStream = new FileOutputStream(file);
+        byte[] buffer = new byte[4096];
+        int bytesRead;
+        while ((bytesRead = inputStream.read(buffer)) != -1) {
+            outputStream.write(buffer, 0, bytesRead);
+        }
+        outputStream.close();
+        return file;
     }
 
     private void MapViewItem(){

@@ -1,5 +1,6 @@
 package com.app.shopdodientu.api.service;
 
+import com.app.shopdodientu.model.CartItemModel;
 import com.app.shopdodientu.model.CategoryModel;
 import com.app.shopdodientu.model.PageModel;
 import com.app.shopdodientu.model.ProductModel;
@@ -18,6 +19,7 @@ import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Part;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ApiService {
@@ -59,4 +61,18 @@ public interface ApiService {
                                   @Part("stock") RequestBody stock,
                                   @Part MultipartBody.Part imageFile,
                                   @Part("categoryId") RequestBody categoryId);
+    @POST("account/add-product-to-cart")
+    @FormUrlEncoded
+    Call<CartItemModel> addToCart(@Field("productId") int productId, @Field("quantity") int quantity);
+
+    @GET("account/cart/{id}/items-in-cart")
+    Call<List<CartItemModel>> getItemsInCart(@Path("id") int cartId);
+
+    @GET("account/cart/items-in-cart-no-checkout")
+    Call<List<CartItemModel>> getIntemsInCartNoCheckOut();
+
+    @GET("find-product-by-seller")
+    Call<PageModel<ProductModel>> findProductsBySeller(@Query("sellerId") int sellerId,
+                                                  @Query("page") int page,
+                                                  @Query("orderby") String orderby);
 }

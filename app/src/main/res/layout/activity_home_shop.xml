@@ -220,8 +220,8 @@
             android:layout_marginLeft="10dp"/>
 
         <!--        catalog -->
-        <GridView
-            android:id="@+id/gvRecommend"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcvRecommend"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="4" />

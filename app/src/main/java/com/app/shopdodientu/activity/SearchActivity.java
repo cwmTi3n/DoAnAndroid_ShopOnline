@@ -254,15 +254,6 @@ public class SearchActivity extends AppCompatActivity {
         }
     }
 
-
-
-    private void tangdan(){
-
-    }
-
-    private void giamdn() {
-
-    }
     private void SetDrawablePriceMove(){
         Drawable drawableRight = getResources().getDrawable(R.drawable.unfold);
         tvPrice.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, drawableRight , null);
@@ -279,9 +270,10 @@ public class SearchActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<PageModel<ProductModel>> call, Response<PageModel<ProductModel>> response) {
                         PageModel<ProductModel> pageProduct = response.body();
-                        assert pageProduct != null;
-                        products.addAll(pageProduct.getContent());
-                        productAdapter.notifyDataSetChanged();
+                        if(pageProduct != null) {
+                            products.addAll(pageProduct.getContent());
+                            productAdapter.notifyDataSetChanged();
+                        }
                     }
 
                     @Override

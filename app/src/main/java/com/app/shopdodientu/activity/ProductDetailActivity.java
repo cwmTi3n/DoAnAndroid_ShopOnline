@@ -3,17 +3,28 @@ package com.app.shopdodientu.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Dialog;
 import android.os.Bundle;
+import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.app.shopdodientu.R;
+import com.app.shopdodientu.api.client.ApiClient;
+import com.app.shopdodientu.api.service.ApiService;
+import com.app.shopdodientu.model.CartItemModel;
 import com.app.shopdodientu.model.ProductModel;
 import com.bumptech.glide.Glide;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ProductDetailActivity extends AppCompatActivity {
     private SearchView searchView;
@@ -22,6 +33,7 @@ public class ProductDetailActivity extends AppCompatActivity {
     private TextView tvAmountSelled, tvPrice, tvNameproduct, tvDescription, tvShopName, tvamountProduct, tvviewShop, tvBuyNow;
     private RecyclerView rcvFeedback;
     private LinearLayout linearChat, linearAddToCart;
+    private ProductModel productModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +41,7 @@ public class ProductDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_product_detail);
         MapItemView();
         renderView();
+        addToCart();
     }
 
     private void MapItemView() {
@@ -50,7 +63,7 @@ public class ProductDetailActivity extends AppCompatActivity {
     }
 
     private void renderView() {
-        ProductModel productModel = (ProductModel) getIntent().getSerializableExtra("product");
+        productModel = (ProductModel) getIntent().getSerializableExtra("product");
         tvPrice.setText(String.valueOf(productModel.getPrice()));
         tvNameproduct.setText(productModel.getName());
         tvDescription.setText(productModel.getDescription());
@@ -61,5 +74,87 @@ public class ProductDetailActivity extends AppCompatActivity {
         Glide.with(getApplicationContext())
                 .load(productModel.getAvatarShop())
                 .into(imgAvatar);
+    }
+
+    private void addToCart() {
+        linearAddToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialogAddToCart();
+//                ApiService apiService = ApiClient.getApiService();
+//                apiService.addToCart(productModel.getId(), 1)
+//                        .enqueue(new Callback<CartItemModel>() {
+//                            @Override
+//                            public void onResponse(Call<CartItemModel> call, Response<CartItemModel> response) {
+//                                if(response.body() != null) {
+//                                    Toast.makeText(getApplicationContext(), "Đã thêm sản phẩm vào giỏ hàng", Toast.LENGTH_SHORT).show();
+//                                }
+//                            }
+//
+//                            @Override
+//                            public void onFailure(Call<CartItemModel> call, Throwable t) {
+//                                Toast.makeText(getApplicationContext(), "Thêm sản phẩm không thành công", Toast.LENGTH_SHORT).show();
+//                            }
+//                        });
+            }
+        });
+    }
+
+    private void dialogAddToCart() {
+        Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_add_item_to_cart);
+        Button btnHuy = dialog.findViewById(R.id.btnHuy);
+        Button btnAdd = dialog.findViewById(R.id.btnAdd);
+        TextView tvAmount = dialog.findViewById(R.id.tvAmount);
+        TextView tvMinus = dialog.findViewById(R.id.tvMinus);
+        TextView tvPlus = dialog.findViewById(R.id.tvPlus);
+        tvPlus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                tvAmount.setText(String.valueOf(Integer.parseInt(tvAmount.getText().toString()) + 1));
+            }
+        });
+        tvMinus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int quantity = Integer.parseInt(tvAmount.getText().toString());
+                if(quantity > 1) {
+                    tvAmount.setText(String.valueOf(quantity - 1));
+                }
+            }
+        });
+        btnHuy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ApiService apiService = ApiClient.getApiService();
+                int quantity = Integer.parseInt(tvAmount.getText().toString());
+                apiService.addToCart(productModel.getId(), quantity)
+                        .enqueue(new Callback<CartItemModel>() {
+                            @Override
+                            public void onResponse(Call<CartItemModel> call, Response<CartItemModel> response) {
+                                if(response.body() != null) {
+                                    Toast.makeText(getApplicationContext(), "Đã thêm sản phẩm vào giỏ hàng", Toast.LENGTH_SHORT).show();
+                                }
+                                else {
+                                    Toast.makeText(getApplicationContext(), "Thêm sản phẩm không thành công", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call<CartItemModel> call, Throwable t) {
+                                Toast.makeText(getApplicationContext(), "Thêm sản phẩm không thành công", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
     }
 }

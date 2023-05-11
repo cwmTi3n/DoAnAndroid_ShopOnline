@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -170,12 +171,13 @@ public class UIHelper {
 
 
 
-    public static void gotoHomeShop(TextView tv, Context context) {
+    public static void gotoHomeShop(TextView tv, Context context, int sellerId) {
         tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent;
                 intent = new Intent(context, HomeShopActivity.class);
+                intent.putExtra("sellerId", sellerId);
                 context.startActivity(intent);
             }
         });

@@ -12,6 +12,7 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
@@ -22,6 +23,7 @@ import com.app.shopdodientu.R;
 import com.app.shopdodientu.activity.seller.RegisterSellerActivity;
 import com.app.shopdodientu.activity.seller.WelcomeSellerActivity;
 import com.app.shopdodientu.model.UserModel;
+import com.app.shopdodientu.util.Constant;
 import com.app.shopdodientu.util.UIHelper;
 
 public class MyAccountActivity extends AppCompatActivity {

@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
         UIHelper.gotoCart(linearCart, this);
         UIHelper.logout(linearLogout, this);
         gotoHome(this);
-        search();
+        searchProduct();
 
         //load more
         final NestedScrollView nestedScrollView = findViewById(R.id.ncvMain);
@@ -260,7 +260,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void search() {
+    private void searchProduct() {
         svProduct.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {

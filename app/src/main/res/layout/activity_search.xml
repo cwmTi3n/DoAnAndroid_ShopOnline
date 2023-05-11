@@ -39,7 +39,6 @@
                 android:layout_height="40dp"
                 android:layout_weight="5.8"
                 android:queryHint="Find Your Product"
-                android:iconifiedByDefault="false"
                 android:background="@drawable/rectangle_border_10dp_main"
                 android:ems="10"
                 android:textColorHint="#1A1818"

@@ -9,17 +9,19 @@ public class CartItemModel implements Serializable {
     private int productId;
     private int cartId;
     private String image;
+    private String productName;
 
     public CartItemModel() {
     }
 
-    public CartItemModel(int id, int quantity, float unitPrice, int productId, int cartId, String image) {
+    public CartItemModel(int id, int quantity, float unitPrice, int productId, int cartId, String image, String productName) {
         this.id = id;
         this.quantity = quantity;
         this.unitPrice = unitPrice;
         this.productId = productId;
         this.cartId = cartId;
         this.image = image;
+        this.productName = productName;
     }
 
     public int getId() {
@@ -68,5 +70,13 @@ public class CartItemModel implements Serializable {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 }
