@@ -51,9 +51,6 @@
             android:name=".activity.DeliveredOrderInforActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.seller.MyProductActivity"
-            android:exported="false" />
-        <activity
             android:name=".activity.seller.CheckingOrderActivity"
             android:exported="false" />
         <activity
@@ -93,12 +90,6 @@
             android:exported="false" />
         <activity
             android:name=".activity.ProfileActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.seller.AddCategoryActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.seller.UpdateCategoryActivity"
             android:exported="false" />
         <activity
             android:name=".activity.seller.UpdateProductActivity"
