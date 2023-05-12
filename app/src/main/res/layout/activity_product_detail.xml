@@ -6,71 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".activity.ProductDetailActivity">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:weightSum="35"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.appbar.AppBarLayout
-            android:layout_width="match_parent"
-            android:paddingTop="5dp"
-            android:layout_height="0dp"
-            android:layout_weight="2.5"
-            android:weightSum="10"
-            android:backgroundTint="#ffffff">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginRight="10dp">
-
-                <ImageView
-                    android:id="@+id/imgback"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:layout_weight="1"
-                    android:src="@drawable/left_arrow" />
-
-                <SearchView
-                    android:id="@+id/searchView"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="7.75"
-                    android:background="@drawable/radius_border_10dp"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    android:paddingStart="20dp"
-                    android:textSize="15dp"
-                    android:textStyle="italic" />
-
-                <TextView
-                    android:id="@+id/tvEdit"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:paddingTop="10dp"
-                    android:paddingLeft="5dp"
-                    android:textColor="#ee4d2d"
-                    android:text="Edit"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-        </com.google.android.material.appbar.AppBarLayout>
+        android:weightSum="35">
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="29">
+            android:layout_weight="32.5"
+            android:fillViewport="true">
 
             <LinearLayout
+                android:id="@+id/linear"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
                 <ImageView
@@ -78,7 +29,6 @@
                     android:layout_width="350dp"
                     android:layout_height="200dp"
                     android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
                     android:src="@drawable/sample_product" />
 
                 <LinearLayout
@@ -101,16 +51,26 @@
                         android:textStyle="bold|italic" />
 
                     <TextView
-                        android:id="@+id/tvbestprice"
+                        android:id="@+id/tvEdit"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="30dp"
                         android:layout_weight="1"
-                        android:drawableLeft="@drawable/lightning"
-                        android:text="Best Price"
-                        android:textColor="#fff"
+                        android:text="Update Product"
+                        android:gravity="center"
+                        android:background="@drawable/rectangle_border_black"
+                        android:textColor="#ffffff"
                         android:textSize="20dp"
-                        android:textStyle="bold|italic" />
-
+                        android:textStyle="bold" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/tvbestprice"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:drawableLeft="@drawable/lightning"-->
+<!--                        android:text="Best Price"-->
+<!--                        android:textColor="#fff"-->
+<!--                        android:textSize="20dp"-->
+<!--                        android:textStyle="bold|italic" />-->
                 </LinearLayout>
 
                 <TextView
@@ -118,7 +78,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginTop="5dp"
+                    android:paddingTop="5dp"
                     android:layout_marginRight="20dp"
                     android:text="Bluetooth Headphone"
                     android:textColor="#2F2D2D"
@@ -154,7 +114,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="70dp"
+                    android:layout_height="60dp"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:paddingTop="10dp"
@@ -167,7 +127,7 @@
                     <ImageView
                         android:id="@+id/imgavatar"
                         android:layout_width="0dp"
-                        android:layout_height="45dp"
+                        android:layout_height="35dp"
                         android:layout_marginLeft="5dp"
                         android:layout_gravity="center"
                         android:layout_weight="2.5"
@@ -187,7 +147,7 @@
                             android:layout_height="0dp"
                             android:layout_weight="1"
                             android:text="Shop Name"
-                            android:textSize="20dp"
+                            android:textSize="18dp"
                             android:textStyle="bold"
                             android:textColor="#000"/>
 
@@ -195,16 +155,16 @@
                             android:id="@+id/tvamountProduct"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_weight="0.8"
+                            android:layout_weight="1"
                             android:text="46 Product"
-                            android:textSize="17dp"
+                            android:textSize="16dp"
                             android:textStyle="italic"/>
                     </LinearLayout>
 
                     <TextView
                         android:id="@+id/tvviewShop"
                         android:layout_width="0dp"
-                        android:layout_height="30dp"
+                        android:layout_height="25dp"
                         android:layout_weight="2.5"
                         android:layout_marginLeft="5dp"
                         android:layout_gravity="center"
@@ -224,7 +184,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginTop="10dp"
+                    android:paddingTop="5dp"
                     android:layout_marginRight="20dp"
                     android:text="Description"
                     android:textColor="#000"
@@ -236,7 +196,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginTop="5dp"
                     android:layout_marginRight="20dp"
                     android:text="description of product"
                     android:textColor="#211F1F"
@@ -245,7 +204,6 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
-                    android:layout_marginTop="5dp"
                     android:background="#FF8F00" />
 
                 <TextView
@@ -260,26 +218,19 @@
                     android:textStyle="bold"
                     android:drawableRight="@drawable/back_left"/>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#F1E6E6" />
 
-<!--                feedback-->
+                <!--                feedback-->
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rcvFeedback"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp" />
-
+                    android:layout_height="match_parent" />
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
-    </LinearLayout>
-
-
 
         <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="2.5"
             android:backgroundTint="#f6f6f6"
             app:layout_constraintBottom_toBottomOf="parent">
 
@@ -296,7 +247,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="65dp"
+                    android:layout_height="match_parent"
                     android:orientation="horizontal"
                     android:weightSum="8">
 
@@ -395,7 +346,10 @@
                             android:textStyle="bold" />
                     </LinearLayout>
                 </LinearLayout>
-        </com.google.android.material.bottomappbar.BottomAppBar>
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+            </com.google.android.material.bottomappbar.BottomAppBar>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </LinearLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

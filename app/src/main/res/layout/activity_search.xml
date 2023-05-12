@@ -5,21 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.SearchActivity">
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/ncvSearch"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:weightSum="35"
-        tools:ignore="MissingConstraints">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:weightSum="35"
+        android:orientation="vertical" >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2.5"
+            android:layout_weight="2"
             android:layout_marginTop="10dp"
             android:orientation="horizontal"
             android:weightSum="8">
@@ -55,145 +51,157 @@
                 android:src="@drawable/search_square"/>
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/tvsearchfor"
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/ncvSearch"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginLeft="55dp"
-            android:layout_marginRight="55dp"
-            android:layout_weight="1.2"
-            android:text="Search For...."
-            android:textStyle="italic" />
+            android:layout_weight="33"
+            tools:ignore="MissingConstraints">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.05"
-            android:background="#F1E6E6" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2"
-            android:layout_marginTop="5dp"
-            android:orientation="horizontal"
-            android:weightSum="12">
-
-
-            <TextView
-                android:id="@+id/tvrelated"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2.95"
-                android:textAlignment="center"
-                android:textSize="20dp"
-                android:text="Related"
-                android:textStyle="bold"
-                android:textColor="#fb5533"/>
-
-            <TextView
-                android:id="@+id/lineRelated"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.05"
-                android:gravity="center"
-                android:background="#fb5533" />
-
-            <TextView
-                android:id="@+id/tvlatest"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2.95"
-                android:textAlignment="center"
-                android:textSize="20dp"
-                android:text="Latest"
-                android:textColor="#8B7C7C"/>
-
-            <TextView
-                android:id="@+id/lineLatest"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.05"
-                android:gravity="center"
-                android:background="#F1E6E6" />
-
-            <TextView
-                android:id="@+id/tvbestseller"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2.95"
-                android:textAlignment="center"
-                android:textSize="20dp"
-                android:text="Best"
-                android:textColor="#8B7C7C"/>
-
-            <TextView
-                android:id="@+id/lineBestseller"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.05"
-                android:gravity="center"
-                android:background="#F1E6E6" />
-
-            <TextView
-                android:id="@+id/tvPrice"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="2.95"
-                android:text="Price"
-                android:textSize="20dp"
-                android:textColor="#8B7C7C"
-                android:gravity="center"
-                android:drawablePadding="-20dp"
-                android:drawableRight="@drawable/unfold"/>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.1"
-            android:orientation="horizontal"
-            android:weightSum="12">
-
-            <TextView
-                android:id="@+id/lineHoriRelated"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:background="#fb5533"/>
-
-            <TextView
-                android:id="@+id/lineHoriLatest"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:background="#F1E6E6"/>
-
-            <TextView
-                android:id="@+id/lineHoriBest"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:background="#F1E6E6"/>
-
-            <TextView
-                android:id="@+id/lineHoriPrice"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:background="#F1E6E6"/>
-        </LinearLayout>
-
-
-            <!--        product-->
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rcvproduct"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tvsearchfor"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_marginLeft="55dp"
+                    android:layout_marginRight="55dp"
+                    android:layout_weight="1.2"
+                    android:text="Search For...."
+                    android:textStyle="italic" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.05"
+                    android:background="#F1E6E6" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="2"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal"
+                    android:weightSum="12">
+
+
+                    <TextView
+                        android:id="@+id/tvrelated"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2.95"
+                        android:textAlignment="center"
+                        android:textSize="20dp"
+                        android:text="Related"
+                        android:textStyle="bold"
+                        android:textColor="#fb5533"/>
+
+                    <TextView
+                        android:id="@+id/lineRelated"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.05"
+                        android:gravity="center"
+                        android:background="#fb5533" />
+
+                    <TextView
+                        android:id="@+id/tvlatest"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2.95"
+                        android:textAlignment="center"
+                        android:textSize="20dp"
+                        android:text="Latest"
+                        android:textColor="#8B7C7C"/>
+
+                    <TextView
+                        android:id="@+id/lineLatest"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.05"
+                        android:gravity="center"
+                        android:background="#F1E6E6" />
+
+                    <TextView
+                        android:id="@+id/tvbestseller"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2.95"
+                        android:textAlignment="center"
+                        android:textSize="20dp"
+                        android:text="Best"
+                        android:textColor="#8B7C7C"/>
+
+                    <TextView
+                        android:id="@+id/lineBestseller"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.05"
+                        android:gravity="center"
+                        android:background="#F1E6E6" />
+
+                    <TextView
+                        android:id="@+id/tvPrice"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2.95"
+                        android:text="Price"
+                        android:textSize="20dp"
+                        android:textColor="#8B7C7C"
+                        android:gravity="center"
+                        android:drawablePadding="-20dp"
+                        android:drawableRight="@drawable/unfold"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.1"
+                    android:orientation="horizontal"
+                    android:weightSum="12">
+
+                    <TextView
+                        android:id="@+id/lineHoriRelated"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:background="#fb5533"/>
+
+                    <TextView
+                        android:id="@+id/lineHoriLatest"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:background="#F1E6E6"/>
+
+                    <TextView
+                        android:id="@+id/lineHoriBest"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:background="#F1E6E6"/>
+
+                    <TextView
+                        android:id="@+id/lineHoriPrice"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:background="#F1E6E6"/>
+                </LinearLayout>
+
+
+                <!--        product-->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcvproduct"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
     </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
 
 
 
