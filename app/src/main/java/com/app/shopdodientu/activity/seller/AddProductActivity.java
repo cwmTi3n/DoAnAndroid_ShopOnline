@@ -34,6 +34,7 @@ import com.app.shopdodientu.api.service.ApiService;
 import com.app.shopdodientu.model.CategoryModel;
 import com.app.shopdodientu.model.ProductModel;
 import com.app.shopdodientu.util.Constant;
+import com.app.shopdodientu.util.LoadingDialog;
 import com.app.shopdodientu.util.RealPathUtil;
 
 import java.io.File;
@@ -137,8 +138,9 @@ public class AddProductActivity extends AppCompatActivity {
         btnAddproduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("mUri", mUri.toString());
                 if(mUri != null) {
+                    LoadingDialog loadingDialog = new LoadingDialog(AddProductActivity.this);
+                    loadingDialog.show();
                     String nameString = edtName.getText().toString();
                     String descriptionString = edtDescription.getText().toString();
                     String priceString = edtPrice.getText().toString();
@@ -164,6 +166,7 @@ public class AddProductActivity extends AppCompatActivity {
                                 .enqueue(new Callback<ProductModel>() {
                                     @Override
                                     public void onResponse(Call<ProductModel> call, Response<ProductModel> response) {
+                                        loadingDialog.dismiss();
                                         Toast.makeText(getApplicationContext(), "Thêm sản phẩm thành công", Toast.LENGTH_SHORT).show();
                                         Intent intent = new Intent(AddProductActivity.this, MainSellerActivity.class);
                                         startActivity(intent);
@@ -172,8 +175,8 @@ public class AddProductActivity extends AppCompatActivity {
 
                                     @Override
                                     public void onFailure(Call<ProductModel> call, Throwable t) {
-                                        Log.d("Loi", t.getMessage());
-                                        Toast.makeText(getApplicationContext(), "Thêm sản không thành công" + t.getMessage(), Toast.LENGTH_SHORT).show();
+                                        loadingDialog.dismiss();
+                                        Toast.makeText(getApplicationContext(), "Thêm sản không thành công", Toast.LENGTH_SHORT).show();
                                     }
                                 });
                         // Sử dụng imageFile trong yêu cầu gửi đi
@@ -189,6 +192,9 @@ public class AddProductActivity extends AppCompatActivity {
                             }
                         }
                     }
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), "Bạn chưa nhập hình ảnh cho sản phẩm", Toast.LENGTH_SHORT).show();
                 }
             }
         });

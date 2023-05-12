@@ -12,7 +12,6 @@ import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
@@ -38,6 +37,7 @@ import com.app.shopdodientu.api.service.ApiService;
 import com.app.shopdodientu.model.CategoryModel;
 import com.app.shopdodientu.model.ProductModel;
 import com.app.shopdodientu.util.Constant;
+import com.app.shopdodientu.util.LoadingDialog;
 import com.bumptech.glide.Glide;
 
 import java.io.File;
@@ -50,6 +50,7 @@ import java.util.List;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -59,7 +60,7 @@ public class UpdateProductActivity extends AppCompatActivity {
     private ImageView imgProduct;
     private EditText edtname, edtprice, edtstock, edtdescription;
     private RadioButton radioButtonOn, radioButtonOff;
-    private Button btnSave;
+    private Button btnSave, btnDelete;
     private Spinner snCateName;
     ArrayAdapter<CategoryModel> adapter;
     private int categoryInt;
@@ -131,6 +132,30 @@ public class UpdateProductActivity extends AppCompatActivity {
         MapItemView();
         renderView();
         updateProduct();
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LoadingDialog dialog = new LoadingDialog(UpdateProductActivity.this);
+                dialog.show();
+                ApiService apiService = ApiClient.getApiService();
+                apiService.deleteProduct(productModel.getId())
+                        .enqueue(new Callback<ResponseBody>() {
+                            @Override
+                            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                                dialog.dismiss();
+                                Toast.makeText(getApplicationContext(), "Đã xóa thành công", Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
+
+                            @Override
+                            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                                dialog.dismiss();
+                                Toast.makeText(getApplicationContext(), "Xóa không thành công", Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
+                        });
+            }
+        });
         AddItemToSpinnerCate();
         SpinnerCateClicked();
 
@@ -148,6 +173,7 @@ public class UpdateProductActivity extends AppCompatActivity {
         radioButtonOn = findViewById(R.id.radioButtonOn);
         radioButtonOff = findViewById(R.id.radioButtonOff);
         btnSave = findViewById(R.id.btnSave);
+        btnDelete = findViewById(R.id.btnDelete);
         radioGroup = findViewById(R.id.rdoStatus);
     }
 
@@ -203,6 +229,8 @@ public class UpdateProductActivity extends AppCompatActivity {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                LoadingDialog loadingDialog = new LoadingDialog(UpdateProductActivity.this);
+                loadingDialog.show();
                 String nameString = edtname.getText().toString();
                 String descriptionString = edtdescription.getText().toString();
                 String priceString = edtprice.getText().toString();
@@ -245,9 +273,10 @@ public class UpdateProductActivity extends AppCompatActivity {
                         .enqueue(new Callback<ProductModel>() {
                             @Override
                             public void onResponse(Call<ProductModel> call, Response<ProductModel> response) {
-                                Toast.makeText(getApplicationContext(), "Cập nhật sản phẩm thành công", Toast.LENGTH_SHORT).show();
+                                loadingDialog.dismiss();
                                 ProductModel productRp = response.body();
                                 if(productRp != null) {
+                                    Toast.makeText(getApplicationContext(), "Cập nhật sản phẩm thành công", Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(getApplicationContext(), ProductDetailActivity.class);
                                     intent.putExtra("product", productRp);
                                     startActivity(intent);
@@ -260,6 +289,7 @@ public class UpdateProductActivity extends AppCompatActivity {
 
                             @Override
                             public void onFailure(Call<ProductModel> call, Throwable t) {
+                                loadingDialog.dismiss();
                                 Toast.makeText(getApplicationContext(), "Cập nhật sản phẩm không thành công", Toast.LENGTH_SHORT).show();
                             }
                         });

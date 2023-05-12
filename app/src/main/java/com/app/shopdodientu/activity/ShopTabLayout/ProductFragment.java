@@ -68,7 +68,6 @@ public class ProductFragment extends Fragment {
         TextViewPriceClicked();
 
         //vi tri load du lieu: recyclerview
-        getProducts();
         //load more
         final NestedScrollView nestedScrollView = binding.getRoot().findViewById(R.id.nsvProduct);
         nestedScrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
@@ -81,6 +80,11 @@ public class ProductFragment extends Fragment {
             }
         });
         return binding.getRoot();
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        getProducts();
     }
 
     private void MapItemView(){

@@ -27,6 +27,7 @@ import com.app.shopdodientu.api.client.ApiClient;
 import com.app.shopdodientu.api.service.ApiService;
 import com.app.shopdodientu.model.UserModel;
 import com.app.shopdodientu.util.Constant;
+import com.app.shopdodientu.util.LoadingDialog;
 import com.app.shopdodientu.util.UIHelper;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -109,16 +110,13 @@ public class LoginActivity extends AppCompatActivity {
                     editor.commit();
                 }
 
-                final Dialog dialog = new Dialog(LoginActivity.this);
-                dialog.setContentView(R.layout.progress_bar_layout);
-                dialog.setCancelable(false);
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-                dialog.show();
+                LoadingDialog loadingDialog = new LoadingDialog(LoginActivity.this);
+                loadingDialog.show();
 
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        dialog.dismiss();
+                        loadingDialog.dismiss();
                     }
                 }, 8000);
                 callApiLogin(username, password);
