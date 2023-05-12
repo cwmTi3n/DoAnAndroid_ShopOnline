@@ -14,18 +14,21 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tvBack"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1.2"
-            android:background="#fb5533"
+            android:layout_weight="1.15"
             android:text="ADD PRODUCT"
             android:gravity="center"
             android:textSize="25dp"
-            android:textColor="#ffffff"
+            android:textColor="#000"
             android:fontFamily="sans-serif"
-            android:drawableLeft="@drawable/left_chevron"
             android:paddingStart="10dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.05"
+            android:background="#F1E6E6" />
 
         <ImageView
             android:id="@+id/imgProduct"
@@ -113,15 +116,16 @@
 
         <Button
             android:id="@+id/btnadd"
-            android:layout_width="250dp"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1.2"
             android:layout_gravity="center"
-            android:text="Add Product"
+            android:text="Save Product"
             android:textSize="18dp"
             android:fontFamily="sans-serif-black"
             android:drawableLeft="@drawable/plus"
-            android:backgroundTint="#fb5533"/>
+            android:backgroundTint="#fb5533"
+            android:drawableTint="#ffffff"/>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

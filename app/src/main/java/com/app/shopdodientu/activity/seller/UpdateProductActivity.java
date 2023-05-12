@@ -260,7 +260,6 @@ public class UpdateProductActivity extends AppCompatActivity {
 
                             @Override
                             public void onFailure(Call<ProductModel> call, Throwable t) {
-                                Log.d("Loi", t.getMessage());
                                 Toast.makeText(getApplicationContext(), "Cập nhật sản phẩm không thành công", Toast.LENGTH_SHORT).show();
                             }
                         });

@@ -99,8 +99,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         MapItemView();
         SliderImage();
-        ActionToolBar();
-        MapListViewMenu();
+//        ActionToolBar();
+//        MapListViewMenu();
         getAllCategory();
         if(Constant.userLogin == null) {
             login();
@@ -170,10 +170,10 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void MapItemView() {
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        navigationView = (NavigationView) findViewById(R.id.navigationView);
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
-        listView = (ListView) findViewById(R.id.lvMenu);
+//        toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        navigationView = (NavigationView) findViewById(R.id.navigationView);
+//        drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
+//        listView = (ListView) findViewById(R.id.lvMenu);
 
         viewPager =findViewById(R.id.viewpage);
         rcvCategory = (RecyclerView) findViewById(R.id.rcvcategory);
@@ -189,25 +189,25 @@ public class MainActivity extends AppCompatActivity {
         svProduct = (SearchView) findViewById(R.id.svproduct);
     }
 
-    private void ActionToolBar(){
-        toolbar.setNavigationIcon(R.drawable.sidebar);
-        toolbar.setPadding(16, 0, 0, 0);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                drawerLayout.openDrawer(GravityCompat.START);
-            }
-        });
-    }
+//    private void ActionToolBar(){
+//        toolbar.setNavigationIcon(R.drawable.sidebar);
+//        toolbar.setPadding(16, 0, 0, 0);
+//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                drawerLayout.openDrawer(GravityCompat.START);
+//            }
+//        });
+//    }
 
-    private void MapListViewMenu(){
-        arrayList = new ArrayList<>();
-        arrayList.add(new ItemMenuModel("Java",R.drawable.sample_product));
-        arrayList.add(new ItemMenuModel("Java",R.drawable.sample_product));
-
-        adapter = new MenuCategoryAdapter(MainActivity.this, R.layout.item_menu, arrayList);
-        listView.setAdapter(adapter);
-    }
+//    private void MapListViewMenu(){
+//        arrayList = new ArrayList<>();
+//        arrayList.add(new ItemMenuModel("Java",R.drawable.sample_product));
+//        arrayList.add(new ItemMenuModel("Java",R.drawable.sample_product));
+//
+//        adapter = new MenuCategoryAdapter(MainActivity.this, R.layout.item_menu, arrayList);
+//        listView.setAdapter(adapter);
+//    }
 
     private void SliderImage(){
         imagesList = getListImage();

@@ -51,7 +51,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class AddProductActivity extends AppCompatActivity {
-    private TextView tvBack;
     private ImageView imgProduct;
     private EditText edtName, edtDescription, edtPrice, edtStock;
     private Button btnAddproduct;
@@ -209,7 +208,6 @@ public class AddProductActivity extends AppCompatActivity {
     }
 
     private void MapViewItem(){
-        tvBack = (TextView) findViewById(R.id.tvBack);
         snCateName = findViewById(R.id.snCateName);
         imgProduct = (ImageView) findViewById(R.id.imgProduct);
         edtName = (EditText) findViewById(R.id.edtName);

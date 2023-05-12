@@ -20,10 +20,12 @@ public class HomeShopActivity extends AppCompatActivity {
     private LinearLayout  linearBannerShop;
     private TextView tvshopName, tvamountProduct, tvChat, tvSearch;
     private ImageView imgAvatarShop;
+    private int sellerId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        sellerId = getIntent().getIntExtra("sellerId", 0);
         binding = ActivityHomeShopBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -51,7 +53,7 @@ public class HomeShopActivity extends AppCompatActivity {
         binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Catalog"));
 
         FragmentManager fragmentManager = getSupportFragmentManager();
-        shopPagerAdapter = new ShopPagerAdapter(fragmentManager, getLifecycle());
+        shopPagerAdapter = new ShopPagerAdapter(fragmentManager, getLifecycle(), sellerId);
         binding.viewPager2.setAdapter(shopPagerAdapter);
     }
 
@@ -82,45 +84,5 @@ public class HomeShopActivity extends AppCompatActivity {
         });
     }
 
-    private void renderView() {
-
-//        renderProduct("descamount");
-//        renderProduct("desccreateDate");
-    }
-
-//    private void renderProduct(String orderby) {
-//        ApiService apiService = ApiClient.getApiService();
-//        int sellerId = getIntent().getIntExtra("sellerId", 0);
-//        apiService.findProductsBySeller(sellerId, 0, orderby)
-//                .enqueue(new Callback<PageModel<ProductModel>>() {
-//                    @Override
-//                    public void onResponse(Call<PageModel<ProductModel>> call, Response<PageModel<ProductModel>> response) {
-//                        PageModel<ProductModel> page = response.body();
-//                        if(page!= null) {
-//                            if(orderby.equals("descamount")) {
-//                                recommendProducts = page.getContent();
-//                                recommendProductAdapter = new ProductAdapter(getApplicationContext(), recommendProducts);
-//                                rcvRecommend.setHasFixedSize(true);
-//                                rcvRecommend.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
-//                                rcvRecommend.setAdapter(recommendProductAdapter);
-//                                recommendProductAdapter.notifyDataSetChanged();
-//                            }
-//                            else if(orderby.equals("desccreateDate")) {
-//                                lastProducts = page.getContent();
-//                                lastproductAdapter = new ProductAdapter(getApplicationContext(), lastProducts);
-//                                rcvLastProduct.setHasFixedSize(true);
-//                                rcvLastProduct.setLayoutManager(new GridLayoutManager(getApplicationContext(), 2));
-//                                rcvLastProduct.setAdapter(lastproductAdapter);
-//                                lastproductAdapter.notifyDataSetChanged();
-//                            }
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onFailure(Call<PageModel<ProductModel>> call, Throwable t) {
-//
-//                    }
-//                });
-//    }
 
 }

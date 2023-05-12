@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.MainActivity">
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawerLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:background="#FFA500">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ELECTRONIC SUPERMARKET"
+                    android:textSize="22dp"
+                    android:textStyle="bold"
+                    android:textColor="#ffffff"
+                    android:layout_marginRight="10dp"/>
+
+            </Toolbar>
+
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="#FFA500"
+                android:weightSum="2">
+
+                <SearchView
+                    android:id="@+id/svproduct"
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1.6"
+                    android:background="#fff"
+                    android:ems="10"
+                    android:focusableInTouchMode="true"
+                    android:imeOptions="actionSearch"
+                    android:inputType="textPersonName"
+                    android:paddingStart="20dp"
+                    android:queryHint="Find Your Product"
+                    android:textSize="15dp"
+                    android:textStyle="italic" />
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:weightSum="11">
+                <androidx.core.widget.NestedScrollView
+                    android:id="@+id/ncvMain"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fillViewport="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <androidx.viewpager.widget.ViewPager
+                            android:id="@+id/viewpage"
+                            android:layout_width="match_parent"
+                            android:layout_height="130dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="10dp" />
+
+                        <!--                        <TextView-->
+                        <!--                            android:id="@+id/tvcatalog"-->
+                        <!--                            android:layout_width="match_parent"-->
+                        <!--                            android:layout_height="wrap_content"-->
+                        <!--                            android:background="#fff"-->
+                        <!--                            android:paddingStart="10dp"-->
+                        <!--                            android:layout_marginTop="5dp"-->
+                        <!--                            android:text="Catalog"-->
+                        <!--                            android:textSize="20dp"-->
+                        <!--                            android:textStyle="bold" />-->
+
+                        <!--        category -->
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rcvcategory"
+                            android:layout_width="match_parent"
+                            android:layout_height="130dp"
+                            android:layout_marginTop="10dp"
+                            android:background="#5794DC"/>
+
+                        <TextView
+                            android:id="@+id/tvfeatured"
+                            android:layout_width="match_parent"
+                            android:layout_height="39dp"
+                            android:background="#fff"
+                            android:gravity="center|start"
+                            android:drawableLeft="@drawable/hot"
+                            android:drawablePadding="5dp"
+                            android:paddingStart="10dp"
+                            android:text="Featured Products"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+
+                        <!--        product -->
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rcvproduct"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                    </LinearLayout>
+
+                </androidx.core.widget.NestedScrollView>
+
+            </LinearLayout>
+
+        </LinearLayout>
+                <androidx.coordinatorlayout.widget.CoordinatorLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_weight="10"
+                    android:backgroundTint="#f6f6f6">
+
+                    <com.google.android.material.bottomappbar.BottomAppBar
+                        android:id="@+id/app_bar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_marginStart="-16dp"
+                        android:backgroundTint="#f6f6f6"
+                        app:fabCradleMargin="8dp"
+                        app:fabCradleRoundedCornerRadius="50dp"
+                        app:fabCradleVerticalOffset="6dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:weightSum="1">
+
+                            <LinearLayout
+                                android:id="@+id/home"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.2"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:id="@+id/imgHome"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    app:srcCompat="@drawable/bottom_btn1_color" />
+
+                                <TextView
+                                    android:id="@+id/tvHome"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Home"
+                                    android:textAlignment="center"
+                                    android:textColor="#FFA500"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/account"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.2"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:id="@+id/imgAccount"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    app:srcCompat="@drawable/bottom_btn2" />
+
+                                <TextView
+                                    android:id="@+id/tvAccount"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Account"
+                                    android:textAlignment="center"
+                                    android:textColor="#000"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/cart"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.2"
+                                android:orientation="vertical"
+                                android:visibility="visible">
+
+                                <ImageView
+                                    android:id="@+id/imgCart"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    app:srcCompat="@drawable/bottom_btn3" />
+
+                                <TextView
+                                    android:id="@+id/tvCart"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Cart"
+                                    android:textAlignment="center"
+                                    android:textColor="#000"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/support"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.2"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:id="@+id/imgSupport"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    app:srcCompat="@drawable/bottom_btn4" />
+
+                                <TextView
+                                    android:id="@+id/tvSupport"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Support"
+                                    android:textAlignment="center"
+                                    android:textColor="#000"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/logout"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="0.2"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:id="@+id/imgLogout"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    app:srcCompat="@drawable/bottom_btn5" />
+
+                                <TextView
+                                    android:id="@+id/tvLogout"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="LogOut"
+                                    android:textAlignment="center"
+                                    android:textColor="#000"
+                                    android:textSize="14sp" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </com.google.android.material.bottomappbar.BottomAppBar>
+
+
+                </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/navigationView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="40dp"
+            android:layout_gravity="start"
+            android:fitsSystemWindows="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="10"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.8"
+                    android:gravity="center|start"
+                    android:background="#FFA500"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:src="@drawable/homepage"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="20dp"
+                        android:gravity="center|start"
+                        android:text="Home"
+                        android:textSize="22dp"
+                        android:textStyle="bold"
+                        android:textColor="#ffffff"/>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.1"
+                    android:background="#F1E6E6" />
+
+                <ListView
+                    android:id="@+id/lvMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="9.1"/>
+            </LinearLayout>
+        </com.google.android.material.navigation.NavigationView>
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
