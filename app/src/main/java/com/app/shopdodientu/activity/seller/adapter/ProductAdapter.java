@@ -1,4 +1,4 @@
-package com.app.shopdodientu.adapter;
+package com.app.shopdodientu.activity.seller.adapter;
 
 import android.content.Context;
 import android.content.Intent;

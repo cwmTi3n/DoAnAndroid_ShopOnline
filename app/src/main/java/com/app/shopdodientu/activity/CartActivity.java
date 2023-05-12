@@ -6,26 +6,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.CheckBox;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.app.shopdodientu.R;
-import com.app.shopdodientu.adapter.CartItemAdapter;
+import com.app.shopdodientu.activity.seller.adapter.CartItemAdapter;
 import com.app.shopdodientu.api.client.ApiClient;
 import com.app.shopdodientu.api.service.ApiService;
 import com.app.shopdodientu.model.CartItemModel;
 import com.app.shopdodientu.util.UIHelper;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 

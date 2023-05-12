@@ -1,11 +1,15 @@
 package com.app.shopdodientu.activity;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
 import android.util.Log;
@@ -14,6 +18,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +29,9 @@ import com.app.shopdodientu.model.UserModel;
 import com.app.shopdodientu.util.Constant;
 import com.app.shopdodientu.util.UIHelper;
 import com.google.android.material.textfield.TextInputEditText;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -100,6 +108,19 @@ public class LoginActivity extends AppCompatActivity {
                     editor.remove("check");
                     editor.commit();
                 }
+
+                final Dialog dialog = new Dialog(LoginActivity.this);
+                dialog.setContentView(R.layout.progress_bar_layout);
+                dialog.setCancelable(false);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+                dialog.show();
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        dialog.dismiss();
+                    }
+                }, 8000);
                 callApiLogin(username, password);
             }
         });
