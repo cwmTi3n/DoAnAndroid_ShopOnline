@@ -138,8 +138,8 @@ public class MainActivity extends AppCompatActivity {
     private void login() {
         SharedPreferences sharedPreferences = getSharedPreferences("dataLogin", MODE_PRIVATE);
         if(sharedPreferences.getBoolean("check", false)) {
-            String username = sharedPreferences.getString("username", "");
-            String password = sharedPreferences.getString("password", "");
+            String username = sharedPreferences.getString("username", null);
+            String password = sharedPreferences.getString("password", null);
             ApiService login = ApiClient.login(username, password);
             login.login(username, password)
                     .enqueue(new Callback<UserModel>() {

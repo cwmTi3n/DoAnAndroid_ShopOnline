@@ -68,7 +68,7 @@ public class ProductDetailActivity extends AppCompatActivity {
 
     private void renderView() {
         productModel = (ProductModel) getIntent().getSerializableExtra("product");
-        if(productModel.getUserId() == Constant.userLogin.getId() && Constant.userLogin.getRole().equals("SELLER")) {
+        if(Constant.userLogin != null && productModel.getUserId() == Constant.userLogin.getId() && Constant.userLogin.getRole().equals("SELLER")) {
             tvEdit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

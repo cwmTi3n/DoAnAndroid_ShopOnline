@@ -26,7 +26,7 @@ public class ShopPagerAdapter extends FragmentStateAdapter {
             case 0:
                 return new HomeShopFragment(sellerId);
             case 1:
-                return new ProductFragment();
+                return new ProductFragment(sellerId);
             case 2:
                 return new CatalogFragment();
             default:
