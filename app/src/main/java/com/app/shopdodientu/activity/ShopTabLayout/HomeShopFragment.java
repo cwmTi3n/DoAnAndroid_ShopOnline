@@ -14,10 +14,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.shopdodientu.R;
 import com.app.shopdodientu.adapter.ProductAdapter;
+import com.app.shopdodientu.adapter.ProductHorizontalAdapter;
 import com.app.shopdodientu.api.client.ApiClient;
 import com.app.shopdodientu.api.service.ApiService;
 import com.app.shopdodientu.databinding.FragmentHomeshopBinding;
-import com.app.shopdodientu.databinding.FragmentWardBinding;
 import com.app.shopdodientu.model.PageModel;
 import com.app.shopdodientu.model.ProductModel;
 
@@ -31,7 +31,7 @@ public class HomeShopFragment extends Fragment {
     private int sellerId;
     FragmentHomeshopBinding binding;
     private RecyclerView rcvLastProduct;
-    private ProductAdapter recommendProductAdapter, lastproductAdapter;
+    private ProductHorizontalAdapter lastproductAdapter;
     private List<ProductModel> recommendProducts, lastProducts;
     public HomeShopFragment(int sellerId){
         this.sellerId = sellerId;
@@ -59,8 +59,6 @@ public class HomeShopFragment extends Fragment {
     }
 
     private void renderView() {
-
-        renderProduct("descamount");
         renderProduct("desccreateDate");
     }
 
@@ -73,9 +71,9 @@ public class HomeShopFragment extends Fragment {
                         PageModel<ProductModel> page = response.body();
                         if(page!= null) {
                             lastProducts = page.getContent();
-                            lastproductAdapter = new ProductAdapter(binding.getRoot().getContext(), lastProducts);
+                            lastproductAdapter = new ProductHorizontalAdapter(binding.getRoot().getContext(), lastProducts);
                             rcvLastProduct.setHasFixedSize(true);
-                            rcvLastProduct.setLayoutManager(new GridLayoutManager(binding.getRoot().getContext(), 2));
+                            rcvLastProduct.setLayoutManager(new GridLayoutManager(binding.getRoot().getContext(), 1));
                             rcvLastProduct.setAdapter(lastproductAdapter);
                             lastproductAdapter.notifyDataSetChanged();
 
@@ -87,6 +85,24 @@ public class HomeShopFragment extends Fragment {
 
                     }
                 });
+    }
+
+    private void loadMore() {
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+
+                LinearLayoutManager layoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
+                int totalItemCount = layoutManager.getItemCount();
+                int lastVisibleItemPosition = layoutManager.findLastVisibleItemPosition();
+
+                if (lastVisibleItemPosition == totalItemCount - 1) {
+                    // Kéo tới cuối danh sách
+                    // Gọi phương thức để load thêm sản phẩm ở đây
+                }
+            }
+        });
     }
 
 
