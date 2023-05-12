@@ -16,7 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.app.shopdodientu.R;
-import com.app.shopdodientu.activity.seller.adapter.CartItemAdapter;
+import com.app.shopdodientu.adapter.CartItemAdapter;
 import com.app.shopdodientu.api.client.ApiClient;
 import com.app.shopdodientu.api.service.ApiService;
 import com.app.shopdodientu.model.CartItemModel;

@@ -23,10 +23,10 @@ import android.widget.SearchView;
 import android.widget.Toolbar;
 
 import com.app.shopdodientu.R;
-import com.app.shopdodientu.activity.seller.adapter.CategoryAdapter;
-import com.app.shopdodientu.activity.seller.adapter.ImagesViewPageAdapter;
-import com.app.shopdodientu.activity.seller.adapter.MenuCategoryAdapter;
-import com.app.shopdodientu.activity.seller.adapter.ProductAdapter;
+import com.app.shopdodientu.adapter.CategoryAdapter;
+import com.app.shopdodientu.adapter.ImagesViewPageAdapter;
+import com.app.shopdodientu.adapter.MenuCategoryAdapter;
+import com.app.shopdodientu.adapter.ProductAdapter;
 import com.app.shopdodientu.api.client.ApiClient;
 import com.app.shopdodientu.api.service.ApiService;
 import com.app.shopdodientu.model.CategoryModel;

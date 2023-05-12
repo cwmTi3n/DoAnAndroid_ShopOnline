@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.shopdodientu.R;
-import com.app.shopdodientu.activity.seller.adapter.ProductHorizontalAdapter;
+import com.app.shopdodientu.adapter.ProductHorizontalAdapter;
 import com.app.shopdodientu.api.client.ApiClient;
 import com.app.shopdodientu.api.service.ApiService;
 import com.app.shopdodientu.databinding.FragmentHomeshopBinding;

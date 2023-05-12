@@ -14,7 +14,7 @@ import android.view.Window;
 import android.widget.TextView;
 
 import com.app.shopdodientu.R;
-import com.app.shopdodientu.activity.seller.adapter.ProductAdapter;
+import com.app.shopdodientu.adapter.ProductAdapter;
 import com.app.shopdodientu.api.client.ApiClient;
 import com.app.shopdodientu.api.service.ApiService;
 import com.app.shopdodientu.model.CategoryModel;

@@ -1,4 +1,4 @@
-package com.app.shopdodientu.activity.seller.adapter;
+package com.app.shopdodientu.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
