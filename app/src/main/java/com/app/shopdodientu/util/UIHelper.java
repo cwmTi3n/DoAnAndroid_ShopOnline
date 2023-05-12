@@ -141,8 +141,8 @@ public class UIHelper {
         });
     }
 
-    public static void gotoMainSellerByLinear(LinearLayout linear, Context context) {
-        linear.setOnClickListener(new View.OnClickListener() {
+    public static void gotoMainSeller(TextView tv, Context context) {
+        tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent;

@@ -39,7 +39,6 @@ public class MainSellerActivity extends AppCompatActivity {
         tvAddProduct = (TextView) findViewById(R.id.tvAddProduct);
         tvSetUpStore = (TextView) findViewById(R.id.tvSetUpStore);
         tvShopName = (TextView) findViewById(R.id.tvShopName);
-        tvCheckingOrder = (TextView) findViewById(R.id.tvCheckingOrder);
         tvDeliverd = (TextView) findViewById(R.id.tvDeliverd);
         tvCancelled = (TextView) findViewById(R.id.tvCancelled);
         tvFeedback = (TextView) findViewById(R.id.tvFeedback);

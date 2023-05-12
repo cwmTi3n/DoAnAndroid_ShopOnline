@@ -34,7 +34,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ProfileActivity extends AppCompatActivity {
-    private TextView tvFullname, tvEmail;
+    private TextView tvFullname, tvEmail, tvPrice, tvNumberOrder;
     private ImageView imgAvatar;
     private TextInputEditText tifFullname, tifUsername, tifEmail, tifPhone;
     private Button btnChangepass, btnUpdate;
@@ -49,12 +49,11 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         MapItemView();
 
-//        UIHelper.gotoChangePassword(btnChangepass, this);
 
         renderView();
         updateFullname();
         gotoChangePassword();
-//        UIHelper.gotoHome(linearHome, getApplicationContext());
+
     }
 
     private void gotoChangePassword() {
@@ -69,6 +68,8 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void MapItemView() {
+        tvPrice = (TextView) findViewById(R.id.tvPrice);
+        tvNumberOrder = (TextView) findViewById(R.id.tvNumberOrder);
 
         btnChangepass = (Button) findViewById(R.id.btnchangepass);
         tvFullname = (TextView) findViewById(R.id.tvfullname);

@@ -36,7 +36,7 @@
                 android:layout_alignParentTop="true"
                 android:layout_marginStart="11dp"
                 android:layout_marginLeft="11dp"
-                android:layout_marginTop="60dp"
+                android:layout_marginTop="50dp"
                 android:layout_toEndOf="@+id/imgavatar"
                 android:layout_toRightOf="@+id/imgavatar"
                 android:fontFamily="sans-serif-black"
@@ -86,22 +86,21 @@
                         android:src="@drawable/plus" />
 
                     <TextView
-                        android:id="@+id/payment_label"
+                        android:id="@+id/tvNumberOrder"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:includeFontPadding="false"
-                        android:text="$123"
+                        android:text="5"
                         android:textSize="20sp" />
 
                     <TextView
-                        android:id="@+id/payment_desc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/payment_label"
+                        android:layout_below="@id/tvNumberOrder"
                         android:layout_centerHorizontal="true"
                         android:includeFontPadding="false"
-                        android:text="Balance"
+                        android:text="Number Order"
                         android:textSize="20sp" />
                 </RelativeLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -126,22 +125,22 @@
                         android:src="@drawable/plus" />
 
                     <TextView
-                        android:id="@+id/paymentlabel"
+                        android:id="@+id/tvPrice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:includeFontPadding="false"
-                        android:text="$123"
+                        android:text="₫219000"
                         android:textSize="20sp" />
 
                     <TextView
                         android:id="@+id/paymentdesc"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/paymentlabel"
+                        android:layout_below="@id/tvPrice"
                         android:layout_centerHorizontal="true"
                         android:includeFontPadding="false"
-                        android:text="Balance"
+                        android:text="Total Price"
                         android:textSize="20sp" />
                 </RelativeLayout>
             </com.google.android.material.card.MaterialCardView>

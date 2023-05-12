@@ -18,9 +18,7 @@ import com.app.shopdodientu.util.Constant;
 import com.app.shopdodientu.util.UIHelper;
 
 public class MyAccountActivity extends AppCompatActivity {
-    //TOP
-    private LinearLayout linearHomeTop, linearStoreTop;
-    private TextView tvHomeTop, tvStore;
+
 
     //BETWEEN
     private ImageView imgavatar;
@@ -36,14 +34,13 @@ public class MyAccountActivity extends AppCompatActivity {
         setContentView(R.layout.activity_my_account);
 
         MapItemView();
-        //TOP
 
 
         //BETWEEN
         UIHelper.gotoWelcomeStore(tvRegisterSeller, this);
 //        UIHelper.gotoProfile(tvProfile, this);
         gotoProfile();
-        UIHelper.gotoMainSellerByLinear(linearStoreTop, this);
+        UIHelper.gotoMainSeller(tvRegisterSeller, this);
 //        UIHelper.gotoMyOrder(tvMyOrder, this);
         gotoMyOrder();
         //BOTTOM
@@ -57,8 +54,6 @@ public class MyAccountActivity extends AppCompatActivity {
         tvfullname = findViewById(R.id.tvfullname);
         tvemail = findViewById(R.id.tvemail);
 
-        linearHomeTop = (LinearLayout) findViewById(R.id.linearHomeTop);
-        linearStoreTop = (LinearLayout) findViewById(R.id.linearStoreTop);
 
         tvProfile = (TextView) findViewById(R.id.tvProfile);
         tvRegisterSeller = (TextView) findViewById(R.id.tvRegisterStore);
