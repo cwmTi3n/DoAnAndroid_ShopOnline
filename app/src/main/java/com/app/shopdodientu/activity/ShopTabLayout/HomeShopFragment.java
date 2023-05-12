@@ -9,12 +9,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.shopdodientu.R;
-import com.app.shopdodientu.adapter.ProductAdapter;
-import com.app.shopdodientu.adapter.ProductHorizontalAdapter;
+import com.app.shopdodientu.activity.seller.adapter.ProductHorizontalAdapter;
 import com.app.shopdodientu.api.client.ApiClient;
 import com.app.shopdodientu.api.service.ApiService;
 import com.app.shopdodientu.databinding.FragmentHomeshopBinding;

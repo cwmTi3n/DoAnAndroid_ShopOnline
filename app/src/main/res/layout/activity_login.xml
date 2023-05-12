@@ -6,13 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".activity.LoginActivity">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -120,6 +113,7 @@
                 android:textSize="16dp"
                 android:textStyle="bold|italic" />
 
+
             <Button
                 android:id="@+id/btnlogin"
                 android:layout_width="170dp"
@@ -171,7 +165,7 @@
                 android:id="@+id/tvsignup"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.5"
+                android:layout_weight="1"
                 android:text="Don't have an account? Signup?"
                 android:textAlignment="center"
                 android:textColor="#6C5DD2"
@@ -180,6 +174,4 @@
 
 
         </LinearLayout>
-
-    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

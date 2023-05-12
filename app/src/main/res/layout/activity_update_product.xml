@@ -16,14 +16,18 @@
                 android:id="@+id/tvBack"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="2"
-                android:background="#F15050"
+                android:layout_weight="1.95"
                 android:text="UPDATE PRODUCT"
                 android:gravity="center"
                 android:textSize="25dp"
-                android:textColor="#fff"
-                android:drawableLeft="@drawable/left_chevron"
+                android:textColor="#000"
                 android:paddingStart="10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.05"
+                android:background="#F1E6E6" />
 
             <ImageView
                 android:id="@+id/imgProduct"
@@ -234,17 +238,38 @@
                     android:textSize="20dp" />
             </LinearLayout>
 
-            <Button
-                android:id="@+id/btnSave"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="2.2"
-                android:layout_gravity="center"
-                android:text="save"
-                android:textSize="20dp"
-                android:fontFamily="sans-serif-black"
-                android:drawableLeft="@drawable/updated"
-                android:backgroundTint="#F15050" />
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:orientation="horizontal"
+                android:weightSum="8">
+
+                <Button
+                    android:id="@+id/btnDelete"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:layout_gravity="center"
+                    android:text="Delete"
+                    android:layout_marginRight="5dp"
+                    android:textSize="20dp"
+                    android:fontFamily="sans-serif-black"
+                    android:backgroundTint="#E41D1D" />
+
+                <Button
+                    android:id="@+id/btnSave"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:layout_gravity="center"
+                    android:text="save"
+                    android:textSize="20dp"
+                    android:fontFamily="sans-serif-black"
+                    android:backgroundTint="#57C40B" />
+            </LinearLayout>
         </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
