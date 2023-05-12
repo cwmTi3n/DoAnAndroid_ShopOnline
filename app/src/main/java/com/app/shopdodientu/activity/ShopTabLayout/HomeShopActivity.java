@@ -5,12 +5,15 @@ import androidx.fragment.app.FragmentManager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.app.shopdodientu.R;
 import com.app.shopdodientu.databinding.ActivityHomeShopBinding;
+import com.app.shopdodientu.util.UIHelper;
 import com.google.android.material.tabs.TabLayout;
 
 public class HomeShopActivity extends AppCompatActivity {
@@ -18,13 +21,16 @@ public class HomeShopActivity extends AppCompatActivity {
     ActivityHomeShopBinding binding;
     ShopPagerAdapter shopPagerAdapter;
     private LinearLayout  linearBannerShop;
-    private TextView tvshopName, tvamountProduct, tvChat, tvSearch;
+    private TextView tvshopName, tvamountProduct, tvChat;
+    private SearchView svproduct;
     private ImageView imgAvatarShop;
     private int sellerId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+        UIHelper.fullscreen(this);
         sellerId = getIntent().getIntExtra("sellerId", 0);
         binding = ActivityHomeShopBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -43,7 +49,7 @@ public class HomeShopActivity extends AppCompatActivity {
         tvshopName = findViewById(R.id.tvshopName);
         tvamountProduct = findViewById(R.id.tvamountProduct);
         tvChat = findViewById(R.id.tvChat);
-        tvSearch = findViewById(R.id.tvSearch);
+        svproduct = findViewById(R.id.svproduct);
         imgAvatarShop = findViewById(R.id.imgAvatarShop);
     }
 

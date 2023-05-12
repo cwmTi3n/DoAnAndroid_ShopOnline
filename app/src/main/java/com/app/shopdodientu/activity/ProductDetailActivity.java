@@ -23,6 +23,7 @@ import com.app.shopdodientu.api.service.ApiService;
 import com.app.shopdodientu.model.CartItemModel;
 import com.app.shopdodientu.model.ProductModel;
 import com.app.shopdodientu.util.Constant;
+import com.app.shopdodientu.util.UIHelper;
 import com.bumptech.glide.Glide;
 
 import retrofit2.Call;
@@ -30,7 +31,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ProductDetailActivity extends AppCompatActivity {
-    private SearchView searchView;
     private RatingBar ratingBar;
     private ImageView imgProduct, imgAvatar;
     private TextView tvEdit, tvAmountSelled, tvPrice, tvNameproduct, tvDescription, tvShopName, tvamountProduct, tvviewShop, tvBuyNow;
@@ -41,6 +41,8 @@ public class ProductDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+        UIHelper.fullscreen(this);
         setContentView(R.layout.activity_product_detail);
         MapItemView();
         renderView();
@@ -48,7 +50,6 @@ public class ProductDetailActivity extends AppCompatActivity {
     }
 
     private void MapItemView() {
-        searchView = findViewById(R.id.searchView);
         ratingBar = findViewById(R.id.ratingBar);
         imgProduct = (ImageView) findViewById(R.id.imgproduct);
         imgAvatar = (ImageView) findViewById(R.id.imgavatar);
