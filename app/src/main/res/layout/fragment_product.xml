@@ -80,11 +80,20 @@
           android:drawableRight="@drawable/unfold"/>
    </LinearLayout>
 
-   <!--        product -->
-   <androidx.recyclerview.widget.RecyclerView
-       android:id="@+id/rcvProduct"
-       android:layout_width="match_parent"
-       android:layout_height="0dp"
-       android:paddingTop="10dp"
-       android:layout_weight="11"/>
+  <androidx.core.widget.NestedScrollView
+      android:id="@+id/nsvProduct"
+      android:layout_width="match_parent"
+      android:layout_height="0dp"
+      android:layout_weight="11"
+      android:fillViewport="true">
+
+     <!--        product -->
+     <androidx.recyclerview.widget.RecyclerView
+         android:id="@+id/rcvProduct"
+         android:layout_width="match_parent"
+         android:layout_height="0dp"
+         android:paddingTop="10dp"
+         android:layout_weight="11"/>
+
+  </androidx.core.widget.NestedScrollView>
 </LinearLayout>

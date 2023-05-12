@@ -88,21 +88,21 @@ public class HomeShopFragment extends Fragment {
     }
 
     private void loadMore() {
-        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-
-                LinearLayoutManager layoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
-                int totalItemCount = layoutManager.getItemCount();
-                int lastVisibleItemPosition = layoutManager.findLastVisibleItemPosition();
-
-                if (lastVisibleItemPosition == totalItemCount - 1) {
-                    // Kéo tới cuối danh sách
-                    // Gọi phương thức để load thêm sản phẩm ở đây
-                }
-            }
-        });
+//        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+//            @Override
+//            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+//                super.onScrolled(recyclerView, dx, dy);
+//
+//                LinearLayoutManager layoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
+//                int totalItemCount = layoutManager.getItemCount();
+//                int lastVisibleItemPosition = layoutManager.findLastVisibleItemPosition();
+//
+//                if (lastVisibleItemPosition == totalItemCount - 1) {
+//                    // Kéo tới cuối danh sách
+//                    // Gọi phương thức để load thêm sản phẩm ở đây
+//                }
+//            }
+//        });
     }
 
 
