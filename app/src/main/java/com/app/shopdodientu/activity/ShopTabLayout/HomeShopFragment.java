@@ -30,7 +30,7 @@ import retrofit2.Response;
 public class HomeShopFragment extends Fragment {
     private int sellerId;
     FragmentHomeshopBinding binding;
-    private RecyclerView rcvRecommend, rcvLastProduct;
+    private RecyclerView rcvLastProduct;
     private ProductAdapter recommendProductAdapter, lastproductAdapter;
     private List<ProductModel> recommendProducts, lastProducts;
     public HomeShopFragment(int sellerId){
@@ -47,7 +47,6 @@ public class HomeShopFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
         binding = FragmentHomeshopBinding.inflate(inflater, container, false);
-        rcvRecommend = binding.getRoot().findViewById(R.id.rcvRecommend);
         rcvLastProduct = binding.getRoot().findViewById(R.id.rcvLastProduct);
         //vi tri load du lieu: recyclerview
         return binding.getRoot();
@@ -73,22 +72,13 @@ public class HomeShopFragment extends Fragment {
                     public void onResponse(Call<PageModel<ProductModel>> call, Response<PageModel<ProductModel>> response) {
                         PageModel<ProductModel> page = response.body();
                         if(page!= null) {
-                            if(orderby.equals("descamount")) {
-                                recommendProducts = page.getContent();
-                                recommendProductAdapter = new ProductAdapter(binding.getRoot().getContext(), recommendProducts);
-                                rcvRecommend.setHasFixedSize(true);
-                                rcvRecommend.setLayoutManager(new LinearLayoutManager(binding.getRoot().getContext(), LinearLayoutManager.HORIZONTAL, false));
-                                rcvRecommend.setAdapter(recommendProductAdapter);
-                                recommendProductAdapter.notifyDataSetChanged();
-                            }
-                            else if(orderby.equals("desccreateDate")) {
-                                lastProducts = page.getContent();
-                                lastproductAdapter = new ProductAdapter(binding.getRoot().getContext(), lastProducts);
-                                rcvLastProduct.setHasFixedSize(true);
-                                rcvLastProduct.setLayoutManager(new GridLayoutManager(binding.getRoot().getContext(), 2));
-                                rcvLastProduct.setAdapter(lastproductAdapter);
-                                lastproductAdapter.notifyDataSetChanged();
-                            }
+                            lastProducts = page.getContent();
+                            lastproductAdapter = new ProductAdapter(binding.getRoot().getContext(), lastProducts);
+                            rcvLastProduct.setHasFixedSize(true);
+                            rcvLastProduct.setLayoutManager(new GridLayoutManager(binding.getRoot().getContext(), 2));
+                            rcvLastProduct.setAdapter(lastproductAdapter);
+                            lastproductAdapter.notifyDataSetChanged();
+
                         }
                     }
 
