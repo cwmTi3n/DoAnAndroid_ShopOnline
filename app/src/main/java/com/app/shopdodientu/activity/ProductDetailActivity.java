@@ -33,7 +33,7 @@ import retrofit2.Response;
 
 public class ProductDetailActivity extends AppCompatActivity {
     private RatingBar ratingBar;
-    private ImageView imgProduct, imgAvatar;
+    private ImageView imgProduct, imgAvatar, imgCartProduct, imgBack;
     private TextView tvEdit, tvAmountSelled, tvPrice, tvNameproduct, tvDescription, tvShopName, tvamountProduct, tvviewShop, tvBuyNow;
     private RecyclerView rcvFeedback;
     private LinearLayout linearChat, linearAddToCart;
@@ -48,6 +48,8 @@ public class ProductDetailActivity extends AppCompatActivity {
         MapItemView();
         renderView();
         addToCart();
+        ImageBackClicked();
+        ImageCartClicked();
     }
 
     private void MapItemView() {
@@ -66,6 +68,8 @@ public class ProductDetailActivity extends AppCompatActivity {
         linearAddToCart = findViewById(R.id.linearAddToCart);
         tvBuyNow = findViewById(R.id.tvBuyNow);
         tvEdit = findViewById(R.id.tvEdit);
+        imgBack = findViewById(R.id.imgBack);
+        imgCartProduct = findViewById(R.id.imgCartProduct);
     }
 
     private void renderView() {
@@ -176,5 +180,24 @@ public class ProductDetailActivity extends AppCompatActivity {
             }
         });
         dialog.show();
+    }
+
+    private void ImageBackClicked() {
+        imgBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
+
+    private void ImageCartClicked() {
+        imgCartProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProductDetailActivity.this, CartActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
