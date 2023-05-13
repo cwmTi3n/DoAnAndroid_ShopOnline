@@ -30,7 +30,7 @@
                 app:srcCompat="@drawable/back_left_orange" />
 
             <SearchView
-                android:id="@+id/edtfind"
+                android:id="@+id/svProduct"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="5.8"
@@ -45,10 +45,11 @@
                 android:textStyle="italic" />
 
             <ImageView
+                android:id="@+id/imvSearch"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_weight="0.8"
-                android:src="@drawable/search_square"/>
+                android:src="@drawable/search_square" />
         </LinearLayout>
 
         <androidx.core.widget.NestedScrollView

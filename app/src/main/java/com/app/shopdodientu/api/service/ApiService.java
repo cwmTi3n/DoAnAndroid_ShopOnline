@@ -104,4 +104,11 @@ public interface ApiService {
 
     @DELETE("seller/product/{id}")
     Call<ResponseBody> deleteProduct(@Path("id") int id);
+
+    @PUT("account/cart-item/update-quantity")
+    @FormUrlEncoded
+    Call<CartItemModel> updateQuantityItem(@Field("id") int id, @Field("quantity") int quantity);
+
+    @PUT("account/delete-item-from-cart")
+    Call<ResponseBody> deleteItemFromCart(@Body List<Integer> data);
 }

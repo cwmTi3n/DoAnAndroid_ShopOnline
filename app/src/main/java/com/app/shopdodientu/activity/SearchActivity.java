@@ -5,6 +5,7 @@ import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
@@ -12,6 +13,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
+<<<<<<< HEAD
+import android.widget.SearchView;
+=======
+>>>>>>> 64cf93a7d7e068c2e5130962b2b9bdf94a8c26d1
 import android.widget.TextView;
 
 import com.app.shopdodientu.R;
@@ -21,6 +26,7 @@ import com.app.shopdodientu.api.service.ApiService;
 import com.app.shopdodientu.model.CategoryModel;
 import com.app.shopdodientu.model.PageModel;
 import com.app.shopdodientu.model.ProductModel;
+import com.app.shopdodientu.util.LoadingDialog;
 import com.app.shopdodientu.util.UIHelper;
 
 import java.util.List;
@@ -43,6 +49,8 @@ public class SearchActivity extends AppCompatActivity {
     private RecyclerView rcvProduct;
     private ProductAdapter productAdapter;
     private List<ProductModel> products;
+    private SearchView svProduct;
+    private ImageView imvSearch;
 
 
     @Override
@@ -64,6 +72,7 @@ public class SearchActivity extends AppCompatActivity {
         TextViewPriceClicked();
         ImageViewBackClicked();
         renderView();
+        searchProduct();
 
         //load more
         final NestedScrollView nestedScrollView = findViewById(R.id.ncvSearch);
@@ -78,8 +87,7 @@ public class SearchActivity extends AppCompatActivity {
         });
 
     }
-
-    private void renderView() {
+    private void setSearchFor() {
         if(keyword != null) {
             tvSearchFor.setText("Search for \"" + keyword + "\"");
         }
@@ -87,6 +95,10 @@ public class SearchActivity extends AppCompatActivity {
             tvSearchFor.setText("Search for \"" + categoryModel.getName() + "\"");
             categoryId = categoryModel.getId();
         }
+    }
+
+    private void renderView() {
+        setSearchFor();
         getProducts();
 
     }
@@ -198,6 +210,8 @@ public class SearchActivity extends AppCompatActivity {
         keyword = getIntent().getStringExtra("keyword");
         categoryModel = (CategoryModel) getIntent().getSerializableExtra("category");
         rcvProduct = (RecyclerView) findViewById(R.id.rcvproduct);
+        svProduct = findViewById(R.id.svProduct);
+        imvSearch = findViewById(R.id.imvSearch);
 
     }
 
@@ -281,12 +295,15 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     private void getProducts() {
+        LoadingDialog loadingDialog = new LoadingDialog(SearchActivity.this);
+        loadingDialog.show();
         page = 0;
         ApiService apiService = ApiClient.getApiService();
         apiService.findProduct(categoryId, keyword, orderby, page)
                 .enqueue(new Callback<PageModel<ProductModel>>() {
                     @Override
                     public void onResponse(Call<PageModel<ProductModel>> call, Response<PageModel<ProductModel>> response) {
+                        loadingDialog.dismiss();
                         if(response.body() != null) {
                             total = response.body().getTotal();
                             products = response.body().getContent();
@@ -300,9 +317,36 @@ public class SearchActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<PageModel<ProductModel>> call, Throwable t) {
-
+                        loadingDialog.dismiss();
                     }
                 });
+    }
+
+    private void searchProduct() {
+        svProduct.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                keyword = s;
+                setSearchFor();
+                getProducts();
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                return false;
+            }
+        });
+
+        imvSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                keyword = svProduct.getQuery().toString();
+                setSearchFor();
+                getProducts();
+            }
+        });
+
     }
 
 }
