@@ -6,6 +6,7 @@ public class CartItemModel implements Serializable {
     private int id;
     private int quantity;
     private float unitPrice;
+    private int status;
     private int productId;
     private int cartId;
     private String image;
@@ -14,10 +15,11 @@ public class CartItemModel implements Serializable {
     public CartItemModel() {
     }
 
-    public CartItemModel(int id, int quantity, float unitPrice, int productId, int cartId, String image, String productName) {
+    public CartItemModel(int id, int quantity, float unitPrice, int status, int productId, int cartId, String image, String productName) {
         this.id = id;
         this.quantity = quantity;
         this.unitPrice = unitPrice;
+        this.status = status;
         this.productId = productId;
         this.cartId = cartId;
         this.image = image;
@@ -46,6 +48,14 @@ public class CartItemModel implements Serializable {
 
     public void setUnitPrice(float unitPrice) {
         this.unitPrice = unitPrice;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public int getProductId() {
