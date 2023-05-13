@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,6 +25,7 @@ import com.app.shopdodientu.api.service.ApiService;
 import com.app.shopdodientu.databinding.FragmentProductBinding;
 import com.app.shopdodientu.model.PageModel;
 import com.app.shopdodientu.model.ProductModel;
+import com.app.shopdodientu.util.LoadingDialog;
 
 import java.util.List;
 
@@ -43,6 +45,8 @@ public class ProductFragment extends Fragment {
     private String orderby = null;
     private ProductAdapter productAdapter;
     private List<ProductModel> products;
+    private int categoryId = 0;
+    private String keyword = "";
 
     public ProductFragment(int sellerId){
         this.sellerId = sellerId;
@@ -84,7 +88,13 @@ public class ProductFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        categoryId = CatalogFragment.getCategoryId();
+        keyword = HomeShopActivity.getKeyword();
         getProducts();
+    }
+
+    public void updateKeyword() {
+        keyword = HomeShopActivity.getKeyword();
     }
 
     private void MapItemView(){
@@ -220,10 +230,12 @@ public class ProductFragment extends Fragment {
         tvPrice.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, drawableRight , null);
     }
 
-    private void getProducts() {
+    public void getProducts() {
+        LoadingDialog loadingDialog = new LoadingDialog(getContext());
+        loadingDialog.show();
         page = 0;
         ApiService apiService = ApiClient.getApiService();
-        apiService.findProductsBySeller(sellerId, page, orderby)
+        apiService.findProductsBySeller(sellerId, categoryId, keyword, page, orderby)
                 .enqueue(new Callback<PageModel<ProductModel>>() {
                     @Override
                     public void onResponse(Call<PageModel<ProductModel>> call, Response<PageModel<ProductModel>> response) {
@@ -238,11 +250,12 @@ public class ProductFragment extends Fragment {
                             rcvProduct.setAdapter(productAdapter);
                             productAdapter.notifyDataSetChanged();
                         }
+                        loadingDialog.dismiss();
                     }
 
                     @Override
                     public void onFailure(Call<PageModel<ProductModel>> call, Throwable t) {
-
+                        loadingDialog.dismiss();
                     }
                 });
     }
@@ -252,7 +265,7 @@ public class ProductFragment extends Fragment {
             return;
         }
         ApiService apiService = ApiClient.getApiService();
-        apiService.findProductsBySeller(sellerId, page, orderby)
+        apiService.findProductsBySeller(sellerId, categoryId, keyword, page, orderby)
                 .enqueue(new Callback<PageModel<ProductModel>>() {
                     @Override
                     public void onResponse(Call<PageModel<ProductModel>> call, Response<PageModel<ProductModel>> response) {

@@ -5,7 +5,7 @@ import android.util.Log;
 import com.app.shopdodientu.api.service.ApiService;
 
 public class ApiClient extends BaseClient{
-    private static final String BASE_URL = "http://192.168.1.12/";
+    private static final String BASE_URL = "http://192.168.1.10/";
 //    private static final String BASE_URL = "https://apishoponline.cfapps.ap21.hana.ondemand.com/";
     public static ApiService apiService;
 

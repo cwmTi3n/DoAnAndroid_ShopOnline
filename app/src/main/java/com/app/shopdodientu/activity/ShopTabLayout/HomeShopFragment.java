@@ -76,7 +76,7 @@ public class HomeShopFragment extends Fragment {
 
     private void renderProduct(String orderby) {
         ApiService apiService = ApiClient.getApiService();
-        apiService.findProductsBySeller(sellerId, 0, orderby)
+        apiService.findProductsBySeller(sellerId, 0, "", 0, orderby)
                 .enqueue(new Callback<PageModel<ProductModel>>() {
                     @Override
                     public void onResponse(Call<PageModel<ProductModel>> call, Response<PageModel<ProductModel>> response) {
@@ -107,7 +107,7 @@ public class HomeShopFragment extends Fragment {
             return;
         }
         ApiService apiService = ApiClient.getApiService();
-        apiService.findProductsBySeller(sellerId, page, "desccreateDate")
+        apiService.findProductsBySeller(sellerId, 0, "", page, "desccreateDate")
                 .enqueue(new Callback<PageModel<ProductModel>>() {
                     @Override
                     public void onResponse(Call<PageModel<ProductModel>> call, Response<PageModel<ProductModel>> response) {

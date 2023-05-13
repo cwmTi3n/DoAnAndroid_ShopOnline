@@ -1,17 +1,22 @@
 package com.app.shopdodientu.activity.ShopTabLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.app.shopdodientu.R;
+import com.app.shopdodientu.activity.MainActivity;
+import com.app.shopdodientu.activity.SearchActivity;
 import com.app.shopdodientu.databinding.ActivityHomeShopBinding;
 import com.app.shopdodientu.util.UIHelper;
 import com.google.android.material.tabs.TabLayout;
@@ -22,9 +27,10 @@ public class HomeShopActivity extends AppCompatActivity {
     ShopPagerAdapter shopPagerAdapter;
     private LinearLayout  linearBannerShop;
     private TextView tvshopName, tvamountProduct, tvChat;
-    private SearchView svproduct;
+    private SearchView svProduct;
     private ImageView imgAvatarShop;
     private int sellerId;
+    static String keyword = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +47,38 @@ public class HomeShopActivity extends AppCompatActivity {
 
         SetTabLayout();
         TabLayOutClicked();
+        searchProduct();
+    }
+    public static String getKeyword() {
+        String tmp = keyword;
+        keyword = "";
+        return  tmp;
+    }
+
+    private void searchProduct() {
+        svProduct.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                keyword = s;
+                if(binding.viewPager2.getCurrentItem() == 1) {
+                    ProductFragment productFragment = (ProductFragment) shopPagerAdapter.getFragment(1);
+                    productFragment.updateKeyword();
+                    productFragment.getProducts();
+                }
+                else {
+                    binding.viewPager2.setCurrentItem(1);
+                }
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+//                keyword = s;
+//                binding.viewPager2.setCurrentItem(1);
+//                return true;
+                return false;
+            }
+        });
 
     }
 
@@ -49,7 +87,7 @@ public class HomeShopActivity extends AppCompatActivity {
         tvshopName = findViewById(R.id.tvshopName);
         tvamountProduct = findViewById(R.id.tvamountProduct);
         tvChat = findViewById(R.id.tvChat);
-        svproduct = findViewById(R.id.svproduct);
+        svProduct = findViewById(R.id.svproduct);
         imgAvatarShop = findViewById(R.id.imgAvatarShop);
     }
 

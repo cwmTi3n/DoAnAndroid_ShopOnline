@@ -75,6 +75,8 @@ public interface ApiService {
 
     @GET("find-product-by-seller")
     Call<PageModel<ProductModel>> findProductsBySeller(@Query("sellerId") int sellerId,
+                                                  @Query("categoryId") int categoryId,
+                                                  @Query("keyword") String keyword,
                                                   @Query("page") int page,
                                                   @Query("orderby") String orderby);
     @PUT("seller/product")

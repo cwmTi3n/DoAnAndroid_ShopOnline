@@ -13,8 +13,8 @@
         <!--        catalog-->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcvCategory"
-            android:paddingTop="5dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp" />
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>
