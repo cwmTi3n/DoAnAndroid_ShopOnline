@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
@@ -20,10 +21,13 @@ import com.app.shopdodientu.adapter.CartItemAdapter;
 import com.app.shopdodientu.api.client.ApiClient;
 import com.app.shopdodientu.api.service.ApiService;
 import com.app.shopdodientu.model.CartItemModel;
+import com.app.shopdodientu.util.LoadingDialog;
 import com.app.shopdodientu.util.UIHelper;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -46,6 +50,7 @@ public class CartActivity extends AppCompatActivity {
         MapItemView();
 
         renderView();
+        deleteItem();
 
     }
 
@@ -58,6 +63,37 @@ public class CartActivity extends AppCompatActivity {
         rcvProduct = (RecyclerView) findViewById(R.id.rcvProduct);
         checkBox = (CheckBox) findViewById(R.id.checkBox);
     }
+    private void deleteItem() {
+        imvDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LoadingDialog loadingDialog = new LoadingDialog(CartActivity.this);
+                loadingDialog.show();
+                List<Integer> itemSelect = cartItemAdapter.getCartItemSelect();
+                if(!itemSelect.isEmpty()) {
+                    ApiService apiService = ApiClient.getApiService();
+                    apiService.deleteItemFromCart(itemSelect)
+                            .enqueue(new Callback<ResponseBody>() {
+                                @Override
+                                public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                                    Toast.makeText(CartActivity.this, "Đã xóa sản phẩm khỏi giỏ hàng", Toast.LENGTH_SHORT).show();
+                                    loadingDialog.dismiss();
+                                    recreate();
+                                }
+
+                                @Override
+                                public void onFailure(Call<ResponseBody> call, Throwable t) {
+                                    Toast.makeText(CartActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                                    loadingDialog.dismiss();
+                                }
+                            });
+                }
+                else {
+                    loadingDialog.dismiss();
+                }
+            }
+        });
+    }
 
     private void renderView() {
         ApiService apiService = ApiClient.getApiService();
@@ -66,14 +102,21 @@ public class CartActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<List<CartItemModel>> call, Response<List<CartItemModel>> response) {
                         cartItemModels = response.body();
-                        if(cartItemModels != null) {
-                            Log.d("size", String.valueOf(cartItemModels.size()));
-                            cartItemAdapter = new CartItemAdapter(getApplicationContext(), cartItemModels);
-                            rcvProduct.setHasFixedSize(true);
-                            rcvProduct.setLayoutManager(new GridLayoutManager(CartActivity.this, 1));
-                            rcvProduct.setAdapter(cartItemAdapter);
-                            cartItemAdapter.notifyDataSetChanged();
+                        if(cartItemModels == null) {
+                            cartItemModels = new ArrayList<>();
                         }
+                        cartItemAdapter = new CartItemAdapter(getApplicationContext(), cartItemModels);
+                        cartItemAdapter.setOnTotalAmountChangedListener(new CartItemAdapter.OnTotalAmountChangedListener() {
+                            @Override
+                            public void onTotalAmountChanged(double totalPrice) {
+                                tvPriceTotal.setText(String.valueOf(totalPrice));
+                            }
+                        });
+                        rcvProduct.setHasFixedSize(true);
+                        rcvProduct.setLayoutManager(new GridLayoutManager(CartActivity.this, 1));
+                        rcvProduct.setAdapter(cartItemAdapter);
+                        cartItemAdapter.notifyDataSetChanged();
+                        selectWithCheckBox();
 
                     }
 
@@ -82,6 +125,15 @@ public class CartActivity extends AppCompatActivity {
 
                     }
                 });
+    }
+    private void selectWithCheckBox() {
+        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                cartItemAdapter.setChecked(b);
+                cartItemAdapter.notifyDataSetChanged();
+            }
+        });
     }
 
 }

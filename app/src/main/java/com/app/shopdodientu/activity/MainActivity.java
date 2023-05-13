@@ -36,6 +36,7 @@ import com.app.shopdodientu.model.PageModel;
 import com.app.shopdodientu.model.ProductModel;
 import com.app.shopdodientu.model.UserModel;
 import com.app.shopdodientu.util.Constant;
+import com.app.shopdodientu.util.LoadingDialog;
 import com.app.shopdodientu.util.UIHelper;
 import com.google.android.material.navigation.NavigationView;
 
@@ -320,7 +321,6 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<PageModel<ProductModel>> call, Throwable t) {
-
                     }
                 });
     }

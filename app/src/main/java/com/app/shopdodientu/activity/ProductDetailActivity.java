@@ -23,6 +23,7 @@ import com.app.shopdodientu.api.service.ApiService;
 import com.app.shopdodientu.model.CartItemModel;
 import com.app.shopdodientu.model.ProductModel;
 import com.app.shopdodientu.util.Constant;
+import com.app.shopdodientu.util.LoadingDialog;
 import com.app.shopdodientu.util.UIHelper;
 import com.bumptech.glide.Glide;
 
@@ -152,6 +153,8 @@ public class ProductDetailActivity extends AppCompatActivity {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                LoadingDialog loadingDialog = new LoadingDialog(ProductDetailActivity.this);
+                loadingDialog.show();
                 ApiService apiService = ApiClient.getApiService();
                 int quantity = Integer.parseInt(tvAmount.getText().toString());
                 apiService.addToCart(productModel.getId(), quantity)
@@ -159,15 +162,18 @@ public class ProductDetailActivity extends AppCompatActivity {
                             @Override
                             public void onResponse(Call<CartItemModel> call, Response<CartItemModel> response) {
                                 if(response.body() != null) {
+                                    loadingDialog.dismiss();
                                     Toast.makeText(getApplicationContext(), "Đã thêm sản phẩm vào giỏ hàng", Toast.LENGTH_SHORT).show();
                                 }
                                 else {
+                                    loadingDialog.dismiss();
                                     Toast.makeText(getApplicationContext(), "Thêm sản phẩm không thành công", Toast.LENGTH_SHORT).show();
                                 }
                             }
 
                             @Override
                             public void onFailure(Call<CartItemModel> call, Throwable t) {
+                                loadingDialog.dismiss();
                                 Toast.makeText(getApplicationContext(), "Thêm sản phẩm không thành công", Toast.LENGTH_SHORT).show();
                             }
                         });

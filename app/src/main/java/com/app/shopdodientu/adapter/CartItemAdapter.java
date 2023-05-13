@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -11,18 +13,54 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.shopdodientu.R;
+import com.app.shopdodientu.api.client.ApiClient;
+import com.app.shopdodientu.api.service.ApiService;
 import com.app.shopdodientu.model.CartItemModel;
+import com.app.shopdodientu.util.Constant;
 import com.bumptech.glide.Glide;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ViewHolder>{
     private Context context;
     private List<CartItemModel> cartItemModels;
+    private List<Integer> cartItemSelect;
+    private boolean isChecked;
+    private double totalPrice = 0.0;
+    private OnTotalAmountChangedListener onTotalAmountChangedListener;
 
     public CartItemAdapter(Context context, List<CartItemModel> cartItemModels) {
         this.context = context;
         this.cartItemModels = cartItemModels;
+        cartItemSelect = new ArrayList<>();
+        isChecked = false;
+    }
+    public List<Integer> getCartItemSelect(){
+        return cartItemSelect;
+    }
+
+    public void setOnTotalAmountChangedListener(OnTotalAmountChangedListener onTotalAmountChangedListener) {
+        this.onTotalAmountChangedListener = onTotalAmountChangedListener;
+    }
+
+    public void setChecked(boolean checked) {
+        isChecked = checked;
+    }
+
+    public int getIndexSelected(int id) {
+        int tmp = 0;
+        for(Integer i : cartItemSelect) {
+            if(i == id) {
+                return tmp;
+            }
+            tmp++;
+        }
+        return -1;
     }
 
     @NonNull
@@ -42,6 +80,89 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ViewHo
         Glide.with(context)
                 .load(cartItemModel.getImage())
                 .into(holder.imvProduct);
+        holder.cbSelect.setChecked(isChecked);
+        holder.cbSelect.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b) {
+                    cartItemSelect.add(cartItemModel.getId());
+                    totalPrice += cartItemModel.getUnitPrice()*cartItemModel.getQuantity();
+                }
+                else {
+                    int index = getIndexSelected(cartItemModel.getId());
+                    if(index != -1) {
+                        cartItemSelect.remove(index);
+                    }
+                    totalPrice -= cartItemModel.getUnitPrice()*cartItemModel.getQuantity();
+                }
+                if (onTotalAmountChangedListener != null) {
+                    onTotalAmountChangedListener.onTotalAmountChanged(totalPrice);
+                }
+            }
+        });
+        holder.tvPlus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int amount = cartItemModel.getQuantity() + 1;
+                holder.tvAmount.setText(String.valueOf(amount));
+                ApiService apiService = ApiClient.getApiService();
+                apiService.updateQuantityItem(cartItemModel.getId(), amount)
+                        .enqueue(new Callback<CartItemModel>() {
+                            @Override
+                            public void onResponse(Call<CartItemModel> call, Response<CartItemModel> response) {
+                                CartItemModel cartItemRp = response.body();
+                                if(cartItemRp != null) {
+                                    cartItemModel.setQuantity(cartItemRp.getQuantity());
+                                    cartItemModel.setQuantity(cartItemRp.getQuantity());
+                                    if(getIndexSelected(cartItemRp.getId()) != -1) {
+                                        totalPrice += cartItemRp.getUnitPrice();
+                                        if (onTotalAmountChangedListener != null) {
+                                            onTotalAmountChangedListener.onTotalAmountChanged(totalPrice);
+                                        }
+                                    }
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call<CartItemModel> call, Throwable t) {
+
+                            }
+                        });
+            }
+        });
+        holder.tvMinus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int amount = cartItemModel.getQuantity();
+                if(amount > 1) {
+                    holder.tvAmount.setText(String.valueOf(--amount));
+                    ApiService apiService = ApiClient.getApiService();
+                    apiService.updateQuantityItem(cartItemModel.getId(), amount)
+                            .enqueue(new Callback<CartItemModel>() {
+                                @Override
+                                public void onResponse(Call<CartItemModel> call, Response<CartItemModel> response) {
+                                    CartItemModel cartItemRp = response.body();
+                                    if(cartItemRp != null) {
+                                        cartItemModel.setQuantity(cartItemRp.getQuantity());
+                                        if(getIndexSelected(cartItemRp.getId()) != -1) {
+                                            totalPrice -= cartItemRp.getUnitPrice();
+                                            if (onTotalAmountChangedListener != null) {
+                                                onTotalAmountChangedListener.onTotalAmountChanged(totalPrice);
+                                            }
+                                        }
+
+                                    }
+                                }
+
+                                @Override
+                                public void onFailure(Call<CartItemModel> call, Throwable t) {
+
+                                }
+                            });
+                }
+            }
+        });
+
     }
 
     @Override
@@ -54,6 +175,9 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ViewHo
         private TextView tvProductName;
         private TextView tvPrice;
         private TextView tvAmount;
+        private TextView tvMinus;
+        private TextView tvPlus;
+        private CheckBox cbSelect;
 
         public ViewHolder(final View itemView) {
             super(itemView);
@@ -61,6 +185,12 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ViewHo
             tvProductName = (TextView) itemView.findViewById(R.id.tvProductName);
             tvPrice = (TextView) itemView.findViewById(R.id.tvPrice);
             tvAmount = (TextView) itemView.findViewById(R.id.tvAmount);
+            tvPlus = (TextView) itemView.findViewById(R.id.tvPlus);
+            tvMinus = (TextView) itemView.findViewById(R.id.tvMinus);
+            cbSelect = (CheckBox) itemView.findViewById(R.id.checkbox);
         }
+    }
+    public interface OnTotalAmountChangedListener {
+        void onTotalAmountChanged(double totalPrice);
     }
 }
