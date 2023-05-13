@@ -34,9 +34,10 @@
             android:exported="false" />
         <activity
             android:name=".activity.FeedbackActivity"
-            android:exported="false" /> <!-- <activity -->
-        <!-- android:name=".activity.LoginActivity" -->
-        <!-- android:exported="false" /> -->
+            android:exported="false" />
+        <activity
+            android:name=".activity.LoginActivity"
+            android:exported="false" />
         <activity
             android:name=".activity.CheckOutActivity"
             android:exported="false" />
@@ -104,7 +105,10 @@
             android:name=".activity.ChooseAddressActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.LoginActivity"
+            android:name=".activity.MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.IntroActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

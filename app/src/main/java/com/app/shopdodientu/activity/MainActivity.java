@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toolbar;
 
 import com.app.shopdodientu.R;
@@ -75,7 +76,8 @@ public class MainActivity extends AppCompatActivity {
     MenuCategoryAdapter adapter;
 
     //BOTTOM
-    private ImageView imvHome, imvAccount;
+    private ImageView imvHome, imvAccount, imvLogout;
+    private TextView tvLogout;
     private LinearLayout linearHome, linearAccount, linearCart, linearSupport, linearLogout;
 
 
@@ -104,10 +106,17 @@ public class MainActivity extends AppCompatActivity {
         if(Constant.userLogin == null) {
             login();
         }
-        getLastProduct();
+
+        if(Constant.userLogin != null)
+        {
+            tvLogout.setText("Logout");
+            imvLogout.setImageDrawable(null);
+            imvLogout.setBackgroundResource(R.drawable.bottom_btn5);
+        }
+            getLastProduct();
         UIHelper.gotoAccount(linearAccount, getApplicationContext());
         UIHelper.gotoCart(linearCart, this);
-        UIHelper.logout(linearLogout, this);
+        UIHelper.logout(linearLogout, tvLogout, imvLogout, this);
         gotoHome(this);
         searchProduct();
 
@@ -179,6 +188,8 @@ public class MainActivity extends AppCompatActivity {
         rcvProduct = (RecyclerView) findViewById(R.id.rcvproduct);
         imvHome = (ImageView) findViewById(R.id.imgHome);
         imvAccount = (ImageView) findViewById(R.id.imgAccount);
+        imvLogout = (ImageView) findViewById(R.id.imgLogout);
+        tvLogout = (TextView) findViewById(R.id.tvLogout);
 
         linearHome = (LinearLayout) findViewById(R.id.home);
         linearAccount = (LinearLayout) findViewById(R.id.account);

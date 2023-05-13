@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.app.shopdodientu.R;
 import com.app.shopdodientu.activity.CartActivity;
 import com.app.shopdodientu.activity.ShopTabLayout.HomeShopActivity;
 import com.app.shopdodientu.activity.LoginActivity;
@@ -77,7 +78,7 @@ public class UIHelper {
         });
     }
 
-    public static void logout(LinearLayout linear, Context context) {
+    public static void logout(LinearLayout linear, TextView tv, ImageView imv, Context context) {
         linear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -99,6 +100,9 @@ public class UIHelper {
                 editor.remove("password");
                 editor.commit();
                 Constant.userLogin = null;
+                tv.setText("LogIn");
+                imv.setImageDrawable(null);
+                imv.setBackgroundResource(R.drawable.login);
                 Intent intent;
                 intent = new Intent(context, LoginActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
