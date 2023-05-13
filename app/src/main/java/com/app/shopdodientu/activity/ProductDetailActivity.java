@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
@@ -125,21 +126,21 @@ public class ProductDetailActivity extends AppCompatActivity {
         dialog.setContentView(R.layout.dialog_add_item_to_cart);
         Button btnHuy = dialog.findViewById(R.id.btnHuy);
         Button btnAdd = dialog.findViewById(R.id.btnAdd);
-        TextView tvAmount = dialog.findViewById(R.id.tvAmount);
+        EditText edtAmount = dialog.findViewById(R.id.edtAmount);
         TextView tvMinus = dialog.findViewById(R.id.tvMinus);
         TextView tvPlus = dialog.findViewById(R.id.tvPlus);
         tvPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                tvAmount.setText(String.valueOf(Integer.parseInt(tvAmount.getText().toString()) + 1));
+                edtAmount.setText(String.valueOf(Integer.parseInt(edtAmount.getText().toString()) + 1));
             }
         });
         tvMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int quantity = Integer.parseInt(tvAmount.getText().toString());
+                int quantity = Integer.parseInt(edtAmount.getText().toString());
                 if(quantity > 1) {
-                    tvAmount.setText(String.valueOf(quantity - 1));
+                    edtAmount.setText(String.valueOf(quantity - 1));
                 }
             }
         });
@@ -153,7 +154,7 @@ public class ProductDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 ApiService apiService = ApiClient.getApiService();
-                int quantity = Integer.parseInt(tvAmount.getText().toString());
+                int quantity = Integer.parseInt(edtAmount.getText().toString());
                 apiService.addToCart(productModel.getId(), quantity)
                         .enqueue(new Callback<CartItemModel>() {
                             @Override

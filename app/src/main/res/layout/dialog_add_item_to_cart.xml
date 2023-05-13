@@ -8,20 +8,21 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:gravity="center"
-            android:text="Chọn số lượng"
-            android:textSize="25dp"
-            android:textStyle="bold" />
+<!--        <TextView-->
+<!--            android:id="@+id/textView2"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="20dp"-->
+<!--            android:gravity="center"-->
+<!--            android:text="Choose Amount"-->
+<!--            android:textSize="25dp"-->
+<!--            android:textStyle="bold" />-->
 
         <LinearLayout
             android:id="@+id/lnlAmount"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
             android:gravity="center"
             android:orientation="horizontal"
             android:weightSum="6">
@@ -29,33 +30,38 @@
             <TextView
                 android:id="@+id/tvMinus"
                 android:layout_width="0dp"
-                android:layout_height="30dp"
+                android:layout_height="match_parent"
                 android:layout_weight="0.8"
-                android:background="@drawable/rectangle_line"
+                android:gravity="center"
+                android:background="@drawable/radius_10dp_border_1dp"
                 android:text="-"
                 android:textAlignment="center"
-                android:textSize="20dp" />
+                android:textSize="22dp" />
 
-            <TextView
-                android:id="@+id/tvAmount"
+            <EditText
+                android:id="@+id/edtAmount"
                 android:layout_width="0dp"
-                android:layout_height="30dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1.5"
-                android:background="@drawable/rectangle_line"
+                android:gravity="center"
                 android:text="1"
+                android:background="@null"
+                android:inputType="number"
+                android:focusableInTouchMode="true"
                 android:textAlignment="center"
-                android:textSize="20dp"
+                android:textSize="23dp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tvPlus"
                 android:layout_width="0dp"
-                android:layout_height="30dp"
+                android:layout_height="match_parent"
                 android:layout_weight="0.8"
-                android:background="@drawable/rectangle_line"
+                android:background="@drawable/radius_10dp_border_1dp"
                 android:text="+"
+                android:gravity="center"
                 android:textAlignment="center"
-                android:textSize="20dp" />
+                android:textSize="22dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -66,18 +72,22 @@
             <Button
                 android:id="@+id/btnAdd"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_margin="10dp"
+                android:backgroundTint="#57C40B"
                 android:layout_weight="1"
-                android:text="Thêm" />
+                android:text="Add"
+                android:drawableLeft="@drawable/plusamount"/>
 
             <Button
                 android:id="@+id/btnHuy"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_weight="1"
+                android:backgroundTint="#E41D1D"
+                android:drawableLeft="@drawable/minusamount"
                 android:layout_margin="10dp"
-                android:text="HỦY" />
+                android:text="CUT" />
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
