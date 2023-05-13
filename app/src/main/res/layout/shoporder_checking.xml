@@ -7,38 +7,11 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="260dp"
+        android:layout_height="200dp"
         android:orientation="vertical"
-        android:weightSum="13">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="2"
-            android:orientation="horizontal"
-            android:weightSum="8">
-
-            <ImageView
-                android:id="@+id/imgAvatarShop"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginLeft="10dp"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/shop" />
-
-            <TextView
-                android:id="@+id/tvShopName"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="6.6"
-                android:text="Shop Name"
-                android:textColor="#192AA4"
-                android:textSize="20dp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
+        android:weightSum="11.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:layout_width="match_parent"
@@ -49,9 +22,10 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="4"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="10dp"
+            android:gravity="right"
+            android:layout_weight="5.1"
             android:orientation="horizontal"
             android:weightSum="8">
 
@@ -73,50 +47,42 @@
                     android:id="@+id/tvProductName"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="2"
-                    android:textColor="#000"
+                    android:layout_weight="3"
                     android:paddingStart="10dp"
                     android:text="Product Name"
-                    android:textSize="18dp"/>
+                    android:textColor="#000"
+                    android:textSize="18dp" />
 
                 <TextView
                     android:id="@+id/tvAmount"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="2"
+                    android:layout_weight="1.5"
                     android:text="x1"
-                    android:textSize="18dp"
-                    android:textAlignment="viewEnd"/>
+                    android:textColor="#000"
+                    android:textAlignment="viewEnd"
+                    android:textSize="18dp" />
 
                 <TextView
                     android:id="@+id/tvPrice"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:layout_weight="2"
+                    android:layout_weight="1.5"
                     android:text="₫219000"
+                    android:textAlignment="viewEnd"
                     android:textColor="#ee4d2d"
-                    android:textSize="18dp"
-                    android:textAlignment="viewEnd"/>
+                    android:textSize="18dp" />
             </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:gravity="right"
+            android:layout_marginRight="10dp"
             android:layout_weight="2"
             android:orientation="horizontal"
-            android:layout_marginRight="10dp"
             android:weightSum="8">
-
-            <TextView
-                android:id="@+id/tvAmountProduct"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="4"
-                android:paddingStart="20dp"
-                android:text="3 Products"
-                android:textSize="18dp" />
 
 
             <ImageView
@@ -141,71 +107,60 @@
                 android:id="@+id/tvTotal"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="2"
+                android:layout_gravity="center"
+                android:gravity="end"
+                android:layout_weight="2.5"
                 android:text="₫219000"
                 android:textColor="#ee4d2d"
-                android:textSize="20dp"
-                android:textAlignment="viewEnd"/>
+                android:textSize="22dp" />
         </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.05"
-            android:background="#F1E6E6" />
+            android:background="#DED6D6" />
 
         <TextView
             android:id="@+id/tvDetailOrder"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="2"
+            android:layout_weight="1.5"
             android:drawableRight="@drawable/back_left"
             android:gravity="center|start"
             android:paddingStart="20dp"
-            android:text="Order is waiting for confirmation"
+            android:text="Detail Order"
             android:textColor="#26aa99"
             android:textSize="18dp" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.05"
-            android:background="#F1E6E6" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_weight="2.5"
             android:gravity="right"
-            android:layout_weight="2.4"
+            android:paddingRight="10dp"
+            android:orientation="horizontal"
             android:weightSum="8">
 
             <Button
                 android:id="@+id/btnCancel"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_gravity="end"
-                android:layout_marginRight="10dp"
+                android:layout_marginRight="5dp"
                 android:layout_weight="2"
-                android:backgroundTint="#d73211"
-                android:text="Cancel" />
+                android:backgroundTint="#E41D1D"
+                android:text="Cancel"
+                android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/tvChat"
+            <Button
+                android:id="@+id/btnDone"
                 android:layout_width="0dp"
-                android:layout_height="30dp"
-                android:layout_gravity="end|center"
-                android:layout_marginRight="10dp"
+                android:layout_height="match_parent"
                 android:layout_weight="2"
-                android:background="@drawable/rectangle_line"
-                android:drawableLeft="@drawable/smallchat"
-                android:paddingStart="10dp"
-                android:drawablePadding="10dp"
-                android:gravity="center|start"
-                android:text="CHAT"
-                android:textColor="#252020" />
+                android:text="DONE"
+                android:textStyle="bold"
+                android:backgroundTint="#57C40B"/>
         </LinearLayout>
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
