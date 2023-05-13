@@ -25,7 +25,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:gravity="center|start"
-                android:layout_weight="7.2"
+                android:layout_weight="7"
                 android:drawableLeft="@drawable/back_left_orange"
                 android:paddingStart="10dp"
                 android:drawablePadding="10dp"
@@ -35,12 +35,12 @@
                 android:textStyle="bold" />
 
             <ImageView
-                android:id="@+id/imvDeleteAll"
+                android:id="@+id/imvDelete"
                 android:layout_gravity="center"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.5"
-                app:srcCompat="@drawable/dots" />
+                android:layout_weight="0.7"
+                app:srcCompat="@drawable/recyclebin" />
 
         </LinearLayout>
 
@@ -51,10 +51,17 @@
             android:layout_weight="0.1"
             android:background="#F1E6E6" />
 
+        <!--        product_in_cart-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcvProduct"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="9.55" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="0.8"
+            android:layout_weight="0.5"
             android:text="Everything is free shipping"
             android:textColor="#B7675D5D"
             android:textSize="20dp"
@@ -63,13 +70,6 @@
             android:drawablePadding="10dp"
             android:gravity="center|start"
             android:background="#F7FBF5F5"/>
-
-        <!--        product_in_cart-->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcvProduct"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="9.2" />
 
     </LinearLayout>
 
