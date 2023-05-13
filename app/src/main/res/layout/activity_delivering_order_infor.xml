@@ -151,7 +151,7 @@
 
         </LinearLayout>
 
-        <!--        myorder_delivering-->
+        <!--       product_in_checkout_delivered  -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcvProduct"
             android:layout_width="match_parent"

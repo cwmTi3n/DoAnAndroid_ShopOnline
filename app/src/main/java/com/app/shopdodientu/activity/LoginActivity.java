@@ -110,15 +110,6 @@ public class LoginActivity extends AppCompatActivity {
                     editor.commit();
                 }
 
-                LoadingDialog loadingDialog = new LoadingDialog(LoginActivity.this);
-                loadingDialog.show();
-
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        loadingDialog.dismiss();
-                    }
-                }, 8000);
                 callApiLogin(username, password);
             }
         });
@@ -135,6 +126,17 @@ public class LoginActivity extends AppCompatActivity {
                             ApiClient.restApiService();
                         }
                         else {
+
+                            LoadingDialog loadingDialog = new LoadingDialog(LoginActivity.this);
+                            loadingDialog.show();
+
+                            new Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    loadingDialog.dismiss();
+                                }
+                            }, 8000);
+
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
 //                                    intent.putExtra("user", userModel);
                             Constant.userLogin = userModel;
