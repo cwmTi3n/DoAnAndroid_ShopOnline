@@ -4,11 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.app.shopdodientu.R;
+import com.app.shopdodientu.util.UIHelper;
 
 public class DeliveredOrderInforActivity extends AppCompatActivity {
     private TextView tvBack, tvUserName, tvPhone, tvAddress, tvOrderCode, tvOrderTime, tvPickupTime;
@@ -19,9 +22,12 @@ public class DeliveredOrderInforActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+        UIHelper.fullscreen(this);
         setContentView(R.layout.activity_delivered_order_infor);
 
         MapItemView();
+        TextViewBackClicked();
     }
 
     private void MapItemView(){
@@ -35,5 +41,14 @@ public class DeliveredOrderInforActivity extends AppCompatActivity {
         imgSupport = findViewById(R.id.imgSupport);
         rcvProduct = findViewById(R.id.rcvProduct);
         btnRepurchase = findViewById(R.id.btnRepurchase);
+    }
+
+    private void TextViewBackClicked(){
+        tvBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 }

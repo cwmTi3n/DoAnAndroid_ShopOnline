@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
@@ -33,7 +34,7 @@ import retrofit2.Response;
 
 public class ProductDetailActivity extends AppCompatActivity {
     private RatingBar ratingBar;
-    private ImageView imgProduct, imgAvatar;
+    private ImageView imgProduct, imgAvatar, imgCartProduct, imgBack;
     private TextView tvEdit, tvAmountSelled, tvPrice, tvNameproduct, tvDescription, tvShopName, tvamountProduct, tvviewShop, tvBuyNow;
     private RecyclerView rcvFeedback;
     private LinearLayout linearChat, linearAddToCart;
@@ -48,6 +49,8 @@ public class ProductDetailActivity extends AppCompatActivity {
         MapItemView();
         renderView();
         addToCart();
+        ImageBackClicked();
+        ImageCartClicked();
     }
 
     private void MapItemView() {
@@ -66,6 +69,8 @@ public class ProductDetailActivity extends AppCompatActivity {
         linearAddToCart = findViewById(R.id.linearAddToCart);
         tvBuyNow = findViewById(R.id.tvBuyNow);
         tvEdit = findViewById(R.id.tvEdit);
+        imgBack = findViewById(R.id.imgBack);
+        imgCartProduct = findViewById(R.id.imgCartProduct);
     }
 
     private void renderView() {
@@ -126,21 +131,21 @@ public class ProductDetailActivity extends AppCompatActivity {
         dialog.setContentView(R.layout.dialog_add_item_to_cart);
         Button btnHuy = dialog.findViewById(R.id.btnHuy);
         Button btnAdd = dialog.findViewById(R.id.btnAdd);
-        TextView tvAmount = dialog.findViewById(R.id.tvAmount);
+        EditText edtAmount = dialog.findViewById(R.id.edtAmount);
         TextView tvMinus = dialog.findViewById(R.id.tvMinus);
         TextView tvPlus = dialog.findViewById(R.id.tvPlus);
         tvPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                tvAmount.setText(String.valueOf(Integer.parseInt(tvAmount.getText().toString()) + 1));
+                edtAmount.setText(String.valueOf(Integer.parseInt(edtAmount.getText().toString()) + 1));
             }
         });
         tvMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int quantity = Integer.parseInt(tvAmount.getText().toString());
+                int quantity = Integer.parseInt(edtAmount.getText().toString());
                 if(quantity > 1) {
-                    tvAmount.setText(String.valueOf(quantity - 1));
+                    edtAmount.setText(String.valueOf(quantity - 1));
                 }
             }
         });
@@ -156,7 +161,7 @@ public class ProductDetailActivity extends AppCompatActivity {
                 LoadingDialog loadingDialog = new LoadingDialog(ProductDetailActivity.this);
                 loadingDialog.show();
                 ApiService apiService = ApiClient.getApiService();
-                int quantity = Integer.parseInt(tvAmount.getText().toString());
+                int quantity = Integer.parseInt(edtAmount.getText().toString());
                 apiService.addToCart(productModel.getId(), quantity)
                         .enqueue(new Callback<CartItemModel>() {
                             @Override
@@ -181,5 +186,24 @@ public class ProductDetailActivity extends AppCompatActivity {
             }
         });
         dialog.show();
+    }
+
+    private void ImageBackClicked() {
+        imgBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
+
+    private void ImageCartClicked() {
+        imgCartProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProductDetailActivity.this, CartActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

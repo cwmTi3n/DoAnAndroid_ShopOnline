@@ -19,6 +19,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -38,6 +39,7 @@ import com.app.shopdodientu.model.CategoryModel;
 import com.app.shopdodientu.model.ProductModel;
 import com.app.shopdodientu.util.Constant;
 import com.app.shopdodientu.util.LoadingDialog;
+import com.app.shopdodientu.util.UIHelper;
 import com.bumptech.glide.Glide;
 
 import java.io.File;
@@ -127,6 +129,8 @@ public class UpdateProductActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+        UIHelper.fullscreen(this);
         setContentView(R.layout.activity_update_product);
 
         MapItemView();

@@ -162,8 +162,8 @@ public class LoginActivity extends AppCompatActivity {
                 tvForgetPass.setText(content);
                 tvForgetPass.setTextColor(ColorStateList.valueOf(getResources().getColor(R.color.purple_700)));
 
-//                Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
-//                startActivity(intent);
+                Intent intent = new Intent(LoginActivity.this, ForgetPasswordActivity.class);
+                startActivity(intent);
             }
         });
     }

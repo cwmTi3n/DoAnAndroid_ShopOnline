@@ -4,10 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.app.shopdodientu.R;
+import com.app.shopdodientu.util.UIHelper;
 
 public class WaittingOrderInforActivity extends AppCompatActivity {
     private TextView tvBack, tvUserName, tvPhone, tvAddress, tvOrderCode, tvOrderTime, tvCancel, tvContact;
@@ -17,9 +20,12 @@ public class WaittingOrderInforActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+        UIHelper.fullscreen(this);
         setContentView(R.layout.activity_waitting_order_infor);
 
         MapItemView();
+        TextViewBackClicked();
     }
 
     private void MapItemView(){
@@ -33,5 +39,14 @@ public class WaittingOrderInforActivity extends AppCompatActivity {
         tvContact = findViewById(R.id.tvContact);
         imgSupport = findViewById(R.id.imgSupport);
         rcvProduct = findViewById(R.id.rcvProduct);
+    }
+
+    private void TextViewBackClicked(){
+        tvBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 }

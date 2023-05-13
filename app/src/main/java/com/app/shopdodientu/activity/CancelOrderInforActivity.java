@@ -5,11 +5,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.BaseBundle;
 import android.os.Bundle;
+import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.app.shopdodientu.R;
+import com.app.shopdodientu.util.UIHelper;
 
 public class CancelOrderInforActivity extends AppCompatActivity {
 
@@ -21,9 +24,12 @@ public class CancelOrderInforActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+        UIHelper.fullscreen(this);
         setContentView(R.layout.activity_cancel_order_infor);
 
         MapItemView();
+        TextViewBackClicked();
 
     }
 
@@ -38,5 +44,14 @@ public class CancelOrderInforActivity extends AppCompatActivity {
         rcvProduct = (RecyclerView) findViewById(R.id.rcvProduct);
         imgSupport = (ImageView) findViewById(R.id.imgSupport);
 
+    }
+
+    private void TextViewBackClicked(){
+        tvBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 }

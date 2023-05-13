@@ -12,10 +12,48 @@
         android:orientation="vertical"
         android:weightSum="35">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+            <ImageView
+                android:id="@+id/imgBack"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:layout_marginLeft="-10dp"
+                android:layout_gravity="center"
+                android:src="@drawable/back_cycler"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="6"/>
+
+            <ImageView
+                android:id="@+id/imgCartProduct"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:layout_marginTop="5dp"
+                android:layout_gravity="center"
+                android:src="@drawable/cart_color"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.05"
+            android:background="#F1E6E6" />
+
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="32.5"
+            android:layout_weight="30.5"
             android:fillViewport="true">
 
             <LinearLayout
@@ -57,7 +95,7 @@
                         android:layout_weight="1"
                         android:text="Update Product"
                         android:gravity="center"
-                        android:background="@drawable/rectangle_border_black"
+                        android:background="#211F1F"
                         android:textColor="#ffffff"
                         android:textSize="20dp"
                         android:textStyle="bold" />
@@ -256,20 +294,23 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="2"
+                        android:weightSum="4"
                         android:background="#26aa99"
                         android:orientation="vertical">
 
                         <ImageView
                             android:id="@+id/imgChat"
                             android:layout_width="match_parent"
-                            android:layout_height="32dp"
+                            android:layout_height="0dp"
+                            android:layout_weight="2"
                             android:layout_marginTop="5dp"
                             app:srcCompat="@drawable/chat" />
 
                         <TextView
                             android:id="@+id/tvChat"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_weight="2"
                             android:text="Chat"
                             android:textAlignment="center"
                             android:textColor="#ffffff"
@@ -304,20 +345,20 @@
                         android:background="#26aa99"
                         android:orientation="vertical"
                         android:visibility="visible"
-                        android:weightSum="2">
+                        android:weightSum="4">
 
                         <ImageView
                             android:id="@+id/imgCart"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
-                            android:layout_marginTop="3dp"
-                            android:layout_weight="1.7"
+                            android:layout_weight="2"
                             app:srcCompat="@drawable/whitecart" />
 
                         <TextView
                             android:id="@+id/tvAddToCart"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="0dp"
+                            android:layout_weight="2"
                             android:text="Add To Cart"
                             android:textAlignment="center"
                             android:textColor="#ffffff"
