@@ -24,6 +24,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".activity.ForgetPasswordActivity"
+            android:exported="false" />
+        <!-- <activity -->
+        <!-- android:name=".activity.IntroActivity" -->
+        <!-- android:exported="false" /> -->
+        <activity
             android:name=".activity.AddressTabLayout.LocationActivity"
             android:exported="false" />
         <activity
@@ -100,6 +106,9 @@
             android:exported="false" />
         <activity
             android:name=".activity.MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.IntroActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
