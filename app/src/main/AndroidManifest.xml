@@ -24,14 +24,19 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".activity.EnterOTPActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ForgetPasswordActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.AddressTabLayout.LocationActivity"
             android:exported="false" />
         <activity
             android:name=".activity.FeedbackActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.LoginActivity"
-            android:exported="false" />
+            android:exported="false" /> <!-- <activity -->
+        <!-- android:name=".activity.LoginActivity" -->
+        <!-- android:exported="false" /> -->
         <activity
             android:name=".activity.CheckOutActivity"
             android:exported="false" />
@@ -99,7 +104,7 @@
             android:name=".activity.ChooseAddressActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".activity.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
