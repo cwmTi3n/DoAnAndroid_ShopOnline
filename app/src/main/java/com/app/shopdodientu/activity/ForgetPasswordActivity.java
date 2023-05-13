@@ -51,8 +51,7 @@ public class ForgetPasswordActivity extends AppCompatActivity {
         tvBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent = new Intent(ForgetPasswordActivity.this, LoginActivity.class);
-                startActivity(intent);
+                finish();
             }
         });
     }

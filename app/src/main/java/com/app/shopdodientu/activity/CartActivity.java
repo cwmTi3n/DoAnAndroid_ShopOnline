@@ -46,6 +46,7 @@ public class CartActivity extends AppCompatActivity {
         MapItemView();
 
         renderView();
+        TextViewBackClicked();
 
     }
 
@@ -84,4 +85,12 @@ public class CartActivity extends AppCompatActivity {
                 });
     }
 
+    private void TextViewBackClicked(){
+        tvBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
 }

@@ -4,10 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.app.shopdodientu.R;
+import com.app.shopdodientu.util.UIHelper;
 
 public class CheckOutActivity extends AppCompatActivity {
     private TextView tvBack, tvUserName, tvPhone, tvAddress, tvAmount, tvTemporaryPrice, tvTotal, tvTotalBottom, tvCheckOut;
@@ -17,9 +20,13 @@ public class CheckOutActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+        UIHelper.fullscreen(this);
         setContentView(R.layout.activity_check_out);
 
         MapItemView();
+
+        TextViewBackClicked();
     }
 
     private void MapItemView(){
@@ -34,5 +41,14 @@ public class CheckOutActivity extends AppCompatActivity {
         tvCheckOut = findViewById(R.id.tvCheckOut);
         rcvProduct = findViewById(R.id.rcvProduct);
         imgEditAddress = findViewById(R.id.imgEditAddress);
+    }
+
+    private void TextViewBackClicked(){
+        tvBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 }

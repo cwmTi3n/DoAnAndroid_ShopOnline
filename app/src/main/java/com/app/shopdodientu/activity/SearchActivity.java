@@ -11,6 +11,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.app.shopdodientu.R;
@@ -32,6 +33,7 @@ public class SearchActivity extends AppCompatActivity {
     private TextView tvRelated, tvLatest, tvBestSeller, tvPrice, tvSearchFor;
     private TextView lineRelated, lineLatest, lineBest, lineHoriRelated, lineHoriLatest, lineHoriBest, lineHoriPrice;
     private TextView currentTextView, currentLine, currentLineHori;
+    private ImageView imgback;
     private String keyword;
     private int categoryId;
     private String orderby;
@@ -60,6 +62,7 @@ public class SearchActivity extends AppCompatActivity {
         TextViewLatestClicked();
         TextViewRelatedClick();
         TextViewPriceClicked();
+        ImageViewBackClicked();
         renderView();
 
         //load more
@@ -186,7 +189,7 @@ public class SearchActivity extends AppCompatActivity {
         lineRelated = (TextView) findViewById(R.id.lineRelated);
         lineLatest = (TextView) findViewById(R.id.lineLatest);
         lineBest = (TextView) findViewById(R.id.lineBestseller);
-
+        imgback = (ImageView) findViewById(R.id.imgback);
         lineHoriRelated = (TextView) findViewById(R.id.lineHoriRelated);
         lineHoriLatest = (TextView) findViewById(R.id.lineHoriLatest);
         lineHoriBest = (TextView) findViewById(R.id.lineHoriBest);
@@ -198,7 +201,14 @@ public class SearchActivity extends AppCompatActivity {
 
     }
 
-
+    private void ImageViewBackClicked(){
+        imgback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
 
     private void SetEffectLastTextViewTop(TextView last){
         last.setTypeface(null, Typeface.NORMAL);

@@ -236,17 +236,6 @@ public class UIHelper {
         });
     }
 
-    public static void backtoMyAccount(TextView tv, Context context) {
-        tv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent;
-                intent = new Intent(context, MyAccountActivity.class);
-                context.startActivity(intent);
-            }
-        });
-
-    }
 
 //    public static void gotoChangePassword(Button btn, Context context) {
 //        btn.setOnClickListener(new View.OnClickListener() {

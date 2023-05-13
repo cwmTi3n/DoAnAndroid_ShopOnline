@@ -5,15 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.app.shopdodientu.R;
+import com.app.shopdodientu.util.UIHelper;
 
 public class HistoryOrderActivity extends AppCompatActivity {
-//    KHOAN HẢ LÀM **********************************************************************
+
     private Spinner snStatusOrder;
     private TextView tvLatest, lineLatest, tvOldest, lineOldest;
     private LinearLayout linearOldest, linearLatest;
@@ -24,6 +26,8 @@ public class HistoryOrderActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+        UIHelper.fullscreen(this);
         setContentView(R.layout.activity_history_order);
 
         MapItemView();

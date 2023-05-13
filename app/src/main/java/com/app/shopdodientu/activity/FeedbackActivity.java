@@ -3,6 +3,8 @@ package com.app.shopdodientu.activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.view.Window;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -11,6 +13,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import com.app.shopdodientu.R;
+import com.app.shopdodientu.util.UIHelper;
 
 import org.w3c.dom.Text;
 
@@ -25,11 +28,14 @@ public class FeedbackActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+        UIHelper.fullscreen(this);
         setContentView(R.layout.activity_feedback);
 
         MapItemView();
         RatingBarChange();
         SwitchChange();
+        TextViewBackClicked();
     }
 
     private void MapItemView(){
@@ -81,6 +87,15 @@ public class FeedbackActivity extends AppCompatActivity {
                 else {
                     tvNameAccountFeedback.setText("Account name will show up as NAME");
                 }
+            }
+        });
+    }
+
+    private void TextViewBackClicked(){
+        tvBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }

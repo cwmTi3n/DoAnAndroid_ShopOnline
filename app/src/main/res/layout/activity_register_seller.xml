@@ -189,7 +189,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="5"
                 android:layout_marginRight="10dp"
-                android:backgroundTint="#ee4d2d"
+                android:backgroundTint="#358F1C"
                 android:text="Save" />
 
         </LinearLayout>

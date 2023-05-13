@@ -49,8 +49,7 @@ public class EnterOTPActivity extends AppCompatActivity {
         tvBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent = new Intent(EnterOTPActivity.this, ForgetPasswordActivity.class);
-                startActivity(intent);
+                finish();
             }
         });
     }
