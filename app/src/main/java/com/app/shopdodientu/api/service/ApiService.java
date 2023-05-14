@@ -5,6 +5,7 @@ import com.app.shopdodientu.model.CartModel;
 import com.app.shopdodientu.model.CategoryModel;
 import com.app.shopdodientu.model.PageModel;
 import com.app.shopdodientu.model.ProductModel;
+import com.app.shopdodientu.model.TinhModel;
 import com.app.shopdodientu.model.UserModel;
 
 import java.util.List;
@@ -123,4 +124,8 @@ public interface ApiService {
 
     @GET("account/cart-by-user-and-status")
     Call<PageModel<CartModel>> getCarts(@Query("status") int status, @Query("page") int page);
+
+    @GET("address")
+    Call<List<TinhModel>> getAddress();
+
 }

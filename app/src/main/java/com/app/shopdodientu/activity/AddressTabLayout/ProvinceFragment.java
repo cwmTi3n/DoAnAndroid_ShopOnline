@@ -9,18 +9,34 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.app.shopdodientu.R;
+import com.app.shopdodientu.adapter.TinhAdapter;
 import com.app.shopdodientu.databinding.FragmentProvinceBinding;
 import com.app.shopdodientu.databinding.FragmentWardBinding;
+import com.app.shopdodientu.room.dao.TinhDao;
+import com.app.shopdodientu.room.database.DiaChiDatabase;
+import com.app.shopdodientu.room.entity.TinhEntity;
 
-public class ProvinceFragment extends Fragment {
+import java.util.List;
 
-    private RecyclerView rcvProcince;
-    private TextView tvNameProvince;
+public class ProvinceFragment extends Fragment implements TinhAdapter.OnTinhClickListener{
+
+    private RecyclerView rcvTinh;
+    private ViewPager2 viewPager;
 
     FragmentProvinceBinding binding;
+    private TinhAdapter tinhAdapter;
+    private List<TinhEntity> tinhEntities;
+    private static String tinhId;
+    static String getTinhId() {
+        String tmp = tinhId;
+        tinhId = null;
+        return tmp;
+    }
     public ProvinceFragment(){}
 
     @Override
@@ -33,14 +49,37 @@ public class ProvinceFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
         binding = FragmentProvinceBinding.inflate(inflater, container, false);
+        viewPager = getActivity().findViewById(R.id.viewPager2);
         MapItemView();
 
         //vi tri load du lieu: recyclerview
         return binding.getRoot();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadTinh();
+    }
+
     private void MapItemView(){
-        rcvProcince = binding.getRoot().findViewById(R.id.rcvProvince);
-        tvNameProvince = binding.getRoot().findViewById(R.id.name);
+        rcvTinh = binding.getRoot().findViewById(R.id.rcvProvince);
+    }
+
+    private void loadTinh() {
+        TinhDao tinhDao = DiaChiDatabase.getInstance(getContext()).tinhDao();
+        tinhEntities = tinhDao.getAll();
+        tinhAdapter = new TinhAdapter(getContext(), tinhEntities);
+        rcvTinh.setHasFixedSize(true);
+        rcvTinh.setLayoutManager(new GridLayoutManager(getContext(), 1));
+        rcvTinh.setAdapter(tinhAdapter);
+        tinhAdapter.setOnTinhClickListener(this);
+        tinhAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onTinhClick(String Id) {
+        tinhId = Id;
+        viewPager.setCurrentItem(1);
     }
 }
