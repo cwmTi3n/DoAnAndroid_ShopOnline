@@ -22,8 +22,8 @@ public class MyAccountActivity extends AppCompatActivity {
 
 
     //BETWEEN
-    private ImageView imgavatar;
-    private TextView tvfullname, tvemail, tvHelp, tvChat, tvProfile, tvRegisterSeller, tvMyOrder;
+    private ImageView imgavatar, imvLogout;
+    private TextView tvfullname, tvemail, tvHelp, tvChat, tvProfile, tvRegisterSeller, tvMyOrder, tvLogout;
 
     //BOTTTOM
     private LinearLayout linearHome, linearAccount, linearCart, linearSupport, linearLogout;
@@ -46,14 +46,24 @@ public class MyAccountActivity extends AppCompatActivity {
         UIHelper.gotoCart(linearCart, this);
         UIHelper.gotoHome(linearHome, this);
 
+        linearSupport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MyAccountActivity.this, SupportActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        UIHelper.logout(linearLogout, tvLogout, imvLogout, this);
     }
 
     private void MapItemView(){
         imgavatar = findViewById(R.id.imgavatar);
+        imvLogout = findViewById(R.id.imgLogout);
         tvfullname = findViewById(R.id.tvfullname);
         tvemail = findViewById(R.id.tvemail);
 
-
+        tvLogout = findViewById(R.id.tvLogout);
         tvProfile = (TextView) findViewById(R.id.tvProfile);
         tvRegisterSeller = (TextView) findViewById(R.id.tvRegisterStore);
         tvMyOrder = (TextView) findViewById(R.id.tvMyOrder);
@@ -63,8 +73,8 @@ public class MyAccountActivity extends AppCompatActivity {
         linearHome = (LinearLayout) findViewById(R.id.home);
         linearAccount = (LinearLayout) findViewById(R.id.account);
         linearCart = (LinearLayout) findViewById(R.id.cart);
-        linearSupport = (LinearLayout) findViewById(R.id.support);
-        linearLogout = (LinearLayout) findViewById(R.id.logout);
+        linearSupport = (LinearLayout) findViewById(R.id.linearSupport);
+        linearLogout = (LinearLayout) findViewById(R.id.linearLogout);
     }
     private void gotoProfile() {
         tvProfile.setOnClickListener(new View.OnClickListener() {

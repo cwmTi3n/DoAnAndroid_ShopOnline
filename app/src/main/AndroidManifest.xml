@@ -30,9 +30,6 @@
             android:name=".activity.ChatActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.CompleteOrderActivity"
-            android:exported="false" />
-        <activity
             android:name=".activity.seller.FinanceActivity"
             android:exported="false" />
         <activity

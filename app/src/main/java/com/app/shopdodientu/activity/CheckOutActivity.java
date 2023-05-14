@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.app.shopdodientu.R;
 import com.app.shopdodientu.activity.AddressTabLayout.LocationActivity;
+import com.app.shopdodientu.activity.OrderTabLayout.MyOrderActivity;
 import com.app.shopdodientu.util.UIHelper;
 
 public class CheckOutActivity extends AppCompatActivity {
@@ -45,7 +46,7 @@ public class CheckOutActivity extends AppCompatActivity {
         tvCheckOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(CheckOutActivity.this, CompleteOrderActivity.class);
+                Intent intent = new Intent(CheckOutActivity.this, MyOrderActivity.class);
                 startActivity(intent);
             }
         });
