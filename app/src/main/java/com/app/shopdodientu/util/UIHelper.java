@@ -182,27 +182,27 @@ public class UIHelper {
     }
 
 
-    public static void gotoAddProduct(TextView tv, Context context) {
-        tv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent;
-                intent = new Intent(context, AddProductActivity.class);
-                context.startActivity(intent);
-            }
-        });
-    }
+//    public static void gotoAddProduct(TextView tv, Context context) {
+//        tv.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent;
+//                intent = new Intent(context, AddProductActivity.class);
+//                context.startActivity(intent);
+//            }
+//        });
+//    }
 
-    public static void gotoSetUpStore(TextView tv, Context context) {
-        tv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent;
-                intent = new Intent(context, RegisterSellerActivity.class);
-                context.startActivity(intent);
-            }
-        });
-    }
+//    public static void gotoSetUpStore(TextView tv, Context context) {
+//        tv.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent;
+//                intent = new Intent(context, RegisterSellerActivity.class);
+//                context.startActivity(intent);
+//            }
+//        });
+//    }
 
     public static void gotoSearchByImageView(ImageView imv, Context context) {
         imv.setOnClickListener(new View.OnClickListener() {

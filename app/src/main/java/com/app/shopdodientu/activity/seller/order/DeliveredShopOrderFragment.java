@@ -10,14 +10,36 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.shopdodientu.R;
+import com.app.shopdodientu.adapter.CartItemCheckAdapter;
+import com.app.shopdodientu.api.client.ApiClient;
+import com.app.shopdodientu.api.service.ApiService;
 import com.app.shopdodientu.databinding.FragmentDeliveredshoporderBinding;
+import com.app.shopdodientu.model.CartItemModel;
+import com.app.shopdodientu.model.PageModel;
+import com.app.shopdodientu.util.Constant;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class DeliveredShopOrderFragment extends Fragment {
     private TextView tvProductName, tvAmount, tvPrice, tvTotal, tvDetailOrder;
     private ImageView imgProduct;
+
+    private RecyclerView rcvDelivered;
+
+    private List<CartItemModel> cartItemModels;
+
+    private CartItemCheckAdapter cartItemCheckAdapter;
+    private int page;
+    private int total;
     FragmentDeliveredshoporderBinding binding;
     public DeliveredShopOrderFragment(){}
 
@@ -36,6 +58,12 @@ public class DeliveredShopOrderFragment extends Fragment {
         return binding.getRoot();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        getCartItems();
+    }
+
     private void MapItemView(){
         tvProductName = binding.getRoot().findViewById(R.id.tvProductName);
         tvAmount = binding.getRoot().findViewById(R.id.tvAmount);
@@ -43,5 +71,33 @@ public class DeliveredShopOrderFragment extends Fragment {
         tvTotal = binding.getRoot().findViewById(R.id.tvTotal);
         tvDetailOrder = binding.getRoot().findViewById(R.id.tvDetailOrder);
         imgProduct = binding.getRoot().findViewById(R.id.imgProduct);
+        rcvDelivered = binding.getRoot().findViewById(R.id.rcvDeliveredOrder);
+    }
+
+    private void getCartItems() {
+        page = 0;
+        ApiService apiService = ApiClient.getApiService();
+        apiService.getCartItemsBySeller(Constant.userLogin.getId(), page, 3)
+                .enqueue(new Callback<PageModel<CartItemModel>>() {
+                    @Override
+                    public void onResponse(Call<PageModel<CartItemModel>> call, Response<PageModel<CartItemModel>> response) {
+                        PageModel<CartItemModel> pageModel = response.body();
+                        if(pageModel != null) {
+                            page = pageModel.getIndex();
+                            total = pageModel.getTotal();
+                            cartItemModels = pageModel.getContent();
+                            cartItemCheckAdapter = new CartItemCheckAdapter(getContext(), cartItemModels);
+                            rcvDelivered.setHasFixedSize(true);
+                            rcvDelivered.setLayoutManager(new GridLayoutManager(getContext(), 1));
+                            rcvDelivered.setAdapter(cartItemCheckAdapter);
+                            cartItemCheckAdapter.notifyDataSetChanged();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<PageModel<CartItemModel>> call, Throwable t) {
+
+                    }
+                });
     }
 }

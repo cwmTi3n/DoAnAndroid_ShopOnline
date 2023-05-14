@@ -111,4 +111,12 @@ public interface ApiService {
 
     @PUT("account/delete-item-from-cart")
     Call<ResponseBody> deleteItemFromCart(@Body List<Integer> data);
+
+    @GET("seller/checking")
+    Call<PageModel<CartItemModel>> getCartItemsBySeller(@Query("sellerId") int sellerId,
+                                                        @Query("page") int page,
+                                                        @Query("status") int status);
+    @POST("seller/conform-cart-item")
+    @FormUrlEncoded
+    Call<CartItemModel> conformCartItem(@Field("id") int id, @Field("status") int status);
 }

@@ -50,12 +50,8 @@ public class CartActivity extends AppCompatActivity {
         MapItemView();
 
         renderView();
-<<<<<<< HEAD
         deleteItem();
-=======
         TextViewBackClicked();
->>>>>>> 64cf93a7d7e068c2e5130962b2b9bdf94a8c26d1
-
     }
 
     private void MapItemView(){
