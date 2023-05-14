@@ -144,9 +144,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:gravity="end"
                 android:layout_weight="2"
                 android:text="₫219000"
-                android:textAlignment="viewEnd"
                 android:textColor="#ee4d2d"
                 android:textSize="20dp" />
         </LinearLayout>

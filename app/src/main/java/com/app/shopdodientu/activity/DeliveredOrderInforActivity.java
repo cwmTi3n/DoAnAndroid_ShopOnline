@@ -3,6 +3,7 @@ package com.app.shopdodientu.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -27,7 +28,21 @@ public class DeliveredOrderInforActivity extends AppCompatActivity {
         setContentView(R.layout.activity_delivered_order_infor);
 
         MapItemView();
-        TextViewBackClicked();
+        tvBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        UIHelper.gotoSupport(imgSupport, this);
+        btnRepurchase.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DeliveredOrderInforActivity.this, CheckOutActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void MapItemView(){
@@ -43,12 +58,4 @@ public class DeliveredOrderInforActivity extends AppCompatActivity {
         btnRepurchase = findViewById(R.id.btnRepurchase);
     }
 
-    private void TextViewBackClicked(){
-        tvBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-    }
 }

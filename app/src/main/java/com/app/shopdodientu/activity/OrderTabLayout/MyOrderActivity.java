@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager2.widget.ViewPager2;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 
 import com.app.shopdodientu.activity.OrderTabLayout.ViewPager2Adapter;
@@ -25,12 +27,14 @@ public class MyOrderActivity extends AppCompatActivity {
         UIHelper.fullscreen(this);
         binding = ActivityMyOrderBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-//        setSupportActionBar(binding.toolBar);
+
 
         binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Waitting"));
         binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Delivering"));
         binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Delivered"));
         binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Cancelled"));
+        binding.tabLayout.setTabTextColors(Color.BLACK, Color.parseColor("#ee4d2d"));
+
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         viewPager2Adapter = new ViewPager2Adapter(fragmentManager, getLifecycle());
@@ -58,6 +62,13 @@ public class MyOrderActivity extends AppCompatActivity {
             @Override
             public void onPageSelected(int position) {
                 binding.tabLayout.selectTab(binding.tabLayout.getTabAt(position));
+            }
+        });
+
+        binding.toolBar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }

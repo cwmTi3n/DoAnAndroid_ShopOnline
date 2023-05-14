@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.app.shopdodientu.R;
+import com.app.shopdodientu.activity.ShopTabLayout.HomeShopActivity;
 import com.app.shopdodientu.activity.seller.UpdateProductActivity;
 import com.app.shopdodientu.api.client.ApiClient;
 import com.app.shopdodientu.api.service.ApiService;
@@ -49,8 +50,43 @@ public class ProductDetailActivity extends AppCompatActivity {
         MapItemView();
         renderView();
         addToCart();
-        ImageBackClicked();
-        ImageCartClicked();
+
+        imgBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        tvviewShop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProductDetailActivity.this, HomeShopActivity.class);
+                startActivity(intent);
+            }
+        });
+        tvBuyNow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProductDetailActivity.this, CheckOutActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        linearChat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProductDetailActivity.this, ChatActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        imgCartProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProductDetailActivity.this, CartActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void MapItemView() {
@@ -188,22 +224,5 @@ public class ProductDetailActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    private void ImageBackClicked() {
-        imgBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-    }
 
-    private void ImageCartClicked() {
-        imgCartProduct.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ProductDetailActivity.this, CartActivity.class);
-                startActivity(intent);
-            }
-        });
-    }
 }

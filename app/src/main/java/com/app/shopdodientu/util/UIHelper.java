@@ -15,12 +15,14 @@ import android.widget.TextView;
 
 import com.app.shopdodientu.R;
 import com.app.shopdodientu.activity.CartActivity;
+import com.app.shopdodientu.activity.CheckOutActivity;
 import com.app.shopdodientu.activity.ShopTabLayout.HomeShopActivity;
 import com.app.shopdodientu.activity.LoginActivity;
 import com.app.shopdodientu.activity.MainActivity;
 import com.app.shopdodientu.activity.MyAccountActivity;
 import com.app.shopdodientu.activity.ProfileActivity;
 import com.app.shopdodientu.activity.SearchActivity;
+import com.app.shopdodientu.activity.SupportActivity;
 import com.app.shopdodientu.activity.seller.AddProductActivity;
 import com.app.shopdodientu.activity.seller.MainSellerActivity;
 import com.app.shopdodientu.activity.seller.RegisterSellerActivity;
@@ -78,6 +80,29 @@ public class UIHelper {
         });
     }
 
+    public static void gotoSupport(ImageView imv, Context context) {
+        imv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent;
+                intent = new Intent(context, SupportActivity.class);
+                context.startActivity(intent);
+            }
+        });
+    }
+
+    public static void gotoCheckOUt(Button btn, Context context) {
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent;
+                intent = new Intent(context, CheckOutActivity.class);
+                context.startActivity(intent);
+            }
+        });
+    }
+
+
     public static void logout(LinearLayout linear, TextView tv, ImageView imv, Context context) {
         linear.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,39 +136,7 @@ public class UIHelper {
         });
     }
 
-    public static void gotoWelcomeStore(TextView tv, Context context) {
-        tv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent;
-                intent = new Intent(context, WelcomeSellerActivity.class);
-                context.startActivity(intent);
-            }
-        });
-    }
 
-
-    public static void gotoRegisterStore(Button button, Context context) {
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent;
-                intent = new Intent(context, RegisterSellerActivity.class);
-                context.startActivity(intent);
-            }
-        });
-    }
-
-    public static void gotoMainSellerByButton(Button btn, Context context) {
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent;
-                intent = new Intent(context, MainSellerActivity.class);
-                context.startActivity(intent);
-            }
-        });
-    }
 
     public static void gotoMainSeller(TextView tv, Context context) {
         tv.setOnClickListener(new View.OnClickListener() {
@@ -155,17 +148,6 @@ public class UIHelper {
             }
         });
     }
-
-//    public static void gotoMyOrder(TextView tv, Context context) {
-//        tv.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent;
-//                intent = new Intent(context, MyOrderActivity.class);
-//                context.startActivity(intent);
-//            }
-//        });
-//    }
 
 
 
@@ -182,6 +164,7 @@ public class UIHelper {
     }
 
 
+<<<<<<< HEAD
 //    public static void gotoAddProduct(TextView tv, Context context) {
 //        tv.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -250,4 +233,6 @@ public class UIHelper {
 
 
 
+=======
+>>>>>>> 9d5bab3f39f7907ea840c88ccef8febe0c75d676
 }

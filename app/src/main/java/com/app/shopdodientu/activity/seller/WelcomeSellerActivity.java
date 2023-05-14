@@ -27,20 +27,21 @@ public class WelcomeSellerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_welcome_seller);
 
         tvBack = (TextView) findViewById(R.id.tvBack);
-        btnRegister = (Button) findViewById(R.id.btnRegister);
-
-        UIHelper.gotoRegisterStore(btnRegister, this);
-
-        TextViewBackClicked();
-
-    }
-
-    private void TextViewBackClicked(){
         tvBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
+        btnRegister = (Button) findViewById(R.id.btnRegister);
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(WelcomeSellerActivity.this, RegisterSellerActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
+
 }

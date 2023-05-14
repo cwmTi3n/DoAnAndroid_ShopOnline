@@ -24,6 +24,18 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".activity.SupportActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.ChatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.CompleteOrderActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.seller.FinanceActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.seller.order.ShopOrderActivity"
             android:exported="false" />
         <activity
@@ -55,12 +67,6 @@
             android:exported="false" />
         <activity
             android:name=".activity.DeliveredOrderInforActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.seller.CheckingOrderActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activity.seller.HistoryOrderActivity"
             android:exported="false" />
         <activity
             android:name=".activity.OrderTabLayout.MyOrderActivity"
@@ -112,7 +118,7 @@
             android:exported="false" />
         <activity
             android:name=".activity.IntroActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -3,6 +3,7 @@ package com.app.shopdodientu.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.BaseBundle;
 import android.os.Bundle;
 import android.view.View;
@@ -29,11 +30,19 @@ public class CancelOrderInforActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cancel_order_infor);
 
         MapItemView();
-        TextViewBackClicked();
+        UIHelper.gotoSupport(imgSupport, this);
+        UIHelper.gotoCheckOUt(btnRepurchase, this);
+        tvBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
 
     }
 
-    private void MapItemView(){
+    private void MapItemView() {
         tvBack = (TextView) findViewById(R.id.tvBack);
         tvUserName = (TextView) findViewById(R.id.tvUserName);
         tvPhone = (TextView) findViewById(R.id.tvPhone);
@@ -43,15 +52,7 @@ public class CancelOrderInforActivity extends AppCompatActivity {
         tvCancelTime = (TextView) findViewById(R.id.tvCancelTime);
         rcvProduct = (RecyclerView) findViewById(R.id.rcvProduct);
         imgSupport = (ImageView) findViewById(R.id.imgSupport);
-
     }
 
-    private void TextViewBackClicked(){
-        tvBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-    }
 }
+

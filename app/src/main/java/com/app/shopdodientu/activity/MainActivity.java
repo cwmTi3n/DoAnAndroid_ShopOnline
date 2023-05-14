@@ -114,10 +114,11 @@ public class MainActivity extends AppCompatActivity {
             imvLogout.setImageDrawable(null);
             imvLogout.setBackgroundResource(R.drawable.bottom_btn5);
         }
-            getLastProduct();
+        getLastProduct();
         UIHelper.gotoAccount(linearAccount, getApplicationContext());
         UIHelper.gotoCart(linearCart, this);
         UIHelper.logout(linearLogout, tvLogout, imvLogout, this);
+        gotoSupport();
         gotoHome(this);
         searchProduct();
 
@@ -140,6 +141,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 activity.finish();
                 activity.startActivity(activity.getIntent());
+            }
+        });
+    }
+    private void gotoSupport(){
+        linearSupport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SupportActivity.class);
+                startActivity(intent);
             }
         });
     }
