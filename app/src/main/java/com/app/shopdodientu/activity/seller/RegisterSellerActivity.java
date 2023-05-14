@@ -33,7 +33,8 @@ public class RegisterSellerActivity extends AppCompatActivity {
 
         MapItemView();
         TextViewAddressClicked();
-        UIHelper.gotoMainSellerByButton(btnSave, this);
+        Back();
+        gotoMainSeller();
     }
 
     private void MapItemView(){
@@ -58,4 +59,26 @@ public class RegisterSellerActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void Back(){
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
+
+    private void gotoMainSeller(){
+        btnSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RegisterSellerActivity.this, MainSellerActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+
+
 }

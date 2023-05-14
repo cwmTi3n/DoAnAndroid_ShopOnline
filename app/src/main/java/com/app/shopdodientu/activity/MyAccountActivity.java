@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.app.shopdodientu.R;
 import com.app.shopdodientu.activity.OrderTabLayout.MyOrderActivity;
+import com.app.shopdodientu.activity.seller.WelcomeSellerActivity;
 import com.app.shopdodientu.model.UserModel;
 import com.app.shopdodientu.util.Constant;
 import com.app.shopdodientu.util.UIHelper;
@@ -34,14 +35,12 @@ public class MyAccountActivity extends AppCompatActivity {
         setContentView(R.layout.activity_my_account);
 
         MapItemView();
-
-
-        //BETWEEN
-        UIHelper.gotoWelcomeStore(tvRegisterSeller, this);
-//        UIHelper.gotoProfile(tvProfile, this);
         gotoProfile();
+
+//        Intent intent = new Intent(MyAccountActivity.this, WelcomeSellerActivity.class);
+//        startActivity(intent);
         UIHelper.gotoMainSeller(tvRegisterSeller, this);
-//        UIHelper.gotoMyOrder(tvMyOrder, this);
+
         gotoMyOrder();
         //BOTTOM
         UIHelper.gotoCart(linearCart, this);
@@ -89,7 +88,16 @@ public class MyAccountActivity extends AppCompatActivity {
         });
     }
 
-
+    private void gotoSupport() {
+        tvHelp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent;
+                intent = new Intent(MyAccountActivity.this, SupportActivity.class);
+                MyAccountActivity.this.startActivity(intent);
+            }
+        });
+    }
 
 
 }

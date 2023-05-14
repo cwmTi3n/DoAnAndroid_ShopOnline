@@ -35,6 +35,7 @@ public class ForgetPasswordActivity extends AppCompatActivity {
         setContentView(R.layout.activity_forget_password);
 
         MapItemView();
+        UIHelper.gotoSupport(imgSupport, this);
         TextViewBackClicked();
         ButtonNextClicked();
         TextWatcher();

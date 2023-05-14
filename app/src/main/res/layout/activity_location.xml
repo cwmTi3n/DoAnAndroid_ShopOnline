@@ -23,17 +23,18 @@
                 android:layout_height="65dp"
                 android:gravity="center"
                 android:minHeight="?actionBarSize"
-                android:padding="16dp"
+                android:padding="5dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Menu"
-                app:title="Choose Address"
-                app:titleMarginStart="135dp" />
+                app:navigationIcon="@drawable/back_cycler"
+                app:title="Choose Address" />
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabLayout"
                 android:contentDescription="Enter How Much Cookies You Want"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#54CBBF" />
+                app:tabIndicatorColor="#ee4d2d"
+                android:background="#ffffff" />
 
 
         </com.google.android.material.appbar.AppBarLayout>

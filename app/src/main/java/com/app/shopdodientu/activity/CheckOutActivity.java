@@ -3,6 +3,7 @@ package com.app.shopdodientu.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -10,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.app.shopdodientu.R;
+import com.app.shopdodientu.activity.AddressTabLayout.LocationActivity;
 import com.app.shopdodientu.util.UIHelper;
 
 public class CheckOutActivity extends AppCompatActivity {
@@ -26,7 +28,27 @@ public class CheckOutActivity extends AppCompatActivity {
 
         MapItemView();
 
-        TextViewBackClicked();
+        tvBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        imgEditAddress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CheckOutActivity.this, LocationActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        tvCheckOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CheckOutActivity.this, CompleteOrderActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void MapItemView(){
@@ -43,12 +65,4 @@ public class CheckOutActivity extends AppCompatActivity {
         imgEditAddress = findViewById(R.id.imgEditAddress);
     }
 
-    private void TextViewBackClicked(){
-        tvBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-    }
 }

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -50,12 +51,23 @@ public class CartActivity extends AppCompatActivity {
         MapItemView();
 
         renderView();
-<<<<<<< HEAD
-        deleteItem();
-=======
-        TextViewBackClicked();
->>>>>>> 64cf93a7d7e068c2e5130962b2b9bdf94a8c26d1
 
+        deleteItem();
+
+
+        tvBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        tvCheckOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CartActivity.this, CheckOutActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void MapItemView(){
@@ -140,12 +152,4 @@ public class CartActivity extends AppCompatActivity {
         });
     }
 
-    private void TextViewBackClicked(){
-        tvBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-    }
 }

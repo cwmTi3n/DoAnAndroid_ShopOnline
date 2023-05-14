@@ -24,7 +24,8 @@
                 android:minHeight="?actionBarSize"
                 android:padding="16dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Menu"
-                app:title="Shop Order" />
+                app:title="Shop Order"
+                app:titleMarginStart="150dp"/>
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tabLayout"

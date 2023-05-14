@@ -3,6 +3,7 @@ package com.app.shopdodientu.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -25,7 +26,29 @@ public class WaittingOrderInforActivity extends AppCompatActivity {
         setContentView(R.layout.activity_waitting_order_infor);
 
         MapItemView();
-        TextViewBackClicked();
+
+        tvBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        UIHelper.gotoSupport(imgSupport, this);
+        tvCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        tvContact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(WaittingOrderInforActivity.this, ChatActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void MapItemView(){
@@ -41,12 +64,4 @@ public class WaittingOrderInforActivity extends AppCompatActivity {
         rcvProduct = findViewById(R.id.rcvProduct);
     }
 
-    private void TextViewBackClicked(){
-        tvBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-    }
 }

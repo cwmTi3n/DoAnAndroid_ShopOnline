@@ -3,6 +3,7 @@ package com.app.shopdodientu.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -28,7 +29,21 @@ public class DeliveringOrderInforActivity extends AppCompatActivity {
 
         MapItemView();
 
-        TextViewBackClicked();
+        tvBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        UIHelper.gotoSupport(imgSupport, this);
+        btnConfirmReceived.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
     }
 
     private void MapItemView(){
@@ -43,12 +58,4 @@ public class DeliveringOrderInforActivity extends AppCompatActivity {
         btnConfirmReceived = findViewById(R.id.btnConfirmReceived);
     }
 
-    private void TextViewBackClicked(){
-        tvBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-    }
 }
