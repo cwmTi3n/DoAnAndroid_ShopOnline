@@ -133,6 +133,28 @@
             android:layout_weight="2"
             android:gravity="right"
             android:weightSum="8">
+            <Button
+                android:id="@+id/btnRepurchase"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:layout_marginRight="10dp"
+                android:layout_weight="2"
+                android:backgroundTint="#d73211"
+                android:text="rebuy"
+                android:visibility="gone"/>
+
+            <Button
+                android:id="@+id/btnConfirm"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:layout_marginRight="10dp"
+                android:layout_weight="2"
+                android:backgroundTint="#d73211"
+                android:text="RECEIVED"
+                android:textStyle="bold"
+                android:visibility="gone" />
 
             <Button
                 android:id="@+id/btnCancel"
@@ -142,7 +164,8 @@
                 android:layout_marginRight="10dp"
                 android:layout_weight="2"
                 android:backgroundTint="#d73211"
-                android:text="Cancel" />
+                android:text="Cancel"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/tvChat"
@@ -157,7 +180,8 @@
                 android:gravity="center|start"
                 android:paddingStart="10dp"
                 android:text="CHAT"
-                android:textColor="#252020" />
+                android:textColor="#252020"
+                android:visibility="gone" />
         </LinearLayout>
 
         <TextView
