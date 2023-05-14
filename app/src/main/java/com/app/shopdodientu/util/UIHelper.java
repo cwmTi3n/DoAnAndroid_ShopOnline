@@ -164,7 +164,6 @@ public class UIHelper {
     }
 
 
-<<<<<<< HEAD
 //    public static void gotoAddProduct(TextView tv, Context context) {
 //        tv.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -230,9 +229,4 @@ public class UIHelper {
 //            }
 //        });
 //    }
-
-
-
-=======
->>>>>>> 9d5bab3f39f7907ea840c88ccef8febe0c75d676
 }

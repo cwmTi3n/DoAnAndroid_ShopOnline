@@ -11,11 +11,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.app.shopdodientu.R;
-<<<<<<< HEAD
-=======
 import com.app.shopdodientu.activity.ShopTabLayout.HomeShopActivity;
 import com.app.shopdodientu.activity.SupportActivity;
->>>>>>> 9d5bab3f39f7907ea840c88ccef8febe0c75d676
 import com.app.shopdodientu.activity.seller.order.ShopOrderActivity;
 import com.app.shopdodientu.util.Constant;
 import com.app.shopdodientu.util.UIHelper;
@@ -24,12 +21,8 @@ public class MainSellerActivity extends AppCompatActivity {
 
     private TextView tvViewShop, tvAddProduct, tvSetUpStore, tvShopName, tvCheckingOrder, tvDeliverd, tvCancelled, tvFeedback;
     private ImageView imgSetting, imgSupport, imgAvatarStore;
-<<<<<<< HEAD
     private LinearLayout linearMyProduct, linearFinance, linearCheckOrder;
-=======
-    private LinearLayout linearMyProduct, linearFinance, linearHistoryOrder;
     private Intent intent;
->>>>>>> 9d5bab3f39f7907ea840c88ccef8febe0c75d676
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,21 +33,12 @@ public class MainSellerActivity extends AppCompatActivity {
 
         MapItemView();
         UIHelper.gotoHomeShop(tvViewShop, this, Constant.userLogin.getId());
-<<<<<<< HEAD
-//        UIHelper.gotoAddProduct(tvAddProduct, this);
         gotoAddProduct();
         gotoSetUpStore();
-        gotoSellerCheckOrder();
-//        UIHelper.gotoSetUpStore(tvSetUpStore, this);
-    }
-    private void gotoSellerCheckOrder() {
-        linearCheckOrder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainSellerActivity.this, ShopOrderActivity.class);
-                startActivity(intent);
-            }
-        });
+        gotoShopProduct();
+        gotoShopFinance();
+        gotoShopOrder();
+        gotoSupport();
     }
 
     private void gotoAddProduct() {
@@ -76,15 +60,7 @@ public class MainSellerActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-=======
-        gotoAddProduct();
-        gotoSetUpStore();
-        gotoSupport();
-        gotoShopProduct();
-        gotoShopFinance();
-        gotoShopOrder();
 
->>>>>>> 9d5bab3f39f7907ea840c88ccef8febe0c75d676
     }
 
     private void MapItemView(){
@@ -105,33 +81,6 @@ public class MainSellerActivity extends AppCompatActivity {
         linearCheckOrder = findViewById(R.id.linearCheckOrder);
     }
 
-    private void gotoAddProduct(){
-        tvAddProduct.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainSellerActivity.this, AddProductActivity.class);
-                startActivity(intent);
-            }
-        });
-    }
-
-    private void gotoSetUpStore(){
-        tvSetUpStore.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                intent = new Intent(MainSellerActivity.this, RegisterSellerActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        imgSetting.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                intent = new Intent(MainSellerActivity.this, RegisterSellerActivity.class);
-                startActivity(intent);
-            }
-        });
-    }
 
     private void gotoSupport(){
         imgSupport.setOnClickListener(new View.OnClickListener() {
@@ -163,7 +112,7 @@ public class MainSellerActivity extends AppCompatActivity {
         });
     }
     private void gotoShopOrder(){
-        linearHistoryOrder.setOnClickListener(new View.OnClickListener() {
+        linearCheckOrder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 intent = new Intent(MainSellerActivity.this, ShopOrderActivity.class);

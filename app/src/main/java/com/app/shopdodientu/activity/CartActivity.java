@@ -51,10 +51,8 @@ public class CartActivity extends AppCompatActivity {
         MapItemView();
 
         renderView();
-<<<<<<< HEAD
+
         deleteItem();
-        TextViewBackClicked();
-=======
 
         deleteItem();
 
@@ -72,7 +70,6 @@ public class CartActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
->>>>>>> 9d5bab3f39f7907ea840c88ccef8febe0c75d676
     }
 
     private void MapItemView(){
