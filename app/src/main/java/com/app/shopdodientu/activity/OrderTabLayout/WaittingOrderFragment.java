@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -21,7 +22,8 @@ import java.util.Map;
 public class WaittingOrderFragment extends Fragment {
 
     private RecyclerView rcvWaittingOrder;
-    private TextView tvDetailOrder, tvTotal, tvAmountProduct, tvPrice, tvAmount, tvProductName, tvShopName, tvChat;
+    private TextView tvDetailOrder, tvTotal, tvAmount, tvTimeOrder, tvChat;
+    private ImageView imgProduct;
     private Button btnCancel;
     FragmentWaittingorderBinding binding;
     public WaittingOrderFragment(){}
@@ -46,11 +48,9 @@ public class WaittingOrderFragment extends Fragment {
         rcvWaittingOrder = binding.getRoot().findViewById(R.id.rcvWaittingOrder);
         tvDetailOrder = binding.getRoot().findViewById(R.id.tvDetailOrder);
         tvTotal = binding.getRoot().findViewById(R.id.tvTotal);
-        tvAmountProduct = binding.getRoot().findViewById(R.id.tvAmountProduct);
-        tvPrice = binding.getRoot().findViewById(R.id.tvPrice);
+        tvTimeOrder = binding.getRoot().findViewById(R.id.tvTimeOrder);
         tvAmount = binding.getRoot().findViewById(R.id.tvAmount);
-        tvProductName = binding.getRoot().findViewById(R.id.tvProductName);
-        tvShopName = binding.getRoot().findViewById(R.id.tvShopName);
+        imgProduct = binding.getRoot().findViewById(R.id.imgProduct);
         btnCancel = binding.getRoot().findViewById(R.id.btnCancel);
         tvChat = binding.getRoot().findViewById(R.id.tvChat);
 

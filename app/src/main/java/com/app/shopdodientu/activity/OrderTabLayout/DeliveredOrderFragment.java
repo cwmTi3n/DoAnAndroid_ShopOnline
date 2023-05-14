@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -19,8 +20,9 @@ import com.app.shopdodientu.databinding.FragmentDeliveredorderBinding;
 public class DeliveredOrderFragment extends Fragment {
 
     private RecyclerView rcvDeliveredOrder;
-    private TextView tvDetailOrder, tvTotal, tvAmountProduct, tvPrice, tvAmount, tvProductName, tvShopName;
+    private TextView tvDetailOrder, tvTotal, tvAmount, tvTimeOrder;
     private Button btnRepurchase;
+    private ImageView imgProduct;
     FragmentDeliveredorderBinding binding;
     public DeliveredOrderFragment(){}
 
@@ -43,12 +45,10 @@ public class DeliveredOrderFragment extends Fragment {
         rcvDeliveredOrder = binding.getRoot().findViewById(R.id.rcvDeliveredOrder);
         tvDetailOrder = binding.getRoot().findViewById(R.id.tvDetailOrder);
         tvTotal = binding.getRoot().findViewById(R.id.tvTotal);
-        tvAmountProduct = binding.getRoot().findViewById(R.id.tvAmountProduct);
-        tvPrice = binding.getRoot().findViewById(R.id.tvPrice);
+        tvTimeOrder = binding.getRoot().findViewById(R.id.tvTimeOrder);
         tvAmount = binding.getRoot().findViewById(R.id.tvAmount);
-        tvProductName = binding.getRoot().findViewById(R.id.tvProductName);
-        tvShopName = binding.getRoot().findViewById(R.id.tvShopName);
         btnRepurchase = binding.getRoot().findViewById(R.id.btnRepurchase);
+        imgProduct = binding.getRoot().findViewById(R.id.imgProduct);
 
     }
 }
