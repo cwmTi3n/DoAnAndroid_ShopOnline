@@ -74,7 +74,7 @@ public interface ApiService {
     Call<List<CartItemModel>> getItemsInCart(@Path("id") int cartId);
 
     @GET("account/cart/items-in-cart-no-checkout")
-    Call<List<CartItemModel>> getIntemsInCartNoCheckOut();
+    Call<List<CartItemModel>> getItemsInCartNoCheckOut();
 
     @GET("find-product-by-seller")
     Call<PageModel<ProductModel>> findProductsBySeller(@Query("sellerId") int sellerId,
@@ -135,4 +135,10 @@ public interface ApiService {
     @POST("account/buy-now")
     @FormUrlEncoded
     Call<ResponseBody> buyNow(@Field("productId") int productId, @Field("quantity") int quantity, @Field("address") String address);
+
+    @DELETE("account/cancel-order/{id}")
+    Call<ResponseBody> cancelOrder(@Path("id") int id);
+
+    @GET("account/cart/{id}")
+    Call<CartModel> getCart(@Path("id") int id);
 }

@@ -73,6 +73,10 @@ public class MyAccountActivity extends AppCompatActivity {
 
         UIHelper.logout(linearLogout, tvLogout, imvLogout, this);
     }
+    private void renderView() {
+        tvfullname.setText(Constant.userLogin.getFullname());
+        tvemail.setText(Constant.userLogin.getEmail());
+    }
 
     private void MapItemView(){
         imgavatar = findViewById(R.id.imgavatar);

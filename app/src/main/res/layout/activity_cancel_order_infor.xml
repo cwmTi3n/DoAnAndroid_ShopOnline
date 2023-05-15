@@ -211,11 +211,11 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"
-                android:text="Order Code"
-                android:textStyle="bold"
-                android:textSize="18dp"/>
+                android:text="Total"
+                android:textSize="18dp"
+                android:textStyle="bold" />
             <TextView
-                android:id="@+id/tvOrderCode"
+                android:id="@+id/tvTotalPrice"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="3"

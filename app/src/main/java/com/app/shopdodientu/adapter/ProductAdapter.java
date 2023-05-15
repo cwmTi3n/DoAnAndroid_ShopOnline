@@ -41,6 +41,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         holder.tvProductname.setText(productModel.getName());
         holder.tvProductprice.setText(String.valueOf(productModel.getPrice()));
         holder.tvShop.setText(productModel.getShopname());
+        holder.tvAmount.setText(String.valueOf("Đã bán " +  productModel.getAmount()));
         Glide.with(context)
                 .load(productModel.getImage())
                 .into(holder.imvProduct);
@@ -53,7 +54,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private ImageView imvProduct;
-        private TextView tvProductname, tvProductprice, tvShop;
+        private TextView tvProductname, tvProductprice, tvShop, tvAmount;
 
         public ViewHolder(final View itemView) {
             super(itemView);
@@ -61,6 +62,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             tvProductname = (TextView) itemView.findViewById(R.id.tvproductName);
             tvProductprice = (TextView) itemView.findViewById(R.id.tvprice);
             tvShop = (TextView) itemView.findViewById(R.id.tvshopName);
+            tvAmount = itemView.findViewById(R.id.tvamount);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

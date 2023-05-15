@@ -3,7 +3,6 @@ package com.app.shopdodientu.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -51,7 +50,7 @@ public class DeliveringOrderInforActivity extends AppCompatActivity {
         tvUserName = findViewById(R.id.tvUserName);
         tvPhone = findViewById(R.id.tvPhone);
         tvAddress = findViewById(R.id.tvAddress);
-        tvOrderCode = findViewById(R.id.tvOrderCode);
+        tvOrderCode = findViewById(R.id.tvTotalPrice);
         tvOrderTime = findViewById(R.id.tvOrderTime);
         imgSupport = findViewById(R.id.imgSupport);
         rcvProduct = findViewById(R.id.rcvProduct);

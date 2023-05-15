@@ -50,7 +50,7 @@ public class DeliveredOrderInforActivity extends AppCompatActivity {
         tvUserName = findViewById(R.id.tvUserName);
         tvPhone = findViewById(R.id.tvPhone);
         tvAddress = findViewById(R.id.tvAddress);
-        tvOrderCode = findViewById(R.id.tvOrderCode);
+        tvOrderCode = findViewById(R.id.tvTotalPrice);
         tvOrderTime = findViewById(R.id.tvOrderTime);
         tvPickupTime = findViewById(R.id.tvPickupTime);
         imgSupport = findViewById(R.id.imgSupport);

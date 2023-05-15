@@ -3,8 +3,6 @@ package com.app.shopdodientu.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
-import android.os.BaseBundle;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -47,7 +45,7 @@ public class CancelOrderInforActivity extends AppCompatActivity {
         tvUserName = (TextView) findViewById(R.id.tvUserName);
         tvPhone = (TextView) findViewById(R.id.tvPhone);
         tvAddress = (TextView) findViewById(R.id.tvAddress);
-        tvOrderCode = (TextView) findViewById(R.id.tvOrderCode);
+        tvOrderCode = (TextView) findViewById(R.id.tvTotalPrice);
         tvOrderTime = (TextView) findViewById(R.id.tvOrderTime);
         tvCancelTime = (TextView) findViewById(R.id.tvCancelTime);
         rcvProduct = (RecyclerView) findViewById(R.id.rcvProduct);

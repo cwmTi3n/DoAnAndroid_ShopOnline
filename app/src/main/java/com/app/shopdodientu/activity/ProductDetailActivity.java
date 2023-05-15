@@ -167,6 +167,7 @@ public class ProductDetailActivity extends AppCompatActivity {
         cartItemModel.setProductName(productModel.getName());
         cartItemModel.setImage(productModel.getImage());
         cartItemModel.setUnitPrice(productModel.getPrice());
+        cartItemModel.setShopName(productModel.getShopname());
         intent.putExtra("cartItem", cartItemModel);
         startActivity(intent);
     }
@@ -187,6 +188,7 @@ public class ProductDetailActivity extends AppCompatActivity {
         else {
             tvEdit.setVisibility(View.GONE);
         }
+        tvAmountSelled.setText("Đã bán " + String.valueOf(productModel.getAmount()));
         tvPrice.setText(String.valueOf(productModel.getPrice()));
         tvNameproduct.setText(productModel.getName());
         tvDescription.setText(productModel.getDescription());

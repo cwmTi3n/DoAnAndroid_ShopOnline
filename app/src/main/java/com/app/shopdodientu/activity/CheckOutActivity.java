@@ -3,6 +3,7 @@ package com.app.shopdodientu.activity;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
@@ -11,7 +12,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,17 +19,12 @@ import android.widget.Toast;
 import com.app.shopdodientu.R;
 import com.app.shopdodientu.activity.AddressTabLayout.LocationActivity;
 import com.app.shopdodientu.activity.OrderTabLayout.MyOrderActivity;
+import com.app.shopdodientu.adapter.OrderAdapter;
 import com.app.shopdodientu.api.client.ApiClient;
 import com.app.shopdodientu.api.service.ApiService;
 import com.app.shopdodientu.model.CartItemModel;
 import com.app.shopdodientu.model.CheckoutModel;
 import com.app.shopdodientu.model.UserModel;
-import com.app.shopdodientu.room.dao.HuyenDao;
-import com.app.shopdodientu.room.dao.TinhDao;
-import com.app.shopdodientu.room.dao.XaDao;
-import com.app.shopdodientu.room.database.DiaChiDatabase;
-import com.app.shopdodientu.room.entity.HuyenEntity;
-import com.app.shopdodientu.room.entity.XaEntity;
 import com.app.shopdodientu.util.Constant;
 import com.app.shopdodientu.util.LoadingDialog;
 import com.app.shopdodientu.util.UIHelper;
@@ -45,6 +40,8 @@ import retrofit2.Response;
 public class CheckOutActivity extends AppCompatActivity {
     private TextView tvBack, tvUserName, tvPhone, tvAddress, tvAmount, tvTemporaryPrice, tvTotal, tvTotalBottom, tvCheckOut;
     private RecyclerView rcvProduct;
+    private OrderAdapter checkoutAdapter;
+    private List<CartItemModel> cartItemModels;
     private LinearLayout linearAddress;
 
     private static final int REQUEST_SELECT_ADDRESS = 1;
@@ -208,6 +205,12 @@ public class CheckOutActivity extends AppCompatActivity {
                 }
             });
         }
+        cartItemModels = cartItems;
+        checkoutAdapter = new OrderAdapter(CheckOutActivity.this, cartItemModels);
+        rcvProduct.setHasFixedSize(true);
+        rcvProduct.setLayoutManager(new GridLayoutManager(CheckOutActivity.this, 1));
+        rcvProduct.setAdapter(checkoutAdapter);
+        checkoutAdapter.notifyDataSetChanged();
     }
 
 

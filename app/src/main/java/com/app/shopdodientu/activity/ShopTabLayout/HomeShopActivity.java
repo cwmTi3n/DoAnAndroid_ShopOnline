@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.app.shopdodientu.R;
 import com.app.shopdodientu.activity.ChatActivity;
 
+import com.app.shopdodientu.databinding.ActivityHomeShopBinding;
 import com.app.shopdodientu.util.UIHelper;
 import com.google.android.material.tabs.TabLayout;
 

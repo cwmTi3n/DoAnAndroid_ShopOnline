@@ -129,7 +129,7 @@ public class CartActivity extends AppCompatActivity {
 
     private void renderView() {
         ApiService apiService = ApiClient.getApiService();
-        apiService.getIntemsInCartNoCheckOut()
+        apiService.getItemsInCartNoCheckOut()
                 .enqueue(new Callback<List<CartItemModel>>() {
                     @Override
                     public void onResponse(Call<List<CartItemModel>> call, Response<List<CartItemModel>> response) {
