@@ -1,9 +1,11 @@
 package com.app.shopdodientu.activity.ShopTabLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -30,6 +32,7 @@ public class HomeShopFragment extends Fragment {
     private int page;
     private int total;
     private int sellerId;
+
     FragmentHomeshopBinding binding;
     private RecyclerView rcvLastProduct;
     private ProductHorizontalAdapter lastproductAdapter;
@@ -49,6 +52,8 @@ public class HomeShopFragment extends Fragment {
                              @Nullable ViewGroup container, @Nullable Bundle savedInstanceState){
         binding = FragmentHomeshopBinding.inflate(inflater, container, false);
         rcvLastProduct = binding.getRoot().findViewById(R.id.rcvLastProduct);
+
+
         //vi tri load du lieu: recyclerview
         //load more
         final NestedScrollView nestedScrollView = binding.getRoot().findViewById(R.id.nsvHomeShop);

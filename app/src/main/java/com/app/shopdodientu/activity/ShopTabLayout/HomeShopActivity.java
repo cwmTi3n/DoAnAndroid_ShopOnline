@@ -1,23 +1,22 @@
 package com.app.shopdodientu.activity.ShopTabLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SearchView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.app.shopdodientu.R;
-import com.app.shopdodientu.activity.MainActivity;
-import com.app.shopdodientu.activity.SearchActivity;
-import com.app.shopdodientu.databinding.ActivityHomeShopBinding;
+import com.app.shopdodientu.activity.ChatActivity;
+
 import com.app.shopdodientu.util.UIHelper;
 import com.google.android.material.tabs.TabLayout;
 
@@ -48,6 +47,7 @@ public class HomeShopActivity extends AppCompatActivity {
         SetTabLayout();
         TabLayOutClicked();
         searchProduct();
+        gotoChat();
     }
     public static String getKeyword() {
         String tmp = keyword;
@@ -90,11 +90,21 @@ public class HomeShopActivity extends AppCompatActivity {
         svProduct = findViewById(R.id.svproduct);
         imgAvatarShop = findViewById(R.id.imgAvatarShop);
     }
+    private void gotoChat(){
+        tvChat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeShopActivity.this, ChatActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
 
     private void SetTabLayout(){
         binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Home"));
         binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Product"));
         binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Catalog"));
+        binding.tabLayout.setTabTextColors(Color.BLACK, Color.parseColor("#ee4d2d"));
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         shopPagerAdapter = new ShopPagerAdapter(fragmentManager, getLifecycle(), sellerId);

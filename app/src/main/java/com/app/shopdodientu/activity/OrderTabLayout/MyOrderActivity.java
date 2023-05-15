@@ -33,7 +33,7 @@ public class MyOrderActivity extends AppCompatActivity {
         binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Delivering"));
         binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Delivered"));
         binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Cancelled"));
-        binding.tabLayout.setTabTextColors(Color.BLACK, Color.parseColor("#ee4d2d"));
+//        binding.tabLayout.setTabTextColors(Color.BLACK, Color.parseColor("#ee4d2d"));
 
 
         FragmentManager fragmentManager = getSupportFragmentManager();

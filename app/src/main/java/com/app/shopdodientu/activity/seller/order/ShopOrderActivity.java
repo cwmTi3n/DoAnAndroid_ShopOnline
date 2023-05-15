@@ -5,6 +5,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 
 import com.app.shopdodientu.databinding.ActivityShopOrderBinding;
@@ -56,6 +57,13 @@ public class ShopOrderActivity extends AppCompatActivity {
             @Override
             public void onPageSelected(int position) {
                 binding.tabLayout.selectTab(binding.tabLayout.getTabAt(position));
+            }
+        });
+
+        binding.toolBar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }
