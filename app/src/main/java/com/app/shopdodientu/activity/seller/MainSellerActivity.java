@@ -39,6 +39,14 @@ public class MainSellerActivity extends AppCompatActivity {
         gotoShopFinance();
         gotoShopOrder();
         gotoSupport();
+        imgSetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent;
+                intent = new Intent(MainSellerActivity.this, RegisterSellerActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void gotoAddProduct() {
@@ -80,6 +88,7 @@ public class MainSellerActivity extends AppCompatActivity {
         linearFinance = findViewById(R.id.linearFinance);
         linearCheckOrder = findViewById(R.id.linearCheckOrder);
     }
+
 
 
     private void gotoSupport(){

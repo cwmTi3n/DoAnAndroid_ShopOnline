@@ -13,7 +13,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
-import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
