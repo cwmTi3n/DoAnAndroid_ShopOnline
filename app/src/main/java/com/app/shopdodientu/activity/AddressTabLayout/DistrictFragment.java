@@ -31,9 +31,7 @@ public class DistrictFragment extends Fragment implements HuyenAdapter.OnHuyenCl
     private ViewPager2 viewPager;
     private static String huyenId;
     static String getHuyenId() {
-        String tmp = huyenId;
-        huyenId = null;
-        return tmp;
+        return huyenId;
     }
 
     FragmentDistrictBinding binding;
@@ -58,6 +56,7 @@ public class DistrictFragment extends Fragment implements HuyenAdapter.OnHuyenCl
     @Override
     public void onResume() {
         super.onResume();
+        huyenId = null;
         loadHuyenByTinh();
     }
 

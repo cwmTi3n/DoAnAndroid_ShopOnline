@@ -34,11 +34,12 @@
             android:background="#F1E6E6" />
 
         <LinearLayout
+            android:id="@+id/linearAddress"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:orientation="horizontal"
             android:layout_marginTop="5dp"
             android:layout_weight="2.5"
+            android:orientation="horizontal"
             android:weightSum="9">
 
             <ImageView
@@ -61,8 +62,8 @@
                     android:layout_height="0dp"
                     android:layout_weight="1.7"
                     android:text="Delivery Address"
-                    android:textStyle="bold"
-                    android:textSize="18dp"/>
+                    android:textSize="18dp"
+                    android:textStyle="bold" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -75,19 +76,19 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginRight="10dp"
+                        android:gravity="bottom"
                         android:text="UserName"
                         android:textColor="#000"
-                        android:gravity="bottom"
-                        android:textSize="18dp"/>
+                        android:textSize="18dp" />
 
                     <TextView
                         android:id="@+id/tvPhone"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
+                        android:gravity="bottom"
                         android:text="0123456789"
                         android:textColor="#000"
-                        android:gravity="bottom"
-                        android:textSize="18dp"/>
+                        android:textSize="18dp" />
                 </LinearLayout>
 
                 <TextView
@@ -95,9 +96,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="2.8"
-                    android:text="VVN Thu Duc TPHCM"
-                    android:textSize="18dp"
-                    android:textColor="#000" />
+                    android:text="Vui lòng nhập địa chỉ"
+                    android:textColor="#000"
+                    android:textSize="18dp" />
             </LinearLayout>
 
             <ImageView

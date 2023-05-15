@@ -55,19 +55,13 @@ public class CartActivity extends AppCompatActivity {
         deleteItem();
 
         deleteItem();
+        checkOut();
 
 
         tvBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
-            }
-        });
-        tvCheckOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(CartActivity.this, CheckOutActivity.class);
-                startActivity(intent);
             }
         });
     }
@@ -81,13 +75,33 @@ public class CartActivity extends AppCompatActivity {
         rcvProduct = (RecyclerView) findViewById(R.id.rcvProduct);
         checkBox = (CheckBox) findViewById(R.id.checkBox);
     }
+
+    private void checkOut() {
+        tvCheckOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Get cart item selected send to activity checkout
+                List<CartItemModel> cartItemSelected = cartItemAdapter.getCartItemSelects();
+                if(!cartItemSelected.isEmpty()) {
+                    Intent intent = new Intent(CartActivity.this, CheckOutActivity.class);
+                    intent.putExtra("cartItemSelected", new ArrayList<CartItemModel>(cartItemSelected));
+                    startActivity(intent);
+                    finish();
+                }
+                else {
+                    Toast.makeText(CartActivity.this, "Vui lòng chọn sản phẩm", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+    }
     private void deleteItem() {
         imvDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 LoadingDialog loadingDialog = new LoadingDialog(CartActivity.this);
                 loadingDialog.show();
-                List<Integer> itemSelect = cartItemAdapter.getCartItemSelect();
+                List<Integer> itemSelect = cartItemAdapter.getCartItemIds();
                 if(!itemSelect.isEmpty()) {
                     ApiService apiService = ApiClient.getApiService();
                     apiService.deleteItemFromCart(itemSelect)

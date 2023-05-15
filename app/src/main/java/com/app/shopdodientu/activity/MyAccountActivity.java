@@ -1,7 +1,10 @@
 package com.app.shopdodientu.activity;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,7 +23,21 @@ import com.app.shopdodientu.util.UIHelper;
 
 public class MyAccountActivity extends AppCompatActivity {
 
-
+    private ActivityResultLauncher<Intent> gotoCart = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == Activity.RESULT_OK) {
+                    Intent data = result.getData();
+                    if (data != null) {
+                        // Hiển thị địa chỉ đã chọn trên giao diện thanh toán
+                        if (Constant.userLogin != null) {
+                            Intent intent = new Intent(MyAccountActivity.this, CartActivity.class);
+                            startActivity(intent);
+                        }
+                    }
+                }
+            }
+    );
     //BETWEEN
     private ImageView imgavatar, imvLogout;
     private TextView tvfullname, tvemail, tvHelp, tvChat, tvProfile, tvRegisterSeller, tvMyOrder, tvLogout;
@@ -43,7 +60,7 @@ public class MyAccountActivity extends AppCompatActivity {
 
         gotoMyOrder();
         //BOTTOM
-        UIHelper.gotoCart(linearCart, this);
+        UIHelper.gotoCart(linearCart, this, gotoCart);
         UIHelper.gotoHome(linearHome, this);
 
         linearSupport.setOnClickListener(new View.OnClickListener() {

@@ -33,9 +33,7 @@ public class ProvinceFragment extends Fragment implements TinhAdapter.OnTinhClic
     private List<TinhEntity> tinhEntities;
     private static String tinhId;
     static String getTinhId() {
-        String tmp = tinhId;
-        tinhId = null;
-        return tmp;
+        return tinhId;
     }
     public ProvinceFragment(){}
 
@@ -51,7 +49,6 @@ public class ProvinceFragment extends Fragment implements TinhAdapter.OnTinhClic
         binding = FragmentProvinceBinding.inflate(inflater, container, false);
         viewPager = getActivity().findViewById(R.id.viewPager2);
         MapItemView();
-
         //vi tri load du lieu: recyclerview
         return binding.getRoot();
     }
@@ -59,6 +56,7 @@ public class ProvinceFragment extends Fragment implements TinhAdapter.OnTinhClic
     @Override
     public void onResume() {
         super.onResume();
+        tinhId = null;
         loadTinh();
     }
 

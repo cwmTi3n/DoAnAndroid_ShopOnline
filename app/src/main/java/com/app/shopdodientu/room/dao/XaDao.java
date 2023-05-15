@@ -22,4 +22,8 @@ public interface XaDao {
 
     @Query("SELECT * FROM xa WHERE xa.huyen_id = :huyenId")
     List<XaEntity> getXaByHuyenId(String huyenId);
+
+    @Query("select * from xa where xa_id = :xaId")
+    XaEntity getXaById(String xaId);
+
 }

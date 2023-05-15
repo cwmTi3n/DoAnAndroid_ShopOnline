@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.Window;
+import android.widget.Toast;
 
 import com.app.shopdodientu.R;
 import com.app.shopdodientu.api.client.ApiClient;
@@ -44,9 +45,7 @@ public class IntroActivity extends AppCompatActivity {
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         UIHelper.fullscreen(this);
         setContentView(R.layout.activity_intro);
-        if(Constant.userLogin == null) {
-            login();
-        }
+        login();
         SharedPreferences sharedPreferences = getSharedPreferences("address_setting", MODE_PRIVATE);
         if(!sharedPreferences.getBoolean("isSetting_address", false)) {
             LoadingSettingDialog loadingDialog = new LoadingSettingDialog(IntroActivity.this);
@@ -89,7 +88,7 @@ public class IntroActivity extends AppCompatActivity {
 
     private void login() {
         SharedPreferences sharedPreferences = getSharedPreferences("dataLogin", MODE_PRIVATE);
-        if(!sharedPreferences.getBoolean("check", false)) {
+        if(sharedPreferences.getBoolean("check", false)) {
             String username = sharedPreferences.getString("username", null);
             String password = sharedPreferences.getString("password", null);
             ApiService login = ApiClient.login(username, password);

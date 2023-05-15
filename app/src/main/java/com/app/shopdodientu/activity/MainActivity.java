@@ -1,5 +1,7 @@
 package com.app.shopdodientu.activity;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.widget.NestedScrollView;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -53,6 +55,37 @@ public class MainActivity extends AppCompatActivity {
     //SliderImage
     private ViewPager viewPager;
     private List<ImageModel> imagesList;
+    private ActivityResultLauncher<Intent> gotoAccount = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == Activity.RESULT_OK) {
+                    Intent data = result.getData();
+                    if (data != null) {
+                        // Hiển thị địa chỉ đã chọn trên giao diện thanh toán
+                        if (Constant.userLogin != null) {
+                            Intent intent = new Intent(MainActivity.this, MyAccountActivity.class);
+                            startActivity(intent);
+                        }
+                    }
+                }
+            }
+    );
+
+    private ActivityResultLauncher<Intent> gotoCart = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == Activity.RESULT_OK) {
+                    Intent data = result.getData();
+                    if (data != null) {
+                        // Hiển thị địa chỉ đã chọn trên giao diện thanh toán
+                        if (Constant.userLogin != null) {
+                            Intent intent = new Intent(MainActivity.this, CartActivity.class);
+                            startActivity(intent);
+                        }
+                    }
+                }
+            }
+    );
 
     private Handler handler = new Handler();
     private Runnable runnable = new Runnable() {
@@ -112,8 +145,8 @@ public class MainActivity extends AppCompatActivity {
             imvLogout.setBackgroundResource(R.drawable.bottom_btn5);
         }
         getLastProduct();
-        UIHelper.gotoAccount(linearAccount, getApplicationContext());
-        UIHelper.gotoCart(linearCart, this);
+        UIHelper.gotoAccount(linearAccount, getApplicationContext(), gotoAccount);
+        UIHelper.gotoCart(linearCart, this, gotoCart);
         UIHelper.logout(linearLogout, tvLogout, imvLogout, this);
         gotoSupport();
         gotoHome(this);

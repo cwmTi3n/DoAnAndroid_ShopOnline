@@ -1,5 +1,10 @@
 package com.app.shopdodientu.activity.AddressTabLayout;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.app.Activity;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,14 +23,17 @@ import com.app.shopdodientu.adapter.XaAdapter;
 import com.app.shopdodientu.databinding.FragmentDistrictBinding;
 import com.app.shopdodientu.databinding.FragmentWaittingorderBinding;
 import com.app.shopdodientu.databinding.FragmentWardBinding;
+import com.app.shopdodientu.room.dao.HuyenDao;
+import com.app.shopdodientu.room.dao.TinhDao;
 import com.app.shopdodientu.room.dao.XaDao;
 import com.app.shopdodientu.room.database.DiaChiDatabase;
+import com.app.shopdodientu.room.entity.HuyenEntity;
 import com.app.shopdodientu.room.entity.XaEntity;
 
 import java.util.List;
 import java.util.Map;
 
-public class WardFragment extends Fragment {
+public class WardFragment extends Fragment implements XaAdapter.OnXaClickListener{
 
     private RecyclerView rcvWard;
     private XaAdapter xaAdapter;
@@ -65,12 +73,29 @@ public class WardFragment extends Fragment {
         String huyenId = DistrictFragment.getHuyenId();
         if(huyenId != null) {
             xaEntities = xaDao.getXaByHuyenId(huyenId);
-            Log.d("xa", String.valueOf(xaEntities.size()));
             xaAdapter = new XaAdapter(getContext(),xaEntities);
             rcvWard.setHasFixedSize(true);
             rcvWard.setLayoutManager(new GridLayoutManager(getContext(), 1));
             rcvWard.setAdapter(xaAdapter);
+            xaAdapter.setOnXaClickListener(this);
             xaAdapter.notifyDataSetChanged();
         }
+    }
+
+    @Override
+    public void onXaClick(String Id, String name) {
+        HuyenDao huyenDao = DiaChiDatabase.getInstance(getContext()).huyenDao();
+        TinhDao tinhDao = DiaChiDatabase.getInstance(getContext()).tinhDao();
+        HuyenEntity huyen = huyenDao.getHuyenById(DistrictFragment.getHuyenId());
+        String tinh = tinhDao.getTinhById(ProvinceFragment.getTinhId());
+        String diachi = name + ", " + huyen.getName() + ", " + tinh;
+        Intent resultIntent = new Intent();
+        resultIntent.putExtra("selected_address", diachi);
+        getActivity().setResult(Activity.RESULT_OK, resultIntent);
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("address", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("user_address", diachi);
+        editor.apply();
+        getActivity().finish();
     }
 }

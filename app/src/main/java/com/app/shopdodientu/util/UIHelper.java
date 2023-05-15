@@ -13,6 +13,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+
 import com.app.shopdodientu.R;
 import com.app.shopdodientu.activity.CartActivity;
 import com.app.shopdodientu.activity.CheckOutActivity;
@@ -40,19 +43,20 @@ public class UIHelper {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
-    public static void gotoAccount(LinearLayout linear, Context context) {
+    public static void gotoAccount(LinearLayout linear, Context context, ActivityResultLauncher<Intent> activityResultLauncher) {
         linear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent;
                 if(Constant.userLogin == null) {
                     intent = new Intent(context, LoginActivity.class);
+                    activityResultLauncher.launch(intent);
                 }
                 else {
                     intent = new Intent(context, MyAccountActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
                 }
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(intent);
             }
         });
     }
@@ -69,13 +73,20 @@ public class UIHelper {
         });
     }
 
-    public static void gotoCart(LinearLayout linear, Context context) {
+    public static void gotoCart(LinearLayout linear, Context context, ActivityResultLauncher<Intent> activityResultLauncher) {
         linear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent;
-                intent = new Intent(context, CartActivity.class);
-                context.startActivity(intent);
+                if(Constant.userLogin == null) {
+                    intent = new Intent(context, LoginActivity.class);
+                    activityResultLauncher.launch(intent);
+                }
+                else {
+                    intent = new Intent(context, CartActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                }
             }
         });
     }
@@ -107,16 +118,16 @@ public class UIHelper {
         linear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ApiClient.restApiService();
                 ApiService apiService = ApiClient.getApiService();
                 apiService.logout()
                         .enqueue(new Callback<String>() {
                             @Override
                             public void onResponse(Call<String> call, Response<String> response) {
-
+                                ApiClient.restApiService();
                             }
                             @Override
                             public void onFailure(Call<String> call, Throwable t) {
+                                ApiClient.restApiService();
                             }
                         });
                 SharedPreferences sharedPreferences = context.getSharedPreferences("dataLogin", MODE_PRIVATE);
@@ -129,7 +140,7 @@ public class UIHelper {
                 imv.setImageDrawable(null);
                 imv.setBackgroundResource(R.drawable.login);
                 Intent intent;
-                intent = new Intent(context, LoginActivity.class);
+                intent = new Intent(context, MainActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
             }

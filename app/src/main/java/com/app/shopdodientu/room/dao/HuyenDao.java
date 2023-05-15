@@ -26,4 +26,7 @@ public interface HuyenDao {
 
     @Query("SELECT * FROM huyen WHERE huyen.tinh_id = :tinhId")
     List<HuyenEntity> getHuyenByTinhId(String tinhId);
+
+    @Query("select * from huyen where huyen_id = :huyenId")
+    HuyenEntity getHuyenById(String huyenId);
 }

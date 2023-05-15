@@ -3,6 +3,7 @@ package com.app.shopdodientu.api.service;
 import com.app.shopdodientu.model.CartItemModel;
 import com.app.shopdodientu.model.CartModel;
 import com.app.shopdodientu.model.CategoryModel;
+import com.app.shopdodientu.model.CheckoutModel;
 import com.app.shopdodientu.model.PageModel;
 import com.app.shopdodientu.model.ProductModel;
 import com.app.shopdodientu.model.TinhModel;
@@ -128,4 +129,10 @@ public interface ApiService {
     @GET("address")
     Call<List<TinhModel>> getAddress();
 
+    @POST("account/checkout")
+    Call<ResponseBody> checkout(@Body CheckoutModel checkoutModel);
+
+    @POST("account/buy-now")
+    @FormUrlEncoded
+    Call<ResponseBody> buyNow(@Field("productId") int productId, @Field("quantity") int quantity, @Field("address") String address);
 }

@@ -3,6 +3,7 @@ package com.app.shopdodientu.activity;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -96,18 +97,17 @@ public class LoginActivity extends AppCompatActivity {
                 String username = edtUsername.getText().toString();
                 String password = tiedPassword.getText().toString();
                 if (cbRemember.isChecked()) {
-
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.putString("username", username);
                     editor.putString("password", password);
                     editor.putBoolean("check", true);
-                    editor.commit();
+                    editor.apply();
                 } else {
                     SharedPreferences.Editor editor = sharedPreferences.edit();
                     editor.remove("username");
                     editor.remove("password");
                     editor.remove("check");
-                    editor.commit();
+                    editor.apply();
                 }
 
                 callApiLogin(username, password);
@@ -115,38 +115,31 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
     private void callApiLogin(String username, String password) {
+        LoadingDialog loadingDialog = new LoadingDialog(LoginActivity.this);
+        loadingDialog.show();
         ApiService apiService = ApiClient.login(username, password);
         apiService.login(username, password)
                 .enqueue(new Callback<UserModel>() {
                     @Override
                     public void onResponse(Call<UserModel> call, Response<UserModel> response) {
+                        loadingDialog.dismiss();
                         UserModel userModel = response.body();
                         if(userModel == null) {
                             Toast.makeText(LoginActivity.this, "Tên đăng nhập hoặc mật khẩu không đúng", Toast.LENGTH_LONG).show();
                             ApiClient.restApiService();
                         }
                         else {
-
-                            LoadingDialog loadingDialog = new LoadingDialog(LoginActivity.this);
-                            loadingDialog.show();
-
-                            new Handler().postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    loadingDialog.dismiss();
-                                }
-                            }, 8000);
-
-                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-//                                    intent.putExtra("user", userModel);
                             Constant.userLogin = userModel;
-                            startActivity(intent);
+                            Intent resultIntent = new Intent();
+                            setResult(Activity.RESULT_OK, resultIntent);
+                            finish();
                         }
 
                     }
 
                     @Override
                     public void onFailure(Call<UserModel> call, Throwable t) {
+                        loadingDialog.dismiss();
                         Toast.makeText(LoginActivity.this, "Tên đăng nhập hoặc mật khẩu không đúng", Toast.LENGTH_LONG).show();
                         ApiClient.restApiService();
                     }

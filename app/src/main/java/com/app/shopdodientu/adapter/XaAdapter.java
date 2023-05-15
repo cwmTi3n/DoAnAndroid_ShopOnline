@@ -17,10 +17,15 @@ import java.util.List;
 public class XaAdapter extends RecyclerView.Adapter<XaAdapter.ViewHolder>{
     private Context context;
     private List<XaEntity> xaEntities;
+    private OnXaClickListener onXaClickListener;
 
     public XaAdapter(Context context, List<XaEntity> xaEntities) {
         this.context = context;
         this.xaEntities = xaEntities;
+    }
+
+    public void setOnXaClickListener(OnXaClickListener onXaClickListener) {
+        this.onXaClickListener = onXaClickListener;
     }
 
     @NonNull
@@ -35,6 +40,12 @@ public class XaAdapter extends RecyclerView.Adapter<XaAdapter.ViewHolder>{
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         XaEntity xaEntity = xaEntities.get(position);
         holder.tvLocation.setText(xaEntity.getName());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onXaClickListener.onXaClick(xaEntity.getId(), xaEntity.getName());
+            }
+        });
     }
 
     @Override
@@ -49,5 +60,8 @@ public class XaAdapter extends RecyclerView.Adapter<XaAdapter.ViewHolder>{
             super(itemView);
             tvLocation = (TextView) itemView.findViewById(R.id.tvLocation);
         }
+    }
+    public interface OnXaClickListener {
+        void onXaClick(String xaId, String xaName);
     }
 }

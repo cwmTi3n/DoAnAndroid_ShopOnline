@@ -1,8 +1,11 @@
 package com.app.shopdodientu.activity;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -34,6 +37,37 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ProductDetailActivity extends AppCompatActivity {
+    private ActivityResultLauncher<Intent> gotoCart = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == Activity.RESULT_OK) {
+                    Intent data = result.getData();
+                    if (data != null) {
+                        // Hiển thị địa chỉ đã chọn trên giao diện thanh toán
+                        if (Constant.userLogin != null) {
+                            Intent intent = new Intent(ProductDetailActivity.this, CartActivity.class);
+                            startActivity(intent);
+                        }
+                    }
+                }
+            }
+    );
+
+    private ActivityResultLauncher<Intent> gotoCheckout = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == Activity.RESULT_OK) {
+                    Intent data = result.getData();
+                    if (data != null) {
+                        // Hiển thị địa chỉ đã chọn trên giao diện thanh toán
+                        if (Constant.userLogin != null) {
+                            gotoCheckout();
+                        }
+                    }
+                }
+            }
+    );
+
     private RatingBar ratingBar;
     private ImageView imgProduct, imgAvatar, imgCartProduct, imgBack;
     private TextView tvEdit, tvAmountSelled, tvPrice, tvNameproduct, tvDescription, tvShopName, tvamountProduct, tvviewShop, tvBuyNow;
@@ -61,14 +95,25 @@ public class ProductDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ProductDetailActivity.this, HomeShopActivity.class);
+                intent.putExtra("sellerId", productModel.getUserId());
                 startActivity(intent);
             }
         });
         tvBuyNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ProductDetailActivity.this, CheckOutActivity.class);
-                startActivity(intent);
+                if(productModel.getStock() < 1) {
+                    Toast.makeText(ProductDetailActivity.this, "Sản phẩm tạm hết hàng", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    if(Constant.userLogin == null) {
+                        Intent intent = new Intent(ProductDetailActivity.this, LoginActivity.class);
+                        gotoCheckout.launch(intent);
+                    }
+                    else {
+                        gotoCheckout();
+                    }
+                }
             }
         });
 
@@ -83,8 +128,15 @@ public class ProductDetailActivity extends AppCompatActivity {
         imgCartProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ProductDetailActivity.this, CartActivity.class);
-                startActivity(intent);
+                Intent intent;
+                if(Constant.userLogin == null) {
+                    intent = new Intent(ProductDetailActivity.this, LoginActivity.class);
+                    gotoCart.launch(intent);
+                }
+                else {
+                    intent = new Intent(ProductDetailActivity.this, CartActivity.class);
+                    startActivity(intent);
+                }
             }
         });
     }
@@ -107,6 +159,17 @@ public class ProductDetailActivity extends AppCompatActivity {
         tvEdit = findViewById(R.id.tvEdit);
         imgBack = findViewById(R.id.imgBack);
         imgCartProduct = findViewById(R.id.imgCartProduct);
+    }
+    private void gotoCheckout() {
+        Intent intent = new Intent(ProductDetailActivity.this, CheckOutActivity.class);
+        CartItemModel cartItemModel = new CartItemModel();
+        cartItemModel.setProductId(productModel.getId());
+        cartItemModel.setQuantity(1);
+        cartItemModel.setProductName(productModel.getName());
+        cartItemModel.setImage(productModel.getImage());
+        cartItemModel.setUnitPrice(productModel.getPrice());
+        intent.putExtra("cartItem", cartItemModel);
+        startActivity(intent);
     }
 
     private void renderView() {
@@ -141,7 +204,12 @@ public class ProductDetailActivity extends AppCompatActivity {
         linearAddToCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                dialogAddToCart();
+                if(Constant.userLogin != null) {
+                    dialogAddToCart();
+                }
+                else {
+                    Toast.makeText(ProductDetailActivity.this,"Bạn cần đăng nhập để thực hiện yêu cầu", Toast.LENGTH_SHORT).show();
+                }
 //                ApiService apiService = ApiClient.getApiService();
 //                apiService.addToCart(productModel.getId(), 1)
 //                        .enqueue(new Callback<CartItemModel>() {
@@ -208,14 +276,14 @@ public class ProductDetailActivity extends AppCompatActivity {
                                 }
                                 else {
                                     loadingDialog.dismiss();
-                                    Toast.makeText(getApplicationContext(), "Thêm sản phẩm không thành công", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(), "Sản phẩm tạm hết hàng", Toast.LENGTH_SHORT).show();
                                 }
                             }
 
                             @Override
                             public void onFailure(Call<CartItemModel> call, Throwable t) {
                                 loadingDialog.dismiss();
-                                Toast.makeText(getApplicationContext(), "Thêm sản phẩm không thành công", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "Sản phẩm tạm hết hàng", Toast.LENGTH_SHORT).show();
                             }
                         });
                 dialog.dismiss();

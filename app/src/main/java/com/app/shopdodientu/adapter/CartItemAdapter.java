@@ -29,7 +29,7 @@ import retrofit2.Response;
 public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ViewHolder>{
     private Context context;
     private List<CartItemModel> cartItemModels;
-    private List<Integer> cartItemSelect;
+    private List<CartItemModel> cartItemSelects;
     private boolean isChecked;
     private double totalPrice = 0.0;
     private OnTotalAmountChangedListener onTotalAmountChangedListener;
@@ -37,11 +37,19 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ViewHo
     public CartItemAdapter(Context context, List<CartItemModel> cartItemModels) {
         this.context = context;
         this.cartItemModels = cartItemModels;
-        cartItemSelect = new ArrayList<>();
+        cartItemSelects = new ArrayList<>();
         isChecked = false;
     }
-    public List<Integer> getCartItemSelect(){
-        return cartItemSelect;
+
+    public List<CartItemModel> getCartItemSelects() {
+        return cartItemSelects;
+    }
+    public List<Integer> getCartItemIds() {
+        List<Integer> cartItemIds = new ArrayList<>();
+        for(CartItemModel ci : cartItemSelects) {
+            cartItemIds.add(ci.getId());
+        }
+        return cartItemIds;
     }
 
     public void setOnTotalAmountChangedListener(OnTotalAmountChangedListener onTotalAmountChangedListener) {
@@ -50,17 +58,6 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ViewHo
 
     public void setChecked(boolean checked) {
         isChecked = checked;
-    }
-
-    public int getIndexSelected(int id) {
-        int tmp = 0;
-        for(Integer i : cartItemSelect) {
-            if(i == id) {
-                return tmp;
-            }
-            tmp++;
-        }
-        return -1;
     }
 
     @NonNull
@@ -85,14 +82,11 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ViewHo
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(b) {
-                    cartItemSelect.add(cartItemModel.getId());
+                    cartItemSelects.add(cartItemModel);
                     totalPrice += cartItemModel.getUnitPrice()*cartItemModel.getQuantity();
                 }
                 else {
-                    int index = getIndexSelected(cartItemModel.getId());
-                    if(index != -1) {
-                        cartItemSelect.remove(index);
-                    }
+                    cartItemSelects.remove(cartItemModel);
                     totalPrice -= cartItemModel.getUnitPrice()*cartItemModel.getQuantity();
                 }
                 if (onTotalAmountChangedListener != null) {
@@ -114,7 +108,7 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ViewHo
                                 if(cartItemRp != null) {
                                     cartItemModel.setQuantity(cartItemRp.getQuantity());
                                     cartItemModel.setQuantity(cartItemRp.getQuantity());
-                                    if(getIndexSelected(cartItemRp.getId()) != -1) {
+                                    if(cartItemSelects.contains(cartItemModel)) {
                                         totalPrice += cartItemRp.getUnitPrice();
                                         if (onTotalAmountChangedListener != null) {
                                             onTotalAmountChangedListener.onTotalAmountChanged(totalPrice);
@@ -144,13 +138,12 @@ public class CartItemAdapter extends RecyclerView.Adapter<CartItemAdapter.ViewHo
                                     CartItemModel cartItemRp = response.body();
                                     if(cartItemRp != null) {
                                         cartItemModel.setQuantity(cartItemRp.getQuantity());
-                                        if(getIndexSelected(cartItemRp.getId()) != -1) {
+                                        if(cartItemSelects.contains(cartItemModel)) {
                                             totalPrice -= cartItemRp.getUnitPrice();
                                             if (onTotalAmountChangedListener != null) {
                                                 onTotalAmountChangedListener.onTotalAmountChanged(totalPrice);
                                             }
                                         }
-
                                     }
                                 }
 

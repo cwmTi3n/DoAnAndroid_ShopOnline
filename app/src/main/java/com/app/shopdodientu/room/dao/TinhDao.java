@@ -23,4 +23,7 @@ public interface TinhDao {
 
     @Delete
     void delete(TinhEntity tinhEntity);
+
+    @Query("select tinh_name from tinh where tinh_id = :tinhId")
+    String getTinhById(String tinhId);
 }
