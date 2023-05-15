@@ -104,9 +104,6 @@ public class MainActivity extends AppCompatActivity {
 //        ActionToolBar();
 //        MapListViewMenu();
         getAllCategory();
-        if(Constant.userLogin == null) {
-            login();
-        }
 
         if(Constant.userLogin != null)
         {
@@ -152,39 +149,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
-
-    private void login() {
-        SharedPreferences sharedPreferences = getSharedPreferences("dataLogin", MODE_PRIVATE);
-        if(sharedPreferences.getBoolean("check", false)) {
-            String username = sharedPreferences.getString("username", null);
-            String password = sharedPreferences.getString("password", null);
-            ApiService login = ApiClient.login(username, password);
-            login.login(username, password)
-                    .enqueue(new Callback<UserModel>() {
-                        @Override
-                        public void onResponse(Call<UserModel> call, Response<UserModel> response) {
-                            UserModel userLogin = response.body();
-                            if(userLogin != null) {
-                                Constant.userLogin = userLogin;
-                                Log.d("logintrue", "logintrue");
-                            }
-                            else {
-                                ApiClient.restApiService();
-                                Log.d("loginfalse", "loginfalse");
-                            }
-                        }
-
-                        @Override
-                        public void onFailure(Call<UserModel> call, Throwable t) {
-                            ApiClient.restApiService();
-                            Log.d("loginfalse", "loginfalse");
-                        }
-                    });
-        }
-        else {
-            Log.d("nologin", "nologin");
-        }
     }
 
 
