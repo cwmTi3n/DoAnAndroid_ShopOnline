@@ -87,12 +87,12 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder>{
                             });
                 }
             });
-            holder.tvChat.setVisibility(View.VISIBLE);
+            holder.tvChat.setVisibility(View.GONE);
         }
         else if(cartModel.getStatus() == 2) {
         }
         else {
-            holder.btnReBuy.setVisibility(View.VISIBLE);
+            holder.btnReBuy.setVisibility(View.GONE);
         }
     }
 
