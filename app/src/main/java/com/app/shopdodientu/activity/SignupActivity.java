@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -81,9 +82,11 @@ public class SignupActivity extends AppCompatActivity {
                 String password = tiedPassword.getText().toString();
                 String confirm = tiedtConfirm.getText().toString();
                 String phone = edtPhone.getText().toString();
-                UIHelper.CheckEmail(edtEmail, SignupActivity.this);
-                UIHelper.CheckInputNotEmpty(edtUsername, SignupActivity.this);
-                UIHelper.CheckInputNotEmpty(edtPhone, SignupActivity.this);
+
+                if (email.isEmpty() || !email.contains("@") || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                    Toast.makeText(SignupActivity.this, "Email không hợp lệ", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 if(password.isEmpty() || confirm.isEmpty())
                 {
                     Toast.makeText(SignupActivity.this, "Dữ liệu không được trống", Toast.LENGTH_SHORT).show();
