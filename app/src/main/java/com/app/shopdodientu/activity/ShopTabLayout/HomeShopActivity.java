@@ -20,13 +20,20 @@ import android.widget.TextView;
 import com.app.shopdodientu.R;
 import com.app.shopdodientu.activity.ChatActivity;
 
+import com.app.shopdodientu.api.client.ApiClient;
+import com.app.shopdodientu.api.service.ApiService;
 import com.app.shopdodientu.databinding.ActivityHomeShopBinding;
+import com.app.shopdodientu.model.UserModel;
 import com.app.shopdodientu.util.Constant;
 import com.app.shopdodientu.util.UIHelper;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.CustomTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.google.android.material.tabs.TabLayout;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HomeShopActivity extends AppCompatActivity {
 
@@ -58,23 +65,42 @@ public class HomeShopActivity extends AppCompatActivity {
         gotoChat();
     }
     private void renderView() {
-        tvshopName.setText(Constant.userLogin.getUsername());
-        Glide.with(getApplicationContext())
-                .load(Constant.userLogin.getAvatar())
-                .into(imgAvatarShop);
-        Glide.with(getApplicationContext())
-                .load(Constant.userLogin.getBannerShop())
-                .into(new CustomTarget<Drawable>() {
-                    @Override
-                    public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
-                        linearBannerShop.setBackground(resource);
-                    }
+        ApiService apiService = ApiClient.getApiService();
+        apiService.getShopInfor(sellerId)
+                        .enqueue(new Callback<UserModel>() {
+                            @Override
+                            public void onResponse(Call<UserModel> call, Response<UserModel> response) {
+                                UserModel seller = response.body();
+                                if(seller != null) {
+                                    tvshopName.setText(seller.getUsername());
+                                    Glide.with(getApplicationContext())
+                                            .load(seller.getAvatar())
+                                            .into(imgAvatarShop);
+                                    Glide.with(getApplicationContext())
+                                            .load(seller.getBannerShop())
+                                            .into(new CustomTarget<Drawable>() {
+                                                @Override
+                                                public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
+                                                    linearBannerShop.setBackground(resource);
+                                                }
 
-                    @Override
-                    public void onLoadCleared(@Nullable Drawable placeholder) {
+                                                @Override
+                                                public void onLoadCleared(@Nullable Drawable placeholder) {
 
-                    }
-                });
+                                                }
+                                            });
+                                }
+                                else {
+                                }
+
+                            }
+
+                            @Override
+                            public void onFailure(Call<UserModel> call, Throwable t) {
+
+                            }
+                        });
+
     }
     public static String getKeyword() {
         String tmp = keyword;

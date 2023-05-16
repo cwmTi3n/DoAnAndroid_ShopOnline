@@ -24,7 +24,6 @@ import com.app.shopdodientu.util.Constant;
 import com.app.shopdodientu.util.UIHelper;
 
 public class MyAccountActivity extends AppCompatActivity {
-
     private ActivityResultLauncher<Intent> gotoCart = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
             result -> {
@@ -75,7 +74,7 @@ public class MyAccountActivity extends AppCompatActivity {
             }
         });
 
-        UIHelper.logout(linearLogout, tvLogout, imvLogout, this);
+        UIHelper.logout(linearLogout, this);
     }
 
     private void gotoMainSeller() {
@@ -116,7 +115,7 @@ public class MyAccountActivity extends AppCompatActivity {
         linearAccount = (LinearLayout) findViewById(R.id.account);
         linearCart = (LinearLayout) findViewById(R.id.cart);
         linearSupport = (LinearLayout) findViewById(R.id.linearSupport);
-        linearLogout = (LinearLayout) findViewById(R.id.linearLogout);
+        linearLogout = (LinearLayout) findViewById(R.id.logout);
     }
     private void gotoProfile() {
         tvProfile.setOnClickListener(new View.OnClickListener() {

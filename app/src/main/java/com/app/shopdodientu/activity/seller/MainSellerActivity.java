@@ -115,6 +115,7 @@ public class MainSellerActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 intent = new Intent(MainSellerActivity.this, HomeShopActivity.class);
+                intent.putExtra("sellerId", Constant.userLogin.getId());
                 startActivity(intent);
             }
         });

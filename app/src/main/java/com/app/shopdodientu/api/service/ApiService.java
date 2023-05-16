@@ -148,4 +148,7 @@ public interface ApiService {
 
     @GET("seller/statistics-shop")
     Call<StatisticsModel> getStatistics();
+
+    @GET("shop-infor/{id}")
+    Call<UserModel> getShopInfor(@Path("id") int id);
 }

@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
     //BOTTOM
     private ImageView imvHome, imvAccount, imvLogout;
     private TextView tvLogout;
-    private LinearLayout linearHome, linearAccount, linearCart, linearSupport, linearLogout;
+    private LinearLayout linearHome, linearAccount, linearCart, linearSupport, linearLogout, linearLogin;
 
 
     private RecyclerView rcvCategory;
@@ -147,10 +147,10 @@ public class MainActivity extends AppCompatActivity {
         getLastProduct();
         UIHelper.gotoAccount(linearAccount, getApplicationContext(), gotoAccount);
         UIHelper.gotoCart(linearCart, this, gotoCart);
-        UIHelper.logout(linearLogout, tvLogout, imvLogout, this);
         gotoSupport();
         gotoHome(this);
         searchProduct();
+        renderView();
 
         //load more
         final NestedScrollView nestedScrollView = findViewById(R.id.ncvMain);
@@ -164,6 +164,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void renderView() {
+        if(Constant.userLogin != null) {
+            linearLogout.setVisibility(View.VISIBLE);
+            linearLogin.setVisibility(View.GONE);
+            UIHelper.logout(linearLogout, this);
+        }
+        else {
+            UIHelper.gotoAccount(linearLogin, MainActivity.this, gotoAccount);
+        }
     }
     private void gotoHome(Activity activity) {
         linearHome.setOnClickListener(new View.OnClickListener() {
@@ -204,6 +215,7 @@ public class MainActivity extends AppCompatActivity {
         linearCart = (LinearLayout) findViewById(R.id.cart);
         linearSupport = (LinearLayout) findViewById(R.id.support);
         linearLogout = (LinearLayout) findViewById(R.id.logout);
+        linearLogin = findViewById(R.id.login);
         svProduct = (SearchView) findViewById(R.id.svproduct);
     }
 

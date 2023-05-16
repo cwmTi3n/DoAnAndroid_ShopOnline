@@ -41,7 +41,7 @@ public class ProductHorizontalAdapter extends RecyclerView.Adapter<ProductHorizo
         ProductModel productModel = productModels.get(position);
         holder.tvProductname.setText(productModel.getName());
         holder.tvProductprice.setText(String.valueOf(productModel.getPrice()));
-        holder.tvAmount.setText(String.valueOf(productModel.getAmount()));
+        holder.tvAmount.setText("Đã bán " + String.valueOf(productModel.getAmount()));
         Glide.with(context)
                 .load(productModel.getImage())
                 .into(holder.imvProduct);
