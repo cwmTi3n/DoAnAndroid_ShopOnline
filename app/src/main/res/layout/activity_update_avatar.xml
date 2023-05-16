@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.UpdateAvatarActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="18">
+
+        <TextView
+            android:id="@+id/tvBack"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.8"
+            android:paddingStart="5dp"
+            android:text="Update avatar"
+            android:textSize="22dp"
+            android:textStyle="bold"
+            android:background="#F9EFEF"
+            android:drawableLeft="@drawable/back_left_orange"
+            android:drawablePadding="10dp"
+            android:gravity="center|start" />
+
+        <ImageView
+            android:id="@+id/imageViewUpload"
+            android:layout_width="300dp"
+            android:layout_height="0dp"
+            android:layout_weight="10"
+            android:layout_gravity="center"
+            android:layout_marginTop="55dp"
+            app:srcCompat="@drawable/imgproduct" />
+
+        <Button
+            android:id="@+id/btnChoose"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="55dp"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="@color/design_default_color_error"
+            android:text="CHOOSE FILE" />
+
+        <Button
+            android:id="@+id/btnUpload"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="39dp"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="@color/design_default_color_error"
+            android:text="UPLOAD IMAGES" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
