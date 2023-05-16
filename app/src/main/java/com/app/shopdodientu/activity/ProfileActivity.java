@@ -95,8 +95,6 @@ public class ProfileActivity extends AppCompatActivity {
 
     private void MapItemView() {
         tvPrice = (TextView) findViewById(R.id.tvPrice);
-        tvNumberOrder = (TextView) findViewById(R.id.tvNumberOrder);
-
         btnChangepass = (Button) findViewById(R.id.btnchangepass);
         tvFullname = (TextView) findViewById(R.id.tvfullname);
         tvEmail = (TextView) findViewById(R.id.tvemail);
