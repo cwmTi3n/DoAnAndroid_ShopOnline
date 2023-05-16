@@ -3,6 +3,7 @@ package com.app.shopdodientu.activity;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
@@ -22,14 +23,18 @@ import android.widget.Toast;
 import com.app.shopdodientu.R;
 import com.app.shopdodientu.activity.ShopTabLayout.HomeShopActivity;
 import com.app.shopdodientu.activity.seller.UpdateProductActivity;
+import com.app.shopdodientu.adapter.FeedbackAdapter;
 import com.app.shopdodientu.api.client.ApiClient;
 import com.app.shopdodientu.api.service.ApiService;
 import com.app.shopdodientu.model.CartItemModel;
+import com.app.shopdodientu.model.FeedbackModel;
 import com.app.shopdodientu.model.ProductModel;
 import com.app.shopdodientu.util.Constant;
 import com.app.shopdodientu.util.LoadingDialog;
 import com.app.shopdodientu.util.UIHelper;
 import com.bumptech.glide.Glide;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -69,10 +74,12 @@ public class ProductDetailActivity extends AppCompatActivity {
 
     private RatingBar ratingBar;
     private ImageView imgProduct, imgAvatar, imgCartProduct, imgBack;
-    private TextView tvEdit, tvAmountSelled, tvPrice, tvNameproduct, tvDescription, tvShopName, tvamountProduct, tvviewShop, tvBuyNow;
+    private TextView tvEdit, tvAmountSelled, tvPrice, tvNameproduct, tvDescription, tvShopName, tvamountProduct, tvviewShop, tvBuyNow, tvSeeAll;
     private RecyclerView rcvFeedback;
     private LinearLayout linearChat, linearAddToCart;
     private ProductModel productModel;
+    private FeedbackAdapter feedbackAdapter;
+    private List<FeedbackModel> feedbackModels;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +90,6 @@ public class ProductDetailActivity extends AppCompatActivity {
         MapItemView();
         renderView();
         addToCart();
-
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -144,6 +150,12 @@ public class ProductDetailActivity extends AppCompatActivity {
                 }
             }
         });
+        tvSeeAll.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                renderFeedback();
+            }
+        });
     }
 
     private void MapItemView() {
@@ -164,6 +176,7 @@ public class ProductDetailActivity extends AppCompatActivity {
         tvEdit = findViewById(R.id.tvEdit);
         imgBack = findViewById(R.id.imgBack);
         imgCartProduct = findViewById(R.id.imgCartProduct);
+        tvSeeAll = findViewById(R.id.tvSeeAll);
     }
     private void gotoCheckout() {
         Intent intent = new Intent(ProductDetailActivity.this, CheckOutActivity.class);
@@ -176,6 +189,32 @@ public class ProductDetailActivity extends AppCompatActivity {
         cartItemModel.setShopName(productModel.getShopname());
         intent.putExtra("cartItem", cartItemModel);
         startActivity(intent);
+    }
+
+    private void renderFeedback() {
+        LoadingDialog loadingDialog = new LoadingDialog(ProductDetailActivity.this);
+        loadingDialog.show();
+        ApiService apiService = ApiClient.getApiService();
+        apiService.getFeedbackByProduct(productModel.getId())
+                .enqueue(new Callback<List<FeedbackModel>>() {
+                    @Override
+                    public void onResponse(Call<List<FeedbackModel>> call, Response<List<FeedbackModel>> response) {
+                        feedbackModels = response.body();
+                        if(feedbackModels != null) {
+                            feedbackAdapter = new FeedbackAdapter(ProductDetailActivity.this, feedbackModels);
+                            rcvFeedback.setHasFixedSize(true);
+                            rcvFeedback.setLayoutManager(new GridLayoutManager(ProductDetailActivity.this, 1));
+                            rcvFeedback.setAdapter(feedbackAdapter);
+                            feedbackAdapter.notifyDataSetChanged();
+                        }
+                        loadingDialog.dismiss();
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<FeedbackModel>> call, Throwable t) {
+                        loadingDialog.dismiss();
+                    }
+                });
     }
 
     private void renderView() {

@@ -148,13 +148,13 @@
                 android:layout_weight="3"
                 app:srcCompat="@drawable/camera" />
 
-            <ImageView
-                android:id="@+id/imgFeedback2"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="3"
-                android:layout_marginLeft="5dp"
-                app:srcCompat="@drawable/camera" />
+<!--            <ImageView-->
+<!--                android:id="@+id/imgFeedback2"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_weight="3"-->
+<!--                android:layout_marginLeft="5dp"-->
+<!--                app:srcCompat="@drawable/camera" />-->
 
         </LinearLayout>
 

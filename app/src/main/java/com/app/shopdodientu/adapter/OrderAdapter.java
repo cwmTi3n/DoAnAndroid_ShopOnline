@@ -1,6 +1,7 @@
 package com.app.shopdodientu.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.shopdodientu.R;
+import com.app.shopdodientu.activity.FeedbackActivity;
 import com.app.shopdodientu.model.CartItemModel;
 import com.bumptech.glide.Glide;
 
@@ -43,6 +45,23 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder>{
         holder.tvQuantity.setText(String.valueOf(cartItemModel.getQuantity()));
         holder.tvPrice.setText(String.valueOf(cartItemModel.getUnitPrice()));
         holder.tvShopname.setText(cartItemModel.getShopName());
+        if(cartItemModel.getStatus() != 3) {
+            holder.tvFeedback.setVisibility(View.GONE);
+        }
+        else {
+            holder.tvFeedback.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(context, FeedbackActivity.class);
+                    intent.putExtra("productname", cartItemModel.getProductName());
+                    intent.putExtra("productId", cartItemModel.getProductId());
+                    intent.putExtra("image", cartItemModel.getImage());
+//                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                    //Goto feedback;
+                }
+            });
+        }
     }
 
     @Override
@@ -52,7 +71,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder>{
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private ImageView imvProduct;
-        private TextView tvProductname, tvPrice, tvQuantity, tvShopname;
+        private TextView tvProductname, tvPrice, tvQuantity, tvShopname, tvFeedback;
 
         public ViewHolder(final View itemView) {
             super(itemView);
@@ -61,6 +80,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder>{
             tvPrice = itemView.findViewById(R.id.tvPrice);
             tvQuantity = itemView.findViewById(R.id.tvAmount);
             tvShopname = itemView.findViewById(R.id.tvShopName);
+            tvFeedback = itemView.findViewById(R.id.tvFeedback);
         }
     }
 }

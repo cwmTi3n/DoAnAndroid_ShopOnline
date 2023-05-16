@@ -4,6 +4,7 @@ import com.app.shopdodientu.model.CartItemModel;
 import com.app.shopdodientu.model.CartModel;
 import com.app.shopdodientu.model.CategoryModel;
 import com.app.shopdodientu.model.CheckoutModel;
+import com.app.shopdodientu.model.FeedbackModel;
 import com.app.shopdodientu.model.PageModel;
 import com.app.shopdodientu.model.ProductModel;
 import com.app.shopdodientu.model.ShopModel;
@@ -151,4 +152,14 @@ public interface ApiService {
 
     @GET("shop-infor/{id}")
     Call<UserModel> getShopInfor(@Path("id") int id);
+
+    @GET("account/feedback")
+    Call<List<FeedbackModel>> getFeedbackByProduct(@Query("productId") int productId);
+
+    @POST("account/feedback")
+    @Multipart
+    Call<FeedbackModel> createFeedback(@Part("content") RequestBody content,
+                                       @Part("star") RequestBody star,
+                                       @Part("productId") RequestBody productId,
+                                       @Part MultipartBody.Part imageFile);
 }

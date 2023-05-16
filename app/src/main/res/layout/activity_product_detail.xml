@@ -251,11 +251,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
+                    android:drawableRight="@drawable/back_left"
                     android:gravity="center|start"
-                    android:text="Feedback                      Scroll to see all"
+                    android:text="Feedback                       Click to see all"
                     android:textSize="20dp"
-                    android:textStyle="bold"
-                    android:drawableRight="@drawable/back_left"/>
+                    android:textStyle="bold" />
 
 
                 <!--                feedback-->
