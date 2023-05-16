@@ -14,6 +14,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.app.shopdodientu.R;
@@ -26,6 +27,7 @@ public class ForgetPasswordActivity extends AppCompatActivity {
     private EditText edtEmail;
     private Button btnNext, btnChange;
     private TextInputEditText tfpass, tfconfirmpass;
+    private LinearLayout linearChangePass, linearUsername;
 
     Intent intent;
 
@@ -51,6 +53,8 @@ public class ForgetPasswordActivity extends AppCompatActivity {
         tfpass = findViewById(R.id.tfpass);
         tfconfirmpass = findViewById(R.id.tfconfirmpass);
         btnChange = findViewById(R.id.btnChange);
+        linearChangePass = findViewById(R.id.linearChangePass);
+        linearUsername = findViewById(R.id.linearUsername);
     }
 
     private void TextViewBackClicked(){
