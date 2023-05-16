@@ -192,7 +192,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/tvFeedback"
+                    android:id="@+id/tvDelivering"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="2.5"
@@ -207,7 +207,7 @@
                     android:layout_height="0dp"
                     android:layout_weight="1.5"
                     android:gravity="center"
-                    android:text="Products"
+                    android:text="Delivering"
                     android:textColor="#000"
                     android:textSize="18dp" />
             </LinearLayout>

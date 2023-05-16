@@ -14,16 +14,24 @@ import com.app.shopdodientu.R;
 import com.app.shopdodientu.activity.ShopTabLayout.HomeShopActivity;
 import com.app.shopdodientu.activity.SupportActivity;
 import com.app.shopdodientu.activity.seller.order.ShopOrderActivity;
+import com.app.shopdodientu.api.client.ApiClient;
+import com.app.shopdodientu.api.service.ApiService;
+import com.app.shopdodientu.model.StatisticsModel;
 import com.app.shopdodientu.util.Constant;
 import com.app.shopdodientu.util.UIHelper;
 import com.bumptech.glide.Glide;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class MainSellerActivity extends AppCompatActivity {
 
-    private TextView tvViewShop, tvAddProduct, tvSetUpStore, tvShopName, tvCheckingOrder, tvDeliverd, tvCancelled, tvFeedback;
+    private TextView tvViewShop, tvAddProduct, tvSetUpStore, tvShopName, tvCheckingOrder, tvDeliverd, tvCancelled, tvDelivering;
     private ImageView imgSetting, imgSupport, imgAvatarStore;
     private LinearLayout linearMyProduct, linearFinance, linearCheckOrder;
     private Intent intent;
+    private StatisticsModel statisticsModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +49,7 @@ public class MainSellerActivity extends AppCompatActivity {
         gotoShopOrder();
         gotoSupport();
         renderView();
+        getStatistics();
         imgSetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -91,7 +100,7 @@ public class MainSellerActivity extends AppCompatActivity {
         tvShopName = (TextView) findViewById(R.id.tvShopName);
         tvDeliverd = (TextView) findViewById(R.id.tvDeliverd);
         tvCancelled = (TextView) findViewById(R.id.tvCancelled);
-        tvFeedback = (TextView) findViewById(R.id.tvFeedback);
+        tvDelivering = (TextView) findViewById(R.id.tvDelivering);
 
         linearMyProduct = findViewById(R.id.linearMyProduct);
         linearFinance = findViewById(R.id.linearFinance);
@@ -99,6 +108,24 @@ public class MainSellerActivity extends AppCompatActivity {
     }
 
 
+    private void getStatistics(){
+        ApiService apiService = ApiClient.getApiService();
+        apiService.getStatistics()
+                .enqueue(new Callback<StatisticsModel>() {
+                    @Override
+                    public void onResponse(Call<StatisticsModel> call, Response<StatisticsModel> response) {
+                        statisticsModel = response.body();
+                        tvDeliverd.setText(String.valueOf(statisticsModel.getDeliveredOrder()));
+                        tvDelivering.setText(String.valueOf(statisticsModel.getDeliveringOrder()));
+                        tvCancelled.setText(String.valueOf(statisticsModel.getCancelOrder()));
+                    }
+
+                    @Override
+                    public void onFailure(Call<StatisticsModel> call, Throwable t) {
+
+                    }
+                });
+    }
 
     private void gotoSupport(){
         imgSupport.setOnClickListener(new View.OnClickListener() {

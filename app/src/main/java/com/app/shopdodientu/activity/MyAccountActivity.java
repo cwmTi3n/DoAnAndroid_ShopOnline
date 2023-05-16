@@ -22,6 +22,7 @@ import com.app.shopdodientu.activity.seller.WelcomeSellerActivity;
 import com.app.shopdodientu.model.UserModel;
 import com.app.shopdodientu.util.Constant;
 import com.app.shopdodientu.util.UIHelper;
+import com.bumptech.glide.Glide;
 
 public class MyAccountActivity extends AppCompatActivity {
     private ActivityResultLauncher<Intent> gotoCart = registerForActivityResult(
@@ -96,6 +97,9 @@ public class MyAccountActivity extends AppCompatActivity {
     private void renderView() {
         tvfullname.setText(Constant.userLogin.getFullname());
         tvemail.setText(Constant.userLogin.getEmail());
+        Glide.with(getApplicationContext())
+                .load(Constant.userLogin.getAvatar())
+                .into(imgavatar);
     }
 
     private void MapItemView(){
