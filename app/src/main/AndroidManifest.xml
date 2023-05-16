@@ -27,6 +27,9 @@
             android:name=".activity.UpdateAvatarActivity"
             android:exported="false" />
         <activity
+            android:name=".activity.ChatActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.SupportActivity"
             android:exported="false" />
         <activity

@@ -7,6 +7,7 @@ import com.app.shopdodientu.model.CheckoutModel;
 import com.app.shopdodientu.model.PageModel;
 import com.app.shopdodientu.model.ProductModel;
 import com.app.shopdodientu.model.ShopModel;
+import com.app.shopdodientu.model.StatisticsModel;
 import com.app.shopdodientu.model.TinhModel;
 import com.app.shopdodientu.model.UserModel;
 
@@ -144,4 +145,7 @@ public interface ApiService {
     @PUT("account/update-avatar")
     @Multipart
     Call<UserModel> updateAvatar(@Part MultipartBody.Part imageFile);
+
+    @GET("seller/statistics-shop")
+    Call<StatisticsModel> getStatistics();
 }
