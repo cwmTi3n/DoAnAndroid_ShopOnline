@@ -1,7 +1,10 @@
 package com.app.shopdodientu.activity;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.ColorStateList;
@@ -16,18 +19,44 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.app.shopdodientu.R;
+import com.app.shopdodientu.api.client.ApiClient;
+import com.app.shopdodientu.api.service.ApiService;
+import com.app.shopdodientu.model.UserModel;
+import com.app.shopdodientu.util.LoadingDialog;
 import com.app.shopdodientu.util.UIHelper;
 import com.google.android.material.textfield.TextInputEditText;
 
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class ForgetPasswordActivity extends AppCompatActivity {
+
+    private String code;
+    private ActivityResultLauncher<Intent> gotoCode = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == Activity.RESULT_OK) {
+                    Intent data = result.getData();
+                    if (data != null) {
+                        code = data.getStringExtra("code");
+                        renderResult();
+
+                    }
+                }
+            }
+    );
     private TextView tvBack;
     private ImageView imgSupport;
     private EditText edtEmail;
     private Button btnNext, btnChange;
     private TextInputEditText tfpass, tfconfirmpass;
     private LinearLayout linearChangePass, linearUsername;
+    private String username;
 
     Intent intent;
 
@@ -43,6 +72,41 @@ public class ForgetPasswordActivity extends AppCompatActivity {
         TextViewBackClicked();
         ButtonNextClicked();
         TextWatcher();
+    }
+
+    private void renderResult() {
+        linearUsername.setVisibility(View.GONE);
+        linearChangePass.setVisibility(View.VISIBLE);
+        btnChange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String password = String.valueOf(tfpass.getText());
+                String cf = String.valueOf(tfconfirmpass.getText());
+                if(password.equals(cf)) {
+                    ApiService apiService = ApiClient.getApiService();
+                    apiService.changePassword(username, password, code)
+                            .enqueue(new Callback<UserModel>() {
+                                @Override
+                                public void onResponse(Call<UserModel> call, Response<UserModel> response) {
+                                    if(response.body() != null) {
+                                        Toast.makeText(getApplicationContext(), "Thay đổi mật khẩu thành công", Toast.LENGTH_SHORT).show();
+                                    }
+                                    else {
+                                        Toast.makeText(getApplicationContext(), "Có lỗi xảy ra", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+
+                                @Override
+                                public void onFailure(Call<UserModel> call, Throwable t) {
+                                    Toast.makeText(getApplicationContext(), "Có lỗi xảy ra", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), "Mật khẩu không khớp", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     private void MapItemView() {
@@ -70,22 +134,25 @@ public class ForgetPasswordActivity extends AppCompatActivity {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Dialog dialog = new Dialog(ForgetPasswordActivity.this);
-                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                dialog.setContentView(R.layout.dialog_send_otp);
-                TextView tvback = dialog.findViewById(R.id.tvBack);
-                dialog.show();
-                tvback.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        intent = new Intent(ForgetPasswordActivity.this, LoginActivity.class);
-                        startActivity(intent);
-                    }
-                });
+                LoadingDialog loadingDialog = new LoadingDialog(ForgetPasswordActivity.this);
+                loadingDialog.show();
+                username = String.valueOf(edtEmail.getText());
+                ApiService apiService = ApiClient.getApiService();
+                apiService.getOTP(username)
+                        .enqueue(new Callback<ResponseBody>() {
+                            @Override
+                            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                                loadingDialog.dismiss();
+                                Intent intent1 = new Intent(ForgetPasswordActivity.this, EnterOTPActivity.class);
+                                gotoCode.launch(intent1);
+                            }
 
-                dialog.dismiss();
-                intent = new Intent(ForgetPasswordActivity.this, EnterOTPActivity.class);
-                startActivity(intent);
+                            @Override
+                            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                                loadingDialog.dismiss();
+                                Toast.makeText(getApplicationContext(), "Có lỗi xảy ra", Toast.LENGTH_SHORT).show();
+                            }
+                        });
             }
         });
     }

@@ -2,6 +2,7 @@ package com.app.shopdodientu.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
@@ -27,10 +28,29 @@ public class EnterOTPActivity extends AppCompatActivity {
         setContentView(R.layout.activity_enter_otp);
 
         MapItemView();
-        ButtonNextClicked();
+        getCode();
         TextViewBackClick();
         RequestFocusAndOneChar();
         TextWatcher();
+    }
+
+    private void getCode() {
+        btnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String code = "";
+                code += edtNumber1.getText();
+                code += edtNumber2.getText();
+                code += edtNumber3.getText();
+                code += edtNumber4.getText();
+                code += edtNumber5.getText();
+                code += edtNumber6.getText();
+                Intent resultIntent = new Intent();
+                resultIntent.putExtra("code", code);
+                setResult(Activity.RESULT_OK, resultIntent);
+                finish();
+            }
+        });
     }
 
     private void MapItemView(){
@@ -54,15 +74,6 @@ public class EnterOTPActivity extends AppCompatActivity {
         });
     }
 
-    private void ButtonNextClicked(){
-        btnNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                intent = new Intent(EnterOTPActivity.this, LoginActivity.class);
-                startActivity(intent);
-            }
-        });
-    }
 
     private void TextWatcher(){
         TextWatcher textWatcher = new TextWatcher() {

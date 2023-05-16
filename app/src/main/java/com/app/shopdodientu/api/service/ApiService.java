@@ -162,4 +162,13 @@ public interface ApiService {
                                        @Part("star") RequestBody star,
                                        @Part("productId") RequestBody productId,
                                        @Part MultipartBody.Part imageFile);
+
+    @POST("forgot-password/get-otp")
+    @FormUrlEncoded
+    Call<ResponseBody> getOTP(@Field("username") String username);
+
+    @POST("forget-password/change-pass")
+    @FormUrlEncoded
+    Call<UserModel> changePassword(@Field("username") String username, @Field("password") String password, @Field("code") String code);
+
 }
