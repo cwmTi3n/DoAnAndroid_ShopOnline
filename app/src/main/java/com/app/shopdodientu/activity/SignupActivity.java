@@ -19,6 +19,7 @@ import com.app.shopdodientu.R;
 import com.app.shopdodientu.api.client.ApiClient;
 import com.app.shopdodientu.api.service.ApiService;
 import com.app.shopdodientu.model.UserModel;
+import com.app.shopdodientu.util.LoadingDialog;
 import com.app.shopdodientu.util.UIHelper;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -80,10 +81,20 @@ public class SignupActivity extends AppCompatActivity {
                 String password = tiedPassword.getText().toString();
                 String confirm = tiedtConfirm.getText().toString();
                 String phone = edtPhone.getText().toString();
+                UIHelper.CheckEmail(edtEmail, SignupActivity.this);
+                UIHelper.CheckInputNotEmpty(edtUsername, SignupActivity.this);
+                UIHelper.CheckInputNotEmpty(edtPhone, SignupActivity.this);
+                if(password.isEmpty() || confirm.isEmpty())
+                {
+                    Toast.makeText(SignupActivity.this, "Dữ liệu không được trống", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 if(!password.equals(confirm)) {
                     Toast.makeText(SignupActivity.this, "Mật khẩu không khớp", Toast.LENGTH_LONG).show();
                     return;
                 }
+                LoadingDialog loadingDialog = new LoadingDialog(SignupActivity.this);
+                loadingDialog.show();
                 ApiService apiService = ApiClient.getApiService();
                 apiService.signup(username, password, email, phone)
                         .enqueue(new Callback<UserModel>() {
@@ -92,16 +103,19 @@ public class SignupActivity extends AppCompatActivity {
                                 UserModel userModel = response.body();
                                 if(userModel != null) {
                                     Toast.makeText(SignupActivity.this, "Đăng ký tài khoản thành công", Toast.LENGTH_LONG).show();
+                                    loadingDialog.dismiss();
                                     finish();
                                 }
                                 else {
                                     Toast.makeText(SignupActivity.this, "Đăng ký tài thất bại", Toast.LENGTH_LONG).show();
+                                    loadingDialog.dismiss();
                                 }
                             }
 
                             @Override
                             public void onFailure(Call<UserModel> call, Throwable t) {
                                 Toast.makeText(SignupActivity.this, "Đăng ký tài thất bại", Toast.LENGTH_LONG).show();
+                                loadingDialog.dismiss();
                             }
                         });
             }

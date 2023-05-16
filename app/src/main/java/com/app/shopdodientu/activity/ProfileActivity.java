@@ -24,6 +24,7 @@ import com.app.shopdodientu.api.client.ApiClient;
 import com.app.shopdodientu.api.service.ApiService;
 import com.app.shopdodientu.model.UserModel;
 import com.app.shopdodientu.util.Constant;
+import com.app.shopdodientu.util.LoadingDialog;
 import com.app.shopdodientu.util.UIHelper;
 import com.bumptech.glide.Glide;
 import com.google.android.material.textfield.TextInputEditText;
@@ -60,8 +61,11 @@ public class ProfileActivity extends AppCompatActivity {
             btnChangepass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                LoadingDialog loadingDialog = new LoadingDialog(ProfileActivity.this);
+                loadingDialog.show();
                 Intent intent;
                 intent = new Intent(ProfileActivity.this, ChangePasswordActivity.class);
+                loadingDialog.dismiss();
                 ProfileActivity.this.startActivity(intent);
             }
         });
@@ -99,6 +103,8 @@ public class ProfileActivity extends AppCompatActivity {
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                LoadingDialog loadingDialog = new LoadingDialog(ProfileActivity.this);
+                loadingDialog.show();
                 String fullname = String.valueOf(tifFullname.getText());
                 UserModel userModel = Constant.userLogin;
                 ApiService apiService = ApiClient.getApiService();
@@ -107,13 +113,14 @@ public class ProfileActivity extends AppCompatActivity {
                             @Override
                             public void onResponse(Call<UserModel> call, Response<UserModel> response) {
                                 Toast.makeText(ProfileActivity.this, "Đổi tên thành công", Toast.LENGTH_SHORT).show();
+                                loadingDialog.dismiss();
                                 Constant.userLogin.setFullname(fullname);
                             }
 
                             @Override
                             public void onFailure(Call<UserModel> call, Throwable t) {
                                 Toast.makeText(ProfileActivity.this, "Có lỗi xảy ra", Toast.LENGTH_SHORT).show();
-
+                                loadingDialog.dismiss();
                             }
                         });
             }

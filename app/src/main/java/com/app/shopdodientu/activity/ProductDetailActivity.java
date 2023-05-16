@@ -110,7 +110,10 @@ public class ProductDetailActivity extends AppCompatActivity {
                         gotoCheckout.launch(intent);
                     }
                     else {
+                        LoadingDialog loadingDialog = new LoadingDialog(ProductDetailActivity.this);
+                        loadingDialog.show();
                         gotoCheckout();
+                        loadingDialog.dismiss();
                     }
                 }
             }
@@ -133,8 +136,11 @@ public class ProductDetailActivity extends AppCompatActivity {
                     gotoCart.launch(intent);
                 }
                 else {
+                    LoadingDialog loadingDialog = new LoadingDialog(ProductDetailActivity.this);
+                    loadingDialog.show();
                     intent = new Intent(ProductDetailActivity.this, CartActivity.class);
                     startActivity(intent);
+                    loadingDialog.dismiss();
                 }
             }
         });
