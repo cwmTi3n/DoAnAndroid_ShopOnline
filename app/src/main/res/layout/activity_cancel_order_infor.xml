@@ -328,7 +328,8 @@
                 android:layout_marginRight="14dp"
                 android:layout_height="50dp"
                 android:backgroundTint="#ee4d2d"
-                android:text="repurchase"/>
+                android:text="repurchase"
+                android:visibility="gone"/>
         </com.google.android.material.bottomappbar.BottomAppBar>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

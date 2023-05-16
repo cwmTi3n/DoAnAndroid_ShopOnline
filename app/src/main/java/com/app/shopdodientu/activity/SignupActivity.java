@@ -82,7 +82,7 @@ public class SignupActivity extends AppCompatActivity {
                 String password = tiedPassword.getText().toString();
                 String confirm = tiedtConfirm.getText().toString();
                 String phone = edtPhone.getText().toString();
-                
+
                 if (email.isEmpty() || !email.contains("@") || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                     Toast.makeText(SignupActivity.this, "Email không hợp lệ", Toast.LENGTH_SHORT).show();
                     return;
