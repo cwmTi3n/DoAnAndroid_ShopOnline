@@ -4,28 +4,65 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_chat"
     tools:context=".activity.ChatActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="5dp"
         android:weightSum="18"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tvBack"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="Chat"
-            android:drawableLeft="@drawable/back_left_orange"
-            android:paddingStart="10dp"
-            android:background="#E3D7D7"
-            android:drawablePadding="10dp"
-            android:textSize="22dp"
-            android:textStyle="bold"
-            android:textColor="#000"
-            android:gravity="center|start"/>
+            android:layout_weight="1.4"
+            android:background="#ffffff"
+            android:orientation="horizontal"
+            android:weightSum="8">
+
+            <ImageView
+                android:id="@+id/imvBack"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/back_left_orange" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="7"
+                android:orientation="vertical"
+                android:weightSum="4">
+
+                <TextView
+                    android:id="@+id/tvShopName"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:gravity="center|start"
+                    android:layout_weight="2"
+                    android:paddingStart="10dp"
+                    android:text="Shop Name"
+                    android:textSize="22dp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:gravity="center|start"
+                    android:layout_weight="2"
+                    android:text="Online"
+                    android:textSize="18dp"
+                    android:drawablePadding="-20dp"
+                    android:paddingStart="-15dp"
+                    android:textColor="#26aa99"
+                    android:drawableLeft="@drawable/online"/>
+            </LinearLayout>
+
+        </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"
@@ -33,12 +70,288 @@
             android:layout_weight="0.1"
             android:background="#F1E6E6" />
 
-
-        <!--        chat-->
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcvChat"
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="17"/>
+            android:layout_weight="1"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/rectangle"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:paddingStart="10dp"
+            android:textSize="18dp"
+            android:gravity="center|start"
+            android:textStyle="bold"
+            android:textColor="#000"
+            android:drawableLeft="@drawable/email"
+            android:drawablePadding="10dp"
+            android:drawableTint="#2B41BE"
+            android:text="Email" />
+
+        <TextView
+            android:id="@+id/tvEmail"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/rectangle"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:paddingStart="50dp"
+            android:textSize="18dp"
+            android:gravity="center|start"
+            android:textStyle="bold"
+            android:text="shopemail@gmail.com" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/rectangle"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:paddingStart="10dp"
+            android:textSize="18dp"
+            android:gravity="center|start"
+            android:textStyle="bold"
+            android:textColor="#000"
+            android:drawableLeft="@drawable/phone"
+            android:drawablePadding="15dp"
+            android:drawableTint="#2B41BE"
+            android:text="Phone" />
+
+        <TextView
+            android:id="@+id/tvPhone"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/rectangle"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:paddingStart="50dp"
+            android:textSize="18dp"
+            android:gravity="center|start"
+            android:textStyle="bold"
+            android:text="0123456789" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/rectangle"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:paddingStart="10dp"
+            android:textSize="18dp"
+            android:gravity="center|start"
+            android:textStyle="bold"
+            android:textColor="#000"
+            android:drawableLeft="@drawable/location1"
+            android:drawablePadding="15dp"
+            android:drawableTint="#2B41BE"
+            android:text="Address" />
+
+        <TextView
+            android:id="@+id/tvAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rectangle"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:paddingStart="50dp"
+            android:textSize="18dp"
+            android:gravity="center|start"
+            android:textStyle="bold"
+            android:text="Dĩ An, Bình Dương, Thủ Đức" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center|start" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            android:textSize="20dp"
+            android:gravity="center|start"
+            android:textStyle="bold"
+            android:textColor="#2B41BE"
+            android:text="Topics" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.2" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2.5"
+            android:orientation="horizontal"
+            android:weightSum="9"
+            tools:ignore="MissingConstraints">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/rectangle_line"
+                android:orientation="vertical"
+                android:weightSum="4">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="2dp"
+                    android:layout_weight="2"
+                    android:layout_gravity="center"
+                    android:src="@drawable/dollars"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.05"
+                    android:background="#F1E6E6" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1.95"
+                    android:textSize="16dp"
+                    android:gravity="center"
+                    android:text="Cash on Delivery"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/rectangle_line"
+                android:orientation="vertical"
+                android:weightSum="4">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="2dp"
+                    android:layout_weight="2"
+                    android:layout_gravity="center"
+                    android:src="@drawable/delivery_truck"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.05"
+                    android:background="#F1E6E6" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1.95"
+                    android:textSize="16dp"
+                    android:gravity="center"
+                    android:text="Nationwide Ship"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/rectangle_line"
+                android:orientation="vertical"
+                android:weightSum="4">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="2dp"
+                    android:layout_weight="2"
+                    android:layout_gravity="center"
+                    android:src="@drawable/freerreturn"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.05"
+                    android:background="#F1E6E6" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1.95"
+                    android:textSize="16dp"
+                    android:gravity="center"
+                    android:text="Free Return"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center|start" />
+
+        <TextView
+            android:id="@+id/textView33"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            android:textSize="20dp"
+            android:gravity="center|start"
+            android:textStyle="bold"
+            android:textColor="#2B41BE"
+            android:text="Still need help ?" />
+
+
+        <TextView
+            android:id="@+id/textView34"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/rectangle"
+            android:text="Call Us"
+            android:layout_marginLeft="10dp"
+            android:textSize="18dp"
+            android:gravity="center|start"
+            android:textColor="#000"
+            android:textStyle="bold"
+            android:paddingStart="10dp"
+            android:drawableTint="#2B41BE"
+            android:drawablePadding="10dp"
+            android:drawableLeft="@drawable/phone"/>
+
+
+        <TextView
+            android:id="@+id/textView35"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/rectangle"
+            android:layout_marginLeft="10dp"
+            android:paddingStart="5dp"
+            android:textSize="18dp"
+            android:gravity="center|start"
+            android:text="Hotline: 19006067" />
+
+        <TextView
+            android:id="@+id/textView36"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@drawable/rectangle"
+            android:layout_marginLeft="10dp"
+            android:textSize="18dp"
+            android:gravity="center|start"
+            android:paddingStart="5dp"
+            android:text="Customer service 27/4 hotline" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
