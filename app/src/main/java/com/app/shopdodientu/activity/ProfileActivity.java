@@ -1,7 +1,10 @@
 package com.app.shopdodientu.activity;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -39,7 +42,19 @@ public class ProfileActivity extends AppCompatActivity {
     private TextInputEditText tifFullname, tifUsername, tifEmail, tifPhone;
     private Button btnChangepass, btnUpdate;
 
-
+    private ActivityResultLauncher<Intent> gotoUploadAvatar = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == Activity.RESULT_OK) {
+                    Intent data = result.getData();
+                    if (data != null) {
+                        Glide.with(ProfileActivity.this)
+                                .load(Constant.userLogin.getAvatar())
+                                .into(imgAvatar);
+                    }
+                }
+            }
+    );
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +68,13 @@ public class ProfileActivity extends AppCompatActivity {
         renderView();
         updateFullname();
         gotoChangePassword();
+        imgAvatar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ProfileActivity.this, UpdateAvatarActivity.class);
+                gotoUploadAvatar.launch(intent);
+            }
+        });
 
     }
 

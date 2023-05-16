@@ -28,6 +28,7 @@ import android.widget.Toast;
 
 import com.app.shopdodientu.R;
 import com.app.shopdodientu.activity.AddressTabLayout.LocationActivity;
+import com.app.shopdodientu.activity.UpdateAvatarActivity;
 import com.app.shopdodientu.api.client.ApiClient;
 import com.app.shopdodientu.api.service.ApiService;
 import com.app.shopdodientu.model.ShopModel;
@@ -65,6 +66,8 @@ public class RegisterSellerActivity extends AppCompatActivity {
                 }
             }
     );
+
+
 
     private void CheckPermission() {
         if(Build.VERSION.SDK_INT<Build.VERSION_CODES.M) {
@@ -134,6 +137,20 @@ public class RegisterSellerActivity extends AppCompatActivity {
     private EditText edtShopName, editAddress, editEmail, edtPhone;
     private Button btnSave, btnBack;
 
+    private ActivityResultLauncher<Intent> updateAvatar = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == Activity.RESULT_OK) {
+                    Intent data = result.getData();
+                    if (data != null) {
+                        Glide.with(getApplicationContext())
+                                .load(Constant.userLogin.getAvatar())
+                                .into(imgAvatar);
+                    }
+                }
+            }
+    );
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -148,6 +165,14 @@ public class RegisterSellerActivity extends AppCompatActivity {
         gotoMainSeller();
         renderView();
         uploadBanner();
+
+        tvUploadAvatar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(RegisterSellerActivity.this, UpdateAvatarActivity.class);
+                updateAvatar.launch(intent);
+            }
+        });
     }
 
     private void MapItemView(){

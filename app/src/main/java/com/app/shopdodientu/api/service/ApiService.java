@@ -140,4 +140,8 @@ public interface ApiService {
     @PUT("seller/update-banner")
     @Multipart
     Call<ShopModel> updateBanner(@Part("address") RequestBody address, @Part MultipartBody.Part imageFile);
+
+    @PUT("account/update-avatar")
+    @Multipart
+    Call<UserModel> updateAvatar(@Part MultipartBody.Part imageFile);
 }

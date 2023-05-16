@@ -172,9 +172,7 @@ public class AddProductActivity extends AppCompatActivity {
                                     public void onResponse(Call<ProductModel> call, Response<ProductModel> response) {
                                         loadingDialog.dismiss();
                                         Toast.makeText(getApplicationContext(), "Thêm sản phẩm thành công", Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(AddProductActivity.this, MainSellerActivity.class);
-                                        startActivity(intent);
-                                        finish();
+                                        recreate();
                                     }
 
                                     @Override
