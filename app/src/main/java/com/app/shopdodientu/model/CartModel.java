@@ -15,11 +15,13 @@ public class CartModel implements Serializable {
     private String buyDate;
     private int userId;
     private String address;
+    private String username;
+    private String phone;
 
     public CartModel() {
     }
 
-    public CartModel(int id, int status, String avatar, int sumProduct, int sumPrice, String buyDate, int userId, String address) {
+    public CartModel(int id, int status, String avatar, int sumProduct, int sumPrice, String buyDate, int userId, String address, String username, String phone) {
         this.id = id;
         this.status = status;
         this.avatar = avatar;
@@ -28,6 +30,8 @@ public class CartModel implements Serializable {
         this.buyDate = buyDate;
         this.userId = userId;
         this.address = address;
+        this.username = username;
+        this.phone = phone;
     }
 
     public int getId() {
@@ -92,5 +96,21 @@ public class CartModel implements Serializable {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 }

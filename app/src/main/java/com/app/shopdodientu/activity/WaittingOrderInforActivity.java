@@ -98,9 +98,9 @@ public class WaittingOrderInforActivity extends AppCompatActivity {
 
     private void renderView() {
         if(cartModel != null) {
-            tvUserName.setText(Constant.userLogin.getUsername());
+            tvUserName.setText(cartModel.getUsername());
             tvAddress.setText(cartModel.getAddress());
-            tvPhone.setText(Constant.userLogin.getPhone());
+            tvPhone.setText(cartModel.getPhone());
             tvOrderTime.setText(cartModel.getBuyDate());
             tvTotal.setText("₫"  + String.valueOf(cartModel.getSumPrice()));
         }
