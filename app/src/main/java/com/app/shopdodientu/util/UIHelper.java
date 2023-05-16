@@ -6,12 +6,15 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.util.Patterns;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
@@ -163,9 +166,21 @@ public class UIHelper {
         });
     }
 
+    public static void CheckEmail(EditText edtEmail, Context context){
+        String email = edtEmail.getText().toString().trim();
+        if (email.isEmpty() || !email.contains("@") || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            Toast.makeText(context, "Email không hợp lệ", Toast.LENGTH_SHORT).show();
+            return;
+        }
+    }
 
-
-
+    public static void CheckInputNotEmpty(EditText edt, Context context){
+        String input = edt.getText().toString().trim();
+        if (input.isEmpty() ) {
+            Toast.makeText(context, "Dữ liệu không được trống", Toast.LENGTH_SHORT).show();
+            return;
+        }
+    }
 
 
 }

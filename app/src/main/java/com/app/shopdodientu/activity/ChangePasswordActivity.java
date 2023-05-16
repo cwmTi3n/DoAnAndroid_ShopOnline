@@ -21,6 +21,7 @@ import com.app.shopdodientu.api.client.ApiClient;
 import com.app.shopdodientu.api.service.ApiService;
 import com.app.shopdodientu.model.UserModel;
 import com.app.shopdodientu.util.Constant;
+import com.app.shopdodientu.util.LoadingDialog;
 import com.app.shopdodientu.util.UIHelper;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -55,6 +56,8 @@ public class ChangePasswordActivity extends AppCompatActivity {
         tvChangePw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                LoadingDialog loadingDialog = new LoadingDialog(ChangePasswordActivity.this);
+                loadingDialog.show();
                 String oldpw = String.valueOf(tifOldpw.getText());
                 String newpw = String.valueOf(tifNewpw.getText());
                 String conform = String.valueOf(tifConform.getText());
@@ -65,6 +68,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
                             .enqueue(new Callback<UserModel>() {
                                 @Override
                                 public void onResponse(Call<UserModel> call, Response<UserModel> response) {
+                                    loadingDialog.dismiss();
                                     UserModel userModel = response.body();
                                     if(userModel != null) {
                                         ApiClient.login(userModel.getUsername(), newpw);
@@ -74,18 +78,21 @@ public class ChangePasswordActivity extends AppCompatActivity {
                                     }
                                     else {
                                         Toast.makeText(ChangePasswordActivity.this, "Đổi mật khẩu không thành công", Toast.LENGTH_SHORT).show();
+                                        loadingDialog.dismiss();
+
                                     }
                                 }
 
                                 @Override
                                 public void onFailure(Call<UserModel> call, Throwable t) {
                                     Toast.makeText(ChangePasswordActivity.this, "Đổi mật khẩu không thành công", Toast.LENGTH_SHORT).show();
-
+                                    loadingDialog.dismiss();
                                 }
                             });
                 }
                 else {
                     Toast.makeText(ChangePasswordActivity.this,"Mật khẩu không khớp", Toast.LENGTH_SHORT).show();
+                    loadingDialog.dismiss();
                 }
             }
         });

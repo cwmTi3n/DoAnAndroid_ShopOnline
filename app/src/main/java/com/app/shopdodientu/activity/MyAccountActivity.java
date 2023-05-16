@@ -87,7 +87,7 @@ public class MyAccountActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
                 else {
-                    Intent intent = new Intent(MyAccountActivity.this, RegisterSellerActivity.class);
+                    Intent intent = new Intent(MyAccountActivity.this, WelcomeSellerActivity.class);
                     startActivity(intent);
                 }
             }

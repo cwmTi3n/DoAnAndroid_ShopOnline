@@ -34,7 +34,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:tabIndicatorColor="#ee4d2d"
-                android:background="#ffffff" />
+                android:background="#54CBBF" />
 
 
         </com.google.android.material.appbar.AppBarLayout>
