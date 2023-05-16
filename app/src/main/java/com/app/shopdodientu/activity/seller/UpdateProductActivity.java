@@ -105,7 +105,6 @@ public class UpdateProductActivity extends AppCompatActivity {
             new ActivityResultCallback<ActivityResult>() {
                 @Override
                 public void onActivityResult(ActivityResult result) {
-                    Log.e("TAG", "onActivityResult");
                     if (result.getResultCode() == Activity.RESULT_OK) {
                         //request code
                         Intent data = result.getData();
@@ -248,7 +247,7 @@ public class UpdateProductActivity extends AppCompatActivity {
                 RequestBody categoryId = RequestBody.create(MediaType.parse("multipart/form-data"), String.valueOf(categoryInt));
                 int selectedId = radioGroup.getCheckedRadioButtonId();
                 RadioButton selectedRadioButton = findViewById(selectedId);
-                String statusString = selectedRadioButton.getText().toString();
+                String statusString = selectedRadioButton.getText().toString().equals("On") ?"1":"0";
                 RequestBody status = RequestBody.create(MediaType.parse("multipart/form-data"), statusString);
                 MultipartBody.Part imageFile = null;
                 if(mUri != null) {

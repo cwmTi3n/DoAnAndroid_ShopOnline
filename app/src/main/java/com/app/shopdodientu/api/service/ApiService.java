@@ -6,6 +6,7 @@ import com.app.shopdodientu.model.CategoryModel;
 import com.app.shopdodientu.model.CheckoutModel;
 import com.app.shopdodientu.model.PageModel;
 import com.app.shopdodientu.model.ProductModel;
+import com.app.shopdodientu.model.ShopModel;
 import com.app.shopdodientu.model.TinhModel;
 import com.app.shopdodientu.model.UserModel;
 
@@ -94,17 +95,6 @@ public interface ApiService {
                                      @Part("categoryId") RequestBody categoryId,
                                      @Part("status") RequestBody status);
 
-    @PUT("seller/product")
-    @Multipart
-    Call<ProductModel> updateProduct(@Part("id") RequestBody id,
-                                     @Part("userId") RequestBody userId,
-                                     @Part("name") RequestBody name,
-                                     @Part("description") RequestBody description,
-                                     @Part("price") RequestBody price,
-                                     @Part("stock") RequestBody stock,
-                                     @Part("categoryId") RequestBody categoryId,
-                                     @Part("status") RequestBody status);
-
     @DELETE("seller/product/{id}")
     Call<ResponseBody> deleteProduct(@Path("id") int id);
 
@@ -141,4 +131,13 @@ public interface ApiService {
 
     @GET("account/cart/{id}")
     Call<CartModel> getCart(@Path("id") int id);
+
+    @POST("account/register-seller")
+    @Multipart
+    Call<ResponseBody> registerSeller(@Part("address") RequestBody address,
+                                      @Part MultipartBody.Part imageFile);
+
+    @PUT("seller/update-banner")
+    @Multipart
+    Call<ShopModel> updateBanner(@Part("address") RequestBody address, @Part MultipartBody.Part imageFile);
 }

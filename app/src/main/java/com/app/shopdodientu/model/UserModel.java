@@ -11,11 +11,13 @@ public class UserModel implements Serializable {
     private String phone;
     private int status;
     private String role;
+    private String bannerShop;
+
 
     public UserModel() {
     }
 
-    public UserModel(int id, String username, String email, String fullname, String avatar, String phone, int status, String role) {
+    public UserModel(int id, String username, String email, String fullname, String avatar, String phone, int status, String role, String bannerShop) {
         this.id = id;
         this.username = username;
         this.email = email;
@@ -24,6 +26,7 @@ public class UserModel implements Serializable {
         this.phone = phone;
         this.status = status;
         this.role = role;
+        this.bannerShop = bannerShop;
     }
 
     public int getId() {
@@ -88,5 +91,13 @@ public class UserModel implements Serializable {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getBannerShop() {
+        return bannerShop;
+    }
+
+    public void setBannerShop(String bannerShop) {
+        this.bannerShop = bannerShop;
     }
 }

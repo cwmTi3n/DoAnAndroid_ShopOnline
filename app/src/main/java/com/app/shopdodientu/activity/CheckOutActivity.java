@@ -46,6 +46,7 @@ public class CheckOutActivity extends AppCompatActivity {
 
     private static final int REQUEST_SELECT_ADDRESS = 1;
     private List<Integer> cartItemIds;
+    String userAddress;
 
     private ActivityResultLauncher<Intent> addressSelectionLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -53,9 +54,9 @@ public class CheckOutActivity extends AppCompatActivity {
                 if (result.getResultCode() == Activity.RESULT_OK) {
                     Intent data = result.getData();
                     if (data != null) {
-                        String selectedAddress = data.getStringExtra("selected_address");
+                        userAddress = data.getStringExtra("selected_address");
                         // Hiển thị địa chỉ đã chọn trên giao diện thanh toán
-                        displaySelectedAddress(selectedAddress);
+                        displaySelectedAddress(userAddress);
                     }
                 }
             }
@@ -109,7 +110,7 @@ public class CheckOutActivity extends AppCompatActivity {
 
     private void renderView() {
         SharedPreferences sharedPreferences = getSharedPreferences("address", MODE_PRIVATE);
-        String userAddress = sharedPreferences.getString("user_address", null);
+        userAddress = sharedPreferences.getString("user_address", null);
         if(userAddress != null) {
             tvAddress.setText(userAddress);
         }

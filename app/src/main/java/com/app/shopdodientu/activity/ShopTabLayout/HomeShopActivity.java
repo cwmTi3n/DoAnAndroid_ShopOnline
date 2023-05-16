@@ -1,11 +1,14 @@
 package com.app.shopdodientu.activity.ShopTabLayout;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -18,7 +21,11 @@ import com.app.shopdodientu.R;
 import com.app.shopdodientu.activity.ChatActivity;
 
 import com.app.shopdodientu.databinding.ActivityHomeShopBinding;
+import com.app.shopdodientu.util.Constant;
 import com.app.shopdodientu.util.UIHelper;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.CustomTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.google.android.material.tabs.TabLayout;
 
 public class HomeShopActivity extends AppCompatActivity {
@@ -44,11 +51,30 @@ public class HomeShopActivity extends AppCompatActivity {
         MapItemView();
 //        renderView();
 
-
+        renderView();
         SetTabLayout();
         TabLayOutClicked();
         searchProduct();
         gotoChat();
+    }
+    private void renderView() {
+        tvshopName.setText(Constant.userLogin.getUsername());
+        Glide.with(getApplicationContext())
+                .load(Constant.userLogin.getAvatar())
+                .into(imgAvatarShop);
+        Glide.with(getApplicationContext())
+                .load(Constant.userLogin.getBannerShop())
+                .into(new CustomTarget<Drawable>() {
+                    @Override
+                    public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
+                        linearBannerShop.setBackground(resource);
+                    }
+
+                    @Override
+                    public void onLoadCleared(@Nullable Drawable placeholder) {
+
+                    }
+                });
     }
     public static String getKeyword() {
         String tmp = keyword;

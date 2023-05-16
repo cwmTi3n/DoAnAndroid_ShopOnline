@@ -149,16 +149,16 @@ public class UIHelper {
 
 
 
-    public static void gotoMainSeller(TextView tv, Context context) {
-        tv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent;
-                intent = new Intent(context, MainSellerActivity.class);
-                context.startActivity(intent);
-            }
-        });
-    }
+//    public static void gotoMainSeller(TextView tv, Context context) {
+//        tv.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent;
+//                intent = new Intent(context, MainSellerActivity.class);
+//                context.startActivity(intent);
+//            }
+//        });
+//    }
 
 
 

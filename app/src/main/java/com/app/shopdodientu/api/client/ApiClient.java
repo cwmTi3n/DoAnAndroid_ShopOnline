@@ -6,7 +6,7 @@ import com.app.shopdodientu.api.service.ApiService;
 
 public class ApiClient extends BaseClient{
 
-    private static final String BASE_URL = "http://172.16.37.20/";
+    private static final String BASE_URL = "http://172.16.37.41/";
 //    private static final String BASE_URL = "https://apishoponline.cfapps.ap21.hana.ondemand.com/";
 
 
@@ -25,6 +25,6 @@ public class ApiClient extends BaseClient{
     }
 
     public static void restApiService() {
-        apiService = createService(ApiService.class, BASE_URL, null, null);
+        apiService = null;
     }
 }

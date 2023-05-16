@@ -96,22 +96,6 @@ public class WaittingOrderInforActivity extends AppCompatActivity {
         rcvProduct = findViewById(R.id.rcvProduct);
     }
 
-    private void setingViewByStatus() {
-        int status = cartModel.getStatus();
-        if(status == 1) {
-
-        }
-        else if(status == 2) {
-
-        }
-        else if(status == 3) {
-
-        }
-        else if(status == 4) {
-
-        }
-        //viết hàm chỉnh sửa giao diện theo waitting, delivering, delicered, cancel...;
-    }
     private void renderView() {
         if(cartModel != null) {
             tvUserName.setText(Constant.userLogin.getUsername());

@@ -16,6 +16,7 @@ import com.app.shopdodientu.activity.SupportActivity;
 import com.app.shopdodientu.activity.seller.order.ShopOrderActivity;
 import com.app.shopdodientu.util.Constant;
 import com.app.shopdodientu.util.UIHelper;
+import com.bumptech.glide.Glide;
 
 public class MainSellerActivity extends AppCompatActivity {
 
@@ -39,6 +40,7 @@ public class MainSellerActivity extends AppCompatActivity {
         gotoShopFinance();
         gotoShopOrder();
         gotoSupport();
+        renderView();
         imgSetting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -47,6 +49,13 @@ public class MainSellerActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    private void renderView() {
+        tvShopName.setText(Constant.userLogin.getUsername());
+        Glide.with(getApplicationContext())
+                .load(Constant.userLogin.getAvatar())
+                .into(imgAvatarStore);
     }
 
     private void gotoAddProduct() {

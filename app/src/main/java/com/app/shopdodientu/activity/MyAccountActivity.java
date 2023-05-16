@@ -16,6 +16,8 @@ import android.widget.TextView;
 
 import com.app.shopdodientu.R;
 import com.app.shopdodientu.activity.OrderTabLayout.MyOrderActivity;
+import com.app.shopdodientu.activity.seller.MainSellerActivity;
+import com.app.shopdodientu.activity.seller.RegisterSellerActivity;
 import com.app.shopdodientu.activity.seller.WelcomeSellerActivity;
 import com.app.shopdodientu.model.UserModel;
 import com.app.shopdodientu.util.Constant;
@@ -53,12 +55,14 @@ public class MyAccountActivity extends AppCompatActivity {
 
         MapItemView();
         gotoProfile();
+        renderView();
 
 //        Intent intent = new Intent(MyAccountActivity.this, WelcomeSellerActivity.class);
 //        startActivity(intent);
-        UIHelper.gotoMainSeller(tvRegisterSeller, this);
+//        UIHelper.gotoMainSeller(tvRegisterSeller, this);
 
         gotoMyOrder();
+        gotoMainSeller();
         //BOTTOM
         UIHelper.gotoCart(linearCart, this, gotoCart);
         UIHelper.gotoHome(linearHome, this);
@@ -72,6 +76,22 @@ public class MyAccountActivity extends AppCompatActivity {
         });
 
         UIHelper.logout(linearLogout, tvLogout, imvLogout, this);
+    }
+
+    private void gotoMainSeller() {
+        tvRegisterSeller.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(Constant.userLogin.getRole().equals("SELLER")) {
+                    Intent intent = new Intent(MyAccountActivity.this, MainSellerActivity.class);
+                    startActivity(intent);
+                }
+                else {
+                    Intent intent = new Intent(MyAccountActivity.this, RegisterSellerActivity.class);
+                    startActivity(intent);
+                }
+            }
+        });
     }
     private void renderView() {
         tvfullname.setText(Constant.userLogin.getFullname());

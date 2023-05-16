@@ -70,7 +70,7 @@
             android:drawableRight="@drawable/back_left"
             android:drawablePadding="5dp"
             android:gravity="center"
-            android:text="Start Selling                                   For Free"
+            android:text="My Shop                                        For Free"
             android:textSize="18dp"
             android:textStyle="bold" />
 

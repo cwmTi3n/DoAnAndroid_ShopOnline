@@ -92,8 +92,7 @@ public class SignupActivity extends AppCompatActivity {
                                 UserModel userModel = response.body();
                                 if(userModel != null) {
                                     Toast.makeText(SignupActivity.this, "Đăng ký tài khoản thành công", Toast.LENGTH_LONG).show();
-                                    Intent intent = new Intent(SignupActivity.this, LoginActivity.class);
-                                    startActivity(intent);
+                                    finish();
                                 }
                                 else {
                                     Toast.makeText(SignupActivity.this, "Đăng ký tài thất bại", Toast.LENGTH_LONG).show();

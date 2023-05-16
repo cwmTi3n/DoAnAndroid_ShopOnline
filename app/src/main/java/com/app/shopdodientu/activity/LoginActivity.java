@@ -117,7 +117,7 @@ public class LoginActivity extends AppCompatActivity {
     private void callApiLogin(String username, String password) {
         LoadingDialog loadingDialog = new LoadingDialog(LoginActivity.this);
         loadingDialog.show();
-        ApiService apiService = ApiClient.login(username, password);
+        ApiService apiService = ApiClient.getApiService();
         apiService.login(username, password)
                 .enqueue(new Callback<UserModel>() {
                     @Override
@@ -126,9 +126,9 @@ public class LoginActivity extends AppCompatActivity {
                         UserModel userModel = response.body();
                         if(userModel == null) {
                             Toast.makeText(LoginActivity.this, "Tên đăng nhập hoặc mật khẩu không đúng", Toast.LENGTH_LONG).show();
-                            ApiClient.restApiService();
                         }
                         else {
+                            ApiClient.login(userModel.getUsername(), password);
                             Constant.userLogin = userModel;
                             Intent resultIntent = new Intent();
                             setResult(Activity.RESULT_OK, resultIntent);
@@ -141,7 +141,6 @@ public class LoginActivity extends AppCompatActivity {
                     public void onFailure(Call<UserModel> call, Throwable t) {
                         loadingDialog.dismiss();
                         Toast.makeText(LoginActivity.this, "Tên đăng nhập hoặc mật khẩu không đúng", Toast.LENGTH_LONG).show();
-                        ApiClient.restApiService();
                     }
                 });
     }

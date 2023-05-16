@@ -91,7 +91,7 @@ public class IntroActivity extends AppCompatActivity {
         if(sharedPreferences.getBoolean("check", false)) {
             String username = sharedPreferences.getString("username", null);
             String password = sharedPreferences.getString("password", null);
-            ApiService login = ApiClient.login(username, password);
+            ApiService login = ApiClient.getApiService();
             login.login(username, password)
                     .enqueue(new Callback<UserModel>() {
                         @Override
@@ -99,9 +99,11 @@ public class IntroActivity extends AppCompatActivity {
                             UserModel userLogin = response.body();
                             if(userLogin != null) {
                                 Constant.userLogin = userLogin;
+                                ApiClient.login(username, password);
                             }
                             else {
                                 ApiClient.restApiService();
+
                             }
                         }
 

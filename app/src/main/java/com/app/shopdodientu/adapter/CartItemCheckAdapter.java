@@ -1,6 +1,7 @@
 package com.app.shopdodientu.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,9 +16,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.app.shopdodientu.R;
+import com.app.shopdodientu.activity.WaittingOrderInforActivity;
 import com.app.shopdodientu.api.client.ApiClient;
 import com.app.shopdodientu.api.service.ApiService;
 import com.app.shopdodientu.model.CartItemModel;
+import com.app.shopdodientu.model.CartModel;
 import com.app.shopdodientu.util.LoadingDialog;
 import com.bumptech.glide.Glide;
 
@@ -54,6 +57,33 @@ public class CartItemCheckAdapter extends RecyclerView.Adapter<CartItemCheckAdap
         holder.tvProductName.setText(cartItemModel.getProductName());
         holder.tvAmount.setText(String.valueOf(cartItemModel.getQuantity()));
         holder.tvTotal.setText(String.valueOf(cartItemModel.getQuantity()*cartItemModel.getUnitPrice()));
+        holder.tvDetailOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LoadingDialog loadingDialog = new LoadingDialog(context);
+                loadingDialog.show();
+                ApiService apiService = ApiClient.getApiService();
+                apiService.getCart(cartItemModel.getCartId())
+                        .enqueue(new Callback<CartModel>() {
+                            @Override
+                            public void onResponse(Call<CartModel> call, Response<CartModel> response) {
+                                loadingDialog.dismiss();
+                                CartModel cartModel = response.body();
+                                if(cartModel != null) {
+                                    Intent intent = new Intent(context, WaittingOrderInforActivity.class);
+                                    intent.putExtra("cart", cartModel);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    context.startActivity(intent);
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call<CartModel> call, Throwable t) {
+                                loadingDialog.dismiss();
+                            }
+                        });
+            }
+        });
         if(cartItemModel.getStatus() != 1) {
             holder.btnDone.setVisibility(View.GONE);
             holder.btnCancel.setVisibility(View.GONE);
