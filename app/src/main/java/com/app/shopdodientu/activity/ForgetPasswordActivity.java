@@ -18,12 +18,14 @@ import android.widget.TextView;
 
 import com.app.shopdodientu.R;
 import com.app.shopdodientu.util.UIHelper;
+import com.google.android.material.textfield.TextInputEditText;
 
 public class ForgetPasswordActivity extends AppCompatActivity {
     private TextView tvBack;
     private ImageView imgSupport;
     private EditText edtEmail;
-    private Button btnNext;
+    private Button btnNext, btnChange;
+    private TextInputEditText tfpass, tfconfirmpass;
 
     Intent intent;
 
@@ -46,6 +48,9 @@ public class ForgetPasswordActivity extends AppCompatActivity {
         imgSupport = findViewById(R.id.imgSupport);
         edtEmail = findViewById(R.id.edtEmail);
         btnNext = findViewById(R.id.btnNext);
+        tfpass = findViewById(R.id.tfpass);
+        tfconfirmpass = findViewById(R.id.tfconfirmpass);
+        btnChange = findViewById(R.id.btnChange);
     }
 
     private void TextViewBackClicked(){

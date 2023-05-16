@@ -5,8 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="20dp"
-    android:layout_marginLeft="10dp"
+    android:layout_marginLeft="20dp"
     android:layout_marginRight="10dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#F1E6E6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imgAvatarUser"
@@ -34,7 +41,7 @@
         android:id="@+id/ratingBar"
         android:layout_width="242dp"
         android:layout_height="54dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="15dp"
         android:numStars="5"
         android:progressTint="#ffce3d"
         android:rating="5.0"
@@ -42,7 +49,7 @@
         android:scaleY="0.5"
         android:stepSize="1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tvUserName" />
 
@@ -50,47 +57,37 @@
         android:id="@+id/tvFeedback"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="57dp"
         android:text="This is content of feedback"
         android:textSize="18dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="1.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imgFeedback1"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="10dp"
+        android:layout_width="100dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvFeedback"
         app:srcCompat="@drawable/sample_product" />
 
-<!--    <ImageView-->
-<!--        android:id="@+id/imgFeedback2"-->
-<!--        android:layout_width="110dp"-->
-<!--        android:layout_height="110dp"-->
-<!--        android:layout_marginStart="20dp"-->
-<!--        app:layout_constraintBottom_toBottomOf="@+id/imgFeedback1"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintHorizontal_bias="0.0"-->
-<!--        app:layout_constraintStart_toEndOf="@+id/imgFeedback1"-->
-<!--        app:srcCompat="@drawable/sample_product" />-->
 
     <TextView
         android:id="@+id/tvDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:text="2022/04/02 11:47"
-
         android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.288"
+        app:layout_constraintHorizontal_bias="0.24"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgFeedback1"
         app:layout_constraintVertical_bias="0.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,10 +10,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.TextView;
 
 import com.app.shopdodientu.activity.AddressTabLayout.MyPagerAdapter;
 import com.app.shopdodientu.databinding.ActivityLocationBinding;
+import com.app.shopdodientu.util.UIHelper;
 import com.google.android.material.tabs.TabLayout;
 
 public class LocationActivity extends AppCompatActivity {
@@ -24,6 +26,8 @@ public class LocationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+        UIHelper.fullscreen(this);
         binding = ActivityLocationBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 

@@ -4,12 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.TextView;
 
 import com.app.shopdodientu.R;
 import com.app.shopdodientu.api.client.ApiClient;
 import com.app.shopdodientu.api.service.ApiService;
 import com.app.shopdodientu.model.StatisticsModel;
+import com.app.shopdodientu.util.UIHelper;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -22,6 +24,8 @@ public class FinanceActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
+        UIHelper.fullscreen(this);
         setContentView(R.layout.activity_finance);
 
         MapItemView();

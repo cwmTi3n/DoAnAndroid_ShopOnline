@@ -18,7 +18,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="6.5"
+            android:layout_weight="5"
             android:background="#fece2f"
             android:padding="20dp">
 
@@ -58,97 +58,98 @@
         </RelativeLayout>
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="-80dp"
-            android:orientation="horizontal"
-            android:padding="10dp"
-            android:weightSum="10">
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="-80dp"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:padding="10dp"-->
+<!--            android:weightSum="10">-->
 
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="0dp"
-                android:layout_height="130dp"
-                android:layout_margin="10dp"
-                android:layout_weight="5"
-                app:cardBackgroundColor="#fece2f"
-                app:cardElevation="10dp">
+<!--            <com.google.android.material.card.MaterialCardView-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="130dp"-->
+<!--                android:layout_margin="10dp"-->
+<!--                android:layout_weight="5"-->
+<!--                app:cardBackgroundColor="#fece2f"-->
+<!--                app:cardElevation="10dp">-->
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="5dp">
+<!--                <RelativeLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:padding="5dp">-->
 
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_centerHorizontal="true"
-                        android:src="@drawable/plus" />
+<!--                    <ImageView-->
+<!--                        android:layout_width="30dp"-->
+<!--                        android:layout_height="30dp"-->
+<!--                        android:layout_centerHorizontal="true"-->
+<!--                        android:src="@drawable/plus" />-->
 
-                    <TextView
-                        android:id="@+id/tvNumberOrder"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:includeFontPadding="false"
-                        android:text="5"
-                        android:textSize="20sp" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/tvNumberOrder"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_centerInParent="true"-->
+<!--                        android:includeFontPadding="false"-->
+<!--                        android:text="5"-->
+<!--                        android:textSize="20sp" />-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/tvNumberOrder"
-                        android:layout_centerHorizontal="true"
-                        android:includeFontPadding="false"
-                        android:text="Number Order"
-                        android:textSize="20sp" />
-                </RelativeLayout>
-            </com.google.android.material.card.MaterialCardView>
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_below="@id/tvNumberOrder"-->
+<!--                        android:layout_centerHorizontal="true"-->
+<!--                        android:includeFontPadding="false"-->
+<!--                        android:text="Number Order"-->
+<!--                        android:textSize="20sp" />-->
+<!--                </RelativeLayout>-->
+<!--            </com.google.android.material.card.MaterialCardView>-->
 
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="0dp"
-                android:layout_height="130dp"
-                android:layout_margin="10dp"
-                android:layout_weight="5"
-                app:cardBackgroundColor="#fece2f"
-                app:cardElevation="10dp">
+<!--            <com.google.android.material.card.MaterialCardView-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="130dp"-->
+<!--                android:layout_margin="10dp"-->
+<!--                android:layout_weight="5"-->
+<!--                app:cardBackgroundColor="#fece2f"-->
+<!--                app:cardElevation="10dp">-->
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:padding="5dp">
+<!--                <RelativeLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:padding="5dp">-->
 
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_centerHorizontal="true"
-                        android:src="@drawable/plus" />
+<!--                    <ImageView-->
+<!--                        android:layout_width="30dp"-->
+<!--                        android:layout_height="30dp"-->
+<!--                        android:layout_centerHorizontal="true"-->
+<!--                        android:src="@drawable/plus" />-->
 
-                    <TextView
-                        android:id="@+id/tvPrice"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerInParent="true"
-                        android:includeFontPadding="false"
-                        android:text="₫219000"
-                        android:textSize="20sp" />
+<!--                    <TextView-->
+<!--                        android:id="@+id/tvPrice"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_centerInParent="true"-->
+<!--                        android:includeFontPadding="false"-->
+<!--                        android:text="₫219000"-->
+<!--                        android:textSize="20sp" />-->
 
-                    <TextView
-                        android:id="@+id/paymentdesc"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/tvPrice"
-                        android:layout_centerHorizontal="true"
-                        android:includeFontPadding="false"
-                        android:text="Total Price"
-                        android:textSize="20sp" />
-                </RelativeLayout>
-            </com.google.android.material.card.MaterialCardView>
-        </LinearLayout>
+<!--                    <TextView-->
+<!--                        android:id="@+id/paymentdesc"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_below="@id/tvPrice"-->
+<!--                        android:layout_centerHorizontal="true"-->
+<!--                        android:includeFontPadding="false"-->
+<!--                        android:text="Total Price"-->
+<!--                        android:textSize="20sp" />-->
+<!--                </RelativeLayout>-->
+<!--            </com.google.android.material.card.MaterialCardView>-->
+<!--        </LinearLayout>-->
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginTop="50dp"
             android:layout_weight="2.7"
             android:hint="FullName"
             android:paddingLeft="20dp"
@@ -237,6 +238,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginTop="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_weight="2.7"

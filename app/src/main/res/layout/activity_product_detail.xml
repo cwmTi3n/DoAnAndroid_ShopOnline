@@ -167,38 +167,24 @@
                         android:id="@+id/imgavatar"
                         android:layout_width="0dp"
                         android:layout_height="35dp"
-                        android:layout_marginLeft="5dp"
+                        android:layout_marginLeft="10dp"
                         android:layout_gravity="center"
-                        android:layout_weight="2.5"
+                        android:layout_weight="2"
                         tools:src="@drawable/bottom_btn2" />
 
-                    <LinearLayout
+
+                    <TextView
+                        android:id="@+id/tvshopName"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_weight="4.5"
+                        android:gravity="center|start"
                         android:paddingStart="10dp"
-                        android:orientation="vertical"
-                        android:weightSum="2">
+                        android:layout_weight="5"
+                        android:text="Shop Name"
+                        android:textSize="18dp"
+                        android:textStyle="bold"
+                        android:textColor="#000"/>
 
-                        <TextView
-                            android:id="@+id/tvshopName"
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="1"
-                            android:text="Shop Name"
-                            android:textSize="18dp"
-                            android:textStyle="bold"
-                            android:textColor="#000"/>
-
-                        <TextView
-                            android:id="@+id/tvamountProduct"
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="1"
-                            android:text="46 Product"
-                            android:textSize="16dp"
-                            android:textStyle="italic"/>
-                    </LinearLayout>
 
                     <TextView
                         android:id="@+id/tvviewShop"
@@ -238,6 +224,7 @@
                     android:layout_marginRight="20dp"
                     android:text="description of product"
                     android:textColor="#211F1F"
+                    android:layout_marginBottom="10dp"
                     android:textSize="18dp" />
 
                 <TextView
@@ -251,6 +238,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="#F7F3F3"
                     android:drawableRight="@drawable/back_left"
                     android:gravity="center|start"
                     android:text="Feedback                       Click to see all"

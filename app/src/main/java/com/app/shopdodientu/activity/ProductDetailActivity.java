@@ -129,6 +129,7 @@ public class ProductDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ProductDetailActivity.this, ChatActivity.class);
+                intent.putExtra("sellerId", productModel.getUserId());
                 startActivity(intent);
             }
         });
